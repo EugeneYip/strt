@@ -3054,6 +3054,24 @@ const PT_MAP = {
   "EugeneYip.com": "EugeneYip.com"
 };
 
+const PT_DEEP_MAP = {
+  "This is the safer exam method because it prevents industry definition from drifting into SIC-style labels or technology categories. The test is direct competition over a similar customer-facing output.": "Este é o método mais seguro para a prova, porque evita que a definição da indústria escorregue para rótulos no estilo SIC ou para categorias tecnológicas. O teste correto é concorrência direta por um output semelhante voltado ao cliente.",
+  "Availability, quality, cost, concentration, bargaining power, and collaboration all shape what the focal business can do.": "Disponibilidade, qualidade, custo, concentração, poder de barganha e colaboração moldam diretamente o que o negócio focal consegue fazer.",
+  "Knowledge spillovers, common channels, and scope economies can lower cost or improve the offer without changing the focal firm itself.": "Knowledge spillovers, canais compartilhados e economias de escopo podem reduzir custo ou melhorar a oferta sem que a firma focal mude por completo.",
+  "Performance depends on how well the focal player fits into the surrounding system, not just on what it does alone.": "A performance depende de quão bem o player focal se encaixa no sistema ao redor, e não apenas do que ele faz isoladamente.",
+  "Size, growth, sophistication, segmentation, bargaining power, and price sensitivity determine the revenue side of the system.": "Tamanho, crescimento, sofisticação, segmentação, poder de barganha e sensibilidade a preço determinam o lado da receita dentro do sistema.",
+  "Complements expand demand or willingness to pay. Substitutes cap upside and can compress margins quickly.": "Complementos ampliam a demanda ou a disposição a pagar. Substitutos limitam o upside e podem comprimir margens com rapidez.",
+  "Cluster policies, training systems, and public-private institutions can strengthen or weaken the whole ecosystem over time.": "Políticas de cluster, sistemas de formação e instituições público-privadas podem fortalecer ou enfraquecer todo o ecossistema ao longo do tempo.",
+  "Meta forces matter when they change who may enter, with what technology, under what political constraints, and on what global terms.": "As forças meta importam quando mudam quem pode entrar, com qual tecnologia, sob quais restrições políticas e em que termos globais.",
+  ": run five-level home-versus-host contrast.": ": faça o contraste home versus host pelos cinco níveis.",
+  ": define SPARK and the global-local split.": ": defina SPARK e a divisão global-local.",
+  ": decide whether the company is worth more integrated than separate.": ": decida se a empresa vale mais integrada do que separada.",
+  "If none of these mechanisms is real and defensible, the corporate structure may be destroying rather than creating value.": "Se nenhum desses mecanismos for real e defensável, a estrutura corporativa pode estar destruindo valor em vez de criá-lo.",
+  "High-scoring Nokia insight: Nokia once functioned as a standard setter because Nordic standards became European and then global. Apple later redefined the standard around the software platform, turning Apple into the frame-breaker and hollowing out Nokia's earlier advantage.": "Insight de alta pontuação sobre a Nokia: a Nokia já funcionou como standard setter porque os padrões nórdicos viraram padrões europeus e depois globais. Mais tarde, a Apple redefiniu o padrão em torno da plataforma de software, virou a frame-breaker e esvaziou a vantagem anterior da Nokia.",
+  "Externalization is not automatically good. One company’s asset-light strategy usually depends on another company carrying the asset-heavy burden. If you cannot identify where value is created, where it is appropriated, and where it is defended, you may be giving the value away.": "Externalization não é automaticamente algo bom. A estratégia asset-light de uma empresa normalmente depende de outra carregar o peso asset-heavy. Se você não consegue identificar onde o valor é criado, onde é apropriado e onde é defendido, talvez esteja simplesmente entregando esse valor.",
+  "Final one-sentence guide: start with underlying economics, identify the binding levels, test SPARK plus leadership and execution, pressure-test future competition with CEA, and then ask whether organization and implementation allow the firm to realize and defend the value that should be available.": "Guia final em uma frase: comece pela underlying economics, identifique os níveis vinculantes, teste SPARK junto com leadership e execution, faça um pressure test da future competition com CEA e depois pergunte se organization e implementation permitem que a firma realize e defenda o valor que deveria estar disponível."
+};
+
 
 const ES_MAP = {
   "STRT 6200 Final Exam Infrastructure": "Infraestructura del examen final STRT 6200",
@@ -3298,6 +3316,7 @@ function urText(input) {
 
 function ptText(input) {
   if (typeof input !== 'string') return input;
+  if (PT_DEEP_MAP[input]) return PT_DEEP_MAP[input];
   if (PT_MAP[input]) return PT_MAP[input];
   const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
   if (match) return `Há ${match[1]} seções visíveis no momento. Use os chips de filtro e a busca para focar nas áreas de maior peso, nos frameworks, nos casos ou no apêndice.`;
