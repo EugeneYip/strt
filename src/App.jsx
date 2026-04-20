@@ -3269,6 +3269,9 @@ const UR_MAP = {
   "Language switch": "زبان تبدیل کریں",
   "Reading map": "مطالعہ کا نقشہ",
   "Original pasted master review": "اصل پیسٹ کیا گیا ماسٹر ریویو",
+  "Sources": "ذرائع",
+  "Show source appendix": "ماخذی ضمیمہ دکھائیں",
+  "Hide source appendix": "ماخذی ضمیمہ چھپائیں",
   "Exam Signals": "امتحانی اشارے",
   "Analytical Spine": "تحلیلی ڈھانچہ",
   "Underlying Economics": "بنیادی معاشی منطق",
@@ -3288,8 +3291,16 @@ const UR_MAP = {
   "Frameworks": "فریم ورک",
   "Cases": "کیسز",
   "Appendix": "ضمیمہ",
+  "EN": "EN",
+  "中": "中文",
+  "BI": "دو لسانی",
+  "Tiếng Việt": "Tiếng Việt",
+  "Português": "Português",
+  "Español": "Español",
+  "日本語": "日本語",
+  "اردو": "اردو",
   "No sections match the current filter.": "موجودہ فلٹر کے مطابق کوئی سیکشن نہیں ملا۔",
-  "Try a broader search term or switch the chip filter back to All.": "زیادہ وسیع تلاش کا لفظ آزمائیں یا چپ فلٹر کو واپس سب پر لے جائیں۔",
+  "Try a broader search term or switch the chip filter back to All.": "زیادہ وسیع تلاش کا لفظ آزمائیں یا چِپ فلٹر کو واپس سب پر لے جائیں۔",
   "What this build is for": "یہ بلڈ کس مقصد کے لیے ہے",
   "Why this appendix remains": "یہ ضمیمہ کیوں برقرار ہے",
   "Competition spectrum": "مقابلے کا طیف",
@@ -3303,11 +3314,44 @@ const UR_MAP = {
   "International architecture": "بین الاقوامی آرکیٹیکچر",
   "Corporate architecture": "کارپوریٹ آرکیٹیکچر",
   "Implementation diagnosis": "عمل درآمد کی تشخیص",
+  "Use the right tool for the job": "صحیح سوال کے لیے صحیح ٹول استعمال کریں",
+  "Do not include extraneous material": "غیر ضروری مواد شامل نہ کریں",
+  "Use your time wisely": "وقت سمجھ داری سے استعمال کریں",
+  "Reading the question correctly is itself a grading event": "سوال کو درست پڑھنا بھی گریڈنگ کا حصہ ہے",
   "EugeneYip.com": "EugeneYip.com"
+};
+
+const UR_DEEP_MAP = {
+  "This build is designed as a user-facing revision system, not a progress memo. It assumes you need to read quickly, see structure immediately, and move from concept to case application without losing fidelity.": "یہ بلڈ ایک user-facing revision system کے طور پر تیار کی گئی ہے، progress memo کے طور پر نہیں۔ اس کا مفروضہ یہ ہے کہ آپ کو تیزی سے پڑھنا ہے، فوراً structure سمجھنی ہے، اور concept سے case application تک اس طرح جانا ہے کہ اصل fidelity برقرار رہے۔",
+  "The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone.": "مین interface مواد کو readability اور exam execution کے لیے دوبارہ منظم کرتی ہے۔ یہ appendix اصل pasted master review کو فائل کے اندر محفوظ رکھتی ہے تاکہ upgraded infrastructure خاموشی سے اس backbone کو حذف نہ کر دے۔",
+  "This is the safer exam method because it prevents industry definition from drifting into SIC-style labels or technology categories. The test is direct competition over a similar customer-facing output.": "امتحان میں یہ نسبتاً محفوظ طریقہ ہے، کیونکہ اس سے industry definition، SIC طرز کے labels یا صرف technology categories کی طرف نہیں پھسلتی۔ اصل test یہ ہے کہ کیا ایک جیسے customer-facing output پر direct competition ہو رہی ہے یا نہیں۔",
+  "Availability, quality, cost, concentration, bargaining power, and collaboration all shape what the focal business can do.": "availability، quality، cost، concentration، bargaining power اور collaboration مل کر یہ طے کرتے ہیں کہ متعلقہ business حقیقت میں کیا کر سکتا ہے۔",
+  "Knowledge spillovers, common channels, and scope economies can lower cost or improve the offer without changing the focal firm itself.": "knowledge spillovers، common channels اور scope economies، خود focal firm کو مکمل طور پر بدلے بغیر بھی cost کم کر سکتے ہیں یا offer کو بہتر بنا سکتے ہیں۔",
+  "Performance depends on how well the focal player fits into the surrounding system, not just on what it does alone.": "performance صرف اس بات پر منحصر نہیں ہوتی کہ focal player خود کیا کرتا ہے، بلکہ اس پر بھی کہ وہ surrounding system میں کتنی اچھی طرح fit بیٹھتا ہے۔",
+  "Size, growth, sophistication, segmentation, bargaining power, and price sensitivity determine the revenue side of the system.": "size، growth، sophistication، segmentation، bargaining power اور price sensitivity مل کر system کے revenue side کو طے کرتے ہیں۔",
+  "Complements expand demand or willingness to pay. Substitutes cap upside and can compress margins quickly.": "complements demand یا willingness to pay کو بڑھاتے ہیں۔ substitutes upside کو محدود کرتے ہیں اور margins کو تیزی سے دبا سکتے ہیں۔",
+  "Cluster policies, training systems, and public-private institutions can strengthen or weaken the whole ecosystem over time.": "cluster policies، training systems اور public-private institutions وقت کے ساتھ پورے ecosystem کو مضبوط بھی بنا سکتے ہیں اور کمزور بھی۔",
+  "Meta forces matter when they change who may enter, with what technology, under what political constraints, and on what global terms.": "meta forces اُس وقت خاص اہمیت اختیار کرتی ہیں جب وہ یہ بدل دیں کہ کون enter کر سکتا ہے، کس technology کے ساتھ، کن political constraints کے تحت، اور کن global terms پر۔",
+  ": run five-level home-versus-host contrast.": ": five-level home-versus-host contrast چلائیں۔",
+  ": define SPARK and the global-local split.": ": SPARK اور global-local split واضح کریں۔",
+  ": decide whether the company is worth more integrated than separate.": ": طے کریں کہ integrated حالت میں کمپنی کی قدر زیادہ ہے یا الگ الگ parts کی صورت میں۔",
+  "If none of these mechanisms is real and defensible, the corporate structure may be destroying rather than creating value.": "اگر ان میں سے کوئی mechanism واقعی موجود اور defensible نہ ہو تو corporate structure value create کرنے کے بجائے value destroy کر رہی ہو سکتی ہے۔",
+  "High-scoring Nokia insight: Nokia once functioned as a standard setter because Nordic standards became European and then global. Apple later redefined the standard around the software platform, turning Apple into the frame-breaker and hollowing out Nokia's earlier advantage.": "اعلیٰ درجے کے جواب کے لیے Nokia پر اہم insight یہ ہے کہ Nokia ایک وقت میں standard setter کے طور پر کام کرتی تھی، کیونکہ Nordic standards پہلے European اور پھر global standards بن گئے تھے۔ بعد میں Apple نے software platform کے گرد standard کو دوبارہ define کیا، خود frame-breaker بن گئی، اور Nokia کی پہلے والی advantage کو کھوکھلا کر دیا۔",
+  "Externalization is not automatically good. One company’s asset-light strategy usually depends on another company carrying the asset-heavy burden. If you cannot identify where value is created, where it is appropriated, and where it is defended, you may be giving the value away.": "externalization خود بخود اچھی چیز نہیں ہوتی۔ ایک کمپنی کی asset-light strategy عموماً اس بات پر کھڑی ہوتی ہے کہ کوئی دوسری کمپنی asset-heavy burden اٹھا رہی ہو۔ اگر آپ یہ identify نہیں کر سکتے کہ value کہاں create ہو رہی ہے، کہاں appropriated ہو رہی ہے، اور کہاں defend ہو رہی ہے، تو ممکن ہے آپ وہ value خود ہی دے رہے ہوں۔",
+  "Final one-sentence guide: start with underlying economics, identify the binding levels, test SPARK plus leadership and execution, pressure-test future competition with CEA, and then ask whether organization and implementation allow the firm to realize and defend the value that should be available.": "آخری ایک سطری guide یہ ہے: underlying economics سے آغاز کریں، binding levels identify کریں، SPARK کے ساتھ leadership اور execution کو test کریں، future competition کو CEA سے pressure-test کریں، اور پھر یہ پوچھیں کہ organization اور implementation کمپنی کو وہ value حاصل اور defend کرنے دیتی ہیں یا نہیں جو اصولاً دستیاب ہونی چاہیے۔",
+  "The exam logic is explicit: before strategy language, understand how the business makes money. Underlying economics shape industry structure, which shapes competition, which shapes profit potential, which then gets modified by the focal firm's SPARK, bargaining position, leadership, and execution.": "امتحان کی logic بالکل واضح ہے: strategy language استعمال کرنے سے پہلے یہ سمجھیں کہ business پیسہ کیسے بناتی ہے۔ underlying economics industry structure کو shape کرتی ہے، industry structure competition کو shape کرتی ہے، competition profit potential کو shape کرتی ہے، اور پھر focal firm کا SPARK، bargaining position، leadership اور execution اس کو modify کرتے ہیں۔",
+  "Do not stop with current rivals. Add related-industry entrants and unmet demand segments. Many of the biggest threats come from those two directions.": "صرف current rivals پر نہ رکیں۔ related industry سے آنے والے entrants اور unmet demand segments کو بھی شامل کریں۔ بہت سے بڑے threats انہی دو سمتوں سے آتے ہیں۔",
+  "Coopetition means the same set of players can cooperate in one activity and compete in another. In an exam answer, split the relationship at the activity level rather than declaring the other side simply friend or foe.": "coopetition کا مطلب یہ ہے کہ ایک ہی set of players ایک activity میں cooperation اور دوسری activity میں competition کر سکتے ہیں۔ امتحانی جواب میں تعلق کو activity level پر توڑ کر دکھائیں، صرف دوست یا دشمن قرار نہ دیں۔",
+  "Any claim that a firm is performing well or poorly should identify the comparator first. Saying 'performance is weak' without naming the reference point is mechanically unsafe.": "اگر آپ یہ دعویٰ کریں کہ firm اچھی یا بری performance دے رہی ہے، تو پہلے comparator واضح کریں۔ reference point بتائے بغیر صرف یہ لکھ دینا کہ 'performance weak ہے' جواب کو mechanically unsafe بنا دیتا ہے۔",
+  "The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution.": "دنیا اُس معنی میں flat نہیں ہے جس طرح بعض popular writing میں دکھایا جاتا ہے۔ ideas کی creation اب بھی مخصوص لوگوں، firms اور places میں بہت زیادہ concentrated ہے، جبکہ execution resources نسبتاً زیادہ پھیلی ہوئی ہیں۔ اہم strategic سوال یہ ہے کہ flattener کون بنتا ہے اور execution تک محدود مقابلے میں flattened کون ہو جاتا ہے۔",
+  "Supranational drivers do not merely change profit levels. They can rewrite who is allowed to enter, under what rules, with which technologies, and with what geopolitical constraints. That is why they matter disproportionately in international and corporate strategy questions.": "supranational drivers صرف profit levels نہیں بدلتے۔ وہ یہ بھی دوبارہ لکھ سکتے ہیں کہ کون enter کر سکتا ہے، کن rules کے تحت، کن technologies کے ساتھ، اور کن geopolitical constraints کے اندر۔ اسی لیے international اور corporate strategy کے سوالات میں ان کی disproportionate اہمیت ہوتی ہے۔",
+  "Is the company more than the sum of its parts? If the answer is no, investors can diversify on their own and the corporate structure may be destroying value rather than creating it.": "کیا کمپنی اپنے parts کے مجموعے سے زیادہ ہے؟ اگر جواب نہیں ہے تو investors خود diversification کر سکتے ہیں، اور corporate structure value create کرنے کے بجائے value destroy کر رہی ہو سکتی ہے۔",
+  "The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality.": "managerial mistake اکثر environment کو systematic طور پر کم سمجھنے میں ہوتی ہے۔ teaching point یہ ہے کہ behavior کو managers کی instinct کے مقابلے میں کہیں زیادہ situation explain کرتی ہے۔ اگر آپ behavior change چاہتے ہیں تو personality پر لیکچر دینے کے بجائے environment کو redesign کریں۔"
 };
 
 function urText(input) {
   if (typeof input !== 'string') return input;
+  if (UR_DEEP_MAP[input]) return UR_DEEP_MAP[input];
   if (UR_MAP[input]) return UR_MAP[input];
   const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
   if (match) return `اس وقت ${match[1]} سیکشن دکھائی دے رہے ہیں۔ فلٹر چپس اور سرچ باکس استعمال کر کے نظام کو زیادہ وزن والے حصوں، فریم ورکس، کیسز یا ضمیمے تک محدود کریں۔`;
