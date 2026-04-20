@@ -2247,6 +2247,156 @@ const VI_MAP = {
   "展開原始內容": "Mở nội dung gốc"
 };
 
+
+const VI_DEEP_MAP = {
+  "10 meters away: solve the puzzle of value creation, competitive advantage, and appropriability.": "Ở khoảng cách 10 mét: giải toàn bộ bức tranh về tạo giá trị, lợi thế cạnh tranh và khả năng chiếm giữ giá trị.",
+  "3 meters away: extract the major conclusion from each analytical block.": "Ở khoảng cách 3 mét: rút ra kết luận chính từ từng khối phân tích.",
+  "6 inches away: organize facts, numbers, quotes, and events into the framework.": "Ở khoảng cách 6 inch: sắp xếp fact, số liệu, trích dẫn và sự kiện vào đúng framework.",
+  "A limited number of firms competing with interdependence.": "Một số ít doanh nghiệp cạnh tranh trong trạng thái phụ thuộc lẫn nhau.",
+  "A tech-enabled apparel model sits across meso, industry, and meta pressures, especially future competition and unmet demand.": "Mô hình may mặc được hỗ trợ bởi công nghệ này đồng thời nằm dưới áp lực meso, ngành và meta, đặc biệt là cạnh tranh tương lai và nhu cầu chưa được đáp ứng.",
+  "Account management, BD, marketing, sales": "Quản lý khách hàng, phát triển kinh doanh, marketing, bán hàng",
+  "Acer / Wistron: when units inside the same corporation undermine each other, breakup can be the value-creating move.": "Acer / Wistron: khi các đơn vị trong cùng một tập đoàn triệt tiêu lẫn nhau, tách ra có thể mới là bước tạo giá trị.",
+  "Action is missing from analysis + leadership": "Thiếu hành động trong tổ hợp analysis + leadership",
+  "Airline industry": "Ngành hàng không",
+  "Airlines": "Hàng không",
+  "Analysis is missing from action + leadership": "Thiếu phân tích trong tổ hợp action + leadership",
+  "Analyze": "Phân tích",
+  "Apply the right tool, not the whole framework library.": "Hãy dùng đúng công cụ, không phải bê cả thư viện framework vào bài.",
+  "Are the businesses related or unrelated?": "Các mảng kinh doanh này có liên quan với nhau hay không?",
+  "Are the countries similar or different?": "Các quốc gia này tương đồng hay khác biệt?",
+  "Are the countries similar or meaningfully different?": "Các quốc gia này chỉ hơi khác nhau hay thật sự khác theo nghĩa chiến lược?",
+  "Ask who else is fighting for that same customer outcome. Different technologies can still belong to the same industry if the useful output is the same.": "Hãy hỏi còn ai khác đang tranh cùng một kết quả mà khách hàng muốn nhận. Công nghệ có thể khác, nhưng nếu đầu ra hữu ích là như nhau thì vẫn có thể thuộc cùng một ngành.",
+  "Automobiles": "Ô tô",
+  "Bargaining / buyer / supplier power": "Quyền lực mặc cả / buyer / supplier",
+  "Bargaining leverage": "Đòn bẩy mặc cả",
+  "Believing others have done the homework": "Tin rằng người khác đã làm bài tập thay mình",
+  "Bottom of the Pyramid logic matters: profitable models may require simpler products, smaller pack sizes, and informal channels.": "Logic Bottom of the Pyramid rất quan trọng: mô hình có lãi có thể đòi hỏi sản phẩm đơn giản hơn, quy cách nhỏ hơn và các kênh phân phối phi chính thức.",
+  "Break multi-layer approval barriers for disruptive projects.": "Phải phá các lớp phê duyệt chồng tầng đối với dự án mang tính disruptive.",
+  "Build a guiding coalition": "Xây một liên minh dẫn dắt",
+  "Build the puzzle, then solve the puzzle.": "Dựng xong bức tranh ghép rồi mới giải nó.",
+  "But leadership can also lock in a mental model that becomes vulnerability later.": "Nhưng leadership cũng có thể khóa doanh nghiệp vào một mental model về sau lại biến thành điểm yếu.",
+  "Buyer, specifier, and payer are split; cost share is trivial but under-measurement risk is material.": "Buyer, người chỉ định và người trả tiền bị tách rời; tỷ trọng chi phí rất nhỏ nhưng rủi ro đo thiếu lại rất đáng kể.",
+  "Can create self-reinforcing outcomes and winner-take-most logic.": "Có thể tạo ra kết quả tự củng cố và logic kẻ thắng lấy gần như hết.",
+  "Can the corporation negotiate better terms because it aggregates scale or relationships?": "Tập đoàn có thể đàm phán điều khoản tốt hơn nhờ gom được quy mô hoặc quan hệ không?",
+  "Can you point to real, quantifiable shared cost or quality gains?": "Bạn có chỉ ra được lợi ích thực sự, đo được, về chi phí hay chất lượng dùng chung không?",
+  "Capital intensive, differentiated, but still highly competitive.": "Thâm dụng vốn, có khác biệt hóa, nhưng vẫn cạnh tranh rất mạnh.",
+  "Cases are primary teaching vehicles, not decorative examples.": "Case là phương tiện dạy học chính, không phải ví dụ trang trí cho đẹp bài.",
+  "Clarify the vision": "Làm rõ tầm nhìn",
+  "Classic contrast: Swatch broadlines from Flik Flak to Breguet, while Rolex focuses on the upper segments.": "Đối chiếu kinh điển: Swatch trải rộng từ Flik Flak đến Breguet, còn Rolex tập trung vào các phân khúc cao cấp.",
+  "Clusters can arise from natural resources, market proximity, labor pooling, specialized input suppliers, shared infrastructure, reduced transaction cost, and knowledge spillovers.": "Cluster có thể hình thành từ tài nguyên tự nhiên, gần thị trường, cụm lao động, nhà cung cấp đầu vào chuyên biệt, hạ tầng dùng chung, chi phí giao dịch thấp hơn và lan tỏa tri thức.",
+  "Commitment strategy: large commitments when the environment rewards durability.": "Commitment strategy: đưa ra cam kết lớn khi môi trường thưởng cho sự bền vững và bám trụ.",
+  "Communication failure": "Đứt gãy truyền thông",
+  "Competition: type, variables, ferocity": "Cạnh tranh: loại hình, biến số và mức độ khốc liệt",
+  "Competitive variables": "Biến số cạnh tranh",
+  "Competitive variables: price, quality / performance, brand, service, speed, access, and ecosystem / platform.": "Biến số cạnh tranh gồm giá, chất lượng / hiệu năng, thương hiệu, dịch vụ, tốc độ, khả năng tiếp cận và ecosystem / platform.",
+  "Conclude": "Kết luận",
+  "Connect to action": "Nối sang hành động",
+  "Consensus culture": "Văn hóa nặng về đồng thuận",
+  "Corporate / industry scope: how many industries the company competes in.": "Corporate / industry scope: doanh nghiệp tham gia bao nhiêu ngành.",
+  "Corporate strategy six mechanisms + sum-of-parts test": "Corporate strategy với 6 cơ chế + phép thử sum-of-parts",
+  "Corrective logic: keep compliance global, require multi-layer approval for cross-border payments, and use independent audit and whistleblower systems.": "Logic khắc phục là: giữ compliance ở cấp toàn cầu, buộc thanh toán xuyên biên giới phải qua nhiều lớp phê duyệt, và dùng audit độc lập cùng hệ thống whistleblower.",
+  "Create a volunteer army": "Tạo một đội ngũ tự nguyện cùng đẩy thay đổi",
+  "Create urgency and commitment": "Tạo sense of urgency và cam kết",
+  "Create urgency before the crisis becomes visible to everyone.": "Phải tạo sense of urgency trước khi khủng hoảng trở nên hiển nhiên với tất cả mọi người.",
+  "Creating the Right Environment": "Tạo đúng môi trường thực thi",
+  "Define the question": "Xác định đúng câu hỏi",
+  "Define the strategically meaningful industry": "Xác định ngành có ý nghĩa chiến lược thật sự",
+  "Disney under Iger: related diversification worked because Pixar, Marvel, Lucasfilm, and Fox all deepened the IP content system.": "Disney dưới thời Iger: related diversification hiệu quả vì Pixar, Marvel, Lucasfilm và Fox đều làm sâu thêm hệ thống IP content.",
+  "Do cost or quality improve with cumulative experience?": "Khi kinh nghiệm tích lũy tăng lên, chi phí hoặc chất lượng có cải thiện không?",
+  "Do network, nexus, standards, or installed-base effects exist?": "Có network effects, nexus effects, standards hay installed-base effects hay không?",
+  "Do related businesses lower total cost or improve quality together?": "Các mảng kinh doanh liên quan có cùng nhau làm giảm tổng chi phí hoặc nâng chất lượng không?",
+  "Does HQ actually improve operational discipline after acquisition or integration?": "Sau khi mua lại hay tích hợp, HQ có thật sự nâng được kỷ luật vận hành không?",
+  "Does average cost fall as output rises?": "Average cost có giảm khi output tăng không?",
+  "Does user value rise with installed base?": "Giá trị với người dùng có tăng theo installed base không?",
+  "Draw the boundary only after you know the output and the direct rivals. This avoids code-based or brand-based misclassification.": "Chỉ vẽ ranh giới sau khi bạn đã xác định rõ đầu ra và đối thủ trực tiếp. Cách này tránh việc phân loại sai theo mã ngành hoặc thương hiệu.",
+  "Draw the pictures.": "Phải vẽ ra thành hình.",
+  "Early movers can create durable cost advantage and deter entry.": "Người đi trước có thể tạo lợi thế chi phí bền vững và ngăn cản gia nhập.",
+  "Entry, substitutes, regulation, buyer concentration, supplier consolidation, new standards, or adjacent-industry invasion can move the industry on the competition spectrum.": "Gia nhập mới, sản phẩm thay thế, regulation, buyer concentration, supplier consolidation, standards mới hoặc sự tràn sang từ ngành liền kề đều có thể đẩy ngành dịch chuyển trên phổ cạnh tranh.",
+  "Extraneous material.": "Không đưa nội dung thừa.",
+  "Ferocity": "Độ khốc liệt",
+  "Ferocity: the nine drivers tell you how violent competition is likely to become.": "Ferocity: chín driver này cho biết cạnh tranh có khả năng trở nên dữ dội đến mức nào.",
+  "Firm performance": "Hiệu quả hoạt động của doanh nghiệp",
+  "Five levels": "Năm tầng",
+  "Five-level home-vs-host + SPARK match + global/local split": "Đối chiếu năm tầng home-vs-host + ghép SPARK + tách global/local",
+  "Fixed / sunk / variable cost": "Chi phí fixed / sunk / variable",
+  "Fixed cost is fixed in the short run but avoidable in the long run. It drives break-even pressure and scale logic.": "Fixed cost là cố định trong ngắn hạn nhưng tránh được trong dài hạn. Nó quyết định áp lực hòa vốn và logic quy mô.",
+  "Formulate Strategy": "Hình thành chiến lược",
+  "Forward integration triggered conflict with customers and ultimately justified separation.": "Việc tích hợp tiến lên phía khách hàng đã gây xung đột với khách hàng và cuối cùng lại khiến việc tách ra trở nên hợp lý.",
+  "Framework display without causal application.": "Chỉ trưng framework ra mà không dùng nó để giải thích quan hệ nhân quả.",
+  "Framing error": "Lỗi framing",
+  "Generating Clarity": "Tạo sự rõ ràng",
+  "Geographic scope: which geographic markets the firm serves.": "Geographic scope: doanh nghiệp phục vụ những thị trường địa lý nào.",
+  "Geopolitics": "Địa chính trị",
+  "Global economics": "Kinh tế toàn cầu",
+  "Going along with the pack": "Đi theo đám đông",
+  "High fixed and sunk cost plus low differentiation create structural low profitability.": "Fixed cost và sunk cost cao cộng với khác biệt hóa thấp sẽ tạo ra profitability thấp mang tính cấu trúc.",
+  "High fixed plus low variable cost often invites price cuts. High sunk cost traps players. Low fixed plus high variable cost tends toward perfect-competition logic.": "Fixed cost cao cộng variable cost thấp thường kéo doanh nghiệp vào giảm giá. Sunk cost cao làm các bên bị mắc kẹt. Fixed cost thấp cộng variable cost cao thường đẩy ngành về logic gần perfect competition.",
+  "High-scoring NEC logic: analyze Kobayashi through Enright’s firm framework, not by defaulting to Prahalad and Hamel’s core competence framing.": "Logic NEC kiểu điểm cao là phân tích Kobayashi qua firm framework của Enright, chứ không mặc định lao ngay vào cách đóng khung core competence của Prahalad và Hamel.",
+  "Historically helped by IP, health urgency, and buying processes.": "Lịch sử cho thấy ngành này được hỗ trợ bởi IP, tính cấp bách về sức khỏe và quy trình mua.",
+  "Home Alone: the first movie did not yet prove value; the second proved value and scarcity; bargaining then shifted to Culkin; the third showed the studio was not organized to appropriate the value.": "Home Alone: phim đầu chưa chứng minh value; phim thứ hai chứng minh được value và độ hiếm; từ đó bargaining power chuyển sang phía Culkin; còn phần ba cho thấy studio không được tổ chức đủ tốt để chiếm giữ phần value đó.",
+  "How do the five levels differ from home?": "Năm tầng này khác gì so với thị trường nhà?",
+  "How do the five levels differ from the firm’s existing businesses?": "Năm tầng này khác gì so với các mảng kinh doanh mà firm đang có?",
+  "How do the five levels differ from the home country?": "Năm tầng này khác gì so với nước sở tại của doanh nghiệp?",
+  "How many countries?": "Bao nhiêu quốc gia?",
+  "How many industries?": "Bao nhiêu ngành?",
+  "How should SPARK be matched to business conditions?": "SPARK nên được ghép thế nào với điều kiện của business?",
+  "How should SPARK be matched to country conditions?": "SPARK nên được ghép thế nào với điều kiện của quốc gia?",
+  "How should SPARK fit country conditions?": "SPARK phải fit với điều kiện quốc gia như thế nào?",
+  "How should the company be organized?": "Công ty nên được tổ chức như thế nào?",
+  "How should the international company be organized?": "Doanh nghiệp quốc tế nên được tổ chức như thế nào?",
+  "How should the multi-business company be organized?": "Doanh nghiệp đa ngành nên được tổ chức như thế nào?",
+  "How tough could they become if they are smart?": "Nếu họ đi đúng nước, họ có thể trở nên đáng gờm đến mức nào?",
+  "Hustle strategy: small, fast moves when temporary advantage matters more.": "Hustle strategy: đi các bước nhỏ nhưng nhanh khi lợi thế tạm thời quan trọng hơn độ bền dài hạn.",
+  "Hypercompetition": "Hypercompetition",
+  "Hypothesize": "Đưa giả thuyết",
+  "Identify the focal firm and the strategically meaningful industry.": "Xác định focal firm và ngành có ý nghĩa chiến lược thật sự.",
+  "Identify what the customer actually receives in use, not the internal technology stack or the statistical industry code.": "Hãy xác định thứ khách hàng thật sự nhận được trong lúc sử dụng, chứ không phải technology stack bên trong hay mã phân ngành thống kê.",
+  "If asked, connect to strategy and implementation barriers.": "Nếu đề hỏi hành động, hãy nối chẩn đoán sang strategy và các rào cản implementation.",
+  "If the case is business-facing, do a quick underlying-economics scan.": "Nếu case là kiểu business-facing, hãy quét nhanh underlying economics trước.",
+  "If the prompt asks for action, connect diagnosis to strategy and implementation barriers.": "Nếu prompt yêu cầu hành động, hãy nối phần diagnosis sang strategy và các rào cản implementation.",
+  "Ignoring the obvious": "Phớt lờ điều hiển nhiên",
+  "Implement": "Triển khai",
+  "Implementation and organizational pathologies": "Các bệnh lý của implementation và tổ chức",
+  "Implementation answer that retells the story but never diagnoses pathology.": "Câu trả lời implementation chỉ kể lại câu chuyện mà không chẩn đoán bệnh lý tổ chức.",
+  "Implementation five blocks + key numbers": "Implementation theo 5 khối + các con số mấu chốt",
+  "Implementation five-block diagnosis + commitment ladder + 70/30": "Chẩn đoán implementation theo 5 khối + commitment ladder + 70/30",
+  "Incorrect perceptions": "Nhận thức sai",
+  "Industry structure": "Cấu trúc ngành",
+  "Internal capital market": "Thị trường vốn nội bộ",
+  "Intrinsic bargaining strength: concentration, substitutes, switching costs, pull-through, vertical integration threat.": "Intrinsic bargaining strength gồm mức độ tập trung, sản phẩm thay thế, switching costs, pull-through và đe dọa tích hợp theo chiều dọc.",
+  "Is HQ allocating capital better than the external market would?": "HQ có phân bổ vốn tốt hơn thị trường bên ngoài hay không?",
+  "Is learning from one business improving another?": "Việc học từ một business có đang cải thiện business khác không?",
+  "Is the international company more than the sum of the parts?": "Doanh nghiệp quốc tế này có thực sự đáng giá hơn tổng các phần riêng lẻ hay không?",
+  "Is the same brand, platform, or channel reused meaningfully across businesses?": "Cùng một brand, platform hay channel có đang được tái sử dụng một cách thật sự có ý nghĩa giữa các business hay không?",
+  "Is there a must-pass control point?": "Có một điểm kiểm soát buộc mọi bên phải đi qua hay không?",
+  "Issues with reasoning": "Lỗi trong lập luận",
+  "John Carter and The Lone Ranger remind you that valuable, rare, and hard-to-imitate ingredients can still fail when organization and overall fit are wrong.": "John Carter và The Lone Ranger nhắc bạn rằng các yếu tố valuable, rare và hard-to-imitate vẫn có thể thất bại nếu organization và độ fit tổng thể sai.",
+  "Jumping to strategy language before underlying economics is clear.": "Nhảy vào ngôn ngữ strategy khi underlying economics còn chưa rõ.",
+  "Key insight: even within oligopoly, profit depends on where firms compete. Hong Kong property competed on location and features; Hong Kong mobile telecom often competed on price because of overcapacity.": "Điểm mấu chốt là: ngay cả trong oligopoly, lợi nhuận vẫn phụ thuộc vào doanh nghiệp cạnh tranh trên biến số nào. Bất động sản Hồng Kông cạnh tranh bằng vị trí và thuộc tính; mobile telecom ở Hồng Kông thì thường lao vào giá do thừa công suất.",
+  "Knowing-Doing Gap": "Khoảng cách giữa biết và làm",
+  "Knowledge transfer": "Chuyển giao tri thức",
+  "Kobayashi’s C&C vision built NEC and later created vulnerability against more focused competitors.": "Tầm nhìn C&C của Kobayashi đã dựng nên NEC nhưng về sau cũng tạo ra điểm yếu khi phải đối đầu các đối thủ tập trung hơn.",
+  "Large-population countries can sustain premium and luxury demand even at modest average income levels because the upper-income groups are large in absolute terms.": "Những quốc gia dân số lớn vẫn có thể nuôi được nhu cầu premium và luxury ngay cả khi thu nhập bình quân chưa cao, vì nhóm thu nhập trên cùng vẫn rất lớn về số tuyệt đối.",
+  "Leadership can create firms, categories, and strategic direction.": "Leadership có thể tạo ra doanh nghiệp, định hình category và xác lập hướng chiến lược.",
+  "Leadership is missing from analysis + action": "Thiếu leadership trong tổ hợp analysis + action",
+  "Leadership kept treating Nokia as a hardware company rather than a software-platform competition problem.": "Leadership của Nokia vẫn nhìn công ty như một doanh nghiệp hardware, thay vì nhìn vấn đề như cuộc cạnh tranh của software platform.",
+  "Leadership shaped both collapse risk and recovery through related acquisitions and organizational repair.": "Leadership đã định hình cả rủi ro sụp đổ lẫn quá trình hồi phục thông qua các vụ mua lại liên quan và sửa chữa tổ chức.",
+  "Look for departures from perfect competition: barriers, differentiation, information asymmetry, switching costs, transport costs, collusion, standards.": "Hãy tìm những chỗ ngành lệch khỏi perfect competition: rào cản, khác biệt hóa, bất cân xứng thông tin, switching costs, chi phí vận chuyển, collusion và standards.",
+  "Loss-making firms are kept alive, so price pressure persists.": "Các doanh nghiệp lỗ vẫn bị giữ sống, nên áp lực giá cứ kéo dài.",
+  "Low differentiation plus high fixed and sunk cost make exit hard and competition brutal.": "Khác biệt hóa thấp cộng với fixed cost và sunk cost cao khiến rút lui khó và cạnh tranh trở nên rất tàn bạo.",
+  "Macro conditions, income distribution, digital shifts, and evolving consumer behavior all matter at once.": "Điều kiện macro, phân phối thu nhập, chuyển dịch số và thay đổi hành vi người tiêu dùng đều cùng lúc có ý nghĩa.",
+  "Managerial discipline": "Kỷ luật quản trị",
+  "Managers gave optimistic progress reports despite knowing targets were unrealistic.": "Các manager vẫn báo cáo tiến độ lạc quan dù biết mục tiêu là phi thực tế.",
+  "Many firms, weak differentiation, heavy price competition.": "Nhiều doanh nghiệp, khác biệt hóa yếu, cạnh tranh giá rất mạnh.",
+  "Mid-level objections were not formally recorded or escalated.": "Ý kiến phản đối ở cấp trung không được ghi nhận chính thức hay đẩy lên cấp cao hơn.",
+  "Mitsubishi: broad historical structure invites a sum-of-parts question.": "Mitsubishi: cấu trúc rộng có tính lịch sử của tập đoàn này gần như mặc định kéo theo câu hỏi sum-of-parts.",
+  "Multi-layer approval systems": "Hệ thống phê duyệt nhiều tầng",
+  "Name only the binding levels.": "Chỉ gọi tên những tầng thật sự binding.",
+  "Name only the levels that are truly binding.": "Chỉ nêu những tầng thật sự đang khóa kết quả.",
+  "Natalie Portman’s three-picture deal was an appropriability move: lock the resource before success rewrites the bargaining table.": "Hợp đồng ba phim với Natalie Portman là một bước đi về appropriability: khóa resource trước khi thành công viết lại bàn mặc cả.",
+  "Newell: classic case of HQ value through managerial discipline.": "Newell: case kinh điển về việc HQ tạo giá trị nhờ managerial discipline."
+};
+
 const CN_MAP = {
   "10 公尺距離：解整個 puzzle，也就是 value creation、competitive advantage 與 appropriability。": "10 公尺距离：解整个 puzzle，也就是 value creation、competitive advantage 与 appropriability。",
   "3 公尺距離：從每一塊分析抽出 major conclusion。": "3 公尺距离：从每一块分析抽出 major conclusion。",
@@ -3045,6 +3195,7 @@ function zhCnText(input) {
 
 function viText(input) {
   if (typeof input !== 'string') return input;
+  if (VI_DEEP_MAP[input]) return VI_DEEP_MAP[input];
   if (VI_MAP[input]) return VI_MAP[input];
   const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
   if (match) return `Hiện đang hiển thị ${match[1]} section. Hãy dùng các chip lọc và ô tìm kiếm để thu hẹp hệ thống vào các phần trọng số cao, framework, case hoặc appendix.`;
@@ -3075,6 +3226,7 @@ function uiText(mode, en, zh, vi, pt, ur, es, jp) {
   if (mode === 'pt') return pt ?? ptText(en) ?? en;
   if (mode === 'ur') return ur ?? urText(en) ?? en;
   if (mode === 'es') return es ?? esText(en) ?? en;
+  if (mode === 'jp') return jp ?? jpText(en) ?? en;
   return en;
 }
 
@@ -3083,6 +3235,7 @@ function BiText({ mode, en, zh, vi, pt, ur, es, className = "", block = false, s
   const resolvedPt = pt ?? ptText(en);
   const resolvedUr = ur ?? urText(en);
   const resolvedEs = es ?? esText(en);
+  const resolvedJp = jp ?? jpText(en);
   if (mode === "en") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{en}</div> : <span className={className}>{en}</span>;
   if (mode === "zh") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{zh}</div> : <span className={className}>{zh}</span>;
   if (mode === "zh-cn") {
@@ -3094,7 +3247,6 @@ function BiText({ mode, en, zh, vi, pt, ur, es, className = "", block = false, s
       return (
         <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>
           <div>{resolvedVi || en}</div>
-          {resolvedVi && resolvedVi !== en ? <div className="mt-1 text-[0.94em] text-slate-600">{en}</div> : null}
         </div>
       );
     }
