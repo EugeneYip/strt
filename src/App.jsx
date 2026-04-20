@@ -1005,6 +1005,996 @@ Scope economies | Shared resources | Knowledge transfer | Internal capital marke
 - **考試當天:** 只重溫手寫 cheat sheet，不再看大量材料
 `;
 
+const SOURCE_MARKDOWN_ZH_CN = `# STRT 6200 Final Exam
+### Professor Michael J. Enright｜Strategic Decision-Making
+
+---
+
+## 第 0 部｜Enright 实际打分的六个动作
+
+教授在 Last Day Slide 23 明示评分 rubric 只有四句：*"Read the questions. Use the right tools for the job. Don't include extraneous material. Use your time wisely."* 翻译成 exam mechanics：
+
+| 动作 | 检验标准 |
+|---|---|
+| 1. 迅速辨认 case 在哪几个 levels 上 binding | 不写全五层，只写 binding 者 |
+| 2. 调出对的 analytical tool | 不是背哪个 tool 存在，而是选对 |
+| 3. 拿 case 具体 evidence 推出 conclusion | 引用 reading 原文，不是记忆预载 |
+| 4. 标注 confidence level | BARD 或 POE 语气校准 |
+| 5. 把 conclusion 连到 actionable strategy | "What should they do?" |
+| 6. 预期 implementation 会撞上人性障碍 | "How will this actually work?" |
+
+所有答题动作都要能对应至少一件。
+
+---
+
+## 第 1 部｜Enright 分析脊椎
+
+### 1.1 完整分析链 (Last Day Slide 15, Tier 1)
+
+Search → Sort → Analyze → Hypothesize → Test → Conclude (BARD or POE) → Formulate Strategy → Implement
+
+### 1.2 BARD vs POE 语气校准 (Last Day 提及，法律式解读为合理推论)
+
+| 语气标签 | 使用时机 | 句型范例 |
+|---|---|---|
+| **BARD 语气** (beyond reasonable doubt) | 强 evidence，几无合理替代解释 | "The evidence clearly indicates..."、"Given [specific facts], the conclusion is..." |
+| **POE 语气** (preponderance of evidence) | 证据相对倾向但有限 | "On balance, the reading suggests..."、"The more likely outcome is..." |
+
+**纪律:**
+- 每题至少一个明确 conclusion
+- 拒绝下结论 = 零分
+- 强 evidence 却用 hedging = 也会被扣
+- 无 evidence 却用 BARD = 过度自信扣分
+- 教授要 calibrated confidence
+- **不在答案中展开 BARD/POE 法律定义** (ChatGPT 与我方共识) — 只作为 confidence marker 使用
+
+### 1.3 三层 Zoom 分析法 (Last Day Slide 13, Tier 1)
+
+| 距离 | 焦点 |
+|---|---|
+| **6 inches away** | 细节组织进 framework (数字、quotes、事件) |
+| **3 meters away** | 每块分析的 major conclusion (puzzle pieces) |
+| **10 meters away** | 整个 puzzle：How is value created? How are competitors exceeded? How do we get paid? |
+
+### 1.4 The 4 Commandments (Last Day Slide 16, 大写强调, Tier 1)
+
+1. **UNDERSTAND THE INDUSTRY AND WHAT IT DOES!!!**
+2. **DRAW THE PICTURES!!**
+3. **TURN ONE COMPLICATED THING INTO MANY SIMPLE THINGS!!**
+4. **Build the puzzle, then solve the puzzle**
+
+Execution mantra: *"Show up, ask the right questions, don't stop until they are answered, put the pieces together, remember people are people."*
+
+### 1.5 Strategy Philosophy (Last Day Slide 3, Tier 1)
+
+Doing strategy well is often：
+- ¼ Showing up
+- ¼ Knowing what questions to ask
+- ¼ Not stopping until the questions are completely answered
+- ¼ Knowing how to make strategy work in the organization
+
+三个 ¼ 不关于「知道甚么」，而是「如何动起来」。
+
+---
+
+## 第 2 部｜Underlying Economics
+
+### 2.1 七维度扫描 (Last Day Slide 18, Tier 1)
+
+| 维度 | 核心问题 | 结构含意 |
+|---|---|---|
+| **Scale Economies** | Output 增加时 average cost 下降？ | 大 scale → few players → oligopoly / monopoly |
+| **Scope Economies** | 做多个 related business 降 total cost？ | 整合型公司优势 → 多角化合理 |
+| **Learning Economies** | 累积生产量增加时成本下降？ | 先进者持久 cost advantage → entry deterrence |
+| **Network Economies** | User base 增加时 value 提升？ | Winner-take-all、self-reinforcing |
+| **Nexus Economies** | Must-pass 关键节点？ | 控制者准垄断、被迫穿过者 commodity |
+| **Standards** | Technical / interface standards 谁控制？ | 标准持有者 quasi-monopolist |
+| **Fixed vs Sunk vs Variable Cost** | 三种成本各占多少？ | 决定 competitive 行为与 exit barriers |
+
+### 2.2 Fixed / Sunk / Variable 三种成本 (Tier 1)
+
+| 成本类型 | 定义 | 决策含意 |
+|---|---|---|
+| **Variable Cost** | 随 output 变动 | Price > VC 时值得多卖 |
+| **Fixed Cost** | 短期固定，长期可避免 | 影响 scale economies 与 break-even |
+| **Sunk Cost** | 已投入且**无法回收** | 不影响未来决策，但造成 **exit barrier** |
+
+**三种结构含意:**
+- High fixed + low variable → 削价诱因 → fierce price competition (HK mobile telecom, Ch.4 example)
+- High sunk → 退不出去 → subsidized / hypercompetition (airlines)
+- Low fixed + high variable → perfect competition tendency (餐饮、零售小店)
+
+### 2.3 Industry Economics 六问 (Tier 1)
+
+分析任何 business-facing case 前先问：
+
+1. 这个 industry 实际在做甚么 (form + function + direct competition)？
+2. Cost structure — capital / labor / knowledge / marketing intensive？Fixed / sunk / variable 比例？
+3. Scale / scope / learning 在哪里成立？
+4. Network / nexus / standards / installed-base effects 是否存在？
+5. 这套 economics 推向哪一种 competition type？
+6. Value 在哪里被 capture，由谁 capture？
+
+### 2.4 核心因果链 (Tier 1)
+
+\`\`\`
+Underlying economics 
+  → Industry structure (concentration, barriers)
+    → Type of competition (5 types)
+      → Competitive variables (price vs non-price)
+        → Ferocity of competition (9 drivers)
+          → Industry profit potential
+            → Firm performance (modified by SPARK + bargaining)
+\`\`\`
+
+### 2.5 Profitability Ranking 教学意义 (Implementation lecture, Tier 1 ranking; Tier 2 详细机制)
+
+教授 ranking：**1 Water meters → 2 Pharmaceuticals → 3 Automobiles → 4 Semiconductors → 5 PCs → 6 Airlines**
+
+**水表最高 (Tier 2 机制):** Buyer configuration split (specification ≠ procurement ≠ payment)；成本占建筑总成本 trivial；municipality 偏好 reliable 版本避免 under-measurement；结果 high WTP + low price sensitivity + concentrated supply。
+
+**航空最低 (Tier 1 ranking):** Low differentiation → perfect competition tendency；high fixed + high sunk (飞机) → exit barriers；customers price sensitive；commodity + 无法退出 → 长期 breakeven。
+
+**教学核心:** 利润不来自 glamour 或 technological sophistication，来自**结构**。
+
+### 2.6 高分作答模板
+
+> "The industry's profit potential is driven by [specific underlying economics]. Because [scale / fixed cost / network / etc.], the industry structure tends toward [type of competition]. Competition is primarily on [price or non-price variable], making ferocity [high/moderate/low]. This translates to [high/low] industry profitability. However, specific firms' actual profits depend on their ability to [SPARK advantages / cluster positioning] relative to competitors."
+
+---
+
+## 第 3 部｜Industry Level 深入
+
+### 3.1 Industry Definition (Ch.4 verbatim, Tier 1)
+
+> *"An industry consists of products or services that have similar form and function that are in direct competition with each other, and the firms that supply them."*
+
+- 三要素：Form、Function、Direct competition
+- **策略性定义**，非 SIC / NAICS 统计分类
+- 边界随时间 merge 或 fragment
+- 是 profit analysis 的地基
+
+### 3.2 Five Types of Competition (Lecture Notes Ch.4 slide 13, Tier 1)
+
+从最差到最好 profitability：
+
+Subsidized Competition ← Perfect Competition ← Hypercompetition ← Oligopoly → Monopoly
+
+| 类型 | 核心特征 |
+|---|---|
+| **Monopoly** | 单一 firm，无竞争，regulation 未限制时最赚 |
+| **Oligopoly** | 少数 firms，recognition of interdependence |
+| **Hypercompetition** (D'Aveni) | 多 firms + 来自 related industries 的潜在新进者，差异化只能短期 |
+| **Perfect Competition** | 多 firms 无差异化，只 price 竞争 |
+| **Subsidized Competition** | 亏损 firms 被维持存活 |
+
+### 3.3 Table 4.3 重组为诊断工具 (Tier 1)
+
+| 若该条件强 → | 产业趋向 | 利润含意 |
+|---|---|---|
+| Barriers to entry 高 | Monopoly / tight oligopoly | 高 |
+| 产品 differentiation 大 | Oligopoly (distinguishable) | 中到高 |
+| 品牌存在 | Oligopoly (sustained advantage) | 高 |
+| Scale / learning / scope 经济大 | Oligopoly / monopoly | 高 |
+| 与 customers / channels / suppliers preferential | Oligopoly (sustained) | 高 |
+| Information asymmetry 大 | Oligopoly (sustained) | 高 |
+| 运输成本高 | 地理性 oligopoly / 地方 monopoly | 高 |
+| Collusion 可能 | Oligopoly → cartel-like | 高 |
+| Exit barriers 高 + 需求萎缩 | Subsidized / 持续 ferocious | 极低 |
+
+### 3.4 Competition 三维分析 (Tier 1)
+
+**维度 1：Type** (上述五类)
+
+**维度 2：Competitive Variables** (Last Day Slide 18)
+- Price
+- Quality / Performance
+- Brand
+- Service
+- Speed / Time-to-market
+- Access (distribution, channels)
+- Ecosystem / Platform
+
+**关键洞察:** 同属 oligopoly，在哪个 variable 竞争决定 profit。HK property (location + features) 高获利 vs. HK mobile telecom (price due to overcapacity) 低获利。
+
+**维度 3：Ferocity 九个驱动因素** (Lecture Notes Ch.4 slide 21, Tier 1)
+
+1. Industry concentration 低
+2. Collusion 可能性低
+3. Industry growth 低或负
+4. Product homogeneity 高
+5. Differentiation 低
+6. Capacity utilization 低
+7. Corporate stakes 高
+8. Exit barriers 高
+9. Entry barriers 低
+
+这九个不是背诵 list，是诊断工具 — 拿到 case 问自己：哪几格勾起来？
+
+### 3.5 Industry Level Drivers 完整 Template (Tier 1)
+
+1. **Industry Characteristics** — Relevant segments, activities, resources, knowledge; technologies and processes; geographic scope
+2. **Competition** — Ferocity, nature, identity, strategies, capabilities of competitors
+3. **Cooperation** — Scope for cooperation; alliances; joint development; lobbying
+4. **Strategic Groupings** — Groups of firms with similar strategies; intra-group vs. between-group
+5. **Lead Firms** — 六类型 (见 3.6)
+6. **Micro Policies & Institutions**
+
+### 3.6 Lead Firm 六类型 (Ch.4 原文, Tier 1)
+
+| 类型 | 行为 | Enright 案例 |
+|---|---|---|
+| **Standard Setter** | 设定产业标准 | IBM System 360、IBM PC |
+| **Statesman** | 产业长者 | HSBC (HK banking) |
+| **Enforcer** | 执行规则 | Saudi Aramco (OPEC) |
+| **Predator** | 积极削弱对手 | Microsoft (browser wars) |
+| **Frame-breaker** | 重新定义产业 | Dell、Southwest Airlines |
+| **Outlier** | 自成一格 | Ben & Jerry's、Body Shop |
+
+**高分洞察:** Nokia 早期是 standard setter (Nordic → Europe → World)；Apple 进入后变成 frame-breaker 重新定义 "standard" 为 software platform，Nokia 的 standard 优势瞬间失效 — 这是 Nokia 衰退的 industry-level 深层解释。
+
+### 3.7 Competitor Envelope Analysis™ (Ch.4 Table 4.5, Lecture Notes Ch.4 Slide 27, Tier 1)
+
+Enright 注册商标工具。不是分析当前 competitors，是分析他们变 smart 后多难缠。
+
+**七个核心问题:**
+1. What if competitors were to optimize their activities?
+2. What if competitors were to fully leverage their resources and knowledge?
+3. What if competitors overcame strategic shortcomings?
+4. What if competitors add to their resources or knowledge?
+5. What if competitors were taken over by savvy, deep-pocketed firms?
+6. What would we do if we managed the competitors?
+7. How tough might competitors be in the future if they are smart?
+
+**两个额外动作 (Ch.4 verbatim):**
+- 识别 **related industries 的潜在新进者** (Sega / Sony / Nintendo 没料到 Microsoft X-box)
+- 识别 **unmet demand segments** (Dell、IKEA、Southwest Airlines 都是抓到 unmet need 而赢)
+
+**考试高分位置:** 任何题目问 "future competitive position" 或 "sustainability of advantage"，都应优先 deploy CEA。
+
+### 3.8 Coopetition (Ch.4 verbatim, Tier 1)
+
+Ray Noorda (Novell 创办人) coined；Brandenburger + Nalebuff 的书发扬。**同一组 players 可能在 activity A 合作，activity B 竞争。**
+
+案例 (Ch.4 原文):
+- Pratt & Whitney / Rolls-Royce：low thrust 合作、medium/high thrust 对抗
+- Pratt + Rolls 联盟 vs. GE + SAFRAN 联盟
+- Rolls / SAFRAN 在 Concorde 合作
+- Pratt / GE 在军用机竞争、在 NASA 合作
+
+**考试应用:** 看到 "both competitor and partner" 情境 (RTZ + Chinalco)，要能**在 activity level 拆解**，不只 firm level 判断。
+
+---
+
+## 第 4 部｜Firm Level 完整框架
+
+### [补丁 1] 4.0 Performance 是 Relative Concept (Ch.2, Tier 1)
+
+**任何 performance 声称都必须指明比较对象。Performance 永远是相对概念，比较对象有四类：**
+
+1. **Competitors** — 产业内对手
+2. **Benchmarks** — 同类型企业或国际最佳实践
+3. **History** — 公司自己过去的表现
+4. **Expectations** — 投资人、分析师、目标预期
+
+考场上若题目问 "firm performs well/poorly"，答题**第一句必须指明**：relative to competitors? benchmarks? own history? expectations? 答「不好」而没指明 comparator = 失分。
+
+### 4.1 SPARK (Ch.3 Figure 3.6, Tier 1)
+
+**Strategy = Scope + Positioning + Activities + Resources + Knowledge**
+
+| 元素 | 回答甚么问题 |
+|---|---|
+| **Scope** | Where we compete |
+| **Positioning** | How we compete (marketplace + cost + vs competitors) |
+| **Activities** | What we do |
+| **Resources** | What we use |
+| **Knowledge** | What we know |
+
+### 4.2 Scope 三层次与六类型 (Ch.3, Tier 1)
+
+**三层次:**
+1. Corporate or industry scope (几个产业)
+2. Competitive or within-industry scope (产业内哪些 segments)
+3. Geographic scope (哪些地理市场)
+
+**六类型 (Figure 3.1):**
+- Local Specialist (Southwest Airlines)
+- Local Diversifier (CITIC)
+- Global Specialist (McDonalds, Lafarge)
+- Global Diversifier (GE, Mitsui, Siemens)
+- Within industry: Local/Global Broadline vs. Local/Global Focus
+
+**Within-Industry Scope 经典对比 (Ch.3, Tier 1):**
+- Swatch Group: Flik Flak (US$30) → Breguet (US$250,000) — broadline
+- Rolex: high/luxury/prestige only — focus
+- Breitling: high segment only — focus
+- Seiko (Japan): "mostly present in medium priced segments, though has been pushing upmarket in recent years" — positioning 迁移动态
+
+### 4.3 Firm Level 完整六类 Drivers (Ch.3 + Last Day Slide 19, Tier 1)
+
+不能只停在 SPARK：
+
+1. **SPARK** (上述 5 元素)
+2. **Leadership** — Strategic direction, motivation, external face, setting standards/ethics, mentorship
+3. **Execution** — Knowing what to do, overcoming inertia, getting things done
+4. **Organization & Management** — Division of labor, structures, systems, HR, capabilities
+5. **Governance** — Governance standards, compliance costs, impact on decision-making
+6. **Firm-Specific Policies & Institutions** — Government support, subsidies, firm-specific training bodies
+
+### 4.4 三个 Dysfunction Formulas (Ch.1 verbatim, Tier 1)
+
+Ch.1 原文:
+> *"Analysis and leadership without action yields paralysis. Action and leadership without analysis is random or misdirected. Analysis and action without leadership often becomes scattered and confused."*
+
+| 缺少的支柱 | 结果 |
+|---|---|
+| Analysis + Leadership − **Action** | **Paralysis** |
+| Action + Leadership − **Analysis** | **Random / Misdirected** |
+| Analysis + Action − **Leadership** | **Scattered and Confused** |
+
+### 4.5 Leadership 的双面刃 (Ch.3, Tier 1)
+
+正向案例：Bill Gates (Microsoft)、Sam Walton (Walmart)、Jack Welch (GE)、Eisner (Disney 重建)、Bezos (Amazon)、Jorma Ollila (Nokia 转型)、Morita (Sony)、Kobayashi (NEC C&C vision)、Li Ka-shing、Rupert Murdoch、Narayana Murthy (Infosys)。
+
+**警示案例 (Ch.3 verbatim):**
+- Kenneth Lay / Jeffrey Skilling (Enron) — 创新但造假
+- **Kobayashi 的 vision "left NEC vulnerable to competition from more focused competitors"**
+- Elizabeth Holmes (Theranos) — 诈欺
+
+**高分 NEC 答题框架 (非 Prahalad-Hamel):**
+- 不用 "core competence" framing — Ch.2 明确警告此框架的局限
+- 用 Enright 自己的 firm-level framework
+- NEC 展示 Leadership 的**动态张力** — Kobayashi 的 vision 既建立优势又埋下 vulnerability
+
+### 4.6 VRIO 的 ARK 延伸 (Last Day Slide 19, Tier 1)
+
+VRIO (Valuable, Rare, Inimitable, Organized) 不只套 Resources，**套在 Activities、Resources、Knowledge 三者**。
+
+**Home Alone / Star Wars / 失败片 的 VRIO 解释 (Practice Q2, Tier 1):**
+- **Home Alone 1→2→3 (100K → 13.7M → 破局):** 第 1 部 V 未 proven; 第 2 部 V + R + I 建立但被 Culkin agent appropriate; 第 3 部公司 "Not Organized to appropriate value" → 换角
+- **Natalie Portman 3-picture deal:** 事先锁定 resource，避免 success 后 bargaining power 飙升 (appropriability 管理)
+- **John Carter / Lone Ranger 巨亏:** 有 V + R + I (Disney 品牌、Depp 星光) 但 **Organization** 判断错误 → VRIO 不足，SPARK 整体性 + external conditions 仍需配合
+
+### 4.7 Time Dimension of Strategy (Ch.3, Tier 1)
+
+**[补丁 2] Exam priority 较低** — Time Dimension 与 Kongo Gumi 是 Tier 1 内容但非 final weighted focus (Last Day 明示 weighted toward international / corporate / implementation)；若答题空间有限，先让位给 economics / CEA / implementation / international / corporate。
+
+三种 approach：
+
+| Approach | 描述 | 适用情境 |
+|---|---|---|
+| **Commitment strategy (Ghemawat)** | 大规模投入 resources/knowledge | 稳定产业、基建型 |
+| **Hustle strategy (Bhide)** | 快速小幅投入，捕捉 short-term advantages | Fashion、tech 高速产业 |
+| **Real options strategy** | 维持 flexibility，"stay in the game" | 高不确定性环境 |
+
+**Duration 三层:**
+- Duration of strategy (Ch.3 verbatim: **Kongo Gumi 578 AD 建立、1,430 years 由 Kongo family 管理**；Matsushita、Nikken、Medtronic、Patagonia、US-based Squeegee Squad 有 100-year plans)
+- Duration of specific competitive advantages
+- Duration of particular tactics
+
+---
+
+## 第 5 部｜Cluster / Meso Level
+
+### 5.1 完整八组成 (Ch.5 + Lecture Notes Ch.5, Tier 1)
+
+| 组成 | 内容 |
+|---|---|
+| **Demand** | Size, growth, segment structure, bundling, complementarities |
+| **Customers** | Number, identity, access, bargaining power, price sensitivity, competition potential |
+| **Inputs** | Factor, human, ecological, produced, outsourced, crowdsourced, technological, infrastructure |
+| **Suppliers** | Number, identity, access, bargaining power, price sensitivity, competition potential |
+| **Shared Resources / Shared Activities** | 共用 technologies, inputs, customers, knowledge; economies of scope |
+| **Complementarities** | 互补产品/服务扩张需求与 WTP |
+| **Substitutes** | 间接替代压制利润上限 |
+| **Meso Policies & Institutions** | Cluster-specific policies, 产业群集机构 |
+
+### 5.2 Bargaining Power 三轴分析 (Ch.5, Tier 1)
+
+**Intrinsic Bargaining Strength:**
+- Concentration
+- Volume of purchases
+- Availability of substitutes
+- Switching costs
+- Vertical integration threat
+- Pull-through to end-user
+
+**Price Sensitivity:**
+- Cost as % of total purchases
+- Strategy and positioning
+- Buyer/supplier profitability
+- Impact on quality/performance
+
+**Willingness to Use Power (Enright 强调的第三轴):**
+- 若供应商对 buyer 占比小，可能不全力压榨
+- 若 buyer 本身 profitable，可能不用尽 bargaining power
+- **实际 bargaining = Intrinsic Strength × Willingness × Price Sensitivity**
+
+### 5.3 Regional Clusters (Ch.5, Tier 1)
+
+案例：Silicon Valley、Hollywood、London / NY finance、Swiss luxury watches、Bangalore BPO、Hsinchu 半导体等。
+
+**Cluster 来源:**
+- Natural resources / Scale economies / Proximity to markets / Labor pooling / Local input-equipment suppliers / Shared infrastructure / Reduced transaction costs / Knowledge spillovers
+
+**一旦 self-sustaining 就难以 dislodge。**
+
+### 5.4 Ecosystem 警告 (Ch.5, Tier 1)
+
+Enright 明确警告：externalization 不自动正确。一家 asset-light 公司通常建立在另一家承担 asset-heavy burden。若不清楚 value 在哪被创造、appropriated、defended，容易把 value 送出去。
+
+---
+
+## 第 6 部｜National / Macro Level
+
+### 6.1 四大组成 (Ch.6, Tier 1)
+
+**1. Macroeconomic Conditions**
+- Aggregate demand, inflation, interest rates, exchange rates, unemployment
+- Fiscal balances, price levels, wage levels, capital markets, savings rates
+- 三个维度：level / growth / volatility
+
+**2. Macro Government Policies**
+- Monetary, fiscal, trade, investment, industrial, promotion policies
+- Infrastructure, manpower, education/training, S&T policies
+
+**3. Macro Institutions**
+- Legal, regulatory, property rights, contract enforcement, government quality
+
+**4. Civil Society & Cultural Attributes**
+- Agendas, attitudes, social acceptability, cultural patterns
+- Social structure, social cohesion
+
+### 6.2 关键细节：Income Distribution (Ch.6, Tier 1)
+
+- 中国、印度人口 size 让 upper class 绝对数量大 — luxury 仍有市场
+- **Bottom of the Pyramid (Prahalad):** Coca-Cola 中国农村 US$0.12 仍获利
+- BOP strategy：simpler products, smaller quantities, informal channels
+- **P&G in China** 是核心 national-level case
+
+### 6.3 考试 framing
+
+不是问「这是不是好 business」，而是问 **「这在这个国家、在这套政策、制度、人口结构、社会条件下，是不是好 business？」**
+
+---
+
+## 第 7 部｜Supranational / Meta Level
+
+### 7.1 八大组成 (Ch.7, Tier 1)
+
+1. **International Geo-politics** — Military conflict, territorial disputes, trade tensions
+2. **International Economic Conditions** — Global crises (2008, Covid)
+3. **Global Technology Trends** — New product/process/disruptive tech
+4. **Social and Environmental Issues** — Climate, inequality, ethics
+5. **Multilateral Organizations** — WTO, IMF, World Bank, UNIDO, UNCTAD
+6. **Supranational Policies & Trade Blocs** — EU, USMCA, ASEAN
+7. **Foreign Governments** — 他国政府影响
+8. **Foreign Multinationals & Other Supranational Groups** — NGOs, religious groupings
+
+### 7.2 Enright 的 "Inverted T" World View (Ch.1 verbatim, Tier 1)
+
+World 不是 flat (反 Friedman)。
+- 创造 ideas 的地点 (people, companies, locations) 绝不 flat
+- 执行 projects 的资源 (HR, factories) 相对 flat
+- 关键问题：谁是 flattener (有 ideas 的赢家) / 谁是 flattenee (只能竞争执行的输家)
+
+### 7.3 考试重要性
+
+这一层对 international / corporate strategy 特别重要 — 不只影响 profit 大小，**直接改写 competition structure 本身** (谁能进场、以甚么条件进场)。这也是为何 final 会 weighted toward international 的核心理由。
+
+---
+
+## 第 8 部｜International Strategy (高比重)
+
+### 8.1 八问 Exam Blueprint (Last Day Slide 20, Tier 1)
+
+1. Number of countries
+2. Which countries
+3. How do five levels differ from home country? (Supranational, national, cluster, industry)
+4. What SPARK to have in each country?
+5. How to match SPARK to country conditions?
+6. How to organize the international company? (Global integration vs Local responsiveness)
+7. Similar or different types of countries?
+8. Is the international company more than the sum of the parts?
+
+### 8.2 Global / Local 三类切割 (Tier 2 — class reconstruction, reading 支持)
+
+| 类别 | 应 Globalize | 应 Localize |
+|---|---|---|
+| **Financial / Compliance** | ✓ (envelope + standards) | 仅限 local legal expertise |
+| **Market-facing** | 仅限 brand consistency | ✓ (account mgmt, BD, marketing, sales) |
+| **Production** | 取决于 scale economies | 常在地化 (logistics, customization) |
+
+**考场使用:** 不强调为「教授分类」，改为从 reading 推出 — *"The article itself implies a split..."*
+
+### 8.3 WPP 案例应用
+
+**错误:** WPP 把 financial controls + compliance 也 localize 给 subsidiary founders → 高风险市场 (印度、中国、巴西、秘鲁) 发生 bribery 是必然。
+
+**正确修正:**
+- Compliance 必须 global envelope，即使牺牲 integration speed
+- Multi-layer approval for cross-border payments
+- Independent audit function reporting to HQ
+- Whistleblower protection mechanisms
+- Localize 只限 account management、creative、BD、local regulatory expertise
+
+### 8.4 RTZ / Chinalco 案例复杂性
+
+当一个国家同时是 **customer + shareholder + partner + regulator + geopolitical force** 时：
+- 不能 one-size-fits-all 国际策略
+- 需要 differential SPARK per country
+- 特殊 governance arrangement (股东席位、board representation、JV structure per project)
+- Simandou (Guinea): 引 Chinalco 换取 political protection
+- Activity-level coopetition: iron ore 合作，其他市场可能竞争
+
+---
+
+## 第 9 部｜Corporate Strategy (高比重)
+
+### 9.1 核心问题
+
+**Is the company more than the sum of its parts?**
+
+若不是 → 投资人可自己 diversify portfolio → multi-business firm 没存在意义 → 应分拆。
+
+### 9.2 八问 Exam Blueprint (Last Day Slide 21, Tier 1)
+
+1. Number of industries
+2. Which industries
+3. How do five levels differ from existing businesses?
+4. What SPARK to have in each business?
+5. How to match SPARK to business conditions?
+6. How to organize the multi-business company?
+7. Value created across subsidiaries or between HQ and subsidiaries?
+8. Related businesses, unrelated businesses?
+
+### 9.3 Six Value Creation Mechanisms (Tier 1 — 合理推论但多来源支持)
+
+| 机制 | 来源 | 考试检验 |
+|---|---|---|
+| **Scope economies** | 共用 activities (distribution, procurement, R&D) | 可量化 cost saving 吗？ |
+| **Shared resources** | 品牌、技术平台、渠道 | 跨 BU 被用几次？ |
+| **Knowledge transfer** | 同类 managerial problem 跨 BU 学习 | 人才轮调频繁吗？ |
+| **Internal capital market** | HQ 配资比外部市场准 | 比 WACC benchmark 好吗？ |
+| **Managerial discipline** | HQ 施加 operational excellence | 收购后效率提升吗？ |
+| **Bargaining leverage** | 跨 BU 对同一供应商 / 客户议价 | 能看到 price concession 吗？ |
+
+**如果以上都没明显 yes → corporate structure 在毁坏 shareholder value → 应分拆。**
+
+### 9.4 Case 对照 (Tier 1)
+
+| Case | Corporate Strategy 启示 |
+|---|---|
+| **Walmart** (4 分部全 retail) | Focused — scope economies 在 retail 内足够 |
+| **Mitsubishi** (10 大类跨全球) | 日本 keiretsu 历史结构，sum-of-parts 常被质疑 |
+| **Acer / Wistron 2001 分家** | Corporate scope 内 BU 互相毁坏 (品牌 vs OEM) → 正确分拆 |
+| **Disney (Iger)** | Pixar / Marvel / Lucasfilm / Fox 都属 IP content creation → related diversification work |
+| **Newell ("Newellization")** | HQ operational discipline 加值 — classic "HQ adds value" 模型 |
+| **Swatch Group** | 单一产业内 multi-segment (Breguet → Flik Flak)：segment scope 而非 corporate scope |
+
+---
+
+## 第 10 部｜Implementation (高比重 — Formal Analytical Module)
+
+### 10.1 五段诊断系统 (Implementation lecture + Last Day Slide 22, Tier 1)
+
+**核心 mindset:** 不是背例子，是在新 case 里 diagnose pathology。
+
+| 段落 | 诊断问题 | 工具 | 何时用 |
+|---|---|---|---|
+| **Knowing-Not Knowing** | 组织看不见甚么？ | Rigorous questioning, outsider view, "do the homework" | 用直觉、conventional wisdom、没做功课 |
+| **Knowing-Doing Gap** | 知道了为甚么没动？ | 视觉震撼、legal sanctions、structural incentives | "知道" 但 behavior 没改 |
+| **Generating Clarity** | 要求够具体吗？ | "Switch to skim milk" 具体化、audience-start、documented handoffs | Strategy 讲很多人却不动 |
+| **Overcoming Resistance** | 抗拒来自哪里？ | 承认情绪、why-first framing、small steps、commitment ladder | 理解了还是不做 |
+| **Creating Right Environment** | 环境在奖励甚么？ | 70/30 改环境、pre-set red lines、purpose motivation | 行为持续偏离 |
+
+### 10.2 Knowing-Not-Knowing 七个原因 (Implementation lecture deck verbatim, Tier 1)
+
+1. Problems of framing
+2. Incorrect perceptions
+3. Issues with reasoning
+4. Ignoring the obvious
+5. Going along with the pack
+6. Believing others have done the homework
+7. Willful blindness
+
+### 10.3 Resistance to Change (Implementation lecture deck, Tier 1)
+
+**六个原因:**
+Fear of the unknown | Loss of control | Habit | Emotional attachments | Cognitive dissonance | Social influences
+
+**六个应对:**
+Acknowledge feelings | Gather information | Take small steps | Seek support | Understand others | Bring people along
+
+### 10.4 Winning Commitment Ladder 六阶 (Implementation lecture deck, Tier 1)
+
+I know → I understand → I am considering → I want to → I will → I commit
+
+**管理陷阱:** 发 memo、开 meeting ≠ "I commit"。"I know" 离 "I commit" 有六层。
+
+### 10.5 Kotter's 8 Accelerators (Implementation lecture deck, Tier 1)
+
+1. Activation — Urgency + Commitment
+2. Build guiding coalition
+3. Clarify vision
+4. Create volunteer army
+5. Remove barriers
+6. Motivate through progress
+7. Sustain / scale efforts
+8. Solidify new normal
+
+**Undercommunication 是 change failure #1 原因 (Kotter)。**
+
+### 10.6 Creating Right Environment：70/30 Principle (Apr 8 笔记, Tier 2)
+
+50+ 年社会心理学研究：
+- Personality 最多解释 **30%** 的 behavior
+- Situation / environment 解释 **70%**
+- Managers 系统性**低估** environment
+- 改变 behavior 最有效不是改 personality，而是**改环境**
+
+### 10.7 必记具体实验数字 (Apr 8 + Apr 15 笔记, Tier 2)
+
+| 实验 | 关键数字 | 意涵 |
+|---|---|---|
+| Handwashing (Australian study) | 73% self-report vs 9% observed | Self-report ≠ behavior |
+| Seat belt utilization | 1980: 11%, 1990: 49%, 2005: 80%+ | Behavior change 要 25 年 |
+| Asch conformity 关键回合 | 37% | Group pressure 强度 |
+| Asch with one ally | 5% | Ally 的结构性力量 |
+| Asch with private written | ~12% | 匿名化 debias |
+| Good Samaritan (早/准/迟) | 63% / 45% / 10% | Situation 打败 personality |
+| Telephone Game | 每传一次降 20% | Cross-layer communication 失真 |
+| Treatment A (90%) + neg/pos story | 39% / 88% | Narrative vs data power |
+| Treatment B (30%) + neg/pos story | 7% / 78% | Narrative vs data power |
+| West Virginia "skim milk" | 18% → 35% (6 months) | Specific 胜过 vague |
+
+### 10.8 Willful Blindness 核心引言 (Heffernan, Tier 1)
+
+- "You cannot fix a problem that you refuse to acknowledge."
+- "As long as it remains invisible, it is guaranteed to remain insoluble."
+- "Silence is the language of inertia."
+- "People are about twice as likely to seek information that supports their own point of view as they are to consider an opposing idea."
+
+### 10.9 最可靠的 Implementation Anchors (Tier 1)
+
+Connect-the-dots、Industry profitability ranking、Monty Hall、Willful blindness、Handwashing — 这五个是 lecture deck 直接支持的 primary anchors。**Jobs / Ferguson 降为次级支持**，不作主要 citation。
+
+### 10.10 Nokia 作为 Implementation Transfer 标准案例
+
+**五段式标准作答姿势 (Tier 1 — Last Day Q4 的 rubric 直接支持):**
+
+1. **Classify pathology**
+2. **Cite evidence** (reading 原文)
+3. **Explain implication for performance**
+4. **Explain why firm was susceptible**
+5. **Prescribe organizational remedy**
+
+**Nokia Pathology Mapping 完整版 (Tier 1 — reading 原文支持):**
+
+| Pathology | Nokia 证据 | Segment |
+|---|---|---|
+| Knowing-Not-Knowing / Willful blindness | 2005 research 指出 mobile → handheld computer；2004 已有 prototype；senior management 未采取行动 | 1 |
+| Knowing-Doing Gap | 知道 Symbian 不适合 software-rich 体验但 roadmap 未改 | 2 |
+| Framing error | "Hardware company" mental model → "software as supporting function" | 1 |
+| Communication failure | Mid-level concerns "appeared not to have reached senior management"；objections "not formally recorded" | 3 |
+| Going along with pack | "Dominant norm in leadership meetings was alignment" | 1 + 4 |
+| Fear-driven reporting | Middle managers "reported optimistic progress despite knowing deadlines unrealistic" | 3 + 5 |
+| Pluralistic silence | "Nobody spoke the truth because nobody was certain anyone else was prepared to hear it" | 5 |
+| Wrong environment incentive | "Fear of losing social standing by delivering unwelcome assessments" | 5 |
+| Structural barrier | 2004 reorg → "overlapping accountabilities, interdivisional rivalry" | 4 + 5 |
+| Loss of institutional knowledge | 资深 strategist departure → lost "earlier agility" | Firm-level K |
+
+**为何 Nokia 特别 Susceptible:**
+1. Prior success hardening (1998 全球 #1 + $4B 利润 → mental model 锁死)
+2. Standard-setting path dependency (Nordic → Europe → World → 相信 hardware+standards 是赢逻辑)
+3. Homogeneous leadership (hardware people，缺 software 多元性)
+4. Consensus culture (Finnish 文化 valorize 共识)
+5. Quarterly shareholder pressure (扭曲内部真话)
+6. Multi-layer approval (disruption 无法穿透)
+
+**公司避免步骤:**
+- Process design: anonymous written judgments before discussion (Asch 对策)
+- Red-team / outside review 72 小时到 4 天试图推翻结论
+- Break multi-layer approval for innovation
+- Fear-to-truth transition: 明确奖励 bad news reporting
+- Leadership diversity
+- Early warning: report risks/blockers, not just progress
+- Decouple executive compensation from short-term stock
+- Institutional knowledge preservation (succession 不因 reorg 清空)
+- Applied Kotter: urgency 在危机前
+- Commitment Ladder 检查
+
+---
+
+## 第 11 部｜Case Inventory (8 Canonical Cases)
+
+### 11.1 Case-to-Level Heuristic (Last Day Slide 17, Tier 1 grid; 唯一对应为 Tier 3 heuristic)
+
+| Case | 默认 Level | One-sentence Thesis |
+|---|---|---|
+| **NEC-GTE** | Firm (Leadership) | Kobayashi C&C vision 建立 NEC 但 vision 锁死成未来 liability |
+| **Airline Industry** | Industry | 高 fixed + sunk + low differentiation → 结构性低获利 |
+| **Powers that Be (GAFAM)** | Supranational / Industry | 平台 economics 非单一 industry，各家 profit engine 差异极大 |
+| **Stitch Fix** | 跨层 (Meso / Industry / Meta) | Tech-enabled curated apparel retail, unmet demand, Amazon 威胁下 sustainability 存疑 |
+| **Acer-Wistron** | Cluster / Industry | Forward integration 与客户冲突 → 2001 分拆 |
+| **Seiko** | Firm (positioning) | Medium → upmarket 动态 positioning |
+| **P&G in China** | National | BOP + income distribution + consumer change + digital shift |
+| **Disney (Eisner / Iger)** | Firm (Leadership) | Eisner 建厂但 succession 失败；Iger related acquisitions 修复 |
+
+**使用原则:** 作为默认配对，但 reading evidence 优先。Stitch Fix、Powers that Be、P&G 本来就跨层。
+
+### 11.2 Practice Question 案例补充
+
+| 案例 | 用途 |
+|---|---|
+| **ETA / Swatch** | Industry economics (movement vs watch)、supplier power、竞争政策、appropriability |
+| **Home Alone / Culkin** | VRIO on Resources：V 建立、R 稀缺、I 困难、O 失败 → value leak |
+| **Natalie Portman** | Forward contract 锁定 resource 的 appropriability 管理 |
+| **John Carter / Lone Ranger** | VRIO limits：V+R+I 但 Organization 判断错误仍失败 |
+| **Newell** | Corporate Strategy — HQ discipline 加值 |
+| **WPP (FCPA)** | International strategy — global/local 切割错误 |
+| **RTZ / Chinalco** | International strategy — 多重角色国家关系 |
+| **Nokia** | Implementation — 全套 pathology 汇集 |
+
+---
+
+## 第 12 部｜考场攻击流程
+
+### 12.1 Time Allocation (3 小时 4 题假设)
+
+| 时段 | 动作 | 分配 |
+|---|---|---|
+| 0–5 min | 读所有 questions 不读 reading | 5 |
+| 5–15 min | 完整读 reading，边读边 tag 框架 | 10 |
+| 15–30 min | Q3 (先做最 bounded 题目) | 15 |
+| 30–55 min | Q1 (international 类) | 25 |
+| 55–80 min | Q2 (corporate 或其他) | 25 |
+| 80–140 min | Q4 (Nokia 类 30 points) | 60 |
+| 140–170 min | 回去补三题 conclusions | 30 |
+| 170–180 min | Final scan：每题 conclusion? 引用具体? | 10 |
+
+### 12.2 Question Trigger → Tool Mapping
+
+| Reading 中的 trigger words | 对应工具 |
+|---|---|
+| "profitability", "industry structure", "competition" | Underlying economics 7 维 + Table 4.3 + ferocity 9 drivers |
+| "bargaining", "buyer/supplier power" | Intrinsic strength + willingness + price sensitivity |
+| "foreign", "international", "country" | 5-level home vs host + SPARK match + Global/Local 3 类切 |
+| "multi-business", "subsidiary", "corporate" | Corporate strategy 6 mechanisms + "sum of parts" test |
+| "leadership", "organization", "execution" | Implementation 5-block + 70/30 + commitment ladder + Kotter |
+| "resource", "competitive advantage" | VRIO + ARK of SPARK |
+| "future competition", "threat", "sustainability" | **CEA 7 questions + lead firm type + unmet demand** |
+| "case X illustrates level Y" | Five-level template + specific case evidence (Slide 17 heuristic) |
+
+### 12.3 答题结构 (每题都用)
+
+\`\`\`
+1. Identify focal firm + industry (form + function + direct competition)
+2. 若 business-facing: Underlying economics 6 问快速扫描
+3. Identify which levels 最 binding (只列 binding，不写全五层)
+4. Apply 对应工具 (SPARK / Table 4.3 / bargaining / CEA / Implementation diagnosis)
+5. Cite 具体 case evidence (数字、quotes、事件)
+6. Conclude with BARD 或 POE 语气
+7. 若题目要求: formulate action + anticipate implementation barriers
+\`\`\`
+
+### 12.4 Fatal Error Checklist
+
+- ❌ 没有 conclusion (零分)
+- ❌ Performance 声称没指明 comparator (相对于谁？)
+- ❌ 只列 framework 没做 causal application
+- ❌ Case 用错 level (Slide 17 heuristic)
+- ❌ Q1 重复使用同一 case
+- ❌ 塞 extraneous material
+- ❌ Implementation 题只重述 story 不做 diagnosis
+- ❌ International 题 global/local 不分类
+- ❌ 没做 CEA (只分析今天 competitors)
+- ❌ 忽略 underlying economics 直接跳到 strategy language
+- ❌ 用 Prahalad-Hamel "core competence" framing 回答 firm-level (Enright 明言警告)
+- ❌ 用 "tech industry" 笼统 framing (应逐家公司分析)
+- ❌ 答案塞入 vocabulary display (Enright 要 causal reasoning)
+
+---
+
+## 第 13 部｜考场 Cheat Sheet (一页手写版)
+
+考前自己手写这一页能建立 muscle memory。
+
+### 13.1 Five Levels 骨架
+
+\`\`\`
+Meta/Supranational:  geopolitics, tech trends, multilateral, trade blocs
+Macro/National:       macro econ, gov policies, institutions, civil society
+Meso/Cluster:         demand/customers, inputs/suppliers, complements/substitutes, shared
+Micro/Industry:       characteristics, competition (9), cooperation, lead firms, groupings
+Firm:                 SPARK + Leadership + Execution + Org/Mgmt + Governance + Policies
+\`\`\`
+
+### 13.2 Performance Relative 4 Comparators
+
+Competitors | Benchmarks | History | Expectations
+
+### 13.3 Economics 7 维
+
+Scale | Scope | Learning | Network | Nexus | Standards | Fixed / Sunk / Variable
+
+### 13.4 Competition 三维
+
+Type (5) | Variables (7) | Ferocity (9)
+
+### 13.5 Firm Level 核心
+
+**SPARK** — Scope, Positioning, Activities, Resources, Knowledge
+**VRIO** — Valuable, Rare, Inimitable, Organized (套在 A, R, K)
+**CEA 7 Qs** — optimize / leverage / overcome / add / taken over / if we managed / future
+
+### 13.6 Industry Analysis Template (加 Lead Firm)
+
+Economics → Competition type → Variables → Ferocity → **Lead firm role** → Profit
+
+### 13.7 Implementation 5 段 + 关键数字
+
+1. Knowing-Not-Knowing (7 原因)
+2. Knowing-Doing Gap (73%/9%, 11%→80%)
+3. Generating Clarity (20% loss per pass; 18%→35% skim milk)
+4. Overcoming Resistance (6 + 6) + Commitment Ladder
+5. Creating Right Environment (70/30; Good Samaritan 63/45/10; Asch 37/5/12)
+
+### 13.8 Dysfunction (Ch.1 paraphrase)
+
+- Analysis + Leadership without action → **paralysis**
+- Action + Leadership without analysis → **random / misdirected**
+- Analysis + Action without leadership → **scattered and confused**
+
+### 13.9 BARD / POE
+
+强 evidence → BARD 语气："evidence clearly indicates"
+弱 evidence → POE 语气："on balance, suggests"
+
+### 13.10 Enright 核心引言
+
+- "Don't stop at the first explanation that fits the fact pattern." (Wittgenstein)
+- "People see what they are incentivized to see." (Burry / Big Short)
+- "Silence is the language of inertia." (Heffernan)
+- "First lemming off the cliff may be a great leader but is a lousy strategist." (Enright)
+
+### 13.11 Case-Level Heuristic (Slide 17)
+
+NEC-GTE → Firm | Airline → Industry | Powers that Be → Supra/Industry
+Stitch Fix → 跨层 | Acer-Wistron → Cluster/Industry | Seiko → Firm
+P&G in China → National | Disney → Firm
+
+### 13.12 International 题三类切
+
+Financial / Compliance → Globalize
+Market-facing → Localize
+Production → Scale-dependent
+
+### 13.13 Corporate 题 6 机制
+
+Scope economies | Shared resources | Knowledge transfer | Internal capital market | Managerial discipline | Bargaining leverage
+
+### 13.14 Nokia 五段式答题 Default Shape
+
+1. Classify pathology
+2. Cite evidence (reading 原文)
+3. Explain implication
+4. Explain susceptibility
+5. Prescribe remedy
+
+---
+
+## 第 14 部｜信度分级 (考场应用指南)
+
+### Tier 1: 最高信度 — Primary Source Verbatim (可自信引用)
+
+- Five-Level Framework (Ch.2)
+- SPARK 五元素 (Ch.3 Figure 3.6)
+- Performance relative 4 comparators (Ch.2)
+- Industry definition: form + function + direct competition (Ch.4)
+- 三个 dysfunction 内容 — Ch.1 原文已确认
+- Kongo Gumi 1,430 years — Ch.3 原文已确认 (但 exam priority 较低)
+- Economics 7 维 (Last Day Slide 18)
+- CEA + 七问 (Ch.4 Table 4.5)
+- Lead Firm 六类型 (Ch.4)
+- Coopetition / Ray Noorda (Ch.4)
+- Inverted T (Ch.1)
+- "First lemming" (Ch.1-2)
+- Implementation 五段骨架、7 原因、6+6、Commitment Ladder、Kotter 8 (Lecture deck)
+- International / Corporate 八问 (Last Day Slides 20-21)
+- 6-3-10、方法链、4 Commandments、¼ × 4 (Last Day)
+- "Weighted toward international / corporate / implementation" (Last Day Slide 23)
+- Nokia reading + Practice Questions (Last Day Slides 31-34)
+- VRIO on ARK (Last Day Slide 19)
+- 案例 Walmart vs Mitsubishi、Swatch multi-segment、Kobayashi NEC 双面刃 (Ch.3)
+
+### Tier 2: 高信度 — User-Verified Reconstruction (可用，保守语气)
+
+- Handwashing 73%/9%、Seat belt 11%→80%、Asch 37%/5%/12%、Good Samaritan 63%/45%/10%、Telephone 20%、West Virginia 18%→35%、Treatment A/B 39%/88%/7%/78% (Apr 8 + Apr 15 笔记)
+- 70/30 personality vs environment
+- Asch 对策 (anonymous written, 72-hour red team)
+- Global / Local 三类切 (reading 支持，非 slide verbatim)
+- 用户亲自验证的实验机制
+
+### Tier 3: 合理推论 (可用作答，不强调出处)
+
+- BARD / POE 的法律解读 (方向正确，非 Enright verbatim 定义)
+- Water meter 三方采购分离逻辑
+- Case-to-level 单一配对 (作为 default heuristic)
+- Six value creation mechanisms (合理推论但多来源支持)
+- Dysfunction formulas 的公式格式 (内容 Tier 1，格式我方 restatement)
+
+### Tier 4: 不建议直接使用
+
+- "Useful output principle" 名词 (改用 Ch.4 verbatim)
+- Steve Jobs / Alex Ferguson 作为主要 anchor
+- "February 1 material 有直接 quote" (ChatGPT 独有，无法验证)
+- 70% 复习时间分配 (我方建议，非 Enright)
+- Metcalfe's Law 名称与 n² 强调 (用保守网路效应语言)
+- Prahalad-Hamel core competence framing 回答 NEC (Ch.2 警告)
+
+---
+
+## 第 15 部｜最终一句话总纲 (双 AI 共识版)
+
+**EN:**
+> **Start with underlying economics, identify the binding levels in the five-level framework, test the focal firm's SPARK plus leadership and execution, pressure-test future competition with CEA, and then ask whether organization and implementation allow the firm to realize and defend the value the analysis suggests should be available.**
+
+**中:**
+> **先从 underlying economics 下手，找出 five-level framework 里真正 binding 的层次，再检验 focal firm 的 SPARK 加上 leadership 与 execution，用 CEA 压测未来竞争，最后再问 organization 与 implementation 是否真的让分析上应该存在的价值，能被实现并守住。**
+
+这句话整合了：
+- **Underlying economics 作起点**
+- **Binding levels** (非全五层)
+- **SPARK + Leadership + Execution** (非只静态 SPARK)
+- **CEA 压测未来** (动态工具)
+- **Organization + Implementation** (落地检验)
+- **Realize and defend** (不只创造还要守住)
+
+---
+
+## v1.1 修订总览
+
+| 位置 | 变动 |
+|---|---|
+| 新增 4.0 节 | Performance relative 4 comparators (Competitors / Benchmarks / History / Expectations) |
+| 4.7 节首句 | 加注 Exam priority 较低，资源分配让位给 economics / CEA / implementation / international / corporate |
+| 12.4 Fatal Error Checklist | 新增「Performance 声称没指明 comparator」为第 2 项错误 |
+| 13.2 Cheat Sheet | 新增 Performance Relative 4 Comparators 区块 |
+
+**其余结构与内容完全保留。**
+
+---
+
+## 最终指示
+
+### 1. Enright 真正要看到的 exam behavior
+
+教授明示目标：*"Not for you to be better students, but to help you become better professionals."* 考场上您不是证明背多少，而是展示：**2 小时内能否像 consulting partner 第一次看 case 那样运作。**
+
+每个答题动作都要有 purpose：
+- 不是写「SPARK 有五个元素」，而是 *"Here's why Scope matters here specifically"*
+- 不是写「bargaining power 公式」，而是 *"Here's who actually captures value after bargaining"*
+- 不是写「Nokia 有 pluralistic silence」，而是 *"Here's how this silence mapped to specific shareholder pressure signals"*
+
+### 2. 遇到不确定时的优先顺序
+
+1. Underlying economics (先搞清楚这个 business 怎么赚钱)
+2. 哪几个 level binding (不写全五层)
+3. 该 firm 的 SPARK + Leadership + Execution
+4. CEA + unmet demand + Lead firm type (未来 threat / opportunity)
+5. Conclusion with BARD or POE (并指明 performance comparator)
+
+这五步能涵盖 80% 的题目。其余 20% 加 International / Corporate / Implementation 特定工具。
+
+### 3. 考前 48 小时建议
+
+- **Day -2:** 找 2–3 篇 FT / Economist 商业文章，45 分钟限时套 Enright 方法
+- **Day -1:** 重看 Apr 8 + Apr 15 笔记；把 pathology 清单变 checklist；手写一页 cheat sheet
+- **考试当天:** 只重温手写 cheat sheet，不再看大量材料
+`;
+
 const sectionMeta = [
   { id: "overview", tag: "weighted", en: "Exam Signals", zh: "考試訊號", refs: ["Session 1", "Last Day", "Master Review"], search: "weighted toward international corporate implementation read the questions use the right tools don't include extraneous material time wisely cases required lecture notes videos closed book grading" },
   { id: "spine", tag: "tools", en: "Analytical Spine", zh: "分析脊椎", refs: ["Last Day", "Chapter 2", "Master Review"], search: "search sort analyze hypothesize test conclude BARD POE formulate implement 6 inches 3 meters 10 meters four commandments strategy philosophy" },
@@ -1257,6 +2247,449 @@ const VI_MAP = {
   "展開原始內容": "Mở nội dung gốc"
 };
 
+const CN_MAP = {
+  "10 公尺距離：解整個 puzzle，也就是 value creation、competitive advantage 與 appropriability。": "10 公尺距离：解整个 puzzle，也就是 value creation、competitive advantage 与 appropriability。",
+  "3 公尺距離：從每一塊分析抽出 major conclusion。": "3 公尺距离：从每一块分析抽出 major conclusion。",
+  "6 吋、3 公尺、10 公尺": "6 吋、3 公尺、10 公尺",
+  "6 吋距離：把 facts、數字、quotes 與事件放進框架。": "6 吋距离：把 facts、数字、quotes 与事件放进框架。",
+  "70 / 30 原則": "70 / 30 原则",
+  "Acer / Wistron：當同一 corporate structure 內的 business units 互相破壞，分拆反而才是創造價值的動作。": "Acer / Wistron：当同一 corporate structure 内的 business units 互相破坏，分拆反而才是创造价值的动作。",
+  "Action + Leadership 少了 Analysis": "Action + Leadership 少了 Analysis",
+  "Analysis + Action 少了 Leadership": "Analysis + Action 少了 Leadership",
+  "Analysis + Leadership 少了 Action": "Analysis + Leadership 少了 Action",
+  "Asch 單一同盟者": "Asch 单一同盟者",
+  "Asch 服從率": "Asch 服从率",
+  "BARD 與 POE": "BARD 与 POE",
+  "Bottom of the Pyramid 的邏輯很重要：可獲利模式可能需要更簡單的產品、更小包裝與更非正式的渠道。": "Bottom of the Pyramid 的逻辑很重要：可获利模式可能需要更简单的产品、更小包装与更非正式的渠道。",
+  "Cluster 邏輯圖": "Cluster 逻辑图",
+  "Commitment strategy：當環境獎勵持久性時，做大規模承諾。": "Commitment strategy：当环境奖励持久性时，做大规模承诺。",
+  "Corporate / industry scope：公司參與多少個產業。": "Corporate / industry scope：公司参与多少个产业。",
+  "Corporate strategy 六機制 + sum-of-parts test": "Corporate strategy 六机制 + sum-of-parts test",
+  "Disney 在 Iger 時代：related diversification 成立，是因為 Pixar、Marvel、Lucasfilm、Fox 都在加深 IP content system。": "Disney 在 Iger 时代：related diversification 成立，是因为 Pixar、Marvel、Lucasfilm、Fox 都在加深 IP content system。",
+  "Ferocity：九個驅動因素決定競爭有多激烈。": "Ferocity：九个驱动因素决定竞争有多激烈。",
+  "Geographic scope：公司服務哪些地理市場。": "Geographic scope：公司服务哪些地理市场。",
+  "Global / Local 切法": "Global / Local 切法",
+  "HQ 在併購或整合後，是否真的提升 operational discipline？": "HQ 在并购或整合后，是否真的提升 operational discipline？",
+  "HQ 的資本配置是否優於外部市場？": "HQ 的资本配置是否优于外部市场？",
+  "Home Alone：第一部還沒證明 value；第二部證明了 value 與稀缺性；接著 bargaining power 轉向 Culkin；第三部則顯示 studio 並沒有組織好去 appropriation 那份價值。": "Home Alone：第一部还没证明 value；第二部证明了 value 与稀缺性；接著 bargaining power 转向 Culkin；第三部则显示 studio 并没有组织好去 appropriation 那份价值。",
+  "Hustle strategy：當短期優勢更重要時，用小而快的移動。": "Hustle strategy：当短期优势更重要时，用小而快的移动。",
+  "Implementation 五段 + 關鍵數字": "Implementation 五段 + 关键数字",
+  "Implementation 五段診斷 + commitment ladder + 70/30": "Implementation 五段诊断 + commitment ladder + 70/30",
+  "Implementation 題只重述故事，沒有做 pathology diagnosis。": "Implementation 题只重述故事，没有做 pathology diagnosis。",
+  "Income distribution 比平均數更重要": "Income distribution 比平均数更重要",
+  "International 切法 + corporate 機制": "International 切法 + corporate 机制",
+  "Intrinsic bargaining strength：集中度、替代品、switching costs、pull-through、垂直整合威脅。": "Intrinsic bargaining strength：集中度、替代品、switching costs、pull-through、垂直整合威胁。",
+  "John Carter 與 The Lone Ranger 提醒你：就算有 valuable、rare、hard-to-imitate 的要素，只要 organization 與整體配適錯誤，仍然會失敗。": "John Carter 与 The Lone Ranger 提醒你：就算有 valuable、rare、hard-to-imitate 的要素，只要 organization 与整体配适错误，仍然会失败。",
+  "Knowing-Not-Knowing 的七個原因": "Knowing-Not-Knowing 的七个原因",
+  "Kobayashi 的 C&C vision 建立了 NEC，但也讓 NEC 之後暴露在更聚焦對手面前。": "Kobayashi 的 C&C vision 建立了 NEC，但也让 NEC 之后暴露在更聚焦对手面前。",
+  "Kotter 八項加速器": "Kotter 八项加速器",
+  "Lead firm 邏輯": "Lead firm 逻辑",
+  "Leadership 同時塑造了失敗風險與後來透過 related acquisitions 與組織修復的復甦。": "Leadership 同时塑造了失败风险与后来透过 related acquisitions 与组织修复的复苏。",
+  "Leadership 是雙面刃": "Leadership 是双面刃",
+  "Leadership 能建立公司、品類與策略方向。": "Leadership 能建立公司、品类与策略方向。",
+  "Macro level 與其背靜態清單，不如記成三輪掃描。": "Macro level 与其背静态清单，不如记成三轮扫描。",
+  "Macro 診斷板": "Macro 诊断板",
+  "Meta 壓力圖": "Meta 压力图",
+  "Mitsubishi：廣泛的歷史性結構，天然會被問 sum-of-parts 問題。": "Mitsubishi：广泛的历史性结构，天然会被问 sum-of-parts 问题。",
+  "NEC 的高分寫法：用 Enright 的 firm framework 分析 Kobayashi，而不是直接套 Prahalad-Hamel 的 core competence framing。": "NEC 的高分写法：用 Enright 的 firm framework 分析 Kobayashi，而不是直接套 Prahalad-Hamel 的 core competence framing。",
+  "Natalie Portman 的三部片合約，是 appropriation 管理：在成功改寫 bargaining table 之前先把資源鎖住。": "Natalie Portman 的三部片合约，是 appropriation 管理：在成功改写 bargaining table 之前先把资源锁住。",
+  "Newell：典型的 HQ 透過 managerial discipline 加值。": "Newell：典型的 HQ 透过 managerial discipline 加值。",
+  "Nokia 作為 implementation transfer 標準案例": "Nokia 作为 implementation transfer 标准案例",
+  "Nokia 預設作答形狀": "Nokia 预设作答形状",
+  "OPEC 脈絡中的 Saudi Aramco": "OPEC 脉络中的 Saudi Aramco",
+  "P&G in China 是代表性的 national-level case，因為總體條件、所得分布、消費者變化與通路演變同時作用。": "P&G in China 是代表性的 national-level case，因为总体条件、所得分布、消费者变化与通路演变同时作用。",
+  "Performance 永遠是相對概念": "Performance 永远是相对概念",
+  "Pluralistic silence 與 fear": "Pluralistic silence 与 fear",
+  "Positioning 會移動；Seiko 的 upmarket 推進屬於動態 positioning 問題。": "Positioning 会移动；Seiko 的 upmarket 推进属于动态 positioning 问题。",
+  "Practice Questions 補充案例": "Practice Questions 补充案例",
+  "Price sensitivity：成本占比、策略、獲利狀況與品質影響。": "Price sensitivity：成本占比、策略、获利状况与品质影响。",
+  "RTZ / Chinalco 的複雜性：同一個國家可能同時是 customer、shareholder、partner、regulator 與 geopolitical force。這種情況下，一套國際策略打天下一定失敗。": "RTZ / Chinalco 的复杂性：同一个国家可能同时是 customer、shareholder、partner、regulator 与 geopolitical force。这种情况下，一套国际策略打天下一定失败。",
+  "Real options strategy：在高度不確定時保留彈性。": "Real options strategy：在高度不确定时保留弹性。",
+  "Resistance 與 commitment ladder": "Resistance 与 commitment ladder",
+  "SPARK 不是全部答案。完整的 firm-level diagnosis 必須把 strategic logic 與 organizational realization 分開看。": "SPARK 不是全部答案。完整的 firm-level diagnosis 必须把 strategic logic 与 organizational realization 分开看。",
+  "SPARK 是核心，但不是完整答案": "SPARK 是核心，但不是完整答案",
+  "SPARK 與其延伸": "SPARK 与其延伸",
+  "Scale、scope、learning 這些經濟在哪裡成立？": "Scale、scope、learning 这些经济在哪里成立？",
+  "Scope 邏輯": "Scope 逻辑",
+  "Symbian 的問題已被理解，但沒有對應的策略位移。": "Symbian 的问题已被理解，但没有对应的策略位移。",
+  "Tech-enabled 服飾模式橫跨 meso、industry、meta 壓力，尤其是未來競爭與 unmet demand。": "Tech-enabled 服饰模式横跨 meso、industry、meta 压力，尤其是未来竞争与 unmet demand。",
+  "Type：產業落在五種競爭型態中的哪一種。": "Type：产业落在五种竞争型态中的哪一种。",
+  "VRIO 不只套 resources，也可以套 activities、resources、knowledge。": "VRIO 不只套 resources，也可以套 activities、resources、knowledge。",
+  "VRIO 套在 A、R、K": "VRIO 套在 A、R、K",
+  "VRIO 要套在 A、R、K": "VRIO 要套在 A、R、K",
+  "WPP 的錯誤：把 financial controls 與 compliance 也下放給高風險市場中的 founder-led units，幾乎等於把 bribery 風險制度化。": "WPP 的错误：把 financial controls 与 compliance 也下放给高风险市场中的 founder-led units，几乎等于把 bribery 风险制度化。",
+  "Walmart：即使 corporate scope 不廣，只要在 retail 內部有足夠 scope economies，仍然成立。": "Walmart：即使 corporate scope 不广，只要在 retail 内部有足够 scope economies，仍然成立。",
+  "Willingness to use power：就算很強，實際上也不一定會用到極致。": "Willingness to use power：就算很强，实际上也不一定会用到极致。",
+  "Within-industry scope：在同一產業內服務哪些 segments。": "Within-industry scope：在同一产业内服务哪些 segments。",
+  "reading 證據": "reading 证据",
+  "「倒 T 型」世界觀": "「倒 T 型」世界观",
+  "一個 business 的學習，有沒有真的改善另一個 business？": "一个 business 的学习，有没有真的改善另一个 business？",
+  "一句話 thesis": "一句话 thesis",
+  "一旦形成自我維持，往往就很難被移除。": "一旦形成自我维持，往往就很难被移除。",
+  "一頁手寫 cheat sheet": "一页手写 cheat sheet",
+  "七個 economics dimensions": "七个 economics dimensions",
+  "三個 dysfunction 公式": "三个 dysfunction 公式",
+  "三步產業邊界法": "三步行业边界法",
+  "三種成本，以及它們如何影響競爭": "三种成本，以及它们如何影响竞争",
+  "下結論": "下结论",
+  "不是學生表演，而是專業判斷": "不是学生表演，而是专业判断",
+  "不能只停在 SPARK": "不能只停在 SPARK",
+  "不要只說這個 industry '很好'，要明白說出利潤來源。": "不要只说这个 industry '很好'，要明白说出利润来源。",
+  "不要塞無關內容": "不要塞无关内容",
+  "中層反對意見沒有被正式記錄或有效上達。": "中层反对意见没有被正式记录或有效上达。",
+  "中觀 / 產業群聚": "中观 / 产业集群",
+  "五個層次相對母國有何不同？": "五个层次相对母国有何不同？",
+  "五個層次相對母國有何差異？": "五个层次相对母国有何差异？",
+  "五層閱讀地圖": "五层阅读地图",
+  "五層閱讀順序": "五层阅读顺序",
+  "五段 implementation 系統": "五段 implementation 系统",
+  "代表案例訊號": "代表案例讯号",
+  "企業應如何避免重蹈覆轍": "企业应如何避免重蹈覆辙",
+  "企業總體策略": "公司总体战略",
+  "企業績效": "企业绩效",
+  "但 leadership 也可能把公司鎖進一個之後變成弱點的 mental model。": "但 leadership 也可能把公司锁进一个之后变成弱点的 mental model。",
+  "低差異化加上高固定與沉沒成本，使退出困難、競爭殘酷。": "低差异化加上高固定与沉没成本，使退出困难、竞争残酷。",
+  "使用案例證據": "使用案例证据",
+  "使用正確工具": "使用正确工具",
+  "使用者價值是否隨 installed base 擴大？": "使用者价值是否随 installed base 扩大？",
+  "例子": "例子",
+  "信度分級與安全使用方式": "信度分级与安全使用方式",
+  "個人電腦": "个人电脑",
+  "傳話每次損失": "传话每次损失",
+  "價值最後在哪裡被 capture，又是被誰 capture？": "价值最后在哪里被 capture，又是被谁 capture？",
+  "價值究竟是在 subsidiaries 之間，還是在 HQ 與 subsidiaries 之間被創造？": "价值究竟是在 subsidiaries 之间，还是在 HQ 与 subsidiaries 之间被创造？",
+  "先做匿名書面判斷，再進入討論。": "先做匿名书面判断，再进入讨论。",
+  "先前成功造成硬化": "先前成功造成硬化",
+  "先從產業下手。先界定具有策略意義的競爭範圍。": "先从产业下手。先界定具有策略意义的竞争范围。",
+  "先從這裡開始": "先从这里开始",
+  "先把 puzzle 拼好，再解它。": "先把 puzzle 拼好，再解它。",
+  "先理解這個 industry 到底在做甚麼。": "先理解这个 industry 到底在做甚么。",
+  "先行者可能建立持久成本優勢並阻擋進入。": "先行者可能建立持久成本优势并阻挡进入。",
+  "先讀清楚題目": "先读清楚题目",
+  "先辨認 focal firm 與具有策略意義的 industry。": "先辨认 focal firm 与具有策略意义的 industry。",
+  "先辨認客戶實際收到甚麼，不要先看技術堆疊，也不要先看統計產業代碼。": "先辨认客户实际收到甚么，不要先看技术堆叠，也不要先看统计产业代码。",
+  "全球經濟": "全球经济",
+  "全部": "全部",
+  "八個核心組成": "八个核心组成",
+  "八個超國家驅動因素": "八个超国家驱动因素",
+  "八問藍圖": "八问蓝图",
+  "八問藍圖改成 select、compare、configure、organize 之後更容易實戰。": "八问蓝图改成 select、compare、configure、organize 之后更容易实战。",
+  "公司": "公司",
+  "公司層次": "公司层面",
+  "公司是否因整合規模或關係而獲得更強議價力？": "公司是否因整合规模或关系而获得更强议价力？",
+  "公司要如何組織？": "公司要如何组织？",
+  "六個快速經濟結構問題": "六个快速经济结构问题",
+  "六種 corporate value creation 機制": "六种 corporate value creation 机制",
+  "六種實務回應：acknowledge feelings、gather information、take small steps、seek support、understand others、bring people along。": "六种实务回应：acknowledge feelings、gather information、take small steps、seek support、understand others、bring people along。",
+  "六種常見 resistance 來源：fear of the unknown、loss of control、habit、emotional attachments、cognitive dissonance、social influences。": "六种常见 resistance 来源：fear of the unknown、loss of control、habit、emotional attachments、cognitive dissonance、social influences。",
+  "共識型文化": "共识型文化",
+  "再加上超國家壓力，理解其如何改寫 nation state 之上的規則。": "再加上超国家压力，理解其如何改写 nation state 之上的规则。",
+  "再問誰也在爭奪同一個 customer outcome。即使底層技術不同，只要 useful output 相同，仍可能屬同一產業。": "再问谁也在争夺同一个 customer outcome。即使底层技术不同，只要 useful output 相同，仍可能属同一产业。",
+  "再往外看 cluster 或 ecosystem，理解 suppliers、customers、complements 與 substitutes。": "再往外看 cluster 或 ecosystem，理解 suppliers、customers、complements 与 substitutes。",
+  "分析脊椎": "分析主轴",
+  "匿名書面回應": "匿名书面回应",
+  "區域群聚以及為何它們難以被撼動": "区域集群及其为何难以被撼动",
+  "區域集團 / 超國家政策": "区域集团 / 超国家政策",
+  "半導體": "半导体",
+  "原始內容附錄": "原始内容附录",
+  "取決於 scale economies": "取决于 scale economies",
+  "只保留品牌一致性的大框架": "只保留品牌一致性的大框架",
+  "只保留必要的 local legal expertise": "只保留必要的 local legal expertise",
+  "只展示 framework，沒有做 causal application。": "只展示 framework，没有做 causal application。",
+  "只點出真正 binding 的層次。": "只点出真正 binding 的层次。",
+  "只點名真正 binding 的層次。": "只点名真正 binding 的层次。",
+  "可能來自價格溢價、成本優勢、議價優勢、標準控制、installed base、customer lock-in，或稀缺的 complementary assets。": "可能来自价格溢价、成本优势、议价优势、标准控制、installed base、customer lock-in，或稀缺的 complementary assets。",
+  "可能形成自我強化與 winner-take-most 邏輯。": "可能形成自我强化与 winner-take-most 逻辑。",
+  "同一品牌、平台或通路是否真的跨業務被重複使用？": "同一品牌、平台或通路是否真的跨业务被重复使用？",
+  "向前整合引發與客戶衝突，最後反而使分拆合理化。": "向前整合引发与客户冲突，最后反而使分拆合理化。",
+  "商業生態與群聚": "商业生态与群聚",
+  "單一供應者。若未被管制或政治限制，通常最有利。": "单一供应者。若未被管制或政治限制，通常最有利。",
+  "四個 performance comparators": "四个 performance comparators",
+  "四分之一是不停下來，直到問題被真正回答": "四分之一是不停下来，直到问题被真正回答",
+  "四分之一是到場並投入": "四分之一是到场并投入",
+  "四分之一是知道要問甚麼問題": "四分之一是知道要问甚么问题",
+  "四分之一是讓策略在組織內真的運作": "四分之一是让策略在组织内真的运作",
+  "四條總戒律": "四条总戒律",
+  "固化成 new normal": "固化成 new normal",
+  "固定 / 沉沒 / 變動成本": "固定 / 沉没 / 变动成本",
+  "固定成本短期固定、長期可避免。它主導 break-even 壓力與規模邏輯。": "固定成本短期固定、长期可避免。它主导 break-even 压力与规模逻辑。",
+  "國家 / 總體": "国家 / 总体",
+  "國家 / 總體層次": "国家 / 宏观层面",
+  "國家條件": "国家条件",
+  "國際公司有沒有大於 parts 的總和？": "国际公司有没有大于 parts 的总和？",
+  "國際公司要如何組織？": "国际公司要如何组织？",
+  "國際策略": "国际战略",
+  "國際策略架構": "国际策略架构",
+  "在 reorganization 中保留 institutional knowledge。": "在 reorganization 中保留 institutional knowledge。",
+  "在危機對所有人都變得明顯前，先建立 urgency。": "在危机对所有人都变得明显前，先建立 urgency。",
+  "在底層經濟還沒釐清前，就直接跳到 strategy language。": "在底层经济还没厘清前，就直接跳到 strategy language。",
+  "在要求唯一配對時重複使用同一個 case。": "在要求唯一配对时重复使用同一个 case。",
+  "在評論 performance 前，先說明 comparator。": "在评论 performance 前，先说明 comparator。",
+  "地緣政治": "地缘政治",
+  "塞入與題目無關的材料。": "塞入与题目无关的材料。",
+  "壓力下的執行": "压力下的执行",
+  "外國 MNC 與其他群體": "外国 MNC 与其他群体",
+  "外國政府": "外国政府",
+  "多家廠商加上來自相關產業的潛在進入者；優勢壽命較短。": "多家厂商加上来自相关产业的潜在进入者；优势寿命较短。",
+  "多層核准流程": "多层核准流程",
+  "多數區段價格壓力大，可防禦性有限。": "多数区段价格压力大，可防御性有限。",
+  "大型人口國家即使平均收入不高，也可能支撐 premium 與 luxury 需求，因為高所得族群的絕對數量很大。": "大型人口国家即使平均收入不高，也可能支撑 premium 与 luxury 需求，因为高所得族群的绝对数量很大。",
+  "好撒瑪利亞人，提早": "好撒玛利亚人，提早",
+  "好撒瑪利亞人，準時": "好撒玛利亚人，准时",
+  "好撒瑪利亞人，遲到": "好撒玛利亚人，迟到",
+  "如何把 SPARK 對上各國條件？": "如何把 SPARK 对上各国条件？",
+  "如何讓 SPARK 對上國家條件？": "如何让 SPARK 对上国家条件？",
+  "如何讓 SPARK 對應 business 條件？": "如何让 SPARK 对应 business 条件？",
+  "如果 competitors 夠聰明，未來可能變多難纏？": "如果 competitors 够聪明，未来可能变多难缠？",
+  "如果 competitors 把 activities 優化到最好會怎樣？": "如果 competitors 把 activities 优化到最好会怎样？",
+  "如果他們把 resources 與 knowledge 發揮到極致會怎樣？": "如果他们把 resources 与 knowledge 发挥到极致会怎样？",
+  "如果他們新增 resources 或 knowledge 會怎樣？": "如果他们新增 resources 或 knowledge 会怎样？",
+  "如果他們被更聰明且資金更深的公司接手會怎樣？": "如果他们被更聪明且资金更深的公司接手会怎样？",
+  "如果他們補上自己的短板會怎樣？": "如果他们补上自己的短板会怎样？",
+  "如果我們來管理 competitors，會怎麼做？": "如果我们来管理 competitors，会怎么做？",
+  "如果題目要求 action，就必須把 diagnosis 連到 strategy 與 implementation barrier。": "如果题目要求 action，就必须把 diagnosis 连到 strategy 与 implementation barrier。",
+  "如果題目要求，就把 diagnosis 連回 strategy 與 implementation barriers。": "如果题目要求，就把 diagnosis 连回 strategy 与 implementation barriers。",
+  "季度壓力、共識文化與多層核准制度都在懲罰真話。": "季度压力、共识文化与多层核准制度都在惩罚真话。",
+  "季度股東壓力": "季度股东压力",
+  "學習經濟": "学习经济",
+  "完全競爭": "完全竞争",
+  "完整鏈條": "完整链条",
+  "定義題目": "定义题目",
+  "客戶實際收到甚麼有用輸出？": "客户实际收到甚么有用输出？",
+  "寡佔": "寡占",
+  "少數幾家互相依賴地競爭。": "少数几家互相依赖地竞争。",
+  "工具框架": "工具框架",
+  "工具要用對": "工具要用对",
+  "常見例子包括 Silicon Valley、Hollywood、倫敦 / 紐約金融、瑞士奢華腕錶、Bangalore、Hsinchu。": "常见例子包括 Silicon Valley、Hollywood、伦敦 / 纽约金融、瑞士奢华腕表、Bangalore、Hsinchu。",
+  "平台經濟與全球結構在各家之間差異很大，不能當作單一產業故事。": "平台经济与全球结构在各家之间差异很大，不能当作单一产业故事。",
+  "底層經濟": "底层经济",
+  "底層經濟很強，但景氣循環與細分差異很大。": "底层经济很强，但景气循环与细分差异很大。",
+  "底層經濟結構": "底层经济结构",
+  "建立 guiding coalition": "建立 guiding coalition",
+  "建立 urgency 與 commitment": "建立 urgency 与 commitment",
+  "建議的 180 分鐘時間分配": "建议的 180 分钟时间分配",
+  "形成 volunteer army": "形成 volunteer army",
+  "微觀驅動": "微观驱动",
+  "必須用具體 case evidence：數字、quotes、事件。": "必须用具体 case evidence：数字、quotes、事件。",
+  "應 globalize 的部分": "应 globalize 的部分",
+  "應 localize 的部分": "应 localize 的部分",
+  "成本結構是甚麼：capital、labor、knowledge、marketing 以及 fixed / sunk / variable 比例？": "成本结构是甚么：capital、labor、knowledge、marketing 以及 fixed / sunk / variable 比例？",
+  "找出偏離完全競爭之處：障礙、差異化、資訊不對稱、switching costs、運輸成本、collusion、standards。": "找出偏离完全竞争之处：障碍、差异化、资讯不对称、switching costs、运输成本、collusion、standards。",
+  "技術變動": "技术变动",
+  "把 Prahalad-Hamel 的 core competence 當成 NEC 的預設答法。": "把 Prahalad-Hamel 的 core competence 当成 NEC 的预设答法。",
+  "把 implementation 的長篇敘述改成逐步診斷流程。": "把 implementation 的长篇叙述改成逐步诊断流程。",
+  "把 vision 說清楚": "把 vision 说清楚",
+  "把『是否大於 parts 總和』變成一眼可掃的機制板。": "把『是否大于 parts 总和』变成一眼可扫的机制板。",
+  "把一個複雜問題拆成很多簡單問題。": "把一个复杂问题拆成很多简单问题。",
+  "把圖畫出來。": "把图画出来。",
+  "把定義段落轉成三步驟工具。": "把定义段落转成三步骤工具。",
+  "把教授偏好的預設分析順序做成視覺入口。": "把教授偏好的预设分析顺序做成视觉入口。",
+  "把本來應該是診斷問題的文字塊，改成可掃描的問題板。": "把本来应该是诊断问题的文字块，改成可扫描的问题板。",
+  "把長段敘述轉成『誰在改寫規則』的圖。": "把长段叙述转成『谁在改写规则』的图。",
+  "把預設答題骨架轉成壓力下更好操作的流程版。": "把预设答题骨架转成压力下更好操作的流程版。",
+  "抵抗": "抵抗",
+  "拆掉障礙": "拆掉障碍",
+  "持續並擴大": "持续并扩大",
+  "挑出 binding levels": "挑出 binding levels",
+  "掌握標準者可改寫市場架構與 appropriability。": "掌握标准者可改写市场架构与 appropriability。",
+  "掠食者": "掠食者",
+  "接著檢驗國家條件，看它如何支撐或阻礙 business model。": "接著检验国家条件，看它如何支撑或阻碍 business model。",
+  "控制者接近 quasi-monopoly，其他人則容易 commodity 化。": "控制者接近 quasi-monopoly，其他人则容易 commodity 化。",
+  "教科書、講義與影片都是必讀，因為大量內容會直接進入案例分析，而不會在課堂上重講。": "教科书、讲义与影片都是必读，因为大量内容会直接进入案例分析，而不会在课堂上重讲。",
+  "整體框架、標準、控制結構": "整体框架、标准、控制结构",
+  "新舊 business 在五個層次上有何差異？": "新旧 business 在五个层次上有何差异？",
+  "新進者、替代品、法規、買方集中、供應商整合、新標準或相鄰產業入侵，都可能讓競爭類型在光譜上移動。": "新进者、替代品、法规、买方集中、供应商整合、新标准或相邻产业入侵，都可能让竞争类型在光谱上移动。",
+  "方法": "方法",
+  "早年 standard-setting 成功帶來 path dependency": "早年 standard-setting 成功带来 path dependency",
+  "明明知道了，為甚麼行為沒有改？": "明明知道了，为甚么行为没有改？",
+  "是否存在 network、nexus、standards 或 installed-base effects？": "是否存在 network、nexus、standards 或 installed-base effects？",
+  "是否存在必經關鍵節點？": "是否存在必经关键节点？",
+  "是哪一些 industries？": "是哪一些 industries？",
+  "是哪一些國家？": "是哪一些国家？",
+  "時間維度": "时间维度",
+  "時間要精準分配": "时间要精准分配",
+  "替顛覆型專案拆掉多層核准障礙。": "替颠覆型专案拆掉多层核准障碍。",
+  "最後才回到 firm 本身。再強的 firm，若結構錯誤，一樣會吃虧。": "最后才回到 firm 本身。再强的 firm，若结构错误，一样会吃亏。",
+  "最後要用 BARD 或 POE 語氣下 conclusion。": "最后要用 BARD 或 POE 语气下 conclusion。",
+  "有多少國家？": "有多少国家？",
+  "有幾個 industries？": "有几个 industries？",
+  "有幾個國家？": "有几个国家？",
+  "期末可能採較少題目、較長閱讀，讓多個議題都從同一個 reading 被處理。": "期末可能采较少题目、较长阅读，让多个议题都从同一个 reading 被处理。",
+  "核心作答行為": "核心作答行为",
+  "核心問題": "核心问题",
+  "核心特徵": "核心特征",
+  "框架打破者": "框架打破者",
+  "案例": "案例",
+  "案例對層次快速掃描": "案例与层面快速扫描",
+  "案例層次判斷錯誤。": "案例层次判断错误。",
+  "案例是主要教學載體，不是裝飾性的例子。": "案例是主要教学载体，不是装饰性的例子。",
+  "案例總表": "案例总表",
+  "案例轉移應用": "案例转移应用",
+  "標準": "标准",
+  "標準制定者": "标准制定者",
+  "樞紐經濟": "枢纽经济",
+  "機制": "机制",
+  "正確修正：compliance 要維持 global，跨境付款要多層審批，並搭配獨立審計與 whistleblower 機制。": "正确修正：compliance 要维持 global，跨境付款要多层审批，并搭配独立审计与 whistleblower 机制。",
+  "歷史上常受惠於智慧財產、健康急迫性與購買流程。": "历史上常受惠于智慧财产、健康急迫性与购买流程。",
+  "每個 business 需要甚麼 SPARK？": "每个 business 需要甚么 SPARK？",
+  "每個國家要有甚麼 SPARK？": "每个国家要有甚么 SPARK？",
+  "每個國家需要甚麼 SPARK？": "每个国家需要甚么 SPARK？",
+  "水準": "水准",
+  "水表": "水表",
+  "汽車": "汽车",
+  "沉沒成本無法回收。理論上不該主導未來決策，但在真實世界會形成退出障礙。": "沉没成本无法回收。理论上不该主导未来决策，但在真实世界会形成退出障碍。",
+  "沒有 conclusion 幾乎等於沒有分數。強證據過度保守、弱證據過度自信，兩者都會失分。": "没有 conclusion 几乎等于没有分数。强证据过度保守、弱证据过度自信，两者都会失分。",
+  "沒有 conclusion。": "没有 conclusion。",
+  "沒有普遍正確的 scope。真正的檢驗標準是內部一致性與市場機會匹配。": "没有普遍正确的 scope。真正的检验标准是内部一致性与市场机会匹配。",
+  "波動 / 斷裂": "波动 / 断裂",
+  "洗手自述": "洗手自述",
+  "洗手觀察值": "洗手观察值",
+  "激烈程度": "激烈程度",
+  "瀏覽器戰爭中的 Microsoft": "浏览器战争中的 Microsoft",
+  "為甚麼 Nokia 特別脆弱": "为甚么 Nokia 特别脆弱",
+  "為甚麼 economics 在最上游": "为甚么 economics 在最上游",
+  "為甚麼一定先看這裡": "为甚么一定先看这里",
+  "為甚麼它對期末特別重要": "为甚么它对期末特别重要",
+  "為甚麼要保留這個附錄": "为甚么要保留这个附录",
+  "物流與客製化常要求在地化": "物流与客制化常要求在地化",
+  "獎勵風險與障礙的回報，而不是只獎勵 progress。": "奖励风险与障碍的回报，而不是只奖励 progress。",
+  "獨佔": "独占",
+  "獲利潛力": "获利潜力",
+  "獲利結構排序圖": "获利结构排序图",
+  "環境": "环境",
+  "環境究竟在獎勵甚麼、懲罰甚麼？": "环境究竟在奖励甚么、惩罚甚么？",
+  "甚麼成本組合主導行為與退出？": "甚么成本组合主导行为与退出？",
+  "生態系警告": "生态系统提醒",
+  "產業": "产业",
+  "產業定義": "产业定义",
+  "產業層次": "行业层面",
+  "產業結構": "产业结构",
+  "產業經濟問題板": "产业经济问题板",
+  "產業邊界工具": "产业边界工具",
+  "產業長者": "产业长者",
+  "產量增加時平均成本是否下降？": "产量增加时平均成本是否下降？",
+  "用 evidence 推導出帶有校準信心程度的 conclusion。": "用 evidence 推导出带有校准信心程度的 conclusion。",
+  "用 progress 持續激勵": "用 progress 持续激励",
+  "用客戶面向的輸出畫產業邊界，不要用 technology label 畫。": "用客户面向的输出画产业边界，不要用 technology label 画。",
+  "用對工具，不要把整座 framework library 全搬上來。": "用对工具，不要把整座 framework library 全搬上来。",
+  "界定策略性產業": "界定策略性产业",
+  "異類": "异类",
+  "當 evidence 傾向某方向但仍有限時，用 POE 型語氣。": "当 evidence 倾向某方向但仍有限时，用 POE 型语气。",
+  "當證據很強、可行替代解釋極少時，用 BARD 型語氣。": "当证据很强、可行替代解释极少时，用 BARD 型语气。",
+  "病理": "病理",
+  "相近業務一起做是否能降總成本或提升品質？": "相近业务一起做是否能降总成本或提升品质？",
+  "看見問題": "看见问题",
+  "真實 bargaining outcome 取決於三軸交互，而不是只看表面 strength。": "真实 bargaining outcome 取决于三轴交互，而不是只看表面 strength。",
+  "真正的抗拒來自哪裡？": "真正的抗拒来自哪里？",
+  "眾多玩家、差異化弱、價格競爭重。": "众多玩家、差异化弱、价格竞争重。",
+  "研究與 prototype 訊號早已存在，但沒有轉成行動。": "研究与 prototype 讯号早已存在，但没有转成行动。",
+  "硬體導向的領導結構": "硬体导向的领导结构",
+  "競爭三維分析": "竞争三维分析",
+  "競爭型態": "竞争型态",
+  "競爭型態光譜": "竞争型态光谱",
+  "競爭激烈度九宮格": "竞争激烈度九宫格",
+  "競爭變數": "竞争变数",
+  "第一個問題": "第一个问题",
+  "等 useful output 與 direct rivals 都清楚後，再劃定邊界。這能避免用分類代碼或品牌印象來誤判。": "等 useful output 与 direct rivals 都清楚后，再划定边界。这能避免用分类代码或品牌印象来误判。",
+  "答題建構流程": "答题建构流程",
+  "策略哲學": "策略哲学",
+  "管理者明知時程不合理，仍持續回報樂觀進度。": "管理者明知时程不合理，仍持续回报乐观进度。",
+  "範疇經濟": "范畴经济",
+  "累積經驗是否能改善成本或品質？": "累积经验是否能改善成本或品质？",
+  "組織到底沒看見甚麼？": "组织到底没看见甚么？",
+  "結果": "结果",
+  "結構傾向較少玩家，常推向 oligopoly 或 monopoly。": "结构倾向较少玩家，常推向 oligopoly 或 monopoly。",
+  "結構含意": "结构含意",
+  "經典對比：Swatch 從 Flik Flak 到 Breguet 橫跨多個 segment，而 Rolex 集中在高端區段。": "经典对比：Swatch 从 Flik Flak 到 Breguet 横跨多个 segment，而 Rolex 集中在高端区段。",
+  "維度": "维度",
+  "網路經濟": "网路经济",
+  "總體條件、所得分布、數位轉移與消費行為變化同時作用。": "总体条件、所得分布、数位转移与消费行为变化同时作用。",
+  "缺了甚麼": "缺了甚么",
+  "群聚 / 中觀": "群聚 / 中观",
+  "群聚可以源自自然資源、市場接近性、勞動力池、專業投入供應商、共享基礎設施、較低交易成本與知識外溢。": "群聚可以源自自然资源、市场接近性、劳动力池、专业投入供应商、共享基础设施、较低交易成本与知识外溢。",
+  "考場攻擊系統": "考场作答系统",
+  "考試 framing": "考试 framing",
+  "考試檢驗方式": "考试检验方式",
+  "考試訊號": "考试信号",
+  "能否指出真實、可量化的共用成本或品質效益？": "能否指出真实、可量化的共用成本或品质效益？",
+  "自述與實際行為差距": "自述与实际行为差距",
+  "致命錯誤清單": "致命错误清单",
+  "航空": "航空",
+  "若是 business-facing case，先做快速 underlying-economics 掃描。": "若是 business-facing case，先做快速 underlying-economics 扫描。",
+  "若連結真實存在，支持整合或多角化結構。": "若连结真实存在，支持整合或多角化结构。",
+  "落地執行與組織病理": "落地执行与组织病理",
+  "落地與執行": "落地与执行",
+  "虧損公司仍被維持存活，價格壓力持續。": "亏损公司仍被维持存活，价格压力持续。",
+  "行為實驗錨點與它們的意義": "行为实验锚点与它们的意义",
+  "補貼競爭": "补贴竞争",
+  "製藥": "制药",
+  "覆蓋檢查": "覆盖检查",
+  "規則執行者": "规则执行者",
+  "規格制定者、採購者與付款者分離；成本占比小，但低估計量風險很大。": "规格制定者、采购者与付款者分离；成本占比小，但低估计量风险很大。",
+  "規模經濟": "规模经济",
+  "觸發字樣": "触发字样",
+  "訊息是否具體到足以被執行？": "讯息是否具体到足以被执行？",
+  "設 red-team 或外部 review window 去推翻主流看法。": "设 red-team 或外部 review window 去推翻主流看法。",
+  "誰在直接爭奪同一種輸出？": "谁在直接争夺同一种输出？",
+  "誰掌握技術或介面標準？": "谁掌握技术或介面标准？",
+  "課程訊號": "课程讯号",
+  "講 performance 卻沒有說 comparator。": "讲 performance 却没有说 comparator。",
+  "議價力是三軸診斷": "议价力是三轴诊断",
+  "讀者導向": "读者导向",
+  "變動成本會隨產量改變。只要價格高於變動成本，短期內多賣通常仍有誘因。": "变动成本会随产量改变。只要价格高于变动成本，短期内多卖通常仍有诱因。",
+  "貼入骨架原文完整保留": "完整保留粘贴骨架原文",
+  "資本密集，具有差異化，但競爭依然激烈。": "资本密集，具有差异化，但竞争依然激烈。",
+  "超出國界": "超出国界",
+  "超國家 / 全球": "超国家 / 全球",
+  "超國家 / 全球層次": "超国家 / 全球层面",
+  "超競爭": "超竞争",
+  "趨勢": "趋势",
+  "跨層": "跨层",
+  "轉成可執行語言": "转成可执行语言",
+  "追蹤落地": "追踪落地",
+  "這一節比起八組文字，更適合記成 ecosystem map。": "这一节比起八组文字，更适合记成 ecosystem map。",
+  "這也是 future competition 與 CEA 特別重要的地方。": "这也是 future competition 与 CEA 特别重要的地方。",
+  "這些 businesses 是 related 還是 unrelated？": "这些 businesses 是 related 还是 unrelated？",
+  "這些國家彼此相似，還是有本質差異？": "这些国家彼此相似，还是有本质差异？",
+  "這些國家相似還是本質不同？": "这些国家相似还是本质不同？",
+  "這份考試真正測甚麼": "这份考试真正测甚么",
+  "這個 industry 在 form、function、direct competition 上到底做甚麼？": "这个 industry 在 form、function、direct competition 上到底做甚么？",
+  "這個 multi-business company 要如何組織？": "这个 multi-business company 要如何组织？",
+  "這家國際企業有沒有大於 parts 的總和？": "这家国际企业有没有大于 parts 的总和？",
+  "這常直接決定削價壓力、退出障礙與獲利劇烈程度。": "这常直接决定削价压力、退出障碍与获利剧烈程度。",
+  "這是 Tier 1 內容，但在 final exam 的優先度低於 economics、CEA、international、corporate、implementation。": "这是 Tier 1 内容，但在 final exam 的优先度低于 economics、CEA、international、corporate、implementation。",
+  "這是結構性解釋，還不是 firm-specific 解釋。": "这是结构性解释，还不是 firm-specific 解释。",
+  "這會把產業推向哪種 competition type？": "这会把产业推向哪种 competition type？",
+  "這門課的目的，是讓你更接近 strategy-related work 的 job-ready 狀態，而不只是更會背課堂內容。": "这门课的目的，是让你更接近 strategy-related work 的 job-ready 状态，而不只是更会背课堂内容。",
+  "連到行動": "连到行动",
+  "遇到 sustainability 或 future competition 題，卻沒用 CEA。": "遇到 sustainability 或 future competition 题，却没用 CEA。",
+  "關鍵洞察：即便同是 oligopoly，真正影響 profit 的是在哪個 variable 上競爭。香港地產靠位置與產品特徵獲利，香港行動電信則常因過剩產能而走向價格競爭。": "关键洞察：即便同是 oligopoly，真正影响 profit 的是在哪个 variable 上竞争。香港地产靠位置与产品特征获利，香港行动电信则常因过剩产能而走向价格竞争。",
+  "附錄": "附录",
+  "預設層次": "预设层次",
+  "預設工具": "预设工具",
+  "預設答題骨架": "预设答题骨架",
+  "預設配對": "预设配对",
+  "題目 trigger → 工具對應": "题目 trigger → 工具对应",
+  "類別": "类别",
+  "類型": "类型",
+  "香港銀行業中的 HSBC": "香港银行业中的 HSBC",
+  "高 fixed 與 sunk cost 加上低差異化，形成結構性低獲利。": "高 fixed 与 sunk cost 加上低差异化，形成结构性低获利。",
+  "高固定加低變動成本常引出削價。高沉沒成本會困住玩家。低固定加高變動成本則更接近 perfect competition 邏輯。": "高固定加低变动成本常引出削价。高沉没成本会困住玩家。低固定加高变动成本则更接近 perfect competition 逻辑。",
+  "高層持續把 Nokia 當成 hardware company，而不是 software-platform 競爭問題。": "高层持续把 Nokia 当成 hardware company，而不是 software-platform 竞争问题。",
+  "高權重": "高权重",
+  "高權重作答藍圖": "高权重作答蓝图",
+  "高權重焦點": "高权重焦点",
+  "高權重組織診斷": "高权重组织诊断"
+};
+
+function zhCnText(input) {
+  if (typeof input !== 'string') return input;
+  if (CN_MAP[input]) return CN_MAP[input];
+  const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
+  if (match) return `当前显示 ${match[1]} 个 section。可使用筛选 chips 和搜索框，将系统聚焦到高权重区域、框架、案例或附录。`;
+  return input;
+}
+
 function viText(input) {
   if (typeof input !== 'string') return input;
   if (VI_MAP[input]) return VI_MAP[input];
@@ -1268,6 +2701,7 @@ function viText(input) {
 function uiText(mode, en, zh, vi) {
   if (mode === 'en') return en;
   if (mode === 'zh') return zh;
+  if (mode === 'zh-cn') return zhCnText(zh ?? en);
   if (mode === 'vi') return vi ?? viText(en) ?? en;
   return en;
 }
@@ -1276,6 +2710,10 @@ function BiText({ mode, en, zh, vi, className = "", block = false, subtleZh = fa
   const resolvedVi = vi ?? viText(en);
   if (mode === "en") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{en}</div> : <span className={className}>{en}</span>;
   if (mode === "zh") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{zh}</div> : <span className={className}>{zh}</span>;
+  if (mode === "zh-cn") {
+    const resolvedCn = zhCnText(zh ?? en);
+    return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{resolvedCn}</div> : <span className={className}>{resolvedCn}</span>;
+  }
   if (mode === "vi") {
     if (block) {
       return (
@@ -1697,7 +3135,7 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
 
 function FloatingLanguageToggle({ mode, setMode }) {
   const [open, setOpen] = useState(false);
-  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "中文" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }];
+  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }];
   return (
     <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
       {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className="rounded-2xl px-3 py-2 text-sm font-semibold text-left" style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
@@ -2485,7 +3923,7 @@ function AppendixSection({ mode }) {
       <div className="space-y-4">
         <InfoCard titleEn="Why this appendix exists" titleZh="為甚麼要保留這個附錄" mode={mode} tone="teal"><BiText mode={mode} block en="The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone." zh="主介面是為了提升可讀性與考場操作性而重構。這個附錄把原始貼入總整完整放進檔案中，確保升級版 infrastructure 不會默默遺漏那份骨架內容。" /></InfoCard>
         <button onClick={() => setShowSource((v) => !v)} className="rounded-full border px-4 py-2 text-sm font-semibold" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.plum }}>{showSource ? uiText(mode, "Hide source appendix", "收起原始內容", "Ẩn appendix nguồn gốc") : uiText(mode, "Show source appendix", "展開原始內容", "Mở appendix nguồn gốc")}</button>
-        {showSource ? <div className="overflow-hidden rounded-[28px] border" style={{ borderColor: theme.line }}><div className="border-b px-4 py-3 text-xs uppercase tracking-[0.18em]" style={{ background: "#F2ECE0", borderColor: theme.line, color: theme.teal }}>{uiText(mode, "Original pasted master review", "原始貼入 master review", "Bản master review gốc đã dán vào")}</div><pre className="max-h-[900px] max-w-full overflow-auto whitespace-pre-wrap break-words [overflow-wrap:anywhere] p-4 text-[12px] leading-6" style={{ background: "#FFFDF8", color: theme.ink }}>{SOURCE_MARKDOWN}</pre></div> : null}
+        {showSource ? <div className="overflow-hidden rounded-[28px] border" style={{ borderColor: theme.line }}><div className="border-b px-4 py-3 text-xs uppercase tracking-[0.18em]" style={{ background: "#F2ECE0", borderColor: theme.line, color: theme.teal }}>{uiText(mode, "Original pasted master review", "原始貼入 master review", "Bản master review gốc đã dán vào")}</div><pre className="max-h-[900px] max-w-full overflow-auto whitespace-pre-wrap break-words [overflow-wrap:anywhere] p-4 text-[12px] leading-6" style={{ background: "#FFFDF8", color: theme.ink }}>{mode === "zh-cn" ? SOURCE_MARKDOWN_ZH_CN : SOURCE_MARKDOWN}</pre></div> : null}
       </div>
     </SectionShell>
   );
