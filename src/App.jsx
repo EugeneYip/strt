@@ -3594,18 +3594,21 @@ function SectionShell({ id, mode, titleEn, titleZh, kickerEn, kickerZh, refs = [
 
 function InfoCard({ titleEn, titleZh, mode, children, tone = "default" }) {
   const tones = {
-    default: { bg: "#FBF8F0", border: theme.line, ink: theme.ink },
-    teal: { bg: "#EDF4F6", border: "#BCD0D8", ink: theme.teal },
-    plum: { bg: "#F4EDF3", border: "#D8C3D4", ink: theme.plum },
-    gold: { bg: "#FBF5E8", border: "#E1D1A8", ink: "#7A5A18" },
-    danger: { bg: "#F8EFEC", border: "#D8BBB2", ink: theme.danger },
-    ok: { bg: "#EEF5F0", border: "#C5D7CA", ink: theme.ok },
+    default: { bg: "#FBF8F0", border: theme.line, ink: theme.ink, accent: theme.gold },
+    teal: { bg: "#EDF4F6", border: "#BCD0D8", ink: theme.teal, accent: theme.teal },
+    plum: { bg: "#F4EDF3", border: "#D8C3D4", ink: theme.plum, accent: theme.plum },
+    gold: { bg: "#FBF5E8", border: "#E1D1A8", ink: "#7A5A18", accent: theme.gold },
+    danger: { bg: "#F8EFEC", border: "#D8BBB2", ink: theme.danger, accent: theme.danger },
+    ok: { bg: "#EEF5F0", border: "#C5D7CA", ink: theme.ok, accent: theme.ok },
   };
   const t = tones[tone] || tones.default;
   return (
-    <div className="min-w-0 max-w-full overflow-hidden rounded-3xl border p-4" style={{ background: t.bg, borderColor: t.border }}>
-      <div className="mb-2 text-sm font-semibold" style={{ color: t.ink }}>
-        <BiText mode={mode} en={titleEn} zh={titleZh} />
+    <div className="min-w-0 max-w-full overflow-hidden rounded-3xl border p-4 md:p-5" style={{ background: t.bg, borderColor: t.border }}>
+      <div className="mb-3 flex items-center gap-2">
+        <span className="inline-block h-3 w-1 rounded-full" style={{ background: t.accent }} aria-hidden="true" />
+        <div className="text-[15px] font-semibold leading-tight" style={{ color: t.ink }}>
+          <BiText mode={mode} en={titleEn} zh={titleZh} />
+        </div>
       </div>
       <div className="text-sm leading-6" style={{ color: theme.subInk }}>
         {children}
@@ -3955,7 +3958,7 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
               <div className="flex flex-wrap gap-2">{chips.map((chip) => <button key={chip.key} onClick={() => setActiveTag(chip.key)} className="rounded-full border px-3 py-2 text-xs font-semibold tracking-[0.14em]" style={{ borderColor: activeTag === chip.key ? theme.teal : theme.line, background: activeTag === chip.key ? "#EDF4F6" : "#FBF8F0", color: activeTag === chip.key ? theme.teal : theme.subInk }}><BiText mode={mode} en={chip.en} zh={chip.zh} /></button>)}</div>
             </div>
           </div>
-          <div className="flex max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-1">{sectionMeta.map((item) => <a key={item.id} href={`#${item.id}`} className="whitespace-nowrap rounded-full border px-3 py-2 text-xs font-medium" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><BiText mode={mode} en={item.en} zh={item.zh} /></a>)}</div>
+          <div className="flex max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-1">{sectionMeta.map((item) => <a key={item.id} href={`#${item.id}`} className="whitespace-nowrap rounded-full border px-3 py-2 text-xs font-medium transition-colors hover:border-teal-400 hover:bg-teal-50 hover:text-teal-700" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><BiText mode={mode} en={item.en} zh={item.zh} /></a>)}</div>
         </div>
       </div>
     </div>
@@ -4387,7 +4390,28 @@ function OverviewSection({ mode }) {
           <FiveLevelPentagonVisual mode={mode} />
         </div>
         <div className="space-y-4">
-          <InfoCard titleEn="Weighted focus" titleZh="高權重焦點" mode={mode} tone="plum"><BulletList mode={mode} items={[{ en: "International strategy", zh: "國際策略" }, { en: "Corporate strategy", zh: "企業總體策略" }, { en: "Implementation and organizational pathologies", zh: "落地執行與組織病理" }]} /></InfoCard>
+          <InfoCard titleEn="Weighted focus" titleZh="高權重焦點" mode={mode} tone="plum">
+            <div className="space-y-2">
+              {[
+                { en: "International strategy", zh: "國際策略", weight: 95, tone: theme.teal },
+                { en: "Corporate strategy", zh: "企業總體策略", weight: 90, tone: theme.plum },
+                { en: "Implementation & organizational pathologies", zh: "落地執行與組織病理", weight: 88, tone: theme.gold },
+                { en: "Industry + firm analytical chain", zh: "產業 + 公司分析鏈", weight: 70, tone: theme.olive },
+                { en: "CEA + future competition", zh: "CEA + 未來競爭", weight: 55, tone: theme.ok },
+              ].map((row) => (
+                <div key={row.en} className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+                  <div className="mb-1 flex items-center justify-between gap-2">
+                    <div className="text-[13px] font-semibold leading-tight" style={{ color: theme.ink }}><BiText mode={mode} en={row.en} zh={row.zh} /></div>
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: row.tone }}>{row.weight >= 85 ? "High" : row.weight >= 65 ? "Mid" : "Support"}</div>
+                  </div>
+                  <div className="h-1.5 w-full overflow-hidden rounded-full" style={{ background: "#E7DDCC" }}>
+                    <div className="h-full rounded-full" style={{ width: `${row.weight}%`, background: row.tone }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 text-[11px] leading-5" style={{ color: theme.subInk }}><BiText mode={mode} en="Rule of thumb: spend more minutes per mark on the top three." zh="操作原則：前三項每分的投入時間要更高。" /></div>
+          </InfoCard>
           <InfoCard titleEn="Core exam behavior" titleZh="核心作答行為" mode={mode}><BulletList mode={mode} items={[
             { en: "Identify the focal firm and the strategically meaningful industry.", zh: "先辨認 focal firm 與具有策略意義的 industry。" },
             { en: "State the performance comparator before judging performance.", zh: "在評論 performance 前，先說明 comparator。" },
@@ -4593,11 +4617,31 @@ function FirmSection({ mode }) {
             { en: "There is no universally correct scope. The test is internal consistency and fit with opportunity.", zh: "沒有普遍正確的 scope。真正的檢驗標準是內部一致性與市場機會匹配。" },
             { en: "Classic contrast: Swatch broadlines from Flik Flak to Breguet, while Rolex focuses on the upper segments.", zh: "經典對比：Swatch 從 Flik Flak 到 Breguet 橫跨多個 segment，而 Rolex 集中在高端區段。" },
           ]} /></InfoCard>
-          <InfoCard titleEn="The three dysfunction formulas" titleZh="三個 dysfunction 公式" mode={mode} tone="danger"><SimpleTable mode={mode} size="compact" columns={[{ key: "missing", en: "What is missing", zh: "缺了甚麼" },{ key: "result", en: "Result", zh: "結果" }]} rows={[
-            { missing: { en: "Action is missing from analysis + leadership", zh: "Analysis + Leadership 少了 Action" }, result: { en: "Paralysis", zh: "Paralysis" } },
-            { missing: { en: "Analysis is missing from action + leadership", zh: "Action + Leadership 少了 Analysis" }, result: { en: "Random or misdirected", zh: "Random / Misdirected" } },
-            { missing: { en: "Leadership is missing from analysis + action", zh: "Analysis + Action 少了 Leadership" }, result: { en: "Scattered and confused", zh: "Scattered and Confused" } },
-          ]} /></InfoCard>
+          <InfoCard titleEn="The three dysfunction formulas" titleZh="三個 dysfunction 公式" mode={mode} tone="danger">
+            <div className="space-y-2">
+              {[
+                { have: ["Analysis", "Leadership"], missing: "Action", resultEn: "Paralysis", resultZh: "Paralysis / 癱瘓", tone: theme.danger },
+                { have: ["Action", "Leadership"], missing: "Analysis", resultEn: "Random / misdirected", resultZh: "Random / 方向錯誤", tone: theme.gold },
+                { have: ["Analysis", "Action"], missing: "Leadership", resultEn: "Scattered & confused", resultZh: "Scattered / 混亂", tone: theme.plum },
+              ].map((row, idx) => (
+                <div key={idx} className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+                  <div className="flex flex-wrap items-center gap-1.5 text-[12px] font-semibold">
+                    {row.have.map((h, hIdx) => (
+                      <React.Fragment key={h}>
+                        <span className="rounded-full border px-2 py-0.5" style={{ borderColor: theme.line, background: "#EEF5F0", color: theme.ok }}>{h}</span>
+                        {hIdx < row.have.length - 1 ? <span style={{ color: theme.subInk }}>+</span> : null}
+                      </React.Fragment>
+                    ))}
+                    <span style={{ color: theme.subInk }}>−</span>
+                    <span className="rounded-full border px-2 py-0.5 line-through" style={{ borderColor: theme.line, background: "#FBF3F1", color: theme.danger }}>{row.missing}</span>
+                    <span style={{ color: theme.subInk }}>=</span>
+                    <span className="rounded-full px-2 py-0.5 text-[#FFFDF8]" style={{ background: row.tone }}><BiText mode={mode} en={row.resultEn} zh={row.resultZh} /></span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 text-[11px] leading-5" style={{ color: theme.subInk }}><BiText mode={mode} en="All three ingredients must be present together for strategy to land." zh="Analysis、Action、Leadership 三者同時到位，strategy 才有機會真的落地。" /></div>
+          </InfoCard>
         </div>
         <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Leadership is a double-edged sword" titleZh="Leadership 是雙面刃" mode={mode} tone="gold"><BulletList mode={mode} items={[
@@ -4632,12 +4676,31 @@ function MesoSection({ mode }) {
         ].map(([en1, zh1, en2, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="font-semibold mb-1" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><div style={{ color: theme.subInk }}><BiText mode={mode} en={en2} zh={zh2} /></div></div>)}</div></InfoCard>
         <MesoEcosystemBoard mode={mode} />
         <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
-          <InfoCard titleEn="Bargaining power is a three-axis diagnosis" titleZh="議價力是三軸診斷" mode={mode} tone="gold"><BulletList mode={mode} items={[
-            { en: "Intrinsic bargaining strength: concentration, substitutes, switching costs, pull-through, vertical integration threat.", zh: "Intrinsic bargaining strength：集中度、替代品、switching costs、pull-through、垂直整合威脅。" },
-            { en: "Price sensitivity: cost share, strategy, profitability, and quality impact.", zh: "Price sensitivity：成本占比、策略、獲利狀況與品質影響。" },
-            { en: "Willingness to use power: even strong players do not always press as hard as they could.", zh: "Willingness to use power：就算很強，實際上也不一定會用到極致。" },
-            { en: "Real bargaining outcome depends on the interaction of all three axes, not just abstract strength.", zh: "真實 bargaining outcome 取決於三軸交互，而不是只看表面 strength。" },
-          ]} /></InfoCard>
+          <InfoCard titleEn="Bargaining power is a three-axis diagnosis" titleZh="議價力是三軸診斷" mode={mode} tone="gold">
+            <div className="grid gap-2">
+              {[
+                { axis: "01", titleEn: "Intrinsic strength", titleZh: "Intrinsic strength", descEn: "Concentration, substitutes, switching costs, pull-through, vertical-integration threat.", descZh: "集中度、替代品、switching costs、pull-through、垂直整合威脅。", tone: theme.teal, bg: "#EDF4F6" },
+                { axis: "02", titleEn: "Price sensitivity", titleZh: "Price sensitivity", descEn: "Cost share, strategy, profitability, and quality impact.", descZh: "成本占比、策略、獲利狀況與品質影響。", tone: theme.plum, bg: "#F4EDF3" },
+                { axis: "03", titleEn: "Willingness to use power", titleZh: "Willingness to use power", descEn: "Even strong players do not always press as hard as they could.", descZh: "就算很強，也不一定會用到極致。", tone: theme.gold, bg: "#FBF5E8" },
+              ].map((r) => (
+                <div key={r.axis} className="flex items-start gap-3 rounded-2xl border p-3" style={{ borderColor: theme.line, background: r.bg }}>
+                  <span className="mt-0.5 inline-flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-[11px] font-semibold" style={{ background: r.tone, color: "#FFFDF8" }}>{r.axis}</span>
+                  <div className="min-w-0">
+                    <div className="text-[13px] font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={r.titleEn} zh={r.titleZh} /></div>
+                    <div className="mt-0.5 text-[12px] leading-5" style={{ color: theme.subInk }}><BiText mode={mode} en={r.descEn} zh={r.descZh} /></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 flex items-center gap-2 rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+              <span className="text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.teal }}>01</span>
+              <span style={{ color: theme.gold }}>×</span>
+              <span className="text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.plum }}>02</span>
+              <span style={{ color: theme.gold }}>×</span>
+              <span className="text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.gold }}>03</span>
+              <span className="ml-2 text-[12px]" style={{ color: theme.subInk }}><BiText mode={mode} en="= real bargaining outcome" zh="= 真實 bargaining outcome" /></span>
+            </div>
+          </InfoCard>
           <InfoCard titleEn="Regional clusters and why they persist" titleZh="區域群聚以及為何它們難以被撼動" mode={mode} tone="plum"><BulletList mode={mode} items={[
             { en: "Typical examples include Silicon Valley, Hollywood, London / New York finance, Swiss luxury watches, Bangalore, and Hsinchu.", zh: "常見例子包括 Silicon Valley、Hollywood、倫敦 / 紐約金融、瑞士奢華腕錶、Bangalore、Hsinchu。" },
             { en: "Clusters can arise from natural resources, market proximity, labor pooling, specialized input suppliers, shared infrastructure, reduced transaction cost, and knowledge spillovers.", zh: "群聚可以源自自然資源、市場接近性、勞動力池、專業投入供應商、共享基礎設施、較低交易成本與知識外溢。" },
@@ -4676,7 +4739,27 @@ function MetaSection({ mode }) {
         <InfoCard titleEn="Eight supranational drivers" titleZh="八個超國家驅動因素" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{[["International geopolitics","International Geo-politics"],["International economic conditions","International Economic Conditions"],["Global technology trends","Global Technology Trends"],["Social and environmental issues","Social and Environmental Issues"],["Multilateral organizations","Multilateral Organizations"],["Supranational policies and trade blocs","Supranational Policies & Trade Blocs"],["Foreign governments","Foreign Governments"],["Foreign multinationals and other supranational groups","Foreign Multinationals & Other Supranational Groups"]].map(([en, zh]) => <div key={en} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><BiText mode={mode} en={en} zh={zh} /></div>)}</div></InfoCard>
         <MetaPressureBoard mode={mode} />
         <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
-          <InfoCard titleEn='The "Inverted T" view of the world' titleZh='「倒 T 型」世界觀' mode={mode} tone="gold"><BiText mode={mode} block en="The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution." zh="世界並不像某些流行說法那樣 flat。創造 ideas 的能力仍高度集中在特定的人、公司與地點；但執行資源則相對分散。關鍵策略問題是：誰會成為 flattener，誰又會被壓成只能在 execution 上競爭的 flattenee。" /></InfoCard>
+          <InfoCard titleEn='The "Inverted T" view of the world' titleZh='「倒 T 型」世界觀' mode={mode} tone="gold">
+            <BiText mode={mode} block en="The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution." zh="世界並不像某些流行說法那樣 flat。創造 ideas 的能力仍高度集中在特定的人、公司與地點；但執行資源則相對分散。關鍵策略問題是：誰會成為 flattener，誰又會被壓成只能在 execution 上競爭的 flattenee。" />
+            <div className="mt-3 rounded-[18px] border p-3" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+              <div className="mx-auto flex max-w-[320px] flex-col items-center">
+                <div className="flex h-14 w-24 flex-col items-center justify-center rounded-[10px] text-center" style={{ background: "#F4EDF3", border: `1px solid ${theme.plum}` }}>
+                  <div className="text-[10px] uppercase tracking-[0.16em]" style={{ color: theme.plum }}>Ideas</div>
+                  <div className="text-[11px] font-semibold" style={{ color: theme.plum }}><BiText mode={mode} en="Concentrated" zh="高度集中" /></div>
+                </div>
+                <div className="h-3 w-0.5" style={{ background: theme.line }} />
+                <div className="flex h-12 w-full flex-col items-center justify-center rounded-[10px] text-center" style={{ background: "#EDF4F6", border: `1px solid ${theme.teal}` }}>
+                  <div className="text-[10px] uppercase tracking-[0.16em]" style={{ color: theme.teal }}>Execution</div>
+                  <div className="text-[11px] font-semibold" style={{ color: theme.teal }}><BiText mode={mode} en="Widely distributed" zh="廣泛分布" /></div>
+                </div>
+              </div>
+              <div className="mt-3 flex items-center justify-between gap-2 text-[11px]" style={{ color: theme.subInk }}>
+                <span className="rounded-full border px-2 py-1" style={{ borderColor: theme.line, background: "#FBF5E8", color: "#7A5A18" }}><BiText mode={mode} en="Flattener: sets the rules" zh="Flattener：訂規則者" /></span>
+                <span>↔</span>
+                <span className="rounded-full border px-2 py-1" style={{ borderColor: theme.line, background: "#FBF3F1", color: theme.danger }}><BiText mode={mode} en="Flattenee: executes only" zh="Flattenee：只剩 execution" /></span>
+              </div>
+            </div>
+          </InfoCard>
           <InfoCard titleEn="Why this matters so much for the final" titleZh="為甚麼它對期末特別重要" mode={mode} tone="plum"><BiText mode={mode} block en="Supranational drivers do not merely change profit levels. They can rewrite who is allowed to enter, under what rules, with which technologies, and with what geopolitical constraints. That is why they matter disproportionately in international and corporate strategy questions." zh="Supranational drivers 不只是改變 profit 高低。它們甚至會直接改寫誰能進場、以甚麼規則進場、用甚麼技術進場，以及面對甚麼 geopolitical constraints。這也是它在 international 與 corporate strategy 題目中特別重要的原因。" /></InfoCard>
         </div>
       </div>
@@ -4720,22 +4803,47 @@ function CorporateSection({ mode }) {
           <InfoCard titleEn="Eight-question blueprint" titleZh="八問藍圖" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "How many industries?", zh: "有幾個 industries？" }, { en: "Which industries?", zh: "是哪一些 industries？" }, { en: "How do the five levels differ from the firm’s existing businesses?", zh: "新舊 business 在五個層次上有何差異？" }, { en: "What SPARK is needed in each business?", zh: "每個 business 需要甚麼 SPARK？" }, { en: "How should SPARK be matched to business conditions?", zh: "如何讓 SPARK 對應 business 條件？" }, { en: "How should the multi-business company be organized?", zh: "這個 multi-business company 要如何組織？" }, { en: "Where is value created: across subsidiaries, or between HQ and subsidiaries?", zh: "價值究竟是在 subsidiaries 之間，還是在 HQ 與 subsidiaries 之間被創造？" }, { en: "Are the businesses related or unrelated?", zh: "這些 businesses 是 related 還是 unrelated？" },
           ]} /></InfoCard>
-          <InfoCard titleEn="Six value-creation mechanisms" titleZh="六種 corporate value creation 機制" mode={mode} tone="plum"><SimpleTable mode={mode} size="compact" columns={[{ key: "m", en: "Mechanism", zh: "機制" }, { key: "t", en: "How to test it", zh: "考試檢驗方式" }]} rows={[
-            { m: { en: "Scope economies", zh: "Scope economies" }, t: { en: "Can you point to real, quantifiable shared cost or quality gains?", zh: "能否指出真實、可量化的共用成本或品質效益？" } },
-            { m: { en: "Shared resources", zh: "Shared resources" }, t: { en: "Is the same brand, platform, or channel reused meaningfully across businesses?", zh: "同一品牌、平台或通路是否真的跨業務被重複使用？" } },
-            { m: { en: "Knowledge transfer", zh: "Knowledge transfer" }, t: { en: "Is learning from one business improving another?", zh: "一個 business 的學習，有沒有真的改善另一個 business？" } },
-            { m: { en: "Internal capital market", zh: "Internal capital market" }, t: { en: "Is HQ allocating capital better than the external market would?", zh: "HQ 的資本配置是否優於外部市場？" } },
-            { m: { en: "Managerial discipline", zh: "Managerial discipline" }, t: { en: "Does HQ actually improve operational discipline after acquisition or integration?", zh: "HQ 在併購或整合後，是否真的提升 operational discipline？" } },
-            { m: { en: "Bargaining leverage", zh: "Bargaining leverage" }, t: { en: "Can the corporation negotiate better terms because it aggregates scale or relationships?", zh: "公司是否因整合規模或關係而獲得更強議價力？" } },
-          ]} /></InfoCard>
+          <InfoCard titleEn="Six value-creation mechanisms" titleZh="六種 corporate value creation 機制" mode={mode} tone="plum">
+            <div className="grid gap-2 sm:grid-cols-2">
+              {[
+                { no: "01", en: "Scope economies", zh: "Scope economies", testEn: "Can you point to real, quantifiable shared cost or quality gains?", testZh: "能否指出真實、可量化的共用成本或品質效益？", tone: theme.teal },
+                { no: "02", en: "Shared resources", zh: "Shared resources", testEn: "Is the same brand, platform, or channel reused meaningfully across businesses?", testZh: "同一品牌、平台或通路是否真的跨業務被重複使用？", tone: theme.gold },
+                { no: "03", en: "Knowledge transfer", zh: "Knowledge transfer", testEn: "Is learning from one business improving another?", testZh: "一個 business 的學習，有沒有真的改善另一個 business？", tone: theme.olive },
+                { no: "04", en: "Internal capital market", zh: "Internal capital market", testEn: "Is HQ allocating capital better than the external market would?", testZh: "HQ 的資本配置是否優於外部市場？", tone: theme.plum },
+                { no: "05", en: "Managerial discipline", zh: "Managerial discipline", testEn: "Does HQ actually improve operational discipline after acquisition or integration?", testZh: "HQ 在併購或整合後，是否真的提升 operational discipline？", tone: theme.ok },
+                { no: "06", en: "Bargaining leverage", zh: "Bargaining leverage", testEn: "Can the corporation negotiate better terms because it aggregates scale or relationships?", testZh: "公司是否因整合規模或關係而獲得更強議價力？", tone: theme.danger },
+              ].map((m) => (
+                <div key={m.no} className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+                  <div className="mb-1 flex items-center gap-2">
+                    <span className="inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-full px-1.5 text-[11px] font-semibold" style={{ background: m.tone, color: "#FFFDF8" }}>{m.no}</span>
+                    <span className="text-[13px] font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={m.en} zh={m.zh} /></span>
+                  </div>
+                  <div className="text-[12px] leading-5" style={{ color: theme.subInk }}><BiText mode={mode} en={m.testEn} zh={m.testZh} /></div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 rounded-2xl border p-3 text-[12px] leading-5" style={{ borderColor: theme.line, background: "#F4EDF3", color: theme.subInk }}><BiText mode={mode} en="Scoring check: name the mechanism, test it against the case, then return a sum-of-parts verdict." zh="評分檢查：先命名機制，再用案例證據檢驗，最後回到 sum-of-parts 判斷。" /></div>
+          </InfoCard>
         </div>
-        <InfoCard titleEn="Canonical case signals" titleZh="代表案例訊號" mode={mode}><BulletList mode={mode} items={[
-          { en: "Walmart: focused retail scope can still create enough scope economies within a narrow domain.", zh: "Walmart：即使 corporate scope 不廣，只要在 retail 內部有足夠 scope economies，仍然成立。" },
-          { en: "Mitsubishi: broad historical structure invites a sum-of-parts question.", zh: "Mitsubishi：廣泛的歷史性結構，天然會被問 sum-of-parts 問題。" },
-          { en: "Acer / Wistron: when units inside the same corporation undermine each other, breakup can be the value-creating move.", zh: "Acer / Wistron：當同一 corporate structure 內的 business units 互相破壞，分拆反而才是創造價值的動作。" },
-          { en: "Disney under Iger: related diversification worked because Pixar, Marvel, Lucasfilm, and Fox all deepened the IP content system.", zh: "Disney 在 Iger 時代：related diversification 成立，是因為 Pixar、Marvel、Lucasfilm、Fox 都在加深 IP content system。" },
-          { en: "Newell: classic case of HQ value through managerial discipline.", zh: "Newell：典型的 HQ 透過 managerial discipline 加值。" },
-        ]} /></InfoCard>
+        <InfoCard titleEn="Canonical case signals" titleZh="代表案例訊號" mode={mode}>
+          <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+            {[
+              { nameEn: "Walmart", mechEn: "Scope economies", descEn: "Focused retail scope still creates real scope economies within a narrow domain.", descZh: "即使 corporate scope 不廣，只要在 retail 內部有足夠 scope economies，仍然成立。", tone: theme.teal },
+              { nameEn: "Mitsubishi", mechEn: "Sum-of-parts test", descEn: "Broad historical structure demands a sum-of-parts value question.", descZh: "廣泛的歷史性結構，天然會被問 sum-of-parts 問題。", tone: theme.gold },
+              { nameEn: "Acer / Wistron", mechEn: "Breakup as value", descEn: "When units undermine each other, breakup can be the value-creating move.", descZh: "當同一 corporate structure 內的 units 互相破壞，分拆反而才是創造價值的動作。", tone: theme.danger },
+              { nameEn: "Disney / Iger", mechEn: "Related diversification", descEn: "Pixar, Marvel, Lucasfilm, and Fox each deepened the same IP content system.", descZh: "Pixar、Marvel、Lucasfilm、Fox 都在加深 IP content system。", tone: theme.plum },
+              { nameEn: "Newell", mechEn: "Managerial discipline", descEn: "Classic case of HQ adding value through operational tightening post-acquisition.", descZh: "典型的 HQ 透過 managerial discipline 加值案例。", tone: theme.ok },
+            ].map((c) => (
+              <div key={c.nameEn} className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+                <div className="mb-1 flex items-center gap-2">
+                  <span className="text-[13px] font-semibold" style={{ color: theme.ink }}>{c.nameEn}</span>
+                  <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ background: c.tone, color: "#FFFDF8" }}>{c.mechEn}</span>
+                </div>
+                <div className="text-[12px] leading-5" style={{ color: theme.subInk }}><BiText mode={mode} en={c.descEn} zh={c.descZh} /></div>
+              </div>
+            ))}
+          </div>
+        </InfoCard>
       </div>
     </SectionShell>
   );
@@ -4755,31 +4863,63 @@ function ImplementationSection({ mode }) {
         <InfoCard titleEn="The five-block implementation system" titleZh="五段 implementation 系統" mode={mode} tone="teal"><StageRibbon mode={mode} items={stages} /></InfoCard>
         <ImplementationDiagnosisBoard mode={mode} />
         <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
-          <InfoCard titleEn="Knowing-Not-Knowing: seven reasons" titleZh="Knowing-Not-Knowing 的七個原因" mode={mode} tone="gold"><BulletList mode={mode} items={[
-            { en: "Problems of framing", zh: "Problems of framing" }, { en: "Incorrect perceptions", zh: "Incorrect perceptions" }, { en: "Issues with reasoning", zh: "Issues with reasoning" }, { en: "Ignoring the obvious", zh: "Ignoring the obvious" }, { en: "Going along with the pack", zh: "Going along with the pack" }, { en: "Believing others have done the homework", zh: "Believing others have done the homework" }, { en: "Willful blindness", zh: "Willful blindness" },
-          ]} /></InfoCard>
-          <InfoCard titleEn="Resistance and the commitment ladder" titleZh="Resistance 與 commitment ladder" mode={mode} tone="plum"><div className="mb-4"><BulletList mode={mode} items={[
-            { en: "Six common resistance sources: fear of the unknown, loss of control, habit, emotional attachments, cognitive dissonance, social influences.", zh: "六種常見 resistance 來源：fear of the unknown、loss of control、habit、emotional attachments、cognitive dissonance、social influences。" },
-            { en: "Six practical responses: acknowledge feelings, gather information, take small steps, seek support, understand others, bring people along.", zh: "六種實務回應：acknowledge feelings、gather information、take small steps、seek support、understand others、bring people along。" },
-          ]} /></div><div className="flex flex-wrap items-center gap-2">{["I know", "I understand", "I am considering", "I want to", "I will", "I commit"].map((step, idx) => <React.Fragment key={step}><span className="rounded-full border px-3 py-2 text-sm" style={{ borderColor: theme.line, background: idx === 5 ? "#EDF4F6" : "#FBF8F0", color: idx === 5 ? theme.teal : theme.ink }}>{step}</span>{idx < 5 ? <span style={{ color: theme.gold }}>→</span> : null}</React.Fragment>)}</div><div className="mt-3 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en='A memo and a meeting do not equal commitment. "I know" is nowhere near "I commit."' zh='發一封 memo、開一次 meeting，不代表 commitment 已經形成。從 "I know" 到 "I commit" 之間有很長的距離。' /></div></InfoCard>
+          <InfoCard titleEn="Knowing-Not-Knowing: seven reasons" titleZh="Knowing-Not-Knowing 的七個原因" mode={mode} tone="gold">
+            <div className="grid gap-2 sm:grid-cols-2">
+              {[
+                { no: "01", en: "Problems of framing", zh: "Problems of framing" },
+                { no: "02", en: "Incorrect perceptions", zh: "Incorrect perceptions" },
+                { no: "03", en: "Issues with reasoning", zh: "Issues with reasoning" },
+                { no: "04", en: "Ignoring the obvious", zh: "Ignoring the obvious" },
+                { no: "05", en: "Going along with the pack", zh: "Going along with the pack" },
+                { no: "06", en: "Believing others have done the homework", zh: "Believing others have done the homework" },
+                { no: "07", en: "Willful blindness", zh: "Willful blindness" },
+              ].map((r) => (
+                <div key={r.no} className="flex items-center gap-2 rounded-2xl border px-3 py-2.5" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+                  <span className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-[10px] font-semibold" style={{ background: "#E1D1A8", color: "#7A5A18" }}>{r.no.slice(1)}</span>
+                  <span className="text-[13px] leading-5" style={{ color: theme.subInk }}><BiText mode={mode} en={r.en} zh={r.zh} /></span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-3 rounded-2xl border p-3 text-[12px] leading-5" style={{ borderColor: theme.line, background: "#FBF5E8", color: theme.subInk }}><BiText mode={mode} en="Key diagnostic: which one of these seven is operating in the Nokia case? Usually more than one." zh="關鍵診斷：Nokia 案例中，這七個裡面哪一個正在運作？通常不只一個。" /></div>
+          </InfoCard>
+          <InfoCard titleEn="Resistance and the commitment ladder" titleZh="Resistance 與 commitment ladder" mode={mode} tone="plum">
+            <div className="mb-4 grid gap-3 sm:grid-cols-2">
+              <div>
+                <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: theme.danger }}><BiText mode={mode} en="Six resistance sources" zh="六種 resistance 來源" /></div>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Fear of unknown","Loss of control","Habit","Emotional attachments","Cognitive dissonance","Social influences"].map((s) => (
+                    <span key={s} className="rounded-full border px-2.5 py-1 text-[11px]" style={{ borderColor: "#D8BBB2", background: "#FBF3F1", color: theme.danger }}>{s}</span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: theme.ok }}><BiText mode={mode} en="Six practical responses" zh="六種實務回應" /></div>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Acknowledge feelings","Gather information","Take small steps","Seek support","Understand others","Bring people along"].map((r) => (
+                    <span key={r} className="rounded-full border px-2.5 py-1 text-[11px]" style={{ borderColor: "#C5D7CA", background: "#EEF5F0", color: theme.ok }}>{r}</span>
+                  ))}
+                </div>
+              </div>
+            </div><div className="flex flex-wrap items-center gap-2">{["I know", "I understand", "I am considering", "I want to", "I will", "I commit"].map((step, idx) => <React.Fragment key={step}><span className="rounded-full border px-3 py-2 text-sm" style={{ borderColor: theme.line, background: idx === 5 ? "#EDF4F6" : "#FBF8F0", color: idx === 5 ? theme.teal : theme.ink }}>{step}</span>{idx < 5 ? <span style={{ color: theme.gold }}>→</span> : null}</React.Fragment>)}</div><div className="mt-3 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en='A memo and a meeting do not equal commitment. "I know" is nowhere near "I commit."' zh='發一封 memo、開一次 meeting，不代表 commitment 已經形成。從 "I know" 到 "I commit" 之間有很長的距離。' /></div></InfoCard>
         </div>
-        <InfoCard titleEn="Behavioral anchors and why they matter" titleZh="行為實驗錨點與它們的意義" mode={mode}>
-          <div className="mb-3 text-xs uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Conformity, reporting, and social pressure" zh="服從、自述與社會壓力" /></div>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        <VisualPanel mode={mode} tone="teal" titleEn="Behavioral anchors — conformity, reporting, social pressure" titleZh="行為錨點 — 服從、自述與社會壓力" subEn="Why saying and doing diverge, and how group context changes behavior." subZh="說的與做的為甚麼會不一致，以及群體情境如何改變行為。">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
             <MetricBar mode={mode} titleEn="Handwashing self-report" titleZh="洗手自述" value={73} subEn="Self-report vs observed behavior" subZh="自述與實際行為差距" />
             <MetricBar mode={mode} titleEn="Handwashing observed" titleZh="洗手觀察值" value={9} tone="danger" subEn="Australian study of hospital hygiene" subZh="澳洲醫院衛生研究觀察值" />
             <MetricBar mode={mode} titleEn="Asch conformity rate" titleZh="Asch 服從率" value={37} tone="gold" subEn="On critical trials with unanimous group" subZh="在群體一致情境下的關鍵回合" />
             <MetricBar mode={mode} titleEn="Asch with one ally" titleZh="Asch 單一同盟者" value={5} tone="ok" subEn="Single dissenter breaks conformity" subZh="單一反對者就能瓦解從眾" />
             <MetricBar mode={mode} titleEn="Asch private written" titleZh="Asch 匿名書面" value={12} tone="plum" subEn="Private response reduces pressure" subZh="匿名作答大幅降低群體壓力" />
           </div>
-          <div className="mt-4 mb-3 text-xs uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Situation beats personality" zh="情境大於人格" /></div>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        </VisualPanel>
+        <VisualPanel mode={mode} tone="plum" titleEn="Situation beats personality" titleZh="情境大於人格" subEn="Small shifts in time pressure or message fidelity swing behavior more than individual traits." subZh="時間壓力或訊息保真度的小改變，對行為的影響遠超過個人特質。">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
             <MetricBar mode={mode} titleEn="Good Samaritan, early" titleZh="好撒瑪利亞人，提早" value={63} subEn="Seminarians with time in hand" subZh="有餘裕的神學院學生" />
             <MetricBar mode={mode} titleEn="Good Samaritan, on time" titleZh="好撒瑪利亞人，準時" value={45} tone="gold" subEn="Just-on-time group" subZh="準時趕到的群體" />
             <MetricBar mode={mode} titleEn="Good Samaritan, late" titleZh="好撒瑪利亞人，遲到" value={10} tone="danger" subEn="Rushed group walked past the victim" subZh="趕時間的群體直接走過受害者" />
             <MetricBar mode={mode} titleEn="Telephone-game loss per pass" titleZh="傳話每次損失" value={20} tone="plum" subEn="Fidelity drops 20% per layer" subZh="每傳一次約衰減 20%" />
           </div>
-          <div className="mt-5 grid gap-3 xl:grid-cols-[1.2fr_0.8fr]">
+        </VisualPanel>
+        <div className="grid gap-3 xl:grid-cols-[1.2fr_0.8fr]">
             <VisualPanel mode={mode} tone="teal" titleEn="Seat belt behavior change curve" titleZh="安全帶使用率變化曲線" subEn="Even rational safety gains take a generation to land — ~25 years from 11% to 80%+." subZh="即便是明顯有益的安全行為，也需要約 25 年才能從 11% 走到 80%+。">
               <div className="grid gap-3 md:grid-cols-3">
                 <MetricBar mode={mode} titleEn="1980 usage" titleZh="1980 年" value={11} tone="danger" subEn="Baseline before wide campaigns" subZh="宣導全面推動之前的基線" />
@@ -4787,15 +4927,14 @@ function ImplementationSection({ mode }) {
                 <MetricBar mode={mode} titleEn="2005 usage" titleZh="2005 年" value={82} tone="ok" suffix="%+" subEn="Sustained new-normal achieved" subZh="達成可持續的 new normal" />
               </div>
             </VisualPanel>
-            <VisualPanel mode={mode} tone="gold" titleEn="West Virginia &quot;skim milk&quot; case" titleZh="West Virginia「改喝低脂奶」案例" subEn="Specific instructions beat vague health messaging; low-fat milk uptake nearly doubled in six months." subZh="具體指令勝過模糊健康訴求，六個月內低脂奶採用率幾乎翻倍。">
+            <VisualPanel mode={mode} tone="gold" titleEn={'West Virginia "skim milk" case'} titleZh="West Virginia「改喝低脂奶」案例" subEn="Specific instructions beat vague health messaging; low-fat milk uptake nearly doubled in six months." subZh="具體指令勝過模糊健康訴求，六個月內低脂奶採用率幾乎翻倍。">
               <div className="grid gap-3 md:grid-cols-2">
                 <MetricBar mode={mode} titleEn="Before intervention" titleZh="介入前" value={18} tone="danger" subEn="Generic 'eat healthy' messaging" subZh="籠統的『吃健康一點』式訊息" />
-                <MetricBar mode={mode} titleEn="After 6 months" titleZh="六個月後" value={35} tone="ok" subEn="After specific &quot;switch to skim milk&quot; instruction" subZh="改用『改喝低脂奶』這種具體指令" />
+                <MetricBar mode={mode} titleEn="After 6 months" titleZh="六個月後" value={35} tone="ok" subEn={'After specific "switch to skim milk" instruction'} subZh="改用『改喝低脂奶』這種具體指令" />
               </div>
             </VisualPanel>
           </div>
-          <div className="mt-5">
-            <VisualPanel mode={mode} tone="plum" titleEn="Narrative vs. data: Treatment A and Treatment B" titleZh="敘事 vs. 數據：Treatment A 與 Treatment B" subEn="When shown the same underlying probabilities, a single narrative can flip behavior. Story dominates statistics." subZh="即使底層機率相同，一則敘事就能翻轉決策。故事常常凌駕統計。">
+        <VisualPanel mode={mode} tone="plum" titleEn="Narrative vs. data: Treatment A and Treatment B" titleZh="敘事 vs. 數據：Treatment A 與 Treatment B" subEn="When shown the same underlying probabilities, a single narrative can flip behavior. Story dominates statistics." subZh="即使底層機率相同，一則敘事就能翻轉決策。故事常常凌駕統計。">
               <div className="grid gap-3 md:grid-cols-2">
                 <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
                   <div className="mb-2 flex items-center justify-between">
@@ -4821,11 +4960,38 @@ function ImplementationSection({ mode }) {
               <div className="mt-3 rounded-[18px] border p-3 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}>
                 <BiText mode={mode} en="Managerial read: if you want decisions to track the data, feed decision makers the data inside a vivid story. Raw probabilities without narrative rarely change behavior." zh="管理啟示：如果希望決策貼近數據，就把數據包進一則有畫面感的故事。只丟機率數字出去，很少能改變行為。" />
               </div>
-            </VisualPanel>
-          </div>
-          <div className="mt-4 grid gap-4 xl:grid-cols-[1fr_1fr]"><InfoCard titleEn="70 / 30 principle" titleZh="70 / 30 原則" mode={mode} tone="gold"><BiText mode={mode} block en="The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality." zh="管理者最常犯的錯，是系統性低估環境力量。教學重點在於：行為更多是由情境而不是人格決定。若想改變行為，比起說教人格，先改環境。" /><div className="mt-3 grid grid-cols-2 gap-3"><div className="rounded-[18px] border p-3 text-center" style={{ borderColor: theme.line, background: "#FFFDF8" }}><div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.subInk }}><BiText mode={mode} en="Personality" zh="人格" /></div><div className="text-2xl font-semibold" style={{ color: theme.danger }}>~30%</div></div><div className="rounded-[18px] border p-3 text-center" style={{ borderColor: theme.line, background: "#FFFDF8" }}><div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.subInk }}><BiText mode={mode} en="Situation / environment" zh="情境 / 環境" /></div><div className="text-2xl font-semibold" style={{ color: theme.ok }}>~70%</div></div></div></InfoCard><InfoCard titleEn="Kotter’s eight accelerators" titleZh="Kotter 八項加速器" mode={mode} tone="plum"><BulletList mode={mode} items={[
-          { en: "Create urgency and commitment", zh: "建立 urgency 與 commitment" }, { en: "Build a guiding coalition", zh: "建立 guiding coalition" }, { en: "Clarify the vision", zh: "把 vision 說清楚" }, { en: "Create a volunteer army", zh: "形成 volunteer army" }, { en: "Remove barriers", zh: "拆掉障礙" }, { en: "Motivate through progress", zh: "用 progress 持續激勵" }, { en: "Sustain and scale", zh: "持續並擴大" }, { en: "Solidify the new normal", zh: "固化成 new normal" },
-        ]} /></InfoCard></div></InfoCard>
+        </VisualPanel>
+        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+          <InfoCard titleEn="70 / 30 principle" titleZh="70 / 30 原則" mode={mode} tone="gold">
+            <BiText mode={mode} block en="The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality." zh="管理者最常犯的錯，是系統性低估環境力量。教學重點在於：行為更多是由情境而不是人格決定。若想改變行為，比起說教人格，先改環境。" />
+            <div className="mt-3 overflow-hidden rounded-full border" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+              <div className="flex h-8">
+                <div className="flex items-center justify-center text-[11px] font-semibold" style={{ width: "30%", background: "#F8EFEC", color: theme.danger }}>Personality ~30%</div>
+                <div className="flex items-center justify-center text-[11px] font-semibold" style={{ width: "70%", background: "#EEF5F0", color: theme.ok }}>Situation ~70%</div>
+              </div>
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-3">
+              <div className="rounded-[18px] border p-3 text-center" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+                <div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.subInk }}><BiText mode={mode} en="Personality" zh="人格" /></div>
+                <div className="text-2xl font-semibold" style={{ color: theme.danger }}>~30%</div>
+                <div className="mt-1 text-[11px] leading-5" style={{ color: theme.subInk }}><BiText mode={mode} en="What managers over-weight" zh="管理者最常高估的部分" /></div>
+              </div>
+              <div className="rounded-[18px] border p-3 text-center" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+                <div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.subInk }}><BiText mode={mode} en="Situation / environment" zh="情境 / 環境" /></div>
+                <div className="text-2xl font-semibold" style={{ color: theme.ok }}>~70%</div>
+                <div className="mt-1 text-[11px] leading-5" style={{ color: theme.subInk }}><BiText mode={mode} en="What managers systematically under-weight" zh="管理者系統性低估的部分" /></div>
+              </div>
+            </div>
+          </InfoCard>
+          <InfoCard titleEn="Kotter’s eight accelerators" titleZh="Kotter 八項加速器" mode={mode} tone="plum"><ol className="space-y-1.5">
+            {["Create urgency and commitment::建立 urgency 與 commitment","Build a guiding coalition::建立 guiding coalition","Clarify the vision::把 vision 說清楚","Create a volunteer army::形成 volunteer army","Remove barriers::拆掉障礙","Motivate through progress::用 progress 持續激勵","Sustain and scale::持續並擴大","Solidify the new normal::固化成 new normal"].map((pair, i) => { const [en, zh] = pair.split("::"); return (
+              <li key={en} className="flex items-start gap-3 text-sm leading-6">
+                <span className="mt-0.5 inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold" style={{ borderColor: "#D8C3D4", background: "#F4EDF3", color: theme.plum }}>{String(i + 1).padStart(2, "0")}</span>
+                <span style={{ color: theme.subInk }}><BiText mode={mode} en={en} zh={zh} /></span>
+              </li>
+            ); })}
+          </ol></InfoCard>
+        </div>
         <InfoCard titleEn="Nokia as the implementation transfer case" titleZh="Nokia 作為 implementation transfer 標準案例" mode={mode} tone="danger"><SimpleTable mode={mode} size="compact" columns={[{ key: "p", en: "Pathology", zh: "病理" }, { key: "e", en: "Reading signal", zh: "reading 證據" }]} rows={[
           { p: { en: "Knowing-Not-Knowing / willful blindness", zh: "Knowing-Not-Knowing / willful blindness" }, e: { en: "Research and prototype signals existed, but action did not follow.", zh: "研究與 prototype 訊號早已存在，但沒有轉成行動。" } },
           { p: { en: "Knowing-Doing Gap", zh: "Knowing-Doing Gap" }, e: { en: "Symbian problems were understood without corresponding strategic movement.", zh: "Symbian 的問題已被理解，但沒有對應的策略位移。" } },
@@ -4833,11 +4999,26 @@ function ImplementationSection({ mode }) {
           { p: { en: "Communication failure", zh: "Communication failure" }, e: { en: "Mid-level objections were not formally recorded or escalated.", zh: "中層反對意見沒有被正式記錄或有效上達。" } },
           { p: { en: "Pluralistic silence and fear", zh: "Pluralistic silence 與 fear" }, e: { en: "Managers gave optimistic progress reports despite knowing targets were unrealistic.", zh: "管理者明知時程不合理，仍持續回報樂觀進度。" } },
           { p: { en: "Wrong environment", zh: "Wrong environment" }, e: { en: "Quarterly pressure, consensus norms, and layered approvals punished truth-telling.", zh: "季度壓力、共識文化與多層核准制度都在懲罰真話。" } },
-        ]} /><div className="mt-4 grid gap-4 xl:grid-cols-[1fr_1fr]"><InfoCard titleEn="Why Nokia was susceptible" titleZh="為甚麼 Nokia 特別脆弱" mode={mode}><BulletList mode={mode} items={[
-          { en: "Success hardening", zh: "先前成功造成硬化" }, { en: "Path dependency from earlier standard-setting success", zh: "早年 standard-setting 成功帶來 path dependency" }, { en: "Hardware-heavy leadership composition", zh: "硬體導向的領導結構" }, { en: "Consensus culture", zh: "共識型文化" }, { en: "Quarterly shareholder pressure", zh: "季度股東壓力" }, { en: "Multi-layer approval systems", zh: "多層核准流程" },
-        ]} /></InfoCard><InfoCard titleEn="What firms should do instead" titleZh="企業應如何避免重蹈覆轍" mode={mode}><BulletList mode={mode} items={[
-          { en: "Use anonymous written judgment before discussion.", zh: "先做匿名書面判斷，再進入討論。" }, { en: "Run red-team or outside review windows to challenge the dominant view.", zh: "設 red-team 或外部 review window 去推翻主流看法。" }, { en: "Break multi-layer approval barriers for disruptive projects.", zh: "替顛覆型專案拆掉多層核准障礙。" }, { en: "Reward the reporting of risks and blockers, not just progress.", zh: "獎勵風險與障礙的回報，而不是只獎勵 progress。" }, { en: "Preserve institutional knowledge during reorganizations.", zh: "在 reorganization 中保留 institutional knowledge。" }, { en: "Create urgency before the crisis becomes visible to everyone.", zh: "在危機對所有人都變得明顯前，先建立 urgency。" },
-        ]} /></InfoCard></div></InfoCard>
+        ]} /></InfoCard>
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
+          <InfoCard titleEn="Why Nokia was susceptible" titleZh="為甚麼 Nokia 特別脆弱" mode={mode}>
+            <div className="flex flex-wrap gap-2">
+              {[["Success hardening","先前成功造成硬化"],["Path dependency","早年 standard-setting 帶來 path dependency"],["Hardware-heavy leadership","硬體導向的領導結構"],["Consensus culture","共識型文化"],["Quarterly shareholder pressure","季度股東壓力"],["Multi-layer approval systems","多層核准流程"]].map(([en, zh]) => (
+                <span key={en} className="rounded-full border px-2.5 py-1 text-[12px]" style={{ borderColor: theme.line, background: "#FBF3F1", color: theme.danger }}><BiText mode={mode} en={en} zh={zh} /></span>
+              ))}
+            </div>
+          </InfoCard>
+          <InfoCard titleEn="What firms should do instead" titleZh="企業應如何避免重蹈覆轍" mode={mode} tone="ok">
+            <ol className="space-y-1.5">
+              {[["Use anonymous written judgment before discussion.","先做匿名書面判斷，再進入討論。"],["Run red-team or outside review windows to challenge the dominant view.","設 red-team 或外部 review window 去推翻主流看法。"],["Break multi-layer approval barriers for disruptive projects.","替顛覆型專案拆掉多層核准障礙。"],["Reward the reporting of risks and blockers, not just progress.","獎勵風險與障礙的回報，而不是只獎勵 progress。"],["Preserve institutional knowledge during reorganizations.","在 reorganization 中保留 institutional knowledge。"],["Create urgency before the crisis becomes visible to everyone.","在危機對所有人都變得明顯前，先建立 urgency。"]].map(([en, zh], i) => (
+                <li key={en} className="flex items-start gap-2.5 text-[13px] leading-6">
+                  <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-[10px] font-semibold" style={{ background: "#C5D7CA", color: theme.ok }}>{i + 1}</span>
+                  <span style={{ color: theme.subInk }}><BiText mode={mode} en={en} zh={zh} /></span>
+                </li>
+              ))}
+            </ol>
+          </InfoCard>
+        </div>
       </div>
     </SectionShell>
   );
