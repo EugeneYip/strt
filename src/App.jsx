@@ -3964,11 +3964,81 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
 
 function FloatingLanguageToggle({ mode, setMode }) {
   const [open, setOpen] = useState(false);
-  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }, { key: "ur", label: "اردو" }, { key: "es", label: "Español" }, { key: "jp", label: "日本語" }];
+  const options = [
+    { key: "en", label: "English", sub: "Primary" },
+    { key: "zh", label: "繁體中文", sub: "Traditional Chinese" },
+    { key: "zh-cn", label: "简体中文", sub: "Simplified Chinese" },
+    { key: "bi", label: "English + 中文", sub: "Bilingual" },
+    { key: "vi", label: "Tiếng Việt", sub: "Vietnamese" },
+    { key: "pt", label: "Português", sub: "Portuguese" },
+    { key: "es", label: "Español", sub: "Spanish" },
+    { key: "jp", label: "日本語", sub: "Japanese" },
+    { key: "ur", label: "اردو", sub: "Urdu" },
+  ];
+  const current = options.find((o) => o.key === mode) || options[0];
+  const label = uiText(mode, "Language", "語言", "Ngôn ngữ", undefined, "زبان", undefined, "Idioma", "言語");
   return (
-    <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
-      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ", undefined, undefined, undefined, "Idioma", "言語")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className={cn("rounded-2xl px-3 py-2 text-sm font-semibold", mode === "ur" ? "text-right" : "text-left")} style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
-      <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ", undefined, undefined, undefined, "Cambiar idioma", "言語切替")} title={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ", undefined, undefined, undefined, "Cambiar idioma", "言語切替")}>◎</button>
+    <div className="fixed bottom-4 right-4 z-40 sm:bottom-6 sm:right-6" dir="ltr">
+      {open ? (
+        <>
+          <button
+            aria-label="close language menu"
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 -z-10 h-full w-full cursor-default"
+            style={{ background: "rgba(30,39,50,0.08)", backdropFilter: "blur(1px)" }}
+          />
+          <div
+            className="mb-3 w-[244px] origin-bottom-right rounded-[22px] border p-2 shadow-2xl"
+            style={{ background: "#FFFDF8", borderColor: theme.line, boxShadow: "0 18px 40px -18px rgba(30,39,50,0.35)" }}
+          >
+            <div className="mb-1 flex items-center justify-between px-2 pt-1">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: theme.plum }}>{label}</div>
+              <div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.gold }}>EN · default</div>
+            </div>
+            <div className="flex flex-col gap-0.5">
+              {options.map((option) => {
+                const active = mode === option.key;
+                return (
+                  <button
+                    key={option.key}
+                    onClick={() => { setMode(option.key); setOpen(false); }}
+                    className="flex items-center justify-between gap-3 rounded-[14px] px-3 py-2 text-left transition-colors"
+                    style={{ background: active ? "#EDF4F6" : "transparent", border: `1px solid ${active ? "#BCD0D8" : "transparent"}` }}
+                  >
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-semibold" style={{ color: active ? theme.teal : theme.ink }}>{option.label}</span>
+                      <span className="block truncate text-[11px]" style={{ color: theme.subInk }}>{option.sub}</span>
+                    </span>
+                    {active ? (
+                      <span className="h-2 w-2 rounded-full" style={{ background: theme.teal }} aria-hidden="true" />
+                    ) : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      ) : null}
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="flex items-center gap-2 rounded-full border pl-3 pr-4 py-2.5 shadow-lg transition-all hover:-translate-y-0.5"
+        style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.ink, boxShadow: "0 12px 28px -12px rgba(30,39,50,0.35)" }}
+        aria-label={uiText(mode, "Open language menu", "開啟語言選單", "Mở menu ngôn ngữ", undefined, "زبان کا مینو", undefined, "Abrir menú de idioma", "言語メニューを開く")}
+        title={uiText(mode, "Language menu", "語言選單", "Menu ngôn ngữ", undefined, "زبان کا مینو", undefined, "Menú de idioma", "言語メニュー")}
+      >
+        <span
+          className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold"
+          style={{ background: mode === "en" ? "#EDF4F6" : "#F4EDF3", color: mode === "en" ? theme.teal : theme.plum }}
+          aria-hidden="true"
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13 13 0 010 18"/><path d="M12 3a13 13 0 000 18"/></svg>
+        </span>
+        <span className="hidden min-[360px]:flex flex-col items-start leading-tight">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ color: theme.plum }}>{label}</span>
+          <span className="text-sm font-semibold" style={{ color: theme.ink }}>{current.label}</span>
+        </span>
+        <span className="text-xs font-semibold" style={{ color: theme.subInk }}>{open ? "×" : "▾"}</span>
+      </button>
     </div>
   );
 }
@@ -4358,6 +4428,39 @@ function SpineSection({ mode }) {
             { en: "Build the puzzle, then solve the puzzle.", zh: "先把 puzzle 拼好，再解它。" },
           ]} /></InfoCard>
         </div>
+        <VisualPanel mode={mode} tone="teal" titleEn="BARD / POE sentence templates" titleZh="BARD / POE 句型模板" subEn="Ready-to-use conclusion language with strength signals. Pick the template that matches the evidence you actually have." subZh="可直接套用的 conclusion 語氣模板，附上 evidence 強度訊號。用你手上真的有的 evidence 去挑模板。">
+          <div className="grid gap-3 md:grid-cols-2">
+            <div className="rounded-3xl border p-4" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+              <div className="mb-2 flex items-center gap-2">
+                <span className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ background: theme.teal, color: "#FFFDF8" }}>BARD</span>
+                <span className="text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.teal }}><BiText mode={mode} en="Beyond A Reasonable Doubt" zh="排除合理懷疑" /></span>
+              </div>
+              <div className="mb-2 text-xs leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Use when evidence is strong and viable alternative explanations are minimal." zh="當 evidence 很強、可行替代解釋極少時使用。" /></div>
+              <div className="space-y-2 text-sm leading-6" style={{ color: theme.ink }}>
+                <div className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#F4F8F8" }}><BiText mode={mode} en='"The evidence shows beyond reasonable doubt that …"' zh='「證據已經 beyond reasonable doubt 地顯示……」' /></div>
+                <div className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#F4F8F8" }}><BiText mode={mode} en='"Taken together, X, Y, and Z leave no plausible alternative explanation other than …"' zh='「X、Y、Z 綜合起來，除了……之外沒有其他可信解釋。」' /></div>
+                <div className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#F4F8F8" }}><BiText mode={mode} en='"Given the magnitude and convergence of the signals, we can conclude with high confidence that …"' zh='「鑑於訊號的強度與一致性，可高度確信地下結論：……」' /></div>
+              </div>
+            </div>
+            <div className="rounded-3xl border p-4" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+              <div className="mb-2 flex items-center gap-2">
+                <span className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ background: theme.plum, color: "#FFFDF8" }}>POE</span>
+                <span className="text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Preponderance Of Evidence" zh="證據優勢" /></span>
+              </div>
+              <div className="mb-2 text-xs leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Use when the balance tips one way but remains limited." zh="當 evidence 傾向某方向但仍有限時使用。" /></div>
+              <div className="space-y-2 text-sm leading-6" style={{ color: theme.ink }}>
+                <div className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#F8F4FA" }}><BiText mode={mode} en='"On the balance of evidence, the most likely explanation is …"' zh='「在 evidence 的 balance 上，最可能的解釋是……」' /></div>
+                <div className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#F8F4FA" }}><BiText mode={mode} en='"The preponderance of evidence points toward … while acknowledging that …"' zh='「證據 preponderance 傾向於……，同時承認……」' /></div>
+                <div className="rounded-2xl border p-3" style={{ borderColor: theme.line, background: "#F8F4FA" }}><BiText mode={mode} en='"Though not conclusive, the weight of signals favors … over competing readings."' zh='「雖然不是 conclusive，但訊號的總體權重偏向……，而非其他解讀。」' /></div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-3 grid gap-3 md:grid-cols-3">
+            <div className="rounded-2xl border p-3 text-xs leading-6" style={{ borderColor: theme.line, background: "#F4F8F8", color: theme.subInk }}><div className="mb-1 font-semibold" style={{ color: theme.teal }}><BiText mode={mode} en="Strong evidence" zh="強證據" /></div><BiText mode={mode} en="Primary sources, numbers, multiple converging signals → BARD." zh="原始資料、數字、多重一致訊號 → BARD。" /></div>
+            <div className="rounded-2xl border p-3 text-xs leading-6" style={{ borderColor: theme.line, background: "#F8F4FA", color: theme.subInk }}><div className="mb-1 font-semibold" style={{ color: theme.plum }}><BiText mode={mode} en="Mixed evidence" zh="混合證據" /></div><BiText mode={mode} en="Indicative signals with real counter-evidence → POE." zh="有傾向性但也存在反證 → POE。" /></div>
+            <div className="rounded-2xl border p-3 text-xs leading-6" style={{ borderColor: theme.line, background: "#FBF3F1", color: theme.subInk }}><div className="mb-1 font-semibold" style={{ color: theme.danger }}><BiText mode={mode} en="Pitfall" zh="失分陷阱" /></div><BiText mode={mode} en="Hedging BARD-strong evidence or over-selling POE-level evidence both lose precision." zh="強證據過度 hedging，或弱證據過度自信，都會失分。" /></div>
+          </div>
+        </VisualPanel>
         <InfoCard titleEn="Strategy philosophy" titleZh="策略哲學" mode={mode}><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{[
           { en: "¼ showing up", zh: "四分之一是到場並投入" },
           { en: "¼ knowing what questions to ask", zh: "四分之一是知道要問甚麼問題" },
@@ -4660,7 +4763,67 @@ function ImplementationSection({ mode }) {
             { en: "Six practical responses: acknowledge feelings, gather information, take small steps, seek support, understand others, bring people along.", zh: "六種實務回應：acknowledge feelings、gather information、take small steps、seek support、understand others、bring people along。" },
           ]} /></div><div className="flex flex-wrap items-center gap-2">{["I know", "I understand", "I am considering", "I want to", "I will", "I commit"].map((step, idx) => <React.Fragment key={step}><span className="rounded-full border px-3 py-2 text-sm" style={{ borderColor: theme.line, background: idx === 5 ? "#EDF4F6" : "#FBF8F0", color: idx === 5 ? theme.teal : theme.ink }}>{step}</span>{idx < 5 ? <span style={{ color: theme.gold }}>→</span> : null}</React.Fragment>)}</div><div className="mt-3 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en='A memo and a meeting do not equal commitment. "I know" is nowhere near "I commit."' zh='發一封 memo、開一次 meeting，不代表 commitment 已經形成。從 "I know" 到 "I commit" 之間有很長的距離。' /></div></InfoCard>
         </div>
-        <InfoCard titleEn="Behavioral anchors and why they matter" titleZh="行為實驗錨點與它們的意義" mode={mode}><div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5"><MetricBar mode={mode} titleEn="Handwashing self-report" titleZh="洗手自述" value={73} subEn="Self-report vs observed behavior" subZh="自述與實際行為差距" /><MetricBar mode={mode} titleEn="Handwashing observed" titleZh="洗手觀察值" value={9} tone="danger" /><MetricBar mode={mode} titleEn="Asch conformity" titleZh="Asch 服從率" value={37} tone="gold" /><MetricBar mode={mode} titleEn="Asch with one ally" titleZh="Asch 單一同盟者" value={5} tone="ok" /><MetricBar mode={mode} titleEn="Private written response" titleZh="匿名書面回應" value={12} tone="plum" /></div><div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4"><MetricBar mode={mode} titleEn="Good Samaritan, early" titleZh="好撒瑪利亞人，提早" value={63} /><MetricBar mode={mode} titleEn="Good Samaritan, on time" titleZh="好撒瑪利亞人，準時" value={45} tone="gold" /><MetricBar mode={mode} titleEn="Good Samaritan, late" titleZh="好撒瑪利亞人，遲到" value={10} tone="danger" /><MetricBar mode={mode} titleEn="Telephone-game loss per pass" titleZh="傳話每次損失" value={20} tone="plum" /></div><div className="mt-4 grid gap-4 xl:grid-cols-[1fr_1fr]"><InfoCard titleEn="70 / 30 principle" titleZh="70 / 30 原則" mode={mode} tone="gold"><BiText mode={mode} block en="The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality." zh="管理者最常犯的錯，是系統性低估環境力量。教學重點在於：行為更多是由情境而不是人格決定。若想改變行為，比起說教人格，先改環境。" /></InfoCard><InfoCard titleEn="Kotter’s eight accelerators" titleZh="Kotter 八項加速器" mode={mode} tone="plum"><BulletList mode={mode} items={[
+        <InfoCard titleEn="Behavioral anchors and why they matter" titleZh="行為實驗錨點與它們的意義" mode={mode}>
+          <div className="mb-3 text-xs uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Conformity, reporting, and social pressure" zh="服從、自述與社會壓力" /></div>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            <MetricBar mode={mode} titleEn="Handwashing self-report" titleZh="洗手自述" value={73} subEn="Self-report vs observed behavior" subZh="自述與實際行為差距" />
+            <MetricBar mode={mode} titleEn="Handwashing observed" titleZh="洗手觀察值" value={9} tone="danger" subEn="Australian study of hospital hygiene" subZh="澳洲醫院衛生研究觀察值" />
+            <MetricBar mode={mode} titleEn="Asch conformity rate" titleZh="Asch 服從率" value={37} tone="gold" subEn="On critical trials with unanimous group" subZh="在群體一致情境下的關鍵回合" />
+            <MetricBar mode={mode} titleEn="Asch with one ally" titleZh="Asch 單一同盟者" value={5} tone="ok" subEn="Single dissenter breaks conformity" subZh="單一反對者就能瓦解從眾" />
+            <MetricBar mode={mode} titleEn="Asch private written" titleZh="Asch 匿名書面" value={12} tone="plum" subEn="Private response reduces pressure" subZh="匿名作答大幅降低群體壓力" />
+          </div>
+          <div className="mt-4 mb-3 text-xs uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Situation beats personality" zh="情境大於人格" /></div>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <MetricBar mode={mode} titleEn="Good Samaritan, early" titleZh="好撒瑪利亞人，提早" value={63} subEn="Seminarians with time in hand" subZh="有餘裕的神學院學生" />
+            <MetricBar mode={mode} titleEn="Good Samaritan, on time" titleZh="好撒瑪利亞人，準時" value={45} tone="gold" subEn="Just-on-time group" subZh="準時趕到的群體" />
+            <MetricBar mode={mode} titleEn="Good Samaritan, late" titleZh="好撒瑪利亞人，遲到" value={10} tone="danger" subEn="Rushed group walked past the victim" subZh="趕時間的群體直接走過受害者" />
+            <MetricBar mode={mode} titleEn="Telephone-game loss per pass" titleZh="傳話每次損失" value={20} tone="plum" subEn="Fidelity drops 20% per layer" subZh="每傳一次約衰減 20%" />
+          </div>
+          <div className="mt-5 grid gap-3 xl:grid-cols-[1.2fr_0.8fr]">
+            <VisualPanel mode={mode} tone="teal" titleEn="Seat belt behavior change curve" titleZh="安全帶使用率變化曲線" subEn="Even rational safety gains take a generation to land — ~25 years from 11% to 80%+." subZh="即便是明顯有益的安全行為，也需要約 25 年才能從 11% 走到 80%+。">
+              <div className="grid gap-3 md:grid-cols-3">
+                <MetricBar mode={mode} titleEn="1980 usage" titleZh="1980 年" value={11} tone="danger" subEn="Baseline before wide campaigns" subZh="宣導全面推動之前的基線" />
+                <MetricBar mode={mode} titleEn="1990 usage" titleZh="1990 年" value={49} tone="gold" subEn="Midway through behavior shift" subZh="行為轉變中段" />
+                <MetricBar mode={mode} titleEn="2005 usage" titleZh="2005 年" value={82} tone="ok" suffix="%+" subEn="Sustained new-normal achieved" subZh="達成可持續的 new normal" />
+              </div>
+            </VisualPanel>
+            <VisualPanel mode={mode} tone="gold" titleEn="West Virginia &quot;skim milk&quot; case" titleZh="West Virginia「改喝低脂奶」案例" subEn="Specific instructions beat vague health messaging; low-fat milk uptake nearly doubled in six months." subZh="具體指令勝過模糊健康訴求，六個月內低脂奶採用率幾乎翻倍。">
+              <div className="grid gap-3 md:grid-cols-2">
+                <MetricBar mode={mode} titleEn="Before intervention" titleZh="介入前" value={18} tone="danger" subEn="Generic 'eat healthy' messaging" subZh="籠統的『吃健康一點』式訊息" />
+                <MetricBar mode={mode} titleEn="After 6 months" titleZh="六個月後" value={35} tone="ok" subEn="After specific &quot;switch to skim milk&quot; instruction" subZh="改用『改喝低脂奶』這種具體指令" />
+              </div>
+            </VisualPanel>
+          </div>
+          <div className="mt-5">
+            <VisualPanel mode={mode} tone="plum" titleEn="Narrative vs. data: Treatment A and Treatment B" titleZh="敘事 vs. 數據：Treatment A 與 Treatment B" subEn="When shown the same underlying probabilities, a single narrative can flip behavior. Story dominates statistics." subZh="即使底層機率相同，一則敘事就能翻轉決策。故事常常凌駕統計。">
+              <div className="grid gap-3 md:grid-cols-2">
+                <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+                  <div className="mb-2 flex items-center justify-between">
+                    <div className="text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="Treatment A — 90% success rate" zh="Treatment A — 90% 成功率" /></div>
+                    <div className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ background: "#EDF4F6", color: theme.teal }}>High-prob</div>
+                  </div>
+                  <div className="grid gap-2">
+                    <MetricBar mode={mode} titleEn="After negative story" titleZh="聽到負面故事後" value={39} tone="danger" subEn="Willingness drops despite 90% success" subZh="即使有 90% 成功率，意願仍大幅下降" />
+                    <MetricBar mode={mode} titleEn="After positive story" titleZh="聽到正面故事後" value={88} tone="ok" subEn="Willingness aligns with base rate again" subZh="意願重新貼近真實 base rate" />
+                  </div>
+                </div>
+                <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+                  <div className="mb-2 flex items-center justify-between">
+                    <div className="text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="Treatment B — 30% success rate" zh="Treatment B — 30% 成功率" /></div>
+                    <div className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ background: "#F4EDF3", color: theme.plum }}>Low-prob</div>
+                  </div>
+                  <div className="grid gap-2">
+                    <MetricBar mode={mode} titleEn="After negative story" titleZh="聽到負面故事後" value={7} tone="danger" subEn="Story amplifies the bad probability" subZh="故事把不利機率進一步放大" />
+                    <MetricBar mode={mode} titleEn="After positive story" titleZh="聽到正面故事後" value={78} tone="ok" subEn="A single story overrides the 30% base rate" subZh="一則正面故事就足以蓋過 30% 的 base rate" />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-3 rounded-[18px] border p-3 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}>
+                <BiText mode={mode} en="Managerial read: if you want decisions to track the data, feed decision makers the data inside a vivid story. Raw probabilities without narrative rarely change behavior." zh="管理啟示：如果希望決策貼近數據，就把數據包進一則有畫面感的故事。只丟機率數字出去，很少能改變行為。" />
+              </div>
+            </VisualPanel>
+          </div>
+          <div className="mt-4 grid gap-4 xl:grid-cols-[1fr_1fr]"><InfoCard titleEn="70 / 30 principle" titleZh="70 / 30 原則" mode={mode} tone="gold"><BiText mode={mode} block en="The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality." zh="管理者最常犯的錯，是系統性低估環境力量。教學重點在於：行為更多是由情境而不是人格決定。若想改變行為，比起說教人格，先改環境。" /><div className="mt-3 grid grid-cols-2 gap-3"><div className="rounded-[18px] border p-3 text-center" style={{ borderColor: theme.line, background: "#FFFDF8" }}><div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.subInk }}><BiText mode={mode} en="Personality" zh="人格" /></div><div className="text-2xl font-semibold" style={{ color: theme.danger }}>~30%</div></div><div className="rounded-[18px] border p-3 text-center" style={{ borderColor: theme.line, background: "#FFFDF8" }}><div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.subInk }}><BiText mode={mode} en="Situation / environment" zh="情境 / 環境" /></div><div className="text-2xl font-semibold" style={{ color: theme.ok }}>~70%</div></div></div></InfoCard><InfoCard titleEn="Kotter’s eight accelerators" titleZh="Kotter 八項加速器" mode={mode} tone="plum"><BulletList mode={mode} items={[
           { en: "Create urgency and commitment", zh: "建立 urgency 與 commitment" }, { en: "Build a guiding coalition", zh: "建立 guiding coalition" }, { en: "Clarify the vision", zh: "把 vision 說清楚" }, { en: "Create a volunteer army", zh: "形成 volunteer army" }, { en: "Remove barriers", zh: "拆掉障礙" }, { en: "Motivate through progress", zh: "用 progress 持續激勵" }, { en: "Sustain and scale", zh: "持續並擴大" }, { en: "Solidify the new normal", zh: "固化成 new normal" },
         ]} /></InfoCard></div></InfoCard>
         <InfoCard titleEn="Nokia as the implementation transfer case" titleZh="Nokia 作為 implementation transfer 標準案例" mode={mode} tone="danger"><SimpleTable mode={mode} size="compact" columns={[{ key: "p", en: "Pathology", zh: "病理" }, { key: "e", en: "Reading signal", zh: "reading 證據" }]} rows={[
@@ -4739,7 +4902,33 @@ function ExamSection({ mode }) {
             { en: "Five levels", zh: "Five levels" }, { en: "Four performance comparators", zh: "四個 performance comparators" }, { en: "Seven economics dimensions", zh: "七個 economics dimensions" }, { en: "Competition: type, variables, ferocity", zh: "Competition：type、variables、ferocity" }, { en: "SPARK + VRIO on A, R, K + CEA", zh: "SPARK + VRIO on A、R、K + CEA" }, { en: "Implementation five blocks + key numbers", zh: "Implementation 五段 + 關鍵數字" }, { en: "International split + corporate mechanisms", zh: "International 切法 + corporate 機制" }, { en: "Nokia answer shape", zh: "Nokia 預設作答形狀" },
           ]} /></InfoCard>
         </div>
-        <InfoCard titleEn="Confidence tiers and safe usage" titleZh="信度分級與安全使用方式" mode={mode} tone="gold"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{[["Tier 1","Tier 1","Primary-source or strongly verified wording. Use confidently.","Primary-source 或高度驗證內容，可自信使用。"],["Tier 2","Tier 2","User-verified reconstruction. Safe with measured wording.","使用者驗證重建版，用保守語氣可安全使用。"],["Tier 3","Tier 3","Reasonable inference. Use as analysis, not as attributed verbatim.","合理推論，可作分析，但不要當 verbatim 引用。"],["Tier 4","Tier 4","Avoid as direct exam material.","不建議直接拿去考場使用。"]].map(([en1, zh1, en2, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="font-semibold mb-1" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><div style={{ color: theme.subInk }}><BiText mode={mode} en={en2} zh={zh2} /></div></div>)}</div><div className="mt-4 rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#F4F0E6", color: theme.subInk }}><BiText mode={mode} en="Final one-sentence guide: start with underlying economics, identify the binding levels, test SPARK plus leadership and execution, pressure-test future competition with CEA, and then ask whether organization and implementation allow the firm to realize and defend the value that should be available." zh="最後一句總綱：先從 underlying economics 下手，找出 binding levels，再檢驗 SPARK 加上 leadership 與 execution，用 CEA 壓測未來競爭，最後再問 organization 與 implementation 是否真的讓分析上應該存在的價值被實現並守住。" /></div></InfoCard>
+        <VisualPanel mode={mode} tone="gold" titleEn="Confidence tiers and safe usage" titleZh="信度分級與安全使用方式" subEn="Match your wording strength to the tier of the material you are citing. Over-claiming a low-tier fact, or hedging a Tier 1 primary source, both cost points." subZh="語氣強度要匹配材料 tier。低 tier 材料過度自信，或 Tier 1 原始資料過度保守，都會失分。">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            {[
+              { tier: "Tier 1", sig: "BARD-safe", labelEn: "Primary source", labelZh: "原始來源", descEn: "Primary-source or strongly verified wording. Use confidently, quote verbatim.", descZh: "Primary-source 或高度驗證內容，可自信使用，可 verbatim 引用。", band: 100, tone: theme.ok, bg: "#EFF5EF" },
+              { tier: "Tier 2", sig: "POE-safe", labelEn: "Verified reconstruction", labelZh: "驗證重建", descEn: "User-verified reconstruction. Safe with measured wording.", descZh: "使用者驗證重建版，用保守語氣可安全使用。", band: 75, tone: theme.teal, bg: "#F4F8F8" },
+              { tier: "Tier 3", sig: "Analysis only", labelEn: "Reasonable inference", labelZh: "合理推論", descEn: "Reasonable inference. Use as analysis, not as attributed verbatim.", descZh: "合理推論，可作分析，但不要當 verbatim 引用。", band: 45, tone: theme.gold, bg: "#FBF7EE" },
+              { tier: "Tier 4", sig: "Avoid", labelEn: "Unverified", labelZh: "未驗證", descEn: "Avoid as direct exam material.", descZh: "不建議直接拿去考場使用。", band: 20, tone: theme.danger, bg: "#FBF3F1" },
+            ].map((t) => (
+              <div key={t.tier} className="relative rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: t.bg }}>
+                <div className="mb-2 flex items-center justify-between gap-2">
+                  <span className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.18em]" style={{ background: t.tone, color: "#FFFDF8" }}>{t.tier}</span>
+                  <span className="text-[10px] uppercase tracking-[0.14em]" style={{ color: t.tone }}>{t.sig}</span>
+                </div>
+                <div className="mb-2 font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={t.labelEn} zh={t.labelZh} /></div>
+                <div className="mb-3 h-1.5 overflow-hidden rounded-full" style={{ background: "#E7DDCC" }}>
+                  <div className="h-full rounded-full" style={{ width: `${t.band}%`, background: t.tone }} />
+                </div>
+                <div style={{ color: theme.subInk }}><BiText mode={mode} en={t.descEn} zh={t.descZh} /></div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            <div className="rounded-2xl border p-3 text-xs leading-6" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><div className="mb-1 font-semibold" style={{ color: theme.teal }}><BiText mode={mode} en="Pairing rule" zh="搭配規則" /></div><BiText mode={mode} en="Tier 1 pairs with BARD language. Tier 2 pairs with POE language. Tier 3 pairs with analytical framing. Tier 4 stays off the page." zh="Tier 1 搭配 BARD 語氣；Tier 2 搭配 POE 語氣；Tier 3 只能做 analytical framing；Tier 4 不上考卷。" /></div>
+            <div className="rounded-2xl border p-3 text-xs leading-6" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><div className="mb-1 font-semibold" style={{ color: theme.plum }}><BiText mode={mode} en="Safety check" zh="安全檢查" /></div><BiText mode={mode} en="Before quoting, ask: which tier is this? If you cannot place it, default one tier lower." zh="引用前先問自己：這是哪一 tier？若無法判斷，就往下降一個 tier 使用。" /></div>
+          </div>
+          <div className="mt-4 rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#F4F0E6", color: theme.subInk }}><BiText mode={mode} en="Final one-sentence guide: start with underlying economics, identify the binding levels, test SPARK plus leadership and execution, pressure-test future competition with CEA, and then ask whether organization and implementation allow the firm to realize and defend the value that should be available." zh="最後一句總綱：先從 underlying economics 下手，找出 binding levels，再檢驗 SPARK 加上 leadership 與 execution，用 CEA 壓測未來競爭，最後再問 organization 與 implementation 是否真的讓分析上應該存在的價值被實現並守住。" /></div>
+        </VisualPanel>
       </div>
     </SectionShell>
   );
