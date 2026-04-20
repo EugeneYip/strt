@@ -1438,6 +1438,328 @@ function FloatingLanguageToggle({ mode, setMode }) {
   );
 }
 
+
+
+function VisualPanel({ mode, titleEn, titleZh, subEn, subZh, children, tone = "teal" }) {
+  const tones = {
+    teal: { bg: "#F4F8F8", border: theme.teal, sub: theme.teal },
+    plum: { bg: "#F8F4FA", border: theme.plum, sub: theme.plum },
+    gold: { bg: "#FBF7EE", border: theme.gold, sub: theme.gold },
+    olive: { bg: "#F6F7F3", border: theme.olive, sub: theme.olive },
+    danger: { bg: "#FBF3F1", border: theme.danger, sub: theme.danger },
+  };
+  const t = tones[tone] || tones.teal;
+  return (
+    <div className="rounded-[28px] border p-5" style={{ background: t.bg, borderColor: theme.line }}>
+      <div className="mb-3 flex items-start justify-between gap-3">
+        <div>
+          <div className="text-[11px] uppercase tracking-[0.2em]" style={{ color: t.sub }}><BiText mode={mode} en={titleEn} zh={titleZh} /></div>
+          {(subEn || subZh) ? <div className="mt-1 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={subEn || ""} zh={subZh || ""} /></div> : null}
+        </div>
+        <div className="mt-1 h-2.5 w-2.5 rounded-full" style={{ background: t.border, flexShrink: 0 }} />
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function FiveLevelPentagonVisual({ mode }) {
+  const levels = [
+    { key: "macro", order: "03", x: 150, y: 35, en: "National / macro", zh: "National / Macro", color: "#2563EB" },
+    { key: "meso", order: "02", x: 50, y: 108, en: "Cluster / meso", zh: "Cluster / Meso", color: "#059669" },
+    { key: "industry", order: "01", x: 88, y: 225, en: "Industry", zh: "產業層次", color: "#D97706" },
+    { key: "firm", order: "05", x: 212, y: 225, en: "Firm", zh: "公司層次", color: "#DC2626" },
+    { key: "meta", order: "04", x: 250, y: 108, en: "Supranational / meta", zh: "Supranational / Meta", color: "#7C3AED" },
+  ];
+  const points = levels.map((p) => `${p.x},${p.y}`).join(" ");
+  const cards = [
+    { order: "01", en: "Start with the industry. Define the strategically meaningful competitive field first.", zh: "先從產業下手。先界定具有策略意義的競爭範圍。", color: "#D97706" },
+    { order: "02", en: "Move outward to the cluster or ecosystem that shapes suppliers, customers, complements, and substitutes.", zh: "再往外看 cluster 或 ecosystem，理解 suppliers、customers、complements 與 substitutes。", color: "#059669" },
+    { order: "03", en: "Then test the country context that enables or blocks the business model.", zh: "接著檢驗國家條件，看它如何支撐或阻礙 business model。", color: "#2563EB" },
+    { order: "04", en: "Then layer in supranational pressures that rewrite the rules above the nation state.", zh: "再加上超國家壓力，理解其如何改寫 nation state 之上的規則。", color: "#7C3AED" },
+    { order: "05", en: "Only then judge the firm itself. Strong firms inside bad structures still struggle.", zh: "最後才回到 firm 本身。再強的 firm，若結構錯誤，一樣會吃虧。", color: "#DC2626" },
+  ];
+  return (
+    <VisualPanel mode={mode} tone="plum" titleEn="Five-level reading order" titleZh="五層閱讀順序" subEn="A visual reminder of the professor's default analytical sequence." subZh="把教授偏好的預設分析順序做成視覺入口。">
+      <div className="grid gap-4 xl:grid-cols-[360px_minmax(0,1fr)] xl:items-center">
+        <div className="mx-auto w-full max-w-[360px] rounded-[24px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+          <svg viewBox="0 0 300 260" className="w-full h-auto" role="img" aria-label="Five-level pentagon">
+            <polygon points={points} fill="none" stroke="#C9BEA9" strokeWidth="2.5" />
+            {levels.map((level) => (
+              <g key={level.key}>
+                <circle cx={level.x} cy={level.y} r="20" fill={level.color} />
+                <text x={level.x} y={level.y + 4} textAnchor="middle" fontSize="10" fill="#fff" fontWeight="700">{level.order}</text>
+              </g>
+            ))}
+            {levels.map((level) => (
+              <text key={`${level.key}-label`} x={level.x} y={level.key === "macro" ? level.y - 28 : level.y + (level.key === "industry" || level.key === "firm" ? 34 : 0)} textAnchor="middle" fontSize="10.5" fill="#334155" fontWeight="600">
+                {level.en}
+              </text>
+            ))}
+          </svg>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-1">
+          {cards.map((card) => (
+            <div key={card.order} className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+              <div className="mb-2 flex items-center gap-3">
+                <div className="rounded-full px-3 py-1 text-[11px] font-semibold tracking-[0.18em]" style={{ background: `${card.color}14`, color: card.color }}>{card.order}</div>
+                <div className="h-px flex-1" style={{ background: `${card.color}55` }} />
+              </div>
+              <div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={card.en} zh={card.zh} /></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </VisualPanel>
+  );
+}
+
+function IndustryVisualizationSuite({ mode }) {
+  const steps = [
+    { n: "01", enH: "Useful output", zhH: "有用輸出", en: "Identify what the customer actually receives in use, not the internal technology stack or the statistical industry code.", zh: "先辨認客戶實際收到甚麼，不要先看技術堆疊，也不要先看統計產業代碼。" },
+    { n: "02", enH: "Direct competition", zhH: "直接競爭", en: "Ask who else is fighting for that same customer outcome. Different technologies can still belong to the same industry if the useful output is the same.", zh: "再問誰也在爭奪同一個 customer outcome。即使底層技術不同，只要 useful output 相同，仍可能屬同一產業。" },
+    { n: "03", enH: "Boundary", zhH: "產業邊界", en: "Draw the boundary only after you know the output and the direct rivals. This avoids code-based or brand-based misclassification.", zh: "等 useful output 與 direct rivals 都清楚後，再劃定邊界。這能避免用分類代碼或品牌印象來誤判。" },
+  ];
+  const spectrum = [
+    { en: "Subsidized", zh: "補貼競爭", color: "#DC2626" },
+    { en: "Perfect", zh: "完全競爭", color: "#EA580C" },
+    { en: "Hyper", zh: "超競爭", color: "#D97706" },
+    { en: "Oligopoly", zh: "寡佔", color: "#2563EB" },
+    { en: "Monopoly", zh: "獨佔", color: "#7C3AED" },
+  ];
+  const boards = [
+    { tone: "gold", titleEn: "Why is profit possible?", titleZh: "利潤為何可能存在？", bullets: [
+      { en: "Look for departures from perfect competition: barriers, differentiation, information asymmetry, switching costs, transport costs, collusion, standards.", zh: "找出偏離完全競爭之處：障礙、差異化、資訊不對稱、switching costs、運輸成本、collusion、standards。" },
+      { en: "This is the structural explanation, not yet the firm explanation.", zh: "這是結構性解釋，還不是 firm-specific 解釋。" },
+    ]},
+    { tone: "teal", titleEn: "Where does profit come from?", titleZh: "利潤從哪裡來？", bullets: [
+      { en: "Price premium, cost advantage, bargaining leverage, standards control, installed base, customer lock-in, or scarce complementary assets.", zh: "可能來自價格溢價、成本優勢、議價優勢、標準控制、installed base、customer lock-in，或稀缺的 complementary assets。" },
+      { en: "State the source explicitly rather than saying the industry is simply 'good.'", zh: "不要只說這個 industry '很好'，要明白說出利潤來源。" },
+    ]},
+    { tone: "danger", titleEn: "What could shift the structure?", titleZh: "哪些因素會改寫結構？", bullets: [
+      { en: "Entry, substitutes, regulation, buyer concentration, supplier consolidation, new standards, or adjacent-industry invasion can move the industry on the competition spectrum.", zh: "新進者、替代品、法規、買方集中、供應商整合、新標準或相鄰產業入侵，都可能讓競爭類型在光譜上移動。" },
+      { en: "This is where future competition and CEA become especially important.", zh: "這也是 future competition 與 CEA 特別重要的地方。" },
+    ]},
+  ];
+  return (
+    <div className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
+      <VisualPanel mode={mode} tone="teal" titleEn="Industry boundary tools" titleZh="產業邊界工具" subEn="Convert the definition paragraph into a quick three-step method." subZh="把定義段落轉成三步驟工具。">
+        <div className="grid gap-3 md:grid-cols-3">
+          {steps.map((step) => (
+            <div key={step.n} className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+              <div className="mb-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.teal }}>{step.n}</div>
+              <div className="mb-2 text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={step.enH} zh={step.zhH} /></div>
+              <div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={step.en} zh={step.zh} /></div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 rounded-[22px] border p-4" style={{ background: "#FBF8F0", borderColor: theme.line }}>
+          <div className="mb-3 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.gold }}><BiText mode={mode} en="Competition spectrum" zh="競爭光譜" /></div>
+          <div className="grid gap-2 md:grid-cols-5">
+            {spectrum.map((item, idx) => (
+              <div key={item.en} className="rounded-[18px] p-3 text-center text-sm font-semibold" style={{ background: `${item.color}14`, color: item.color, border: `1px solid ${item.color}33` }}>
+                <div className="mb-1 text-[11px] tracking-[0.18em]">{String(idx + 1).padStart(2, "0")}</div>
+                <BiText mode={mode} en={item.en} zh={item.zh} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </VisualPanel>
+      <VisualPanel mode={mode} tone="plum" titleEn="Industry economics question board" titleZh="產業經濟問題板" subEn="A visual upgrade for paragraphs that should really be diagnostic prompts." subZh="把本來應該是診斷問題的文字塊，改成可掃描的問題板。">
+        <div className="space-y-3">
+          {boards.map((board) => (
+            <div key={board.titleEn} className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+              <div className="mb-2 text-sm font-semibold" style={{ color: board.tone === "danger" ? theme.danger : board.tone === "gold" ? theme.gold : theme.teal }}><BiText mode={mode} en={board.titleEn} zh={board.titleZh} /></div>
+              <BulletList mode={mode} items={board.bullets} />
+            </div>
+          ))}
+        </div>
+      </VisualPanel>
+    </div>
+  );
+}
+
+function FirmArchitectureBoard({ mode }) {
+  const strategy = [
+    { en: "Scope", zh: "Scope" }, { en: "Positioning", zh: "Positioning" }, { en: "Activities", zh: "Activities" }, { en: "Resources", zh: "Resources" }, { en: "Knowledge", zh: "Knowledge" }, { en: "Leadership", zh: "Leadership" },
+  ];
+  const execution = [
+    { en: "Execution", zh: "Execution" }, { en: "Organization & management", zh: "Organization & Management" }, { en: "Governance", zh: "Governance" }, { en: "Firm-specific policies", zh: "Firm-Specific Policies" }, { en: "Firm-specific institutions", zh: "Firm-Specific Institutions" },
+  ];
+  return (
+    <VisualPanel mode={mode} tone="danger" titleEn="Firm architecture" titleZh="Firm architecture" subEn="SPARK is not the whole answer. The full firm-level diagnosis must separate strategic logic from organizational realization." subZh="SPARK 不是全部答案。完整的 firm-level diagnosis 必須把 strategic logic 與 organizational realization 分開看。">
+      <div className="grid gap-4 xl:grid-cols-[1fr_120px_1fr] xl:items-center">
+        <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+          <div className="mb-3 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Strategy side" zh="策略面" /></div>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {strategy.map((item) => <div key={item.en} className="rounded-[18px] border px-3 py-2 text-sm" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.ink }}><BiText mode={mode} en={item.en} zh={item.zh} /></div>)}
+          </div>
+        </div>
+        <div className="hidden xl:flex items-center justify-center">
+          <div className="rounded-full border px-4 py-6 text-center text-sm font-semibold leading-6" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.danger }}><BiText mode={mode} en="Relative performance" zh="Relative performance" /></div>
+        </div>
+        <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+          <div className="mb-3 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.teal }}><BiText mode={mode} en="Execution side" zh="執行面" /></div>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {execution.map((item) => <div key={item.en} className="rounded-[18px] border px-3 py-2 text-sm" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.ink }}><BiText mode={mode} en={item.en} zh={item.zh} /></div>)}
+          </div>
+        </div>
+      </div>
+    </VisualPanel>
+  );
+}
+
+function MesoEcosystemBoard({ mode }) {
+  return (
+    <VisualPanel mode={mode} tone="olive" titleEn="Cluster logic map" titleZh="Cluster 邏輯圖" subEn="This section is easier to retain as an ecosystem map than as eight separate bullet clusters." subZh="這一節比起八組文字，更適合記成 ecosystem map。">
+      <div className="grid gap-4 xl:grid-cols-[1fr_180px_1fr] xl:items-stretch">
+        <div className="grid gap-3">
+          <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="text-sm font-semibold" style={{ color: theme.ok }}><BiText mode={mode} en="Inputs & suppliers" zh="Inputs 與 Suppliers" /></div><div className="mt-2 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Availability, quality, cost, concentration, bargaining power, and collaboration all shape what the focal business can do." zh="投入的可得性、品質、成本、集中度、議價力與合作可能性，會直接影響 focal business 的行動空間。" /></div></div>
+          <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="text-sm font-semibold" style={{ color: theme.gold }}><BiText mode={mode} en="Shared resources & activities" zh="Shared Resources 與 Activities" /></div><div className="mt-2 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Knowledge spillovers, common channels, and scope economies can lower cost or improve the offer without changing the focal firm itself." zh="Knowledge spillovers、common channels 與 scope economies 可能在不改變 focal firm 本身的情況下，降低成本或改善 offer。" /></div></div>
+        </div>
+        <div className="rounded-[28px] border p-4 text-center" style={{ background: "#FBF8F0", borderColor: theme.line }}>
+          <div className="mb-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.teal }}><BiText mode={mode} en="Focal industry / firm" zh="Focal Industry / Firm" /></div>
+          <div className="rounded-[22px] border px-4 py-8 text-sm font-semibold leading-6" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }}><BiText mode={mode} en="Performance depends on how well the focal player fits into the surrounding system, not just on what it does alone." zh="績效取決於 focal player 與周圍系統的配合程度，不只是它自己單獨做了甚麼。" /></div>
+        </div>
+        <div className="grid gap-3">
+          <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="text-sm font-semibold" style={{ color: theme.plum }}><BiText mode={mode} en="Demand & customers" zh="Demand 與 Customers" /></div><div className="mt-2 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Size, growth, sophistication, segmentation, bargaining power, and price sensitivity determine the revenue side of the system." zh="需求規模、成長、成熟度、區隔、議價力與價格敏感度，決定了系統的收入面。" /></div></div>
+          <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="text-sm font-semibold" style={{ color: theme.danger }}><BiText mode={mode} en="Complements & substitutes" zh="Complementarities 與 Substitutes" /></div><div className="mt-2 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Complements expand demand or willingness to pay. Substitutes cap upside and can compress margins quickly." zh="互補會擴張 demand 或 willingness to pay；替代則會壓縮上行空間，甚至迅速擠壓 margins。" /></div></div>
+          <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="text-sm font-semibold" style={{ color: theme.olive }}><BiText mode={mode} en="Meso policies & institutions" zh="Meso Policies 與 Institutions" /></div><div className="mt-2 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Cluster policies, training systems, and public-private institutions can strengthen or weaken the whole ecosystem over time." zh="Cluster policies、訓練體系與公私協作制度，會在時間中強化或削弱整個 ecosystem。" /></div></div>
+        </div>
+      </div>
+    </VisualPanel>
+  );
+}
+
+function MacroDiagnosticBoard({ mode }) {
+  const rows = [
+    { en: "Level", zh: "水準", exEn: "How large, rich, liquid, stable, or institutionally strong is the market now?", exZh: "這個市場此刻到底有多大、多富、多有流動性、多穩定、制度多強？" },
+    { en: "Trend", zh: "趨勢", exEn: "Is the direction improving, stagnating, or deteriorating?", exZh: "方向是在改善、停滯，還是在惡化？" },
+    { en: "Volatility / disruption", zh: "波動 / 斷裂", exEn: "Could macro shocks or non-linear change break the current logic?", exZh: "總體衝擊或非線性變化，會不會打斷現有邏輯？" },
+  ];
+  return (
+    <VisualPanel mode={mode} tone="teal" titleEn="Macro diagnostic board" titleZh="Macro 診斷板" subEn="The macro level is usually easier to remember as a three-pass scan than as a static list." subZh="Macro level 與其背靜態清單，不如記成三輪掃描。">
+      <div className="grid gap-3 md:grid-cols-3">
+        {rows.map((row) => (
+          <div key={row.en} className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+            <div className="mb-2 text-sm font-semibold" style={{ color: theme.teal }}><BiText mode={mode} en={row.en} zh={row.zh} /></div>
+            <div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={row.exEn} zh={row.exZh} /></div>
+          </div>
+        ))}
+      </div>
+    </VisualPanel>
+  );
+}
+
+function MetaPressureBoard({ mode }) {
+  const drivers = [
+    { en: "Geopolitics", zh: "地緣政治" }, { en: "Global economics", zh: "全球經濟" }, { en: "Technology shifts", zh: "技術變動" }, { en: "Trade blocs / supranational policy", zh: "區域集團 / 超國家政策" }, { en: "Foreign governments", zh: "外國政府" }, { en: "Foreign MNCs / other groups", zh: "外國 MNC 與其他群體" },
+  ];
+  return (
+    <VisualPanel mode={mode} tone="plum" titleEn="Meta pressure map" titleZh="Meta 壓力圖" subEn="Use this to convert a long descriptive paragraph into a rule-rewriting map." subZh="把長段敘述轉成『誰在改寫規則』的圖。">
+      <div className="grid gap-4 xl:grid-cols-[1fr_180px_1fr] xl:items-center">
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-1">
+          {drivers.slice(0,3).map((d) => <div key={d.en} className="rounded-[18px] border px-3 py-3 text-sm" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={d.en} zh={d.zh} /></div>)}
+        </div>
+        <div className="rounded-[24px] border p-4 text-center" style={{ borderColor: theme.line, background: "#FBF8F0" }}>
+          <div className="text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Rule rewrite" zh="規則改寫" /></div>
+          <div className="mt-2 text-sm leading-6" style={{ color: theme.ink }}><BiText mode={mode} en="Meta forces matter when they change who may enter, with what technology, under what political constraints, and on what global terms." zh="Meta forces 真正重要，是因為它們會改寫誰能進場、用甚麼技術進場、承受甚麼政治限制，以及在甚麼全球條件下進場。" /></div>
+        </div>
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-1">
+          {drivers.slice(3).map((d) => <div key={d.en} className="rounded-[18px] border px-3 py-3 text-sm" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={d.en} zh={d.zh} /></div>)}
+        </div>
+      </div>
+    </VisualPanel>
+  );
+}
+
+function InternationalArchitectureBoard({ mode }) {
+  const questions = [
+    { en: "How many countries?", zh: "有幾個國家？" }, { en: "Which countries?", zh: "是哪一些國家？" }, { en: "How do the five levels differ from home?", zh: "五個層次相對母國有何差異？" }, { en: "What SPARK is needed in each country?", zh: "每個國家需要甚麼 SPARK？" }, { en: "How should SPARK fit country conditions?", zh: "如何讓 SPARK 對上國家條件？" }, { en: "How should the company be organized?", zh: "公司要如何組織？" }, { en: "Are the countries similar or different?", zh: "這些國家相似還是本質不同？" }, { en: "Is the international company more than the sum of the parts?", zh: "國際公司有沒有大於 parts 的總和？" },
+  ];
+  return (
+    <VisualPanel mode={mode} tone="gold" titleEn="International architecture" titleZh="國際策略架構" subEn="The eight-question blueprint becomes easier to apply when grouped into select, compare, configure, and organize." subZh="八問藍圖改成 select、compare、configure、organize 之後更容易實戰。">
+      <div className="grid gap-4 xl:grid-cols-[220px_minmax(0,1fr)] xl:items-start">
+        <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+          <div className="mb-3 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.gold }}><BiText mode={mode} en="Four workstreams" zh="四條工作線" /></div>
+          <div className="space-y-2 text-sm leading-6" style={{ color: theme.subInk }}>
+            <div><b style={{ color: theme.ink }}><BiText mode={mode} en="Select" zh="選擇" /></b><BiText mode={mode} en=": choose country count and identity." zh="：決定國家數量與國家名單。" /></div>
+            <div><b style={{ color: theme.ink }}><BiText mode={mode} en="Compare" zh="比較" /></b><BiText mode={mode} en=": run five-level home-versus-host contrast." zh="：做 home versus host 的五層對照。" /></div>
+            <div><b style={{ color: theme.ink }}><BiText mode={mode} en="Configure" zh="配置" /></b><BiText mode={mode} en=": define SPARK and the global-local split." zh="：定義 SPARK 與 global-local split。" /></div>
+            <div><b style={{ color: theme.ink }}><BiText mode={mode} en="Organize" zh="組織" /></b><BiText mode={mode} en=": decide whether the company is worth more integrated than separate." zh="：判斷整合後是否真的比拆開更有價值。" /></div>
+          </div>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          {questions.map((q, idx) => <div key={q.en} className="rounded-[20px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.teal }}>{String(idx + 1).padStart(2, "0")}</div><div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={q.en} zh={q.zh} /></div></div>)}
+        </div>
+      </div>
+    </VisualPanel>
+  );
+}
+
+function CorporateMechanismBoard({ mode }) {
+  const mechanisms = [
+    { en: "Scope economies", zh: "Scope Economies" },
+    { en: "Shared resources", zh: "Shared Resources" },
+    { en: "Knowledge transfer", zh: "Knowledge Transfer" },
+    { en: "Internal capital market", zh: "Internal Capital Market" },
+    { en: "Managerial discipline", zh: "Managerial Discipline" },
+    { en: "Bargaining leverage", zh: "Bargaining Leverage" },
+  ];
+  return (
+    <VisualPanel mode={mode} tone="plum" titleEn="Corporate value creation board" titleZh="Corporate value creation board" subEn="A visual version of the 'more than the sum of its parts' test." subZh="把『是否大於 parts 總和』變成一眼可掃的機制板。">
+      <div className="grid gap-4 xl:grid-cols-[1fr_200px_1fr] xl:items-center">
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-1">
+          {mechanisms.slice(0,3).map((m) => <div key={m.en} className="rounded-[18px] border px-3 py-3 text-sm" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={m.en} zh={m.zh} /></div>)}
+        </div>
+        <div className="rounded-[24px] border p-4 text-center" style={{ borderColor: theme.line, background: "#FBF8F0" }}>
+          <div className="text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Central test" zh="中心測試" /></div>
+          <div className="mt-2 text-sm leading-6" style={{ color: theme.ink }}><BiText mode={mode} en="If none of these mechanisms is real and defensible, the corporate structure may be destroying rather than creating value." zh="如果這些機制沒有一項是真實且可防守的，corporate structure 很可能是在毀值，而不是創值。" /></div>
+        </div>
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-1">
+          {mechanisms.slice(3).map((m) => <div key={m.en} className="rounded-[18px] border px-3 py-3 text-sm" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={m.en} zh={m.zh} /></div>)}
+        </div>
+      </div>
+    </VisualPanel>
+  );
+}
+
+function ImplementationDiagnosisBoard({ mode }) {
+  const stages = [
+    { en: "Seeing", zh: "看見問題", qEn: "What is the organization not recognizing?", qZh: "組織沒有看見甚麼？", color: theme.teal },
+    { en: "Translating", zh: "轉成可執行語言", qEn: "Was the strategy translated into specific operating instructions?", qZh: "策略有沒有被翻成可執行指令？", color: theme.gold },
+    { en: "Resistance", zh: "抵抗", qEn: "Who loses, fears, or simply prefers inertia?", qZh: "誰會失去利益、害怕改變，或偏好 inertia？", color: theme.danger },
+    { en: "Environment", zh: "環境", qEn: "What is being rewarded or punished inside the system?", qZh: "系統內到底在獎勵或懲罰甚麼？", color: theme.plum },
+    { en: "Follow-through", zh: "追蹤落地", qEn: "How will the organization know whether the change is actually working?", qZh: "組織如何知道改變是否真的在運作？", color: theme.ok },
+  ];
+  return (
+    <VisualPanel mode={mode} tone="danger" titleEn="Implementation diagnosis flow" titleZh="Implementation diagnosis flow" subEn="This turns a long implementation narrative into a stepwise diagnostic path." subZh="把 implementation 的長篇敘述改成逐步診斷流程。">
+      <div className="grid gap-3 xl:grid-cols-5">
+        {stages.map((stage, idx) => <div key={stage.en} className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 flex items-center justify-between gap-2"><div className="text-[11px] uppercase tracking-[0.18em]" style={{ color: stage.color }}>{String(idx + 1).padStart(2, "0")}</div><div className="h-px flex-1" style={{ background: `${stage.color}44` }} /></div><div className="mb-2 text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={stage.en} zh={stage.zh} /></div><div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={stage.qEn} zh={stage.qZh} /></div></div>)}
+      </div>
+    </VisualPanel>
+  );
+}
+
+function ExamFlowBoard({ mode }) {
+  const steps = [
+    { en: "Define the question", zh: "定義題目", outEn: "What is actually being asked?", outZh: "題目到底要你回答甚麼？" },
+    { en: "Define the strategically meaningful industry", zh: "界定策略性產業", outEn: "Form, function, direct competition.", outZh: "form、function、direct competition。" },
+    { en: "Select the binding levels", zh: "挑出 binding levels", outEn: "Do not force all five levels into every answer.", outZh: "不要硬把五層全部塞進每一題。" },
+    { en: "Run the right tool", zh: "使用正確工具", outEn: "Economics, SPARK, bargaining, CEA, implementation, or international logic as needed.", outZh: "依題目需要使用 economics、SPARK、bargaining、CEA、implementation 或 international logic。" },
+    { en: "Use case evidence", zh: "使用案例證據", outEn: "Numbers, facts, events, quotes, relationships.", outZh: "數字、事實、事件、quotes、關係。" },
+    { en: "State the conclusion", zh: "下結論", outEn: "Use BARD or POE calibration.", outZh: "用 BARD 或 POE 做信心校準。" },
+    { en: "Connect to action", zh: "連到行動", outEn: "Only if the prompt requires strategy or implementation implications.", outZh: "只有題目要求 strategy 或 implementation implication 時再延伸。" },
+  ];
+  return (
+    <VisualPanel mode={mode} tone="gold" titleEn="Answer construction flow" titleZh="答題建構流程" subEn="A flow version of the default answer shape for use under time pressure." subZh="把預設答題骨架轉成壓力下更好操作的流程版。">
+      <div className="grid gap-3 xl:grid-cols-7">
+        {steps.map((step, idx) => <div key={step.en} className="rounded-[22px] border p-4" style={{ background: idx % 2 === 0 ? "#FFFDF8" : "#FBF8F0", borderColor: theme.line }}><div className="mb-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.gold }}>{String(idx + 1).padStart(2, "0")}</div><div className="mb-2 text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={step.en} zh={step.zh} /></div><div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={step.outEn} zh={step.outZh} /></div></div>)}
+      </div>
+    </VisualPanel>
+  );
+}
+
 function OverviewSection({ mode }) {
   return (
     <SectionShell id="overview" mode={mode} titleEn="What the exam is really testing" titleZh="這份考試真正測甚麼" kickerEn="Course signals" kickerZh="課程訊號" refs={["Session 1", "Last Day", "Master Review"]}>
@@ -1457,6 +1779,7 @@ function OverviewSection({ mode }) {
             { en: "The final may use fewer questions and a longer reading so multiple issues can be addressed from the same case.", zh: "期末可能採較少題目、較長閱讀，讓多個議題都從同一個 reading 被處理。" },
           ]} /></InfoCard>
           <FiveLevelDriverMap mode={mode} />
+          <FiveLevelPentagonVisual mode={mode} />
         </div>
         <div className="space-y-4">
           <InfoCard titleEn="Weighted focus" titleZh="高權重焦點" mode={mode} tone="plum"><BulletList mode={mode} items={[{ en: "International strategy", zh: "國際策略" }, { en: "Corporate strategy", zh: "企業總體策略" }, { en: "Implementation and organizational pathologies", zh: "落地執行與組織病理" }]} /></InfoCard>
@@ -1578,6 +1901,7 @@ function IndustrySection({ mode }) {
       <div className="space-y-5">
         <InfoCard titleEn="Industry definition" titleZh="產業定義" mode={mode} tone="teal"><BiText mode={mode} block en='An industry consists of products or services with similar form and function that are in direct competition with each other, and the firms that supply them. This is a strategic definition, not a statistical one. Boundaries can merge or fragment over time.' zh='產業是指具有相似 form 與 function、彼此直接競爭的產品或服務，以及提供它們的 firms。這是策略性定義，不是統計分類。邊界會隨時間整合或分裂。' /></InfoCard>
         <IndustryBoundaryMethod mode={mode} />
+        <IndustryVisualizationSuite mode={mode} />
         <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
           <InfoCard titleEn="Competition type spectrum" titleZh="競爭型態光譜" mode={mode} tone="gold">
             <div className="mb-4 flex items-center gap-2 text-xs uppercase tracking-[0.18em]" style={{ color: theme.subInk }}><span>Low profitability</span><span>→</span><span>High profitability</span></div>
@@ -1619,6 +1943,7 @@ function FirmSection({ mode }) {
           <InfoCard titleEn="SPARK" titleZh="SPARK" mode={mode} tone="plum"><div className="grid gap-3 md:grid-cols-5">{[["Scope","Where we compete","Scope","在哪裡競爭"],["Positioning","How we compete","Positioning","如何競爭"],["Activities","What we do","Activities","做甚麼"],["Resources","What we use","Resources","用甚麼"],["Knowledge","What we know","Knowledge","知道甚麼"]].map(([en1, en2, zh1, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><div style={{ color: theme.subInk }}><BiText mode={mode} en={en2} zh={zh2} /></div></div>)}</div></InfoCard>
         </div>
         <SparkArchitecture mode={mode} />
+        <FirmArchitectureBoard mode={mode} />
         <InfoCard titleEn="Do not stop at SPARK" titleZh="不能只停在 SPARK" mode={mode} tone="gold"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{[
           ["SPARK","SPARK","Where, how, what, with what, and with what knowledge.","在哪裡、如何、做甚麼、用甚麼、靠甚麼知識。"],["Leadership","Leadership","Direction, motivation, ethics, standards, external face.","方向、動機、倫理、標準、對外面貌。"],["Execution","Execution","Knowing what to do and getting it done despite inertia.","知道要做甚麼，並且能對抗 inertia 把事做成。"],["Organization & management","Organization & Management","Division of labor, structures, systems, HR, capabilities.","分工、結構、系統、人力、組織能力。"],["Governance","Governance","Governance standards, compliance cost, decision impact.","治理標準、合規成本、對決策的影響。"],["Firm-specific policies & institutions","Firm-Specific Policies & Institutions","Subsidies, support, dedicated training bodies, special institutions.","補貼、支持、專屬訓練體系、特殊制度安排。"],
         ].map(([en1, zh1, en2, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><div className="font-semibold mb-1" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><BiText mode={mode} en={en2} zh={zh2} /></div>)}</div></InfoCard>
@@ -1667,6 +1992,7 @@ function MesoSection({ mode }) {
         <InfoCard titleEn="Eight building blocks" titleZh="八個核心組成" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{[
           ["Demand","Demand","Size, growth, segment structure, bundling, complementarities.","規模、成長、segment 結構、bundling、complementarities。"],["Customers","Customers","Identity, access, bargaining power, price sensitivity, competition potential.","身分、接觸、議價、價格敏感度、與我們競爭的可能性。"],["Inputs","Inputs","Factor, human, ecological, produced, technological, infrastructure inputs.","要素、人力、生態、製成、技術、基礎設施投入。"],["Suppliers","Suppliers","Number, identity, access, bargaining, price sensitivity, collaboration potential.","數量、身分、接觸、議價、價格敏感度、合作可能性。"],["Shared resources / activities","Shared Resources / Activities","Shared technologies, channels, customers, knowledge, scope economies.","共享技術、通路、客戶、知識與 scope economies。"],["Complementarities","Complementarities","Other industries or products that raise demand and willingness to pay.","能提升 demand 與 willingness to pay 的互補關係。"],["Substitutes","Substitutes","Indirect replacements that cap profit potential.","會壓制利潤上限的替代選項。"],["Meso policies / institutions","Meso Policies / Institutions","Cluster-specific policies and supporting institutions.","針對 cluster 的政策與支援制度。"],
         ].map(([en1, zh1, en2, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="font-semibold mb-1" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><div style={{ color: theme.subInk }}><BiText mode={mode} en={en2} zh={zh2} /></div></div>)}</div></InfoCard>
+        <MesoEcosystemBoard mode={mode} />
         <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Bargaining power is a three-axis diagnosis" titleZh="議價力是三軸診斷" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "Intrinsic bargaining strength: concentration, substitutes, switching costs, pull-through, vertical integration threat.", zh: "Intrinsic bargaining strength：集中度、替代品、switching costs、pull-through、垂直整合威脅。" },
@@ -1693,6 +2019,7 @@ function MacroSection({ mode }) {
         <div className="grid gap-4 xl:grid-cols-4">{[
           ["Macroeconomic conditions","Macroeconomic Conditions","Aggregate demand, inflation, interest rates, exchange rates, unemployment, fiscal balances, capital markets, savings rates. Check level, growth, and volatility.","總體需求、通膨、利率、匯率、失業、財政平衡、資本市場、儲蓄率。要同時看 level、growth、volatility。"],["Macro government policies","Macro Government Policies","Monetary, fiscal, trade, investment, industrial, promotion, infrastructure, manpower, education, and science policies.","貨幣、財政、貿易、投資、產業、推廣、基礎建設、人力、教育與科技政策。"],["Macro institutions","Macro Institutions","Legal system, regulation, property rights, contract enforcement, and government quality.","法制、監管、產權、契約執行與政府品質。"],["Civil society and culture","Civil Society & Culture","Agendas, social acceptability, attitudes, structure, cohesion, cultural patterns.","議題取向、社會可接受性、態度、社會結構、凝聚力與文化模式。"],
         ].map(([en1, zh1, en2, zh2]) => <InfoCard key={en1} titleEn={en1} titleZh={zh1} mode={mode} tone="teal"><BiText mode={mode} block en={en2} zh={zh2} /></InfoCard>)}</div>
+        <MacroDiagnosticBoard mode={mode} />
         <InfoCard titleEn="Income distribution matters more than headline averages suggest" titleZh="Income distribution 比平均數更重要" mode={mode} tone="gold"><BulletList mode={mode} items={[
           { en: "Large-population countries can sustain premium and luxury demand even at modest average income levels because the upper-income groups are large in absolute terms.", zh: "大型人口國家即使平均收入不高，也可能支撐 premium 與 luxury 需求，因為高所得族群的絕對數量很大。" },
           { en: "Bottom of the Pyramid logic matters: profitable models may require simpler products, smaller pack sizes, and informal channels.", zh: "Bottom of the Pyramid 的邏輯很重要：可獲利模式可能需要更簡單的產品、更小包裝與更非正式的渠道。" },
@@ -1709,6 +2036,7 @@ function MetaSection({ mode }) {
     <SectionShell id="meta" mode={mode} titleEn="Supranational / meta level" titleZh="Supranational / Meta Level" kickerEn="Beyond the nation" kickerZh="超出國界" refs={["Chapter 1", "Chapter 7", "Master Review"]}>
       <div className="space-y-5">
         <InfoCard titleEn="Eight supranational drivers" titleZh="八個超國家驅動因素" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{[["International geopolitics","International Geo-politics"],["International economic conditions","International Economic Conditions"],["Global technology trends","Global Technology Trends"],["Social and environmental issues","Social and Environmental Issues"],["Multilateral organizations","Multilateral Organizations"],["Supranational policies and trade blocs","Supranational Policies & Trade Blocs"],["Foreign governments","Foreign Governments"],["Foreign multinationals and other supranational groups","Foreign Multinationals & Other Supranational Groups"]].map(([en, zh]) => <div key={en} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><BiText mode={mode} en={en} zh={zh} /></div>)}</div></InfoCard>
+        <MetaPressureBoard mode={mode} />
         <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn='The "Inverted T" view of the world' titleZh='「倒 T 型」世界觀' mode={mode} tone="gold"><BiText mode={mode} block en="The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution." zh="世界並不像某些流行說法那樣 flat。創造 ideas 的能力仍高度集中在特定的人、公司與地點；但執行資源則相對分散。關鍵策略問題是：誰會成為 flattener，誰又會被壓成只能在 execution 上競爭的 flattenee。" /></InfoCard>
           <InfoCard titleEn="Why this matters so much for the final" titleZh="為甚麼它對期末特別重要" mode={mode} tone="plum"><BiText mode={mode} block en="Supranational drivers do not merely change profit levels. They can rewrite who is allowed to enter, under what rules, with which technologies, and with what geopolitical constraints. That is why they matter disproportionately in international and corporate strategy questions." zh="Supranational drivers 不只是改變 profit 高低。它們甚至會直接改寫誰能進場、以甚麼規則進場、用甚麼技術進場，以及面對甚麼 geopolitical constraints。這也是它在 international 與 corporate strategy 題目中特別重要的原因。" /></InfoCard>
@@ -1726,6 +2054,7 @@ function InternationalSection({ mode }) {
     <SectionShell id="international" mode={mode} titleEn="International strategy" titleZh="國際策略" kickerEn="High-weight playbook" kickerZh="高權重作答藍圖" refs={["Last Day", "Master Review"]}>
       <div className="space-y-5">
         <InfoCard titleEn="Eight-question blueprint" titleZh="八問藍圖" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{rows.map((row, idx) => <div key={idx} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><div className="mb-1 text-[11px] uppercase tracking-[0.16em]" style={{ color: theme.plum }}>{String(idx + 1).padStart(2, "0")}</div><BiText mode={mode} en={row.q.en} zh={row.q.zh} /></div>)}</div></InfoCard>
+        <InternationalArchitectureBoard mode={mode} />
         <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Global / local split" titleZh="Global / Local 切法" mode={mode} tone="gold"><SimpleTable mode={mode} size="compact" columns={[{ key: "bucket", en: "Bucket", zh: "類別" }, { key: "global", en: "What to globalize", zh: "應 globalize 的部分" }, { key: "local", en: "What to localize", zh: "應 localize 的部分" }]} rows={[
             { bucket: { en: "Financial / compliance", zh: "Financial / Compliance" }, global: { en: "Envelope, standards, control architecture", zh: "整體框架、標準、控制結構" }, local: { en: "Local legal expertise only", zh: "只保留必要的 local legal expertise" } },
@@ -1748,6 +2077,7 @@ function CorporateSection({ mode }) {
     <SectionShell id="corporate" mode={mode} titleEn="Corporate strategy" titleZh="企業總體策略" kickerEn="High-weight playbook" kickerZh="高權重作答藍圖" refs={["Last Day", "Chapter 3", "Master Review"]}>
       <div className="space-y-5">
         <InfoCard titleEn="First test" titleZh="第一個問題" mode={mode} tone="teal"><BiText mode={mode} block en="Is the company more than the sum of its parts? If the answer is no, investors can diversify on their own and the corporate structure may be destroying value rather than creating it." zh="第一個問題是：這家公司有沒有大於 parts 的總和？如果答案是否定的，投資人可以自己分散投資，這種 corporate structure 反而可能正在毀掉價值。" /></InfoCard>
+        <CorporateMechanismBoard mode={mode} />
         <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Eight-question blueprint" titleZh="八問藍圖" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "How many industries?", zh: "有幾個 industries？" }, { en: "Which industries?", zh: "是哪一些 industries？" }, { en: "How do the five levels differ from the firm’s existing businesses?", zh: "新舊 business 在五個層次上有何差異？" }, { en: "What SPARK is needed in each business?", zh: "每個 business 需要甚麼 SPARK？" }, { en: "How should SPARK be matched to business conditions?", zh: "如何讓 SPARK 對應 business 條件？" }, { en: "How should the multi-business company be organized?", zh: "這個 multi-business company 要如何組織？" }, { en: "Where is value created: across subsidiaries, or between HQ and subsidiaries?", zh: "價值究竟是在 subsidiaries 之間，還是在 HQ 與 subsidiaries 之間被創造？" }, { en: "Are the businesses related or unrelated?", zh: "這些 businesses 是 related 還是 unrelated？" },
@@ -1785,6 +2115,7 @@ function ImplementationSection({ mode }) {
     <SectionShell id="implementation" mode={mode} titleEn="Implementation" titleZh="Implementation" kickerEn="High-weight organizational diagnosis" kickerZh="高權重組織診斷" refs={["Implementation Lecture", "Last Day", "Nokia Reading", "Master Review"]}>
       <div className="space-y-5">
         <InfoCard titleEn="The five-block implementation system" titleZh="五段 implementation 系統" mode={mode} tone="teal"><StageRibbon mode={mode} items={stages} /></InfoCard>
+        <ImplementationDiagnosisBoard mode={mode} />
         <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Knowing-Not-Knowing: seven reasons" titleZh="Knowing-Not-Knowing 的七個原因" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "Problems of framing", zh: "Problems of framing" }, { en: "Incorrect perceptions", zh: "Incorrect perceptions" }, { en: "Issues with reasoning", zh: "Issues with reasoning" }, { en: "Ignoring the obvious", zh: "Ignoring the obvious" }, { en: "Going along with the pack", zh: "Going along with the pack" }, { en: "Believing others have done the homework", zh: "Believing others have done the homework" }, { en: "Willful blindness", zh: "Willful blindness" },
@@ -1844,6 +2175,7 @@ function ExamSection({ mode }) {
         <InfoCard titleEn="Suggested 180-minute allocation" titleZh="建議的 180 分鐘時間分配" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-8">{[
           ["0–5","Read all questions, not the reading","0–5","先讀完所有題目，不先讀 reading"],["5–15","Read the full reading and tag frameworks","5–15","完整讀 reading，邊讀邊 tag 框架"],["15–30","Do the most bounded question first","15–30","先做最 bounded 的題目"],["30–55","International-style question","30–55","處理 international 類題目"],["55–80","Corporate-style question","55–80","處理 corporate 類題目"],["80–140","Long implementation / Nokia-type question","80–140","處理 implementation / Nokia 類長題"],["140–170","Go back and strengthen conclusions","140–170","回頭補強 conclusions"],["170–180","Final scan for conclusions, evidence, and fit","170–180","最後檢查 conclusion、evidence 與題意貼合度"],
         ].map(([en1, en2, zh1, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="mb-1 font-semibold" style={{ color: theme.teal }}>{en1}</div><BiText mode={mode} en={en2} zh={zh2} /></div>)}</div></InfoCard>
+        <ExamFlowBoard mode={mode} />
         <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Question trigger → tool mapping" titleZh="題目 trigger → 工具對應" mode={mode} tone="gold"><SimpleTable mode={mode} size="compact" columns={[{ key: "trigger", en: "Trigger", zh: "觸發字樣" }, { key: "tool", en: "Default tool", zh: "預設工具" }]} rows={[
             { trigger: { en: "Profitability / structure / competition", zh: "profitability / structure / competition" }, tool: { en: "Underlying economics + competition type + variables + ferocity", zh: "Underlying economics + competition type + variables + ferocity" } },
