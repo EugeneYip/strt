@@ -2785,6 +2785,60 @@ const PT_MAP = {
   "EugeneYip.com": "EugeneYip.com"
 };
 
+
+const UR_MAP = {
+  "STRT 6200 Final Exam Infrastructure": "STRT 6200 فائنل امتحان انفراسٹرکچر",
+  "Strategic Decision-Making Review System": "اسٹریٹجک ڈسیژن میکنگ ریویو سسٹم",
+  "Search keyword, case, or tool…": "کلیدی لفظ، کیس یا ٹول تلاش کریں…",
+  "Language": "زبان",
+  "Language switch": "زبان تبدیل کریں",
+  "Reading map": "مطالعہ کا نقشہ",
+  "Original pasted master review": "اصل پیسٹ کیا گیا ماسٹر ریویو",
+  "Exam Signals": "امتحانی اشارے",
+  "Analytical Spine": "تحلیلی ڈھانچہ",
+  "Underlying Economics": "بنیادی معاشی منطق",
+  "Industry Level": "انڈسٹری لیول",
+  "Firm Level": "فرم لیول",
+  "Cluster / Meso Level": "کلسٹر / میسو لیول",
+  "National / Macro Level": "قومی / میکرو لیول",
+  "Supranational / Meta Level": "فوق القومی / میٹا لیول",
+  "International Strategy": "بین الاقوامی حکمتِ عملی",
+  "Corporate Strategy": "کارپوریٹ حکمتِ عملی",
+  "Implementation": "عمل درآمد",
+  "Case Grid": "کیس گرڈ",
+  "Exam Attack System": "امتحانی اٹیک سسٹم",
+  "Source Fidelity Appendix": "اصل مواد کا ضمیمہ",
+  "All": "سب",
+  "High Weight": "زیادہ وزن",
+  "Frameworks": "فریم ورک",
+  "Cases": "کیسز",
+  "Appendix": "ضمیمہ",
+  "No sections match the current filter.": "موجودہ فلٹر کے مطابق کوئی سیکشن نہیں ملا۔",
+  "Try a broader search term or switch the chip filter back to All.": "زیادہ وسیع تلاش کا لفظ آزمائیں یا چپ فلٹر کو واپس سب پر لے جائیں۔",
+  "What this build is for": "یہ بلڈ کس مقصد کے لیے ہے",
+  "Why this appendix remains": "یہ ضمیمہ کیوں برقرار ہے",
+  "Competition spectrum": "مقابلے کا طیف",
+  "Fast case-to-level scan": "کیس سے لیول تک فوری جائزہ",
+  "Answer construction flow": "جواب بنانے کا فلو",
+  "Industry boundary method": "انڈسٹری کی حد بندی کا طریقہ",
+  "SPARK": "SPARK",
+  "Firm architecture": "فرم کا ڈھانچہ",
+  "Macro board": "میکرو بورڈ",
+  "Meta pressure board": "میٹا پریشر بورڈ",
+  "International architecture": "بین الاقوامی آرکیٹیکچر",
+  "Corporate architecture": "کارپوریٹ آرکیٹیکچر",
+  "Implementation diagnosis": "عمل درآمد کی تشخیص",
+  "EugeneYip.com": "EugeneYip.com"
+};
+
+function urText(input) {
+  if (typeof input !== 'string') return input;
+  if (UR_MAP[input]) return UR_MAP[input];
+  const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
+  if (match) return `اس وقت ${match[1]} سیکشن دکھائی دے رہے ہیں۔ فلٹر چپس اور سرچ باکس استعمال کر کے نظام کو زیادہ وزن والے حصوں، فریم ورکس، کیسز یا ضمیمے تک محدود کریں۔`;
+  return input;
+}
+
 function ptText(input) {
   if (typeof input !== 'string') return input;
   if (PT_MAP[input]) return PT_MAP[input];
@@ -2809,18 +2863,20 @@ function viText(input) {
   return input;
 }
 
-function uiText(mode, en, zh, vi, pt) {
+function uiText(mode, en, zh, vi, pt, ur) {
   if (mode === 'en') return en;
   if (mode === 'zh') return zh;
   if (mode === 'zh-cn') return zhCnText(zh ?? en);
   if (mode === 'vi') return vi ?? viText(en) ?? en;
   if (mode === 'pt') return pt ?? ptText(en) ?? en;
+  if (mode === 'ur') return ur ?? urText(en) ?? en;
   return en;
 }
 
-function BiText({ mode, en, zh, vi, pt, className = "", block = false, subtleZh = false }) {
+function BiText({ mode, en, zh, vi, pt, ur, className = "", block = false, subtleZh = false }) {
   const resolvedVi = vi ?? viText(en);
   const resolvedPt = pt ?? ptText(en);
+  const resolvedUr = ur ?? urText(en);
   if (mode === "en") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{en}</div> : <span className={className}>{en}</span>;
   if (mode === "zh") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{zh}</div> : <span className={className}>{zh}</span>;
   if (mode === "zh-cn") {
@@ -2839,6 +2895,22 @@ function BiText({ mode, en, zh, vi, pt, className = "", block = false, subtleZh 
     return (
       <span className={className}>
         {resolvedVi || en}
+      </span>
+    );
+  }
+
+  if (mode === "ur") {
+    if (block) {
+      return (
+        <div className={cn('min-w-0 break-words [overflow-wrap:anywhere] text-right', className)} dir="rtl">
+          <div>{resolvedUr || en}</div>
+          {resolvedUr && resolvedUr !== en ? <div className="mt-1 text-[0.94em] text-slate-600" dir="ltr">{en}</div> : null}
+        </div>
+      );
+    }
+    return (
+      <span className={className} dir="rtl">
+        {resolvedUr || en}
       </span>
     );
   }
@@ -3250,7 +3322,7 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
               <div className="mt-1 text-xl md:text-2xl font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="Strategic Decision-Making Review System" zh="策略決策期末複習系統" /></div>
             </div>
             <div className="flex flex-col gap-2 md:flex-row md:items-center">
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={uiText(mode, "Search keyword, case, or tool…", "搜尋關鍵字、案例、工具…", "Tìm từ khóa, case hoặc công cụ…")} className="w-full md:w-[340px] max-w-full rounded-full border px-4 py-2 text-sm outline-none" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }} />
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={uiText(mode, "Search keyword, case, or tool…", "搜尋關鍵字、案例、工具…", "Tìm từ khóa, case hoặc công cụ…", undefined, "کلیدی لفظ، کیس یا ٹول تلاش کریں…")} dir={mode === "ur" ? "rtl" : "ltr"} className={cn("w-full md:w-[340px] max-w-full rounded-full border px-4 py-2 text-sm outline-none", mode === "ur" ? "text-right" : "text-left")} style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }} />
               <div className="flex flex-wrap gap-2">{chips.map((chip) => <button key={chip.key} onClick={() => setActiveTag(chip.key)} className="rounded-full border px-3 py-2 text-xs font-semibold tracking-[0.14em]" style={{ borderColor: activeTag === chip.key ? theme.teal : theme.line, background: activeTag === chip.key ? "#EDF4F6" : "#FBF8F0", color: activeTag === chip.key ? theme.teal : theme.subInk }}><BiText mode={mode} en={chip.en} zh={chip.zh} /></button>)}</div>
             </div>
           </div>
@@ -3263,10 +3335,10 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
 
 function FloatingLanguageToggle({ mode, setMode }) {
   const [open, setOpen] = useState(false);
-  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }];
+  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }, { key: "ur", label: "اردو" }];
   return (
     <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
-      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className="rounded-2xl px-3 py-2 text-sm font-semibold text-left" style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
+      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className={cn("rounded-2xl px-3 py-2 text-sm font-semibold", mode === "ur" ? "text-right" : "text-left")} style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
       <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ")} title={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ")}>◎</button>
     </div>
   );
@@ -4064,7 +4136,7 @@ export default function STRT6200FinalExamInfrastructure() {
   const filteredSections = useMemo(() => sectionMeta.filter((section) => {
     const tagPass = activeTag === "all" ? true : section.tag === activeTag;
     const q = query.trim().toLowerCase();
-    const queryPass = !q ? true : [section.en, section.zh, viText(section.en), ptText(section.en), section.search, ...(section.refs || [])].join(" ").toLowerCase().includes(q);
+    const queryPass = !q ? true : [section.en, section.zh, viText(section.en), ptText(section.en), urText(section.en), section.search, ...(section.refs || [])].join(" ").toLowerCase().includes(q);
     return tagPass && queryPass;
   }), [activeTag, query]);
   const renderSection = (id) => {
@@ -4088,7 +4160,7 @@ export default function STRT6200FinalExamInfrastructure() {
   };
   const visibleCount = filteredSections.length;
   return (
-    <div className="min-h-screen max-w-full overflow-x-hidden" style={{ background: theme.bg, color: theme.ink }}>
+    <div className="min-h-screen max-w-full overflow-x-hidden" dir={mode === "ur" ? "rtl" : "ltr"} lang={mode === "ur" ? "ur" : "en"} style={{ background: theme.bg, color: theme.ink }}>
       <AnchorNav mode={mode} activeTag={activeTag} setActiveTag={setActiveTag} query={query} setQuery={setQuery} />
       <FloatingLanguageToggle mode={mode} setMode={setMode} />
       <div className="mx-auto grid max-w-[1600px] gap-5 px-3 py-5 sm:px-4 md:px-6 xl:grid-cols-[250px_minmax(0,1fr)]">
