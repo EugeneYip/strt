@@ -2886,6 +2886,94 @@ const ES_MAP = {
 };
 
 
+const JP_MAP = {
+  "STRT 6200 Final Exam Infrastructure": "STRT 6200 ファイナル試験インフラストラクチャ",
+  "Strategic Decision-Making Review System": "Strategic Decision-Making レビューシステム",
+  "Search keyword, case, or tool…": "キーワード、ケース、ツールを検索…",
+  "Language": "言語",
+  "Language switch": "言語切替",
+  "Reading map": "読み方マップ",
+  "Source appendix": "ソース付録",
+  "Original source appendix": "元のソース付録",
+  "What this build is for": "このビルドの使い方",
+  "Weighted areas": "重点領域",
+  "Frameworks": "フレームワーク",
+  "Cases": "ケース",
+  "Appendix": "付録",
+  "All": "すべて",
+  "English-first interface with permanent mode switch": "英語を主軸にした常設切替インターフェース",
+  "Source fidelity preserved inside the file": "ソースの忠実性をファイル内で保持",
+  "Improved for desktop, tablet, and phone reading": "PC、タブレット、スマホで読みやすいよう最適化",
+  "Exam execution before decoration": "装飾より試験での使いやすさを優先",
+  "Built for fast scanning, structured recall, and case application": "高速スキャン、構造化された想起、ケースへの適用を重視して設計",
+  "Built from the final pasted backbone, then checked against course files": "貼り付けられた最終バックボーンを土台にし、コース資料で照合して構築",
+  "This build is designed as a user-facing revision system, not a progress memo. It assumes you need to read quickly, see structure immediately, and move from concept to case application without losing fidelity.": "このビルドは進捗メモではなく、実際に使うための復習システムとして設計されています。素早く読み、構造をすぐ把握し、内容の忠実性を落とさずに概念からケース適用へ移れることを前提にしています。",
+  "The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone.": "メイン画面は読みやすさと試験での使いやすさを重視して再構成されています。この付録には、貼り付けられた元の master review をそのまま保持しており、アップグレード版のインフラが元のバックボーンを見えない形で落としてしまわないようにしています。",
+  "Answer the question in front of you, not the one you hoped to get.": "自分が出てほしかった問いではなく、目の前の設問に答える。",
+  "Do not display frameworks as vocabulary. Select the right analytical tool for the case trigger.": "フレームワークを用語集のように並べない。ケースのトリガーに合った分析ツールを選ぶ。",
+  "Binding levels only. Unnecessary theory, extra cases, and generic filler dilute grades.": "書くのは binding するレベルだけ。不要な理論、余分なケース、一般論の filler は得点を薄める。",
+  "The exam rewards disciplined triage, not maximum text volume.": "この試験で評価されるのは文字量ではなく、規律ある triage です。",
+  "This infrastructure is built from the pasted final-review backbone and checked against the course text, Session 1 course framing, the Last Day deck, the implementation lecture, practice questions, and key case materials. The full original pasted notes are preserved in the appendix.": "このインフラは、貼り付けられた final review のバックボーンを土台にし、course text、Session 1 の course framing、Last Day deck、implementation lecture、practice questions、主要ケース資料と照合して作成しています。元のノート全文は付録に保持されています。",
+  "The exam logic is explicit: before strategy language, understand how the business makes money. Underlying economics shape industry structure, which shapes competition, which shapes profit potential, which then gets modified by the focal firm's SPARK, bargaining position, leadership, and execution.": "試験のロジックは明確です。strategy language に入る前に、その business がどう稼ぐのかを理解すること。Underlying economics が industry structure を決め、industry structure が competition を決め、competition が profit potential を決め、その上で focal firm の SPARK、交渉力、leadership、execution が修正を加えます。",
+  "High-scoring Nokia insight: Nokia once functioned as a standard setter because Nordic standards became European and then global. Apple later redefined the standard around the software platform, turning Apple into the frame-breaker and hollowing out Nokia's earlier advantage.": "高得点につながる Nokia の insight はこうです。Nokia はかつて Nordic standards が European、さらに global standards へ広がる流れの中で standard setter として機能していました。その後 Apple が software platform を中心に標準そのものを再定義し、Apple が frame-breaker となり、Nokia の従来の優位を空洞化させました。",
+  "Do not stop with current rivals. Add related-industry entrants and unmet demand segments. Many of the biggest threats come from those two directions.": "現在の rivals だけで止めない。related industry からの entrants と unmet demand segments を必ず加える。大きな脅威の多くはこの二方向から来る。",
+  "Coopetition means the same set of players can cooperate in one activity and compete in another. In an exam answer, split the relationship at the activity level rather than declaring the other side simply friend or foe.": "Coopetition とは、同じプレイヤー群がある activity では協力し、別の activity では競争することです。試験答案では、相手を単純に味方か敵かで決めるのではなく、activity レベルで関係を分けて書く。",
+  "Any claim that a firm is performing well or poorly should identify the comparator first. Saying 'performance is weak' without naming the reference point is mechanically unsafe.": "企業の performance が良い悪いと述べるなら、まず comparator を明示すること。基準を示さずに『performance is weak』と書くのは答案として危険です。",
+  "Externalization is not automatically good. One company’s asset-light strategy usually depends on another company carrying the asset-heavy burden. If you cannot identify where value is created, where it is appropriated, and where it is defended, you may be giving the value away.": "Externalization は自動的に良いわけではありません。ある会社の asset-light strategy は、通常ほかの会社が asset-heavy の負担を引き受けることに依存しています。value がどこで創られ、どこで appropriated され、どこで defended されるかを特定できないなら、その value を手放している可能性があります。",
+  "The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution.": "世の中は一般向けの議論が言うほど flat ではありません。ideas の創出は今でも特定の人、企業、場所に強く集中しており、execution resources の方がより広く分散しています。戦略上の重要な問いは、誰が flattener になるのか、そして誰が execution だけで競争する側に押し込まれるのかです。",
+  "Supranational drivers do not merely change profit levels. They can rewrite who is allowed to enter, under what rules, with which technologies, and with what geopolitical constraints. That is why they matter disproportionately in international and corporate strategy questions.": "Supranational drivers は単に profit level を変えるだけではありません。誰が参入できるのか、どの rules の下で、どの technologies を使い、どの geopolitical constraints を受けるのかまで書き換えます。だからこそ international strategy や corporate strategy の設問で比重が大きいのです。",
+  "Is the company more than the sum of its parts? If the answer is no, investors can diversify on their own and the corporate structure may be destroying value rather than creating it.": "その company は parts の総和以上の存在か。答えが no なら、投資家は自分で分散投資できるので、corporate structure は value を創るどころか壊しているかもしれません。",
+  "The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality.": "managerial mistake は environment を体系的に過小評価することです。ここでの teaching point は、behavior は managers が直感的に思う以上に situation によって説明されるということ。行動を変えたいなら personality を説教するより environment を設計し直すべきです。",
+  "Final one-sentence guide: start with underlying economics, identify the binding levels, test SPARK plus leadership and execution, pressure-test future competition with CEA, and then ask whether organization and implementation allow the firm to realize and defend the value that should be available.": "最後の一文ガイド。underlying economics から始め、binding する levels を特定し、SPARK に leadership と execution を加えて検証し、CEA で future competition を pressure-test し、そのうえで organization と implementation が本来得られるはずの value を実現し守れるかを問う。",
+  "Use the right tool for the job": "設問に合ったツールを使う",
+  "Do not include extraneous material": "余計な材料を入れない",
+  "Use your time wisely": "時間配分を誤らない",
+  "Reading the question correctly is itself a grading event": "設問を正しく読むこと自体が採点対象",
+  "Competition spectrum": "競争スペクトラム",
+  "Industry boundary method": "業界境界の切り方",
+  "Industry economics board": "業界エコノミクス・ボード",
+  "Firm architecture": "企業アーキテクチャ",
+  "SPARK architecture": "SPARK アーキテクチャ",
+  "Relative performance discipline": "相対 performance の規律",
+  "Cluster ecosystem": "クラスター・エコシステム",
+  "Meso ecosystem board": "メソ・エコシステム・ボード",
+  "Macro scan": "マクロ・スキャン",
+  "Macro board": "マクロ・ボード",
+  "Meta pressure board": "メタ圧力ボード",
+  "International architecture": "国際戦略アーキテクチャ",
+  "Corporate architecture": "コーポレート戦略アーキテクチャ",
+  "Implementation diagnosis": "実行診断",
+  "Fast case-to-level scan": "ケースとレベルの高速照合",
+  "Answer construction flow": "答案構築フロー",
+  "Why this appendix remains": "この付録を残している理由",
+  "EN": "EN",
+  "中": "中文",
+  "BI": "バイリンガル",
+  "Tiếng Việt": "Tiếng Việt",
+  "Português": "Português",
+  "Español": "Español",
+  "日本語": "日本語",
+  "Sources": "ソース",
+  "Show source appendix": "ソース付録を表示",
+  "Hide source appendix": "ソース付録を非表示",
+  "Original pasted master review": "元の pasted master review",
+  "No sections match the current filter.": "現在のフィルター条件に一致する section はありません。",
+  "Try a broader search term or switch the chip filter back to All.": "より広い検索語を試すか、chip filter を All に戻してください。",
+  "Select": "選択",
+  "Compare": "比較",
+  "Configure": "設計",
+  "Organize": "整理",
+  "Central test": "中心テスト",
+  "Rule rewrite": "ルールの書き換え",
+  "Four workstreams": "4つの作業線",
+  "Structure": "構造",
+  "Exam mechanics": "試験の作法",
+  "Exam build order": "答案の組み立て順",
+  "High-yield reminders": "高頻出の注意点",
+  "EugeneYip.com": "EugeneYip.com"
+};
+
+
 const UR_MAP = {
   "STRT 6200 Final Exam Infrastructure": "STRT 6200 فائنل امتحان انفراسٹرکچر",
   "Strategic Decision-Making Review System": "اسٹریٹجک ڈسیژن میکنگ ریویو سسٹم",
@@ -2971,7 +3059,15 @@ function esText(input) {
   return input;
 }
 
-function uiText(mode, en, zh, vi, pt, ur, es) {
+function jpText(input) {
+  if (typeof input !== 'string') return input;
+  if (JP_MAP[input]) return JP_MAP[input];
+  const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
+  if (match) return `現在表示中の section は ${match[1]} 件です。filter chips と検索ボックスを使って、重点領域、frameworks、cases、または appendix に絞り込んでください。`;
+  return input;
+}
+
+function uiText(mode, en, zh, vi, pt, ur, es, jp) {
   if (mode === 'en') return en;
   if (mode === 'zh') return zh;
   if (mode === 'zh-cn') return zhCnText(zh ?? en);
@@ -3036,6 +3132,21 @@ function BiText({ mode, en, zh, vi, pt, ur, es, className = "", block = false, s
     return (
       <span className={className}>
         {resolvedEs || en}
+      </span>
+    );
+  }
+  if (mode === "jp") {
+    if (block) {
+      return (
+        <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>
+          <div>{resolvedJp || en}</div>
+          {resolvedJp && resolvedJp !== en ? <div className="mt-1 text-[0.94em] text-slate-600">{en}</div> : null}
+        </div>
+      );
+    }
+    return (
+      <span className={className}>
+        {resolvedJp || en}
       </span>
     );
   }
@@ -3460,7 +3571,7 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
 
 function FloatingLanguageToggle({ mode, setMode }) {
   const [open, setOpen] = useState(false);
-  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }, { key: "ur", label: "اردو" }, { key: "es", label: "Español" }];
+  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }, { key: "ur", label: "اردو" }, { key: "es", label: "Español" }, { key: "jp", label: "日本語" }];
   return (
     <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
       {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ", undefined, undefined, undefined, "Idioma")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className={cn("rounded-2xl px-3 py-2 text-sm font-semibold", mode === "ur" ? "text-right" : "text-left")} style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
@@ -4285,7 +4396,7 @@ export default function STRT6200FinalExamInfrastructure() {
   };
   const visibleCount = filteredSections.length;
   return (
-    <div className="min-h-screen max-w-full overflow-x-hidden" dir={mode === "ur" ? "rtl" : "ltr"} lang={mode === "ur" ? "ur" : "en"} style={{ background: theme.bg, color: theme.ink }}>
+    <div className="min-h-screen max-w-full overflow-x-hidden" dir={mode === "ur" ? "rtl" : "ltr"} lang={mode === "ur" ? "ur" : mode === "jp" ? "ja" : mode === "es" ? "es-MX" : mode === "pt" ? "pt-BR" : mode === "vi" ? "vi" : mode === "zh" ? "zh-Hant" : mode === "zh-cn" ? "zh-Hans" : "en"} style={{ background: theme.bg, color: theme.ink }}>
       <AnchorNav mode={mode} activeTag={activeTag} setActiveTag={setActiveTag} query={query} setQuery={setQuery} />
       <FloatingLanguageToggle mode={mode} setMode={setMode} />
       <div className="mx-auto grid max-w-[1600px] gap-5 px-3 py-5 sm:px-4 md:px-6 xl:grid-cols-[250px_minmax(0,1fr)]">
