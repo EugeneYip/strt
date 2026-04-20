@@ -2397,6 +2397,125 @@ const VI_DEEP_MAP = {
   "Newell: classic case of HQ value through managerial discipline.": "Newell: case kinh điển về việc HQ tạo giá trị nhờ managerial discipline."
 };
 
+
+const CN_DEEP_MAP = {
+  "10 meters away: solve the puzzle of value creation, competitive advantage, and appropriability.": "10 米距离：把整张拼图解开，也就是价值创造、竞争优势与价值占有。",
+  "3 meters away: extract the major conclusion from each analytical block.": "3 米距离：从每一个分析模块里提炼出核心结论。",
+  "6 inches away: organize facts, numbers, quotes, and events into the framework.": "6 英寸距离：把事实、数字、引文和事件整理进框架里。",
+  "A limited number of firms competing with interdependence.": "少数几家企业在相互依赖的状态下展开竞争。",
+  "A tech-enabled apparel model sits across meso, industry, and meta pressures, especially future competition and unmet demand.": "这种技术驱动的服装模式同时受 meso、industry 和 meta 多个层面的压力影响，尤其要看未来竞争与未被满足的需求。",
+  "Account management, BD, marketing, sales": "客户管理、业务拓展、市场营销、销售",
+  "Acer / Wistron: when units inside the same corporation undermine each other, breakup can be the value-creating move.": "Acer / Wistron：当同一集团内部的业务单元彼此牵制时，拆分反而可能是创造价值的动作。",
+  "Action is missing from analysis + leadership": "analysis + leadership 缺少 action",
+  "Airline industry": "航空业",
+  "Airlines": "航空",
+  "Analysis is missing from action + leadership": "action + leadership 缺少 analysis",
+  "Analyze": "分析",
+  "Apply the right tool, not the whole framework library.": "用对工具，不要把整套框架库一股脑搬上来。",
+  "Are the businesses related or unrelated?": "这些业务彼此相关还是不相关？",
+  "Are the countries similar or different?": "这些国家彼此相似还是差异明显？",
+  "Are the countries similar or meaningfully different?": "这些国家只是略有差异，还是在战略意义上真的不同？",
+  "Ask who else is fighting for that same customer outcome. Different technologies can still belong to the same industry if the useful output is the same.": "先问还有谁也在争夺同一种客户结果。技术可以不同，但只要提供给客户的有效输出相同，就仍可能属于同一个行业。",
+  "Automobiles": "汽车",
+  "Bargaining / buyer / supplier power": "议价力 / 买方 / 供应商力量",
+  "Bargaining leverage": "议价杠杆",
+  "Believing others have done the homework": "以为别人已经把功课做完了",
+  "Bottom of the Pyramid logic matters: profitable models may require simpler products, smaller pack sizes, and informal channels.": "Bottom of the Pyramid 的逻辑很关键：想在这类市场做出盈利模型，往往需要更简单的产品、更小规格的包装，以及更非正式的渠道。",
+  "Break multi-layer approval barriers for disruptive projects.": "对于 disruptive 项目，要打破层层审批形成的障碍。",
+  "Build a guiding coalition": "建立推动变革的核心联盟",
+  "Build the puzzle, then solve the puzzle.": "先把拼图拼起来，再去解它。",
+  "But leadership can also lock in a mental model that becomes vulnerability later.": "但 leadership 也可能把企业锁进一种心智模型，而这种模型后来反而会变成脆弱点。",
+  "Buyer, specifier, and payer are split; cost share is trivial but under-measurement risk is material.": "买方、规格制定方和付款方彼此分离；成本占比很小，但少计量的风险却很实质。",
+  "Can create self-reinforcing outcomes and winner-take-most logic.": "可能形成自我强化的结果，并出现 winner-take-most 的逻辑。",
+  "Can the corporation negotiate better terms because it aggregates scale or relationships?": "集团能否凭借规模整合或关系整合，谈到更好的条件？",
+  "Can you point to real, quantifiable shared cost or quality gains?": "你能否指出真实且可量化的共享成本收益或质量收益？",
+  "Capital intensive, differentiated, but still highly competitive.": "资本密集、存在差异化，但竞争仍然非常激烈。",
+  "Cases are primary teaching vehicles, not decorative examples.": "案例是主要教学载体，不是装饰性的例子。",
+  "Clarify the vision": "把愿景讲清楚",
+  "Classic contrast: Swatch broadlines from Flik Flak to Breguet, while Rolex focuses on the upper segments.": "经典对比：Swatch 从 Flik Flak 到 Breguet 横跨多个档位，而 Rolex 则集中在高端细分市场。",
+  "Clusters can arise from natural resources, market proximity, labor pooling, specialized input suppliers, shared infrastructure, reduced transaction cost, and knowledge spillovers.": "集群可能来自自然资源、接近市场、劳动力集聚、专业化投入品供应商、共享基础设施、更低的交易成本，以及知识外溢。",
+  "Commitment strategy: large commitments when the environment rewards durability.": "Commitment strategy：当环境会奖励长期稳定与持续投入时，就做大规模承诺。",
+  "Communication failure": "沟通失灵",
+  "Competition: type, variables, ferocity": "竞争：类型、变量、激烈程度",
+  "Competitive variables": "竞争变量",
+  "Competitive variables: price, quality / performance, brand, service, speed, access, and ecosystem / platform.": "竞争变量包括价格、质量 / 性能、品牌、服务、速度、可达性，以及 ecosystem / platform。",
+  "Conclude": "得出结论",
+  "Connect to action": "连到行动上",
+  "Consensus culture": "共识导向文化",
+  "Corporate / industry scope: how many industries the company competes in.": "Corporate / industry scope：企业参与多少个行业。",
+  "Corporate strategy six mechanisms + sum-of-parts test": "Corporate strategy 六种机制 + sum-of-parts 检验",
+  "Corrective logic: keep compliance global, require multi-layer approval for cross-border payments, and use independent audit and whistleblower systems.": "修正逻辑是：把 compliance 保持在全球层面，对跨境付款设置多层审批，并引入独立审计和 whistleblower 系统。",
+  "Create a volunteer army": "形成一支自愿推动变革的队伍",
+  "Create urgency and commitment": "制造紧迫感与承诺",
+  "Create urgency before the crisis becomes visible to everyone.": "要在危机还没有对所有人都显形之前，就先建立紧迫感。",
+  "Creating the Right Environment": "创造合适的执行环境",
+  "Define the question": "先把问题定义清楚",
+  "Define the strategically meaningful industry": "先界定在战略上真正有意义的行业",
+  "Disney under Iger: related diversification worked because Pixar, Marvel, Lucasfilm, and Fox all deepened the IP content system.": "Iger 时代的 Disney 之所以让 related diversification 成功，是因为 Pixar、Marvel、Lucasfilm 和 Fox 都在加深同一套 IP 内容系统。",
+  "Do cost or quality improve with cumulative experience?": "随着经验累积，成本或质量会不会改善？",
+  "Do network, nexus, standards, or installed-base effects exist?": "是否存在 network、nexus、standards 或 installed-base effects？",
+  "Do related businesses lower total cost or improve quality together?": "相关业务放在一起，是否能共同降低总成本或提升质量？",
+  "Does HQ actually improve operational discipline after acquisition or integration?": "并购或整合之后，HQ 是否真的能提升运营纪律？",
+  "Does average cost fall as output rises?": "产出上升时，平均成本会下降吗？",
+  "Does user value rise with installed base?": "用户价值会随着 installed base 扩大而上升吗？",
+  "Draw the boundary only after you know the output and the direct rivals. This avoids code-based or brand-based misclassification.": "先搞清楚输出是什么、直接对手是谁，再去画边界。这样才能避免按行业代码或品牌表象误判。",
+  "Draw the pictures.": "把图画出来。",
+  "Early movers can create durable cost advantage and deter entry.": "先行者可能建立持久的成本优势，并抑制后来者进入。",
+  "Entry, substitutes, regulation, buyer concentration, supplier consolidation, new standards, or adjacent-industry invasion can move the industry on the competition spectrum.": "进入者、替代品、监管、买方集中度、供应商整合、新标准，或邻近行业入侵，都可能让行业在竞争光谱上发生移动。",
+  "Extraneous material.": "不要写无关材料。",
+  "Ferocity": "竞争激烈程度",
+  "Ferocity: the nine drivers tell you how violent competition is likely to become.": "Ferocity：这九个 driver 会告诉你竞争可能会激烈到什么程度。",
+  "Firm performance": "企业绩效",
+  "Five levels": "五个层面",
+  "Five-level home-vs-host + SPARK match + global/local split": "五层 home-vs-host 对照 + SPARK 匹配 + global/local 切分",
+  "Fixed / sunk / variable cost": "固定 / 沉没 / 变动成本",
+  "Fixed cost is fixed in the short run but avoidable in the long run. It drives break-even pressure and scale logic.": "固定成本在短期内是固定的，但长期可以避免。它决定盈亏平衡压力，也决定规模逻辑。",
+  "Formulate Strategy": "形成战略",
+  "Forward integration triggered conflict with customers and ultimately justified separation.": "向前整合触发了与客户的冲突，最终也让拆分显得更合理。",
+  "Geopolitics can change whether you are even allowed to play the game.": "地缘政治甚至会改变你是否还有资格继续留在牌桌上。",
+  "High fixed plus low variable cost often invites price cuts. High sunk cost traps players. Low fixed plus high variable cost tends toward perfect-competition logic.": "高固定成本加低变动成本，往往会诱发价格战；高沉没成本会把玩家困住；低固定成本加高变动成本，则更接近完全竞争逻辑。",
+  "Is the company more than the sum of its parts? If the answer is no, investors can diversify on their own and the corporate structure may be destroying value rather than creating it.": "这家公司是否大于各部分简单相加的总和？如果答案是否定的，投资者完全可以自己分散配置，那企业集团结构可能就在毁灭价值，而不是创造价值。",
+  "No conclusion means no score. Over-hedging strong evidence or overstating weak evidence both lose precision.": "不给结论，基本就拿不到分。强证据写得太保守，或弱证据写得太绝对，都会失去精度。",
+  "The exam logic is explicit: before strategy language, understand how the business makes money. Underlying economics shape industry structure, which shapes competition, which shapes profit potential, which then gets modified by the focal firm's SPARK, bargaining position, leadership, and execution.": "这门考试的逻辑很明确：在谈战略语言之前，先搞清楚这个业务是怎么赚钱的。底层经济逻辑决定行业结构，行业结构决定竞争形态，竞争形态决定盈利潜力，之后再由 focal firm 的 SPARK、议价位置、领导力和执行力进行修正。",
+  "The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality.": "管理者常见的错误，是系统性低估环境的力量。这门课的教学重点在于：行为受情境影响的程度，远远超过管理者本能上的想象。想改变行为，就先重塑环境，而不是只对人格说教。",
+  "The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution.": "世界并不像流行写作里说得那样完全扁平。创意和关键构想依然高度集中在特定的人、企业和地点，而执行资源则分布得更广。真正的战略问题是，谁会成为 flattener，谁又会被压平成只能在执行端竞争的一方。",
+  "Use BARD-style language when the evidence is strong and viable alternatives are minimal.": "当证据很强、可成立的替代解释极少时，就用 BARD 式语气。",
+  "Use POE-style language when the balance of evidence points in one direction but remains limited.": "当证据整体指向某个方向，但强度仍有限时，就用 POE 式语气。",
+  "Value capture is not automatic. You still need bargaining position, execution, and defendability.": "价值捕获从来不是自动发生的。你仍然需要议价位置、执行能力和可防守性。",
+  "Variable cost moves with output. If price stays above variable cost, selling more can still make sense in the short run.": "变动成本会随着产出变化。只要价格仍高于变动成本，短期内继续多卖通常仍然是合理的。"
+};
+
+const ZH_CN_PHRASE_REPLACEMENTS = [
+  ["為甚麼", "为什么"], ["甚麼", "什么"], ["這裡", "这里"], ["這個", "这个"], ["這些", "这些"], ["這種", "这种"], ["這門", "这门"],
+  ["產業群聚", "产业集群"], ["群聚", "集群"], ["產業", "行业"], ["公司層次", "企业层面"], ["公司", "企业"], ["企業總體策略", "企业总体战略"], ["企業", "企业"],
+  ["層次", "层面"], ["總體", "宏观"], ["總戒律", "总戒律"], ["總表", "总表"], ["總體策略", "总体战略"],
+  ["結構", "结构"], ["競爭", "竞争"], ["獲利", "盈利"], ["績效", "绩效"], ["議價", "议价"], ["價值", "价值"], ["優勢", "优势"], ["劣勢", "劣势"],
+  ["圖表", "图表"], ["圖", "图"], ["畫圖", "画图"], ["關鍵", "关键"], ["風險", "风险"], ["壓力", "压力"], ["變數", "变量"], ["導向", "导向"],
+  ["與", "与"], ["並", "并"], ["讓", "让"], ["為", "为"], ["對應", "对应"], ["應用", "应用"], ["廣", "广"], ["擴", "扩"], ["縮", "缩"],
+  ["點", "点"], ["數據", "数据"], ["證據", "证据"], ["機會", "机会"], ["學習", "学习"], ["知識", "知识"], ["系統", "系统"], ["組織", "组织"],
+  ["領導", "领导"], ["執行", "执行"], ["實際", "实际"], ["實作", "实作"], ["實體", "实体"], ["發現", "发现"], ["發展", "发展"], ["發生", "发生"],
+  ["國家", "国家"], ["國際", "国际"], ["區域", "区域"], ["區段", "区段"], ["範疇", "范围"], ["範圍", "范围"], ["標準", "标准"], ["類型", "类型"],
+  ["買方", "买方"], ["賣方", "卖方"], ["採購", "采购"], ["規格制定者", "规格制定方"], ["規格", "规格"], ["製藥", "制药"], ["醫療", "医疗"], ["醫師", "医师"],
+  ["對手", "对手"], ["對比", "对比"], ["對外", "对外"], ["對內", "对内"], ["對上", "对上"], ["對下", "对下"], ["較", "较"], ["當", "当"],
+  ["將", "将"], ["會", "会"], ["從", "从"], ["後", "后"], ["開發", "开发"], ["設計", "设计"], ["佈局", "布局"], ["併購", "并购"], ["營運", "运营"],
+  ["網路", "网络"], ["軟體", "软件"], ["硬體", "硬件"], ["資料", "资料"], ["雲端", "云端"], ["專業", "专业"], ["專屬", "专属"], ["專門", "专门"],
+  ["長期", "长期"], ["短期", "短期"], ["強化", "强化"], ["複雜", "复杂"], ["簡單", "简单"], ["覺得", "觉得"], ["處理", "处理"], ["檢查", "检查"],
+  ["說明", "说明"], ["寫法", "写法"], ["寫出", "写出"], ["寫作", "写作"], ["讀者", "读者"], ["閱讀", "阅读"], ["課程", "课程"], ["課堂", "课堂"],
+  ["模組", "模块"], ["門檻", "门槛"], ["壟斷", "垄断"], ["體系", "体系"], ["總和", "总和"], ["證成", "证成"], ["顯示", "显示"], ["顯著", "显著"],
+  ["無法", "无法"], ["應該", "应该"], ["邏輯", "逻辑"], ["貢獻", "贡献"], ["規模", "规模"], ["潛力", "潜力"], ["準壟斷", "准垄断"], ["樣貌", "样貌"],
+  ["體現", "体现"], ["內部", "内部"], ["外部", "外部"], ["競逐", "争夺"], ["落地與執行", "落地与执行"], ["超國家", "超国家"], ["總體層次", "宏观层面"],
+  ["群聚 / 中觀", "集群 / 中观"], ["中觀", "中观"], ["商業生態", "商业生态"], ["生態系", "生态系统"], ["附錄", "附录"], ["權重", "权重"], ["總攻擊", "总攻击"]
+];
+
+function localizeZhCnFallback(input) {
+  if (typeof input !== 'string') return input;
+  let out = input;
+  for (const [from, to] of ZH_CN_PHRASE_REPLACEMENTS) {
+    out = out.split(from).join(to);
+  }
+  return out;
+}
+
 const CN_MAP = {
   "10 公尺距離：解整個 puzzle，也就是 value creation、competitive advantage 與 appropriability。": "10 公尺距离：解整个 puzzle，也就是 value creation、competitive advantage 与 appropriability。",
   "3 公尺距離：從每一塊分析抽出 major conclusion。": "3 公尺距离：从每一块分析抽出 major conclusion。",
@@ -3187,10 +3306,11 @@ function ptText(input) {
 
 function zhCnText(input) {
   if (typeof input !== 'string') return input;
+  if (CN_DEEP_MAP[input]) return CN_DEEP_MAP[input];
   if (CN_MAP[input]) return CN_MAP[input];
   const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
-  if (match) return `当前显示 ${match[1]} 个 section。可使用筛选 chips 和搜索框，将系统聚焦到高权重区域、框架、案例或附录。`;
-  return input;
+  if (match) return `当前显示 ${match[1]} 个 section。可使用筛选 chips 和搜索框，把系统聚焦到高权重区域、框架、案例或附录。`;
+  return localizeZhCnFallback(input);
 }
 
 function viText(input) {
