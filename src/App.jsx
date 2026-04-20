@@ -1034,9 +1034,263 @@ function cn(...parts) {
   return parts.filter(Boolean).join(" ");
 }
 
-function BiText({ mode, en, zh, className = "", block = false, subtleZh = false }) {
+
+const VI_MAP = {
+  "Exam Signals": "Tín hiệu kỳ thi",
+  "Analytical Spine": "Xương sống phân tích",
+  "Underlying Economics": "Underlying economics",
+  "Industry Level": "Cấp ngành",
+  "Firm Level": "Cấp doanh nghiệp",
+  "Cluster / Meso Level": "Cấp cluster / meso",
+  "National / Macro Level": "Cấp quốc gia / macro",
+  "Supranational / Meta Level": "Cấp siêu quốc gia / meta",
+  "International Strategy": "Chiến lược quốc tế",
+  "Corporate Strategy": "Chiến lược corporate",
+  "Implementation": "Implementation",
+  "Case Grid": "Lưới case",
+  "Exam Attack System": "Hệ thống tấn công bài thi",
+  "Source Fidelity Appendix": "Appendix bảo toàn nguyên bản",
+  "All": "Tất cả",
+  "High Weight": "Trọng số cao",
+  "Frameworks": "Framework",
+  "Cases": "Case",
+  "Appendix": "Appendix",
+  "Industry": "Ngành",
+  "Meso / Cluster": "Meso / cluster",
+  "Macro / National": "Macro / quốc gia",
+  "Meta / Supranational": "Meta / siêu quốc gia",
+  "Firm": "Doanh nghiệp",
+  "Five-level reading map": "Sơ đồ đọc theo 5 tầng",
+  "Why economics sits upstream": "Vì sao economics phải được xét trước",
+  "Three-step industry boundary method": "Phương pháp 3 bước để xác định ranh giới ngành",
+  "SPARK is the core, not the whole answer": "SPARK là lõi, nhưng chưa phải toàn bộ câu trả lời",
+  "Fast case-to-level scan": "Quét nhanh case theo từng tầng",
+  "Five-level reading order": "Thứ tự đọc theo 5 tầng",
+  "Industry boundary tools": "Công cụ xác định ranh giới ngành",
+  "Industry economics question board": "Bảng câu hỏi economics của ngành",
+  "Firm architecture": "Kiến trúc cấp doanh nghiệp",
+  "Cluster logic map": "Bản đồ logic cluster",
+  "Macro diagnostic board": "Bảng chẩn đoán macro",
+  "Meta pressure map": "Bản đồ áp lực meta",
+  "International architecture": "Kiến trúc chiến lược quốc tế",
+  "Corporate value creation board": "Bảng tạo giá trị ở cấp corporate",
+  "Implementation diagnosis flow": "Luồng chẩn đoán implementation",
+  "Answer construction flow": "Luồng dựng câu trả lời",
+  "What the exam is really testing": "Kỳ thi này thực sự đang kiểm tra điều gì",
+  "Reader orientation": "Định hướng cho người đọc",
+  "Read the question": "Đọc đúng câu hỏi",
+  "Use the right tool": "Dùng đúng công cụ",
+  "No extraneous material": "Không đưa vật liệu thừa",
+  "Use time wisely": "Dùng thời gian cho khôn ngoan",
+  "Professional standard, not student display": "Chuẩn chuyên nghiệp, không phải kiểu phô diễn của sinh viên",
+  "Weighted focus": "Trọng tâm ưu tiên",
+  "Core exam behavior": "Hành vi cốt lõi trong phòng thi",
+  "Coverage check": "Kiểm tra độ bao phủ",
+  "The analytical spine": "Xương sống phân tích",
+  "Full chain": "Chuỗi đầy đủ",
+  "BARD and POE": "BARD và POE",
+  "6 inches, 3 meters, 10 meters": "6 inches, 3 mét, 10 mét",
+  "The four commandments": "Bốn mệnh lệnh",
+  "Strategy philosophy": "Triết lý chiến lược",
+  "Why this section comes first": "Vì sao phần này phải đi trước",
+  "Three cost types and what they do": "Ba loại chi phí và tác động của chúng",
+  "Six fast industry-economics questions": "Sáu câu hỏi economics của ngành để quét nhanh",
+  "Profitability ranking visual": "Hình hóa xếp hạng profitability",
+  "Industry level": "Cấp ngành",
+  "Industry definition": "Định nghĩa ngành",
+  "Competition type spectrum": "Phổ loại hình cạnh tranh",
+  "Three dimensions of competition": "Ba chiều của cạnh tranh",
+  "Ferocity checklist": "Checklist về độ khốc liệt cạnh tranh",
+  "Lead firm logic": "Logic lead firm",
+  "Competitor Envelope Analysis™": "Competitor Envelope Analysis™",
+  "Coopetition": "Coopetition",
+  "Firm level": "Cấp doanh nghiệp",
+  "Performance is relative": "Performance là khái niệm tương đối",
+  "SPARK": "SPARK",
+  "Do not stop at SPARK": "Đừng dừng lại ở SPARK",
+  "Scope logic": "Logic về scope",
+  "The three dysfunction formulas": "Ba công thức gây dysfunction",
+  "Leadership is a double-edged sword": "Leadership là con dao hai lưỡi",
+  "VRIO applied to A, R, and K": "Áp VRIO vào A, R và K",
+  "Time dimension": "Chiều thời gian",
+  "Cluster / meso level": "Cấp cluster / meso",
+  "Eight building blocks": "Tám khối cấu thành",
+  "Bargaining power is a three-axis diagnosis": "Bargaining power cần chẩn đoán theo ba trục",
+  "Regional clusters and why they persist": "Vì sao regional clusters bền vững",
+  "Ecosystem warning": "Cảnh báo về ecosystem",
+  "National / macro level": "Cấp quốc gia / macro",
+  "Income distribution matters more than headline averages suggest": "Phân phối thu nhập quan trọng hơn mức bình quân bề ngoài",
+  "Exam framing": "Khung đặt câu hỏi cho bài thi",
+  "Supranational / meta level": "Cấp siêu quốc gia / meta",
+  "Eight supranational drivers": "Tám driver ở cấp siêu quốc gia",
+  "Why this matters so much for the final": "Vì sao phần này đặc biệt quan trọng trong final",
+  "Eight-question blueprint": "Bản thiết kế 8 câu hỏi",
+  "Global / local split": "Tách bạch global / local",
+  "Case transfer": "Chuyển logic case",
+  "First test": "Phép thử đầu tiên",
+  "Six value-creation mechanisms": "Sáu cơ chế tạo giá trị",
+  "Canonical case signals": "Tín hiệu case kinh điển",
+  "The five-block implementation system": "Hệ thống implementation gồm 5 khối",
+  "Knowing-Not-Knowing: seven reasons": "Knowing-Not-Knowing: bảy nguyên nhân",
+  "Resistance and the commitment ladder": "Kháng cự và thang cam kết",
+  "Behavioral anchors and why they matter": "Điểm tựa hành vi và vì sao chúng quan trọng",
+  "Handwashing self-report": "Tự báo cáo về rửa tay",
+  "Handwashing observed": "Rửa tay được quan sát thực tế",
+  "Asch conformity": "Sự tuân theo số đông kiểu Asch",
+  "Asch with one ally": "Asch khi có một đồng minh",
+  "Private written response": "Trả lời riêng bằng văn bản",
+  "Good Samaritan, early": "Good Samaritan, sớm",
+  "Good Samaritan, on time": "Good Samaritan, đúng giờ",
+  "Good Samaritan, late": "Good Samaritan, trễ",
+  "Telephone-game loss per pass": "Mất mát qua mỗi lượt trong trò chơi truyền tin",
+  "70 / 30 principle": "Nguyên tắc 70 / 30",
+  "Kotter’s eight accelerators": "Tám bộ tăng tốc của Kotter",
+  "Nokia as the implementation transfer case": "Nokia như case chuyển sang implementation",
+  "Why Nokia was susceptible": "Vì sao Nokia dễ bị tổn thương",
+  "What firms should do instead": "Doanh nghiệp đáng ra phải làm gì",
+  "Practice-question cases": "Các case trong bộ practice questions",
+  "Suggested 180-minute allocation": "Phân bổ gợi ý cho 180 phút",
+  "Question trigger → tool mapping": "Dấu hiệu câu hỏi → công cụ phù hợp",
+  "Default answer shape": "Hình dạng mặc định của câu trả lời",
+  "Fatal errors": "Những lỗi chí mạng",
+  "One-page hand cheat sheet": "Tờ cheat sheet một trang",
+  "Confidence tiers and safe usage": "Các mức độ tự tin và cách dùng an toàn",
+  "Why this appendix exists": "Vì sao cần giữ appendix này",
+  "Course signals": "Tín hiệu từ khóa học",
+  "Method": "Phương pháp",
+  "Start here": "Bắt đầu từ đây",
+  "Micro drivers": "Driver ở cấp micro",
+  "SPARK and beyond": "SPARK và phần mở rộng",
+  "Business ecosystems": "Business ecosystems",
+  "Country conditions": "Điều kiện quốc gia",
+  "Beyond the nation": "Vượt ra ngoài biên giới quốc gia",
+  "High-weight playbook": "Playbook trọng số cao",
+  "High-weight organizational diagnosis": "Chẩn đoán tổ chức ở mức ưu tiên cao",
+  "Default mappings": "Mapping mặc định",
+  "Execution under pressure": "Execution dưới áp lực",
+  "Nothing dropped from the pasted backbone": "Không bỏ sót gì khỏi backbone đã dán vào",
+  "Strategic Decision-Making Review System": "Hệ thống ôn tập Strategic Decision-Making",
+  "Competition spectrum": "Phổ cạnh tranh",
+  "Strategy side": "Phía chiến lược",
+  "Relative performance": "Performance tương đối",
+  "Execution side": "Phía execution",
+  "Inputs & suppliers": "Inputs & suppliers",
+  "Shared resources & activities": "Shared resources & activities",
+  "Focal industry / firm": "Ngành / doanh nghiệp trọng tâm",
+  "Demand & customers": "Demand & customers",
+  "Complements & substitutes": "Complements & substitutes",
+  "Meso policies & institutions": "Chính sách và thể chế ở cấp meso",
+  "Rule rewrite": "Viết lại luật chơi",
+  "Four workstreams": "Bốn tuyến công việc",
+  "Select": "Chọn",
+  "Compare": "So sánh",
+  "Configure": "Cấu hình",
+  "Organize": "Tổ chức",
+  "Central test": "Phép thử trung tâm",
+  "Reading map": "Sơ đồ đọc",
+  "No sections match the current filter.": "Không có section nào khớp với bộ lọc hiện tại.",
+  "Try a broader search term or switch the chip filter back to All.": "Hãy thử từ khóa rộng hơn, hoặc chuyển chip filter về All.",
+  "What useful output does the customer actually receive?": "Khách hàng thực sự nhận được đầu ra hữu ích nào?",
+  "Who is directly competing to supply that same output?": "Ai đang cạnh tranh trực tiếp để cung cấp đúng đầu ra đó?",
+  "Draw the industry boundary from that customer-facing output, not from the technology label.": "Hãy vẽ ranh giới ngành từ đầu ra mà khách hàng cảm nhận được, không phải từ nhãn công nghệ.",
+  "Scope": "Scope",
+  "Positioning": "Positioning",
+  "Activities": "Activities",
+  "Resources": "Resources",
+  "Knowledge": "Knowledge",
+  "Leadership": "Leadership",
+  "Execution": "Execution",
+  "Organization & management": "Tổ chức & quản lý",
+  "Governance": "Governance",
+  "Start with the industry. Define the strategically meaningful competitive field first.": "Hãy bắt đầu từ ngành. Trước hết phải xác định sân cạnh tranh có ý nghĩa chiến lược.",
+  "Move outward to the cluster or ecosystem that shapes suppliers, customers, complements, and substitutes.": "Sau đó mở rộng ra cluster hoặc ecosystem đang định hình suppliers, customers, complements và substitutes.",
+  "Then test the country context that enables or blocks the business model.": "Tiếp theo kiểm tra bối cảnh quốc gia đang hỗ trợ hay cản business model.",
+  "Then layer in supranational pressures that rewrite the rules above the nation state.": "Rồi cộng thêm các áp lực siêu quốc gia đang viết lại luật chơi bên trên cấp quốc gia.",
+  "Only then judge the firm itself. Strong firms inside bad structures still struggle.": "Chỉ sau đó mới đánh giá bản thân doanh nghiệp. Công ty mạnh nhưng nằm trong cấu trúc xấu vẫn sẽ rất chật vật.",
+  "Sources": "Nguồn",
+  "Language": "Ngôn ngữ",
+  "Search keyword, case, or tool…": "Tìm từ khóa, case hoặc công cụ…",
+  "Show source appendix": "Mở appendix nguồn gốc",
+  "Hide source appendix": "Ẩn appendix nguồn gốc",
+  "Original pasted master review": "Bản master review gốc đã dán vào",
+  "Language switch": "Chuyển ngôn ngữ",
+  "EN": "EN",
+  "中": "中文",
+  "BI": "Song ngữ",
+  "Tiếng Việt": "Tiếng Việt",
+  "The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone.": "Giao diện chính đã được tái cấu trúc để dễ đọc hơn và dùng tốt hơn trong bối cảnh làm bài thi. Appendix này giữ nguyên bản master review đã dán vào trong file, để bản infrastructure nâng cấp không vô tình làm rơi backbone gốc.",
+  "This build is designed as a user-facing revision system, not a progress memo. It assumes you need to read quickly, see structure immediately, and move from concept to case application without losing fidelity.": "Bản dựng này được thiết kế như một hệ thống ôn tập hướng tới người dùng cuối, không phải bản báo cáo tiến độ. Nó giả định rằng bạn cần đọc nhanh, nhìn ra cấu trúc ngay, và chuyển từ concept sang ứng dụng vào case mà không làm mất độ trung thực của nội dung.",
+  "Answer the question in front of you, not the one you hoped to get.": "Hãy trả lời đúng câu hỏi đang ở trước mặt, không phải câu hỏi bạn mong sẽ ra.",
+  "Do not display frameworks as vocabulary. Select the right analytical tool for the case trigger.": "Đừng biến framework thành từ vựng để khoe. Hãy chọn đúng công cụ phân tích theo tín hiệu của case.",
+  "Binding levels only. Unnecessary theory, extra cases, and generic filler dilute grades.": "Chỉ viết những tầng thật sự binding. Lý thuyết thừa, case thừa và filler chung chung sẽ làm loãng điểm.",
+  "The exam rewards disciplined triage, not maximum text volume.": "Kỳ thi thưởng cho khả năng triage có kỷ luật, không thưởng cho câu trả lời dài nhất.",
+  "This infrastructure is built from the pasted final-review backbone and checked against the course text, Session 1 course framing, the Last Day deck, the implementation lecture, practice questions, and key case materials. The full original pasted notes are preserved in the appendix.": "Infrastructure này được dựng trên backbone final review đã dán vào và đã được đối chiếu với course text, framing của Session 1, deck Last Day, bài giảng implementation, practice questions và các case trọng yếu. Toàn bộ ghi chú gốc đã dán vẫn được giữ lại trong appendix.",
+  "The exam logic is explicit: before strategy language, understand how the business makes money. Underlying economics shape industry structure, which shapes competition, which shapes profit potential, which then gets modified by the focal firm's SPARK, bargaining position, leadership, and execution.": "Logic của kỳ thi rất rõ: trước khi dùng ngôn ngữ strategy, phải hiểu doanh nghiệp kiếm tiền như thế nào. Underlying economics định hình cấu trúc ngành; cấu trúc ngành định hình cạnh tranh; cạnh tranh định hình profit potential; rồi sau đó mới được điều chỉnh bởi SPARK, vị thế bargaining, leadership và execution của doanh nghiệp trọng tâm.",
+  "High-scoring Nokia insight: Nokia once functioned as a standard setter because Nordic standards became European and then global. Apple later redefined the standard around the software platform, turning Apple into the frame-breaker and hollowing out Nokia's earlier advantage.": "Một insight ăn điểm cao về Nokia là: Nokia từng đóng vai trò standard setter vì các tiêu chuẩn Bắc Âu đã trở thành tiêu chuẩn châu Âu rồi toàn cầu. Sau đó Apple định nghĩa lại chuẩn quanh software platform, biến Apple thành frame-breaker và khoét rỗng lợi thế cũ của Nokia.",
+  "Do not stop with current rivals. Add related-industry entrants and unmet demand segments. Many of the biggest threats come from those two directions.": "Đừng dừng lại ở các đối thủ hiện tại. Hãy cộng thêm các entrant từ related industries và các unmet demand segments. Nhiều mối đe dọa lớn nhất đến từ đúng hai hướng này.",
+  "Coopetition means the same set of players can cooperate in one activity and compete in another. In an exam answer, split the relationship at the activity level rather than declaring the other side simply friend or foe.": "Coopetition nghĩa là cùng một nhóm người chơi có thể hợp tác ở một hoạt động nhưng cạnh tranh ở hoạt động khác. Khi làm bài thi, hãy tách mối quan hệ ở cấp activity thay vì dán nhãn bên kia chỉ là bạn hay thù.",
+  "Any claim that a firm is performing well or poorly should identify the comparator first. Saying 'performance is weak' without naming the reference point is mechanically unsafe.": "Bất kỳ nhận định nào về việc một firm đang làm tốt hay kém đều phải nêu comparator trước. Viết rằng “performance is weak” mà không chỉ ra mốc so sánh là không an toàn về mặt cơ học làm bài.",
+  "Externalization is not automatically good. One company’s asset-light strategy usually depends on another company carrying the asset-heavy burden. If you cannot identify where value is created, where it is appropriated, and where it is defended, you may be giving the value away.": "Externalization không tự động là tốt. Chiến lược asset-light của một công ty thường dựa trên việc một công ty khác phải gánh asset-heavy burden. Nếu bạn không chỉ ra được value được tạo ở đâu, appropriated ở đâu và defended ở đâu, rất có thể bạn đang trao luôn value đó cho người khác.",
+  "The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution.": "Thế giới không flat theo cách mà nhiều bài viết đại chúng thường mô tả. Năng lực tạo ra ideas vẫn tập trung rất cao ở một số người, công ty và địa điểm cụ thể; trong khi nguồn lực execution lại phân tán rộng hơn nhiều. Câu hỏi chiến lược then chốt là ai trở thành flattener, và ai bị ép xuống chỉ còn cạnh tranh bằng execution.",
+  "Supranational drivers do not merely change profit levels. They can rewrite who is allowed to enter, under what rules, with which technologies, and with what geopolitical constraints. That is why they matter disproportionately in international and corporate strategy questions.": "Các supranational drivers không chỉ làm thay đổi mức lợi nhuận. Chúng có thể viết lại ai được phép vào cuộc chơi, theo bộ luật nào, với công nghệ nào và dưới các ràng buộc địa chính trị ra sao. Đó là lý do chúng nặng ký bất thường trong các câu hỏi về international và corporate strategy.",
+  "Is the company more than the sum of its parts? If the answer is no, investors can diversify on their own and the corporate structure may be destroying value rather than creating it.": "Công ty có thực sự đáng giá hơn tổng các phần hay không? Nếu câu trả lời là không, nhà đầu tư có thể tự đa dạng hóa danh mục, còn cấu trúc corporate khi đó có thể đang phá hủy value chứ không tạo ra value.",
+  "The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality.": "Sai lầm quản trị nằm ở việc đánh giá thấp môi trường một cách có hệ thống. Điểm dạy học ở đây là hành vi được giải thích bởi tình huống nhiều hơn rất nhiều so với trực giác của nhà quản lý. Nếu muốn thay đổi hành vi, hãy thiết kế lại môi trường thay vì chỉ lên lớp về tính cách.",
+  "Final one-sentence guide: start with underlying economics, identify the binding levels, test SPARK plus leadership and execution, pressure-test future competition with CEA, and then ask whether organization and implementation allow the firm to realize and defend the value that should be available.": "Một câu chốt cho final: bắt đầu từ underlying economics, xác định các tầng thật sự binding, kiểm tra SPARK cùng leadership và execution, dùng CEA để pressure-test cạnh tranh tương lai, rồi mới hỏi xem organization và implementation có cho phép firm hiện thực hóa và bảo vệ giá trị vốn dĩ phải có hay không.",
+  "Bắt đầu từ đây": "Bắt đầu từ đây",
+  "Meso": "Meso",
+  "Macro": "Macro",
+  "Meta": "Meta",
+  "Bắt đầu từ ngành có ý nghĩa kinh tế thực sự.": "Bắt đầu từ ngành có ý nghĩa kinh tế thực sự.",
+  "Start with the economically meaningful industry.": "Bắt đầu từ ngành có ý nghĩa kinh tế thực sự.",
+  "Then test the ecosystem around the focal business.": "Sau đó kiểm tra ecosystem quanh doanh nghiệp trọng tâm.",
+  "Check the national environment and its trendline.": "Kiểm tra môi trường quốc gia và đường xu hướng của nó.",
+  "Add the cross-border forces outside national control.": "Bổ sung các lực xuyên biên giới nằm ngoài kiểm soát của quốc gia.",
+  "Only then judge SPARK, leadership, execution, and fit.": "Chỉ khi đó mới đánh giá SPARK, leadership, execution và độ fit.",
+  "Where we compete": "Nơi ta cạnh tranh",
+  "How we compete": "Cách ta cạnh tranh",
+  "What we do": "Ta làm gì",
+  "What we use": "Ta dùng gì",
+  "What we know": "Ta biết gì",
+  "Hide source appendix / 收起原始內容": "Ẩn appendix nguồn gốc",
+  "Show source appendix / 展開原始內容": "Mở appendix nguồn gốc",
+  "收起原始內容": "Thu gọn nội dung gốc",
+  "展開原始內容": "Mở nội dung gốc"
+};
+
+function viText(input) {
+  if (typeof input !== 'string') return input;
+  if (VI_MAP[input]) return VI_MAP[input];
+  const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
+  if (match) return `Hiện đang hiển thị ${match[1]} section. Hãy dùng các chip lọc và ô tìm kiếm để thu hẹp hệ thống vào các phần trọng số cao, framework, case hoặc appendix.`;
+  return input;
+}
+
+function uiText(mode, en, zh, vi) {
+  if (mode === 'en') return en;
+  if (mode === 'zh') return zh;
+  if (mode === 'vi') return vi ?? viText(en) ?? en;
+  return en;
+}
+
+function BiText({ mode, en, zh, vi, className = "", block = false, subtleZh = false }) {
+  const resolvedVi = vi ?? viText(en);
   if (mode === "en") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{en}</div> : <span className={className}>{en}</span>;
-  if (mode === "zh") return block ? <div className={className}>{zh}</div> : <span className={className}>{zh}</span>;
+  if (mode === "zh") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{zh}</div> : <span className={className}>{zh}</span>;
+  if (mode === "vi") {
+    if (block) {
+      return (
+        <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>
+          <div>{resolvedVi || en}</div>
+          {resolvedVi && resolvedVi !== en ? <div className="mt-1 text-[0.94em] text-slate-600">{en}</div> : null}
+        </div>
+      );
+    }
+    return (
+      <span className={className}>
+        {resolvedVi || en}
+      </span>
+    );
+  }
   return (
     <div className={className}>
       <div>{en}</div>
@@ -1058,7 +1312,7 @@ function SectionShell({ id, mode, titleEn, titleZh, kickerEn, kickerZh, refs = [
           </h2>
         </div>
         <div className="w-full max-w-full md:max-w-[360px] rounded-2xl border px-3 py-2 text-xs leading-relaxed break-words [overflow-wrap:anywhere]" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}>
-          <div className="mb-1 font-semibold uppercase tracking-[0.16em]" style={{ color: theme.plum }}>Sources</div>
+          <div className="mb-1 font-semibold uppercase tracking-[0.16em]" style={{ color: theme.plum }}>{uiText(mode, "Sources", "來源", "Nguồn")}</div>
           <div className="flex flex-wrap gap-2">
             {refs.map((ref) => (
               <span key={ref} className="rounded-full px-2 py-1" style={{ background: theme.soft }}>{ref}</span>
@@ -1426,11 +1680,11 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
             <div>
-              <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: theme.teal }}>STRT 6200 Final Exam Infrastructure</div>
+              <div className="text-[11px] uppercase tracking-[0.24em]" style={{ color: theme.teal }}>{uiText(mode, "STRT 6200 Final Exam Infrastructure", "STRT 6200 期末考 Infrastructure", "STRT 6200 Final Exam Infrastructure")}</div>
               <div className="mt-1 text-xl md:text-2xl font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="Strategic Decision-Making Review System" zh="策略決策期末複習系統" /></div>
             </div>
             <div className="flex flex-col gap-2 md:flex-row md:items-center">
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={mode === "zh" ? "搜尋關鍵字、案例、工具…" : "Search keyword, case, or tool…"} className="w-full md:w-[340px] max-w-full rounded-full border px-4 py-2 text-sm outline-none" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }} />
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={uiText(mode, "Search keyword, case, or tool…", "搜尋關鍵字、案例、工具…", "Tìm từ khóa, case hoặc công cụ…")} className="w-full md:w-[340px] max-w-full rounded-full border px-4 py-2 text-sm outline-none" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }} />
               <div className="flex flex-wrap gap-2">{chips.map((chip) => <button key={chip.key} onClick={() => setActiveTag(chip.key)} className="rounded-full border px-3 py-2 text-xs font-semibold tracking-[0.14em]" style={{ borderColor: activeTag === chip.key ? theme.teal : theme.line, background: activeTag === chip.key ? "#EDF4F6" : "#FBF8F0", color: activeTag === chip.key ? theme.teal : theme.subInk }}><BiText mode={mode} en={chip.en} zh={chip.zh} /></button>)}</div>
             </div>
           </div>
@@ -1443,11 +1697,11 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
 
 function FloatingLanguageToggle({ mode, setMode }) {
   const [open, setOpen] = useState(false);
-  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "中" }, { key: "bi", label: "BI" }];
+  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "中文" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }];
   return (
     <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
-      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>Language</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className="rounded-2xl px-3 py-2 text-sm font-semibold text-left" style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
-      <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label="Language switch" title="Language switch">◎</button>
+      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className="rounded-2xl px-3 py-2 text-sm font-semibold text-left" style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
+      <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ")} title={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ")}>◎</button>
     </div>
   );
 }
@@ -2230,8 +2484,8 @@ function AppendixSection({ mode }) {
     <SectionShell id="appendix" mode={mode} titleEn="Source fidelity appendix" titleZh="原始內容附錄" kickerEn="Nothing dropped from the pasted backbone" kickerZh="貼入骨架原文完整保留" refs={["Master Review"]}>
       <div className="space-y-4">
         <InfoCard titleEn="Why this appendix exists" titleZh="為甚麼要保留這個附錄" mode={mode} tone="teal"><BiText mode={mode} block en="The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone." zh="主介面是為了提升可讀性與考場操作性而重構。這個附錄把原始貼入總整完整放進檔案中，確保升級版 infrastructure 不會默默遺漏那份骨架內容。" /></InfoCard>
-        <button onClick={() => setShowSource((v) => !v)} className="rounded-full border px-4 py-2 text-sm font-semibold" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.plum }}>{showSource ? (mode === "zh" ? "收起原始內容" : mode === "bi" ? "Hide source appendix / 收起原始內容" : "Hide source appendix") : (mode === "zh" ? "展開原始內容" : mode === "bi" ? "Show source appendix / 展開原始內容" : "Show source appendix")}</button>
-        {showSource ? <div className="overflow-hidden rounded-[28px] border" style={{ borderColor: theme.line }}><div className="border-b px-4 py-3 text-xs uppercase tracking-[0.18em]" style={{ background: "#F2ECE0", borderColor: theme.line, color: theme.teal }}>Original pasted master review</div><pre className="max-h-[900px] max-w-full overflow-auto whitespace-pre-wrap break-words [overflow-wrap:anywhere] p-4 text-[12px] leading-6" style={{ background: "#FFFDF8", color: theme.ink }}>{SOURCE_MARKDOWN}</pre></div> : null}
+        <button onClick={() => setShowSource((v) => !v)} className="rounded-full border px-4 py-2 text-sm font-semibold" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.plum }}>{showSource ? uiText(mode, "Hide source appendix", "收起原始內容", "Ẩn appendix nguồn gốc") : uiText(mode, "Show source appendix", "展開原始內容", "Mở appendix nguồn gốc")}</button>
+        {showSource ? <div className="overflow-hidden rounded-[28px] border" style={{ borderColor: theme.line }}><div className="border-b px-4 py-3 text-xs uppercase tracking-[0.18em]" style={{ background: "#F2ECE0", borderColor: theme.line, color: theme.teal }}>{uiText(mode, "Original pasted master review", "原始貼入 master review", "Bản master review gốc đã dán vào")}</div><pre className="max-h-[900px] max-w-full overflow-auto whitespace-pre-wrap break-words [overflow-wrap:anywhere] p-4 text-[12px] leading-6" style={{ background: "#FFFDF8", color: theme.ink }}>{SOURCE_MARKDOWN}</pre></div> : null}
       </div>
     </SectionShell>
   );
@@ -2244,7 +2498,7 @@ export default function STRT6200FinalExamInfrastructure() {
   const filteredSections = useMemo(() => sectionMeta.filter((section) => {
     const tagPass = activeTag === "all" ? true : section.tag === activeTag;
     const q = query.trim().toLowerCase();
-    const queryPass = !q ? true : [section.en, section.zh, section.search, ...(section.refs || [])].join(" ").toLowerCase().includes(q);
+    const queryPass = !q ? true : [section.en, section.zh, viText(section.en), section.search, ...(section.refs || [])].join(" ").toLowerCase().includes(q);
     return tagPass && queryPass;
   }), [activeTag, query]);
   const renderSection = (id) => {
@@ -2272,7 +2526,7 @@ export default function STRT6200FinalExamInfrastructure() {
       <AnchorNav mode={mode} activeTag={activeTag} setActiveTag={setActiveTag} query={query} setQuery={setQuery} />
       <FloatingLanguageToggle mode={mode} setMode={setMode} />
       <div className="mx-auto grid max-w-[1600px] gap-5 px-3 py-5 sm:px-4 md:px-6 xl:grid-cols-[250px_minmax(0,1fr)]">
-        <aside className="hidden xl:block min-w-0"><div className="sticky top-28 rounded-[28px] border p-4" style={{ background: "#FBF8F0", borderColor: theme.line }}><div className="mb-3 text-[11px] uppercase tracking-[0.24em]" style={{ color: theme.plum }}><BiText mode={mode} en="Reading map" zh="閱讀地圖" /></div><div className="mb-4 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={`${visibleCount} sections currently visible. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix.`} zh={`目前顯示 ${visibleCount} 個 section。可用上方 filter chips 與搜尋欄，把系統收斂到高權重、框架、案例或附錄。`} /></div><div className="space-y-2">{filteredSections.map((section) => <a key={section.id} href={`#${section.id}`} className="block rounded-2xl border px-3 py-2 text-sm leading-5" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={section.en} zh={section.zh} /></a>)}</div></div></aside>
+        <aside className="hidden xl:block min-w-0"><div className="sticky top-28 rounded-[28px] border p-4" style={{ background: "#FBF8F0", borderColor: theme.line }}><div className="mb-3 text-[11px] uppercase tracking-[0.24em]" style={{ color: theme.plum }}><BiText mode={mode} en="Reading map" zh="閱讀地圖" /></div><div className="mb-4 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={`${visibleCount} sections currently visible. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix.`} zh={`目前顯示 ${visibleCount} 個 section。可用上方 filter chips 與搜尋欄，把系統收斂到高權重、框架、案例或附錄。`} vi={`Hiện đang hiển thị ${visibleCount} section. Hãy dùng các chip lọc và ô tìm kiếm để thu hẹp hệ thống vào các phần trọng số cao, framework, case hoặc appendix.`} /></div><div className="space-y-2">{filteredSections.map((section) => <a key={section.id} href={`#${section.id}`} className="block rounded-2xl border px-3 py-2 text-sm leading-5" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={section.en} zh={section.zh} /></a>)}</div></div></aside>
         <main className="min-w-0 max-w-full space-y-5 md:space-y-6">{filteredSections.length ? filteredSections.map((section) => <React.Fragment key={section.id}>{renderSection(section.id)}</React.Fragment>) : <div className="rounded-[28px] border p-8 text-center" style={{ background: theme.card, borderColor: theme.line }}><div className="text-lg font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="No sections match the current filter." zh="目前篩選條件下沒有符合的 section。" /></div><div className="mt-2 text-sm" style={{ color: theme.subInk }}><BiText mode={mode} en="Try a broader search term or switch the chip filter back to All." zh="請改用更寬鬆的搜尋字，或把 chip filter 切回全部。" /></div></div>}</main>
       </div>
       <footer className="px-3 pb-8 pt-1 sm:px-4 md:px-6">
