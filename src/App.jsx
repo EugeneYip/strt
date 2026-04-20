@@ -1106,34 +1106,56 @@ function BulletList({ mode, items, compact = false }) {
 }
 
 function SimpleTable({ mode, columns, rows, size = "normal" }) {
+  const cellClass = size === "compact" ? "text-xs leading-5" : "text-sm leading-6";
+  const headerClass = size === "compact" ? "text-[11px]" : "text-sm";
+  const renderCell = (value) => {
+    if (typeof value === "object" && value !== null && ("en" in value || "zh" in value)) {
+      return <BiText mode={mode} en={value.en} zh={value.zh} />;
+    }
+    return value;
+  };
   return (
-    <div className="overflow-x-auto rounded-3xl border" style={{ borderColor: theme.line }}>
-      <table className="min-w-full border-collapse text-left">
-        <thead style={{ background: "#F2ECE0" }}>
-          <tr>
-            {columns.map((col) => (
-              <th key={col.key} className={cn("border-b px-4 py-3 font-semibold", size === "compact" ? "text-xs" : "text-sm")} style={{ borderColor: theme.line, color: theme.ink }}>
-                <BiText mode={mode} en={col.en} zh={col.zh} />
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, idx) => (
-            <tr key={idx} className="align-top">
+    <div className="rounded-3xl border overflow-hidden" style={{ borderColor: theme.line }}>
+      <div className="md:hidden divide-y" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+        {rows.map((row, idx) => (
+          <div key={idx} className="p-4" style={{ borderColor: theme.line }}>
+            <div className="grid gap-3">
+              {columns.map((col, cIdx) => (
+                <div key={col.key} className={cn("grid gap-1", cIdx === 0 ? "" : "pt-2 border-t") } style={cIdx === 0 ? undefined : { borderColor: theme.line }}>
+                  <div className="text-[10px] uppercase tracking-[0.16em] font-semibold" style={{ color: theme.plum }}>
+                    <BiText mode={mode} en={col.en} zh={col.zh} />
+                  </div>
+                  <div className={cellClass} style={{ color: theme.subInk }}>{renderCell(row[col.key])}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="hidden md:block overflow-x-auto" style={{ background: "#FFFDF8" }}>
+        <table className="min-w-[720px] w-full border-collapse text-left">
+          <thead style={{ background: "#F2ECE0" }}>
+            <tr>
               {columns.map((col) => (
-                <td key={col.key} className={cn("border-b px-4 py-3", size === "compact" ? "text-xs leading-5" : "text-sm leading-6")} style={{ borderColor: theme.line, color: theme.subInk }}>
-                  {typeof row[col.key] === "object" && row[col.key] !== null && ("en" in row[col.key] || "zh" in row[col.key]) ? (
-                    <BiText mode={mode} en={row[col.key].en} zh={row[col.key].zh} />
-                  ) : (
-                    row[col.key]
-                  )}
-                </td>
+                <th key={col.key} className={cn("border-b px-4 py-3 font-semibold align-bottom", headerClass)} style={{ borderColor: theme.line, color: theme.ink }}>
+                  <BiText mode={mode} en={col.en} zh={col.zh} />
+                </th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map((row, idx) => (
+              <tr key={idx} className="align-top">
+                {columns.map((col) => (
+                  <td key={col.key} className={cn("border-b px-4 py-3", cellClass)} style={{ borderColor: theme.line, color: theme.subInk }}>
+                    {renderCell(row[col.key])}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
@@ -1181,6 +1203,205 @@ function TinyProcess({ mode, items }) {
         </React.Fragment>
       ))}
     </div>
+  );
+}
+
+function FiveLevelDriverMap({ mode }) {
+  const levels = [
+    { no: "01", en: "Industry", zh: "產業", color: theme.gold, noteEn: "Start with the economically meaningful industry.", noteZh: "先從經濟上真正有意義的產業開始。" },
+    { no: "02", en: "Meso / Cluster", zh: "群聚 / 中觀", color: theme.ok, noteEn: "Then test the ecosystem around the focal business.", noteZh: "再測試圍繞 focal business 的 ecosystem。" },
+    { no: "03", en: "Macro / National", zh: "國家 / 總體", color: theme.teal, noteEn: "Check the national environment and its trendline.", noteZh: "檢查國家環境及其趨勢線。" },
+    { no: "04", en: "Meta / Supranational", zh: "超國家 / 全球", color: theme.plum, noteEn: "Add the cross-border forces outside national control.", noteZh: "再加上國家無法控制的跨國力量。" },
+    { no: "05", en: "Firm", zh: "公司", color: theme.danger, noteEn: "Only then judge SPARK, leadership, execution, and fit.", noteZh: "最後才評估 SPARK、leadership、execution 與 fit。" },
+  ];
+  return (
+    <InfoCard titleEn="Five-level reading map" titleZh="五層閱讀地圖" mode={mode} tone="gold">
+      <div className="grid gap-3 xl:grid-cols-[0.78fr_1.22fr] xl:items-center">
+        <div className="rounded-[28px] border p-4" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+          <svg viewBox="0 0 320 280" className="w-full h-auto">
+            <defs>
+              <linearGradient id="lvlGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#FFFDF8" />
+                <stop offset="100%" stopColor="#F4F0E6" />
+              </linearGradient>
+            </defs>
+            <rect x="56" y="16" width="208" height="208" rx="28" fill="url(#lvlGrad)" stroke="#D9D0BE" />
+            <circle cx="160" cy="120" r="32" fill="#FFF" stroke="#D9D0BE" />
+            <text x="160" y="114" textAnchor="middle" fontSize="11" fill="#748067" fontWeight="600">Firm</text>
+            <text x="160" y="131" textAnchor="middle" fontSize="13" fill="#1E2732" fontWeight="700">Performance</text>
+            {[
+              { x: 160, y: 34, c: theme.teal, t1: 'Macro', t2: '國家' },
+              { x: 86, y: 84, c: theme.ok, t1: 'Meso', t2: '群聚' },
+              { x: 114, y: 198, c: theme.gold, t1: 'Industry', t2: '產業' },
+              { x: 206, y: 198, c: theme.danger, t1: 'Firm', t2: '公司' },
+              { x: 234, y: 84, c: theme.plum, t1: 'Meta', t2: '超國家' },
+            ].map((n) => (
+              <g key={n.t1}>
+                <circle cx={n.x} cy={n.y} r="18" fill={n.c} opacity="0.14" />
+                <circle cx={n.x} cy={n.y} r="9" fill={n.c} />
+                <text x={n.x} y={n.y - 28} textAnchor="middle" fontSize="10" fill={n.c} fontWeight="700">{n.t1}</text>
+                <text x={n.x} y={n.y - 15} textAnchor="middle" fontSize="9" fill={n.c}>{n.t2}</text>
+              </g>
+            ))}
+          </svg>
+        </div>
+        <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-1">
+          {levels.map((level, idx) => (
+            <div key={level.no} className="rounded-3xl border px-4 py-3" style={{ borderColor: theme.line, background: idx % 2 === 0 ? "#FBF8F0" : "#FFFDF8" }}>
+              <div className="flex items-start gap-3">
+                <div className="h-9 w-9 rounded-full flex items-center justify-center text-xs font-semibold" style={{ background: `${level.color}22`, color: level.color }}>{level.no}</div>
+                <div>
+                  <div className="text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={level.en} zh={level.zh} /></div>
+                  <div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={level.noteEn} zh={level.noteZh} /></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </InfoCard>
+  );
+}
+
+function EconomicsCascade({ mode }) {
+  const steps = [
+    { en: "Underlying economics", zh: "底層經濟" },
+    { en: "Industry structure", zh: "產業結構" },
+    { en: "Type of competition", zh: "競爭型態" },
+    { en: "Competitive variables", zh: "競爭變數" },
+    { en: "Ferocity", zh: "激烈程度" },
+    { en: "Profit potential", zh: "獲利潛力" },
+    { en: "Firm performance", zh: "企業績效" },
+  ];
+  return (
+    <InfoCard titleEn="Why economics sits upstream" titleZh="為甚麼 economics 在最上游" mode={mode} tone="plum">
+      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-7">
+        {steps.map((step, idx) => (
+          <div key={step.en} className="relative rounded-3xl border px-4 py-4 text-sm leading-6" style={{ borderColor: theme.line, background: idx === 0 ? "#F4EDF3" : idx === steps.length - 1 ? "#EDF4F6" : "#FBF8F0", color: theme.subInk }}>
+            <div className="mb-2 text-[10px] uppercase tracking-[0.18em]" style={{ color: idx === 0 ? theme.plum : idx === steps.length - 1 ? theme.teal : theme.gold }}>{String(idx + 1).padStart(2, "0")}</div>
+            <BiText mode={mode} en={step.en} zh={step.zh} />
+            {idx < steps.length - 1 ? <div className="hidden xl:block absolute -right-[11px] top-1/2 -translate-y-1/2 text-lg" style={{ color: theme.gold }}>→</div> : null}
+          </div>
+        ))}
+      </div>
+    </InfoCard>
+  );
+}
+
+function IndustryBoundaryMethod({ mode }) {
+  const rows = [
+    { no: "1", en: "What useful output does the customer actually receive?", zh: "客戶實際收到甚麼有用輸出？" },
+    { no: "2", en: "Who is directly competing to supply that same output?", zh: "誰在直接爭奪同一種輸出？" },
+    { no: "3", en: "Draw the industry boundary from that customer-facing output, not from the technology label.", zh: "用客戶面向的輸出畫產業邊界，不要用 technology label 畫。" },
+  ];
+  return (
+    <InfoCard titleEn="Three-step industry boundary method" titleZh="三步產業邊界法" mode={mode} tone="teal">
+      <div className="grid gap-3 md:grid-cols-3">
+        {rows.map((row) => (
+          <div key={row.no} className="rounded-3xl border p-4" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+            <div className="mb-2 h-8 w-8 rounded-full flex items-center justify-center text-sm font-semibold" style={{ background: `${theme.teal}18`, color: theme.teal }}>{row.no}</div>
+            <div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={row.en} zh={row.zh} /></div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-4 rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}>
+        <BiText mode={mode} en="This is the safer exam method because it prevents industry definition from drifting into SIC-style labels or technology categories. The test is direct competition over a similar customer-facing output." zh="這種寫法在考場上更安全，因為它能防止 industry definition 滑向 SIC 式分類或 technology categories。真正標準是：是否在爭奪相似的 customer-facing output。" />
+      </div>
+    </InfoCard>
+  );
+}
+
+function SparkArchitecture({ mode }) {
+  const spark = [
+    { key: "S", en: "Scope", zh: "Scope", noteEn: "Where we compete", noteZh: "在哪裡競爭" },
+    { key: "P", en: "Positioning", zh: "Positioning", noteEn: "How we compete", noteZh: "如何競爭" },
+    { key: "A", en: "Activities", zh: "Activities", noteEn: "What we do", noteZh: "做甚麼" },
+    { key: "R", en: "Resources", zh: "Resources", noteEn: "What we use", noteZh: "用甚麼" },
+    { key: "K", en: "Knowledge", zh: "Knowledge", noteEn: "What we know", noteZh: "知道甚麼" },
+  ];
+  const outer = [
+    { en: "Leadership", zh: "Leadership" },
+    { en: "Execution", zh: "Execution" },
+    { en: "Organization & management", zh: "Organization & Management" },
+    { en: "Governance", zh: "Governance" },
+  ];
+  return (
+    <InfoCard titleEn="SPARK is the core, not the whole answer" titleZh="SPARK 是核心，但不是完整答案" mode={mode} tone="gold">
+      <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr] xl:items-center">
+        <div className="rounded-[28px] border p-4" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+          <svg viewBox="0 0 280 280" className="w-full h-auto">
+            <circle cx="140" cy="140" r="102" fill="#FBF8F0" stroke="#D9D0BE" />
+            <circle cx="140" cy="140" r="62" fill="#FFF" stroke="#D9D0BE" />
+            {spark.map((item, idx) => {
+              const angle = (Math.PI * 2 * idx) / spark.length - Math.PI / 2;
+              const x = 140 + 66 * Math.cos(angle);
+              const y = 140 + 66 * Math.sin(angle);
+              return (
+                <g key={item.key}>
+                  <circle cx={x} cy={y} r="18" fill={theme.plum} opacity="0.16" />
+                  <circle cx={x} cy={y} r="11" fill={theme.plum} />
+                  <text x={x} y={y + 4} textAnchor="middle" fontSize="10" fill="#FFF" fontWeight="700">{item.key}</text>
+                </g>
+              );
+            })}
+            <text x="140" y="137" textAnchor="middle" fontSize="14" fill="#1E2732" fontWeight="700">SPARK</text>
+            <text x="140" y="153" textAnchor="middle" fontSize="10" fill="#485665">core strategic logic</text>
+          </svg>
+        </div>
+        <div className="space-y-3">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+            {spark.map((item) => (
+              <div key={item.key} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
+                <div className="font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={item.en} zh={item.zh} /></div>
+                <div style={{ color: theme.subInk }}><BiText mode={mode} en={item.noteEn} zh={item.noteZh} /></div>
+              </div>
+            ))}
+          </div>
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            {outer.map((item) => (
+              <div key={item.en} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}>
+                <BiText mode={mode} en={item.en} zh={item.zh} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </InfoCard>
+  );
+}
+
+function QuickCaseLevelMatrix({ mode }) {
+  const cols = [
+    { key: "firm", labelEn: "Firm", labelZh: "公司" },
+    { key: "industry", labelEn: "Industry", labelZh: "產業" },
+    { key: "meso", labelEn: "Meso", labelZh: "群聚" },
+    { key: "macro", labelEn: "Macro", labelZh: "國家" },
+    { key: "meta", labelEn: "Meta", labelZh: "超國家" },
+  ];
+  const rows = [
+    { caseEn: "NEC-GTE", caseZh: "NEC-GTE", hit: "firm" },
+    { caseEn: "Airline industry", caseZh: "Airline Industry", hit: "industry" },
+    { caseEn: "ETA / Swatch", caseZh: "ETA / Swatch", hit: "industry" },
+    { caseEn: "P&G in China", caseZh: "P&G in China", hit: "macro" },
+    { caseEn: "RTZ / Chinalco", caseZh: "RTZ / Chinalco", hit: "meta" },
+    { caseEn: "WPP", caseZh: "WPP", hit: "meta" },
+    { caseEn: "Nokia", caseZh: "Nokia", hit: "firm" },
+  ];
+  return (
+    <InfoCard titleEn="Fast case-to-level scan" titleZh="案例對層次快速掃描" mode={mode} tone="plum">
+      <div className="overflow-x-auto">
+        <div className="min-w-[720px] grid" style={{ gridTemplateColumns: `200px repeat(${cols.length}, minmax(90px, 1fr))`, gap: "10px" }}>
+          <div></div>
+          {cols.map((col) => <div key={col.key} className="rounded-2xl border px-3 py-2 text-center text-xs font-semibold" style={{ borderColor: theme.line, background: "#F4F0E6", color: theme.ink }}><BiText mode={mode} en={col.labelEn} zh={col.labelZh} /></div>)}
+          {rows.map((row) => (
+            <React.Fragment key={row.caseEn}>
+              <div className="rounded-2xl border px-3 py-3 text-sm" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }}><BiText mode={mode} en={row.caseEn} zh={row.caseZh} /></div>
+              {cols.map((col) => <div key={col.key} className="rounded-2xl border flex items-center justify-center px-3 py-3 text-sm font-semibold" style={{ borderColor: row.hit === col.key ? `${theme.teal}55` : theme.line, background: row.hit === col.key ? "#EDF4F6" : "#FBF8F0", color: row.hit === col.key ? theme.teal : "#B9B0A0" }}>{row.hit === col.key ? "●" : "·"}</div>)}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </InfoCard>
   );
 }
 
@@ -1235,6 +1456,7 @@ function OverviewSection({ mode }) {
             { en: "The text, lecture notes, and videos are required because much of that material is used in case analysis without being repeated in class.", zh: "教科書、講義與影片都是必讀，因為大量內容會直接進入案例分析，而不會在課堂上重講。" },
             { en: "The final may use fewer questions and a longer reading so multiple issues can be addressed from the same case.", zh: "期末可能採較少題目、較長閱讀，讓多個議題都從同一個 reading 被處理。" },
           ]} /></InfoCard>
+          <FiveLevelDriverMap mode={mode} />
         </div>
         <div className="space-y-4">
           <InfoCard titleEn="Weighted focus" titleZh="高權重焦點" mode={mode} tone="plum"><BulletList mode={mode} items={[{ en: "International strategy", zh: "國際策略" }, { en: "Corporate strategy", zh: "企業總體策略" }, { en: "Implementation and organizational pathologies", zh: "落地執行與組織病理" }]} /></InfoCard>
@@ -1311,6 +1533,7 @@ function EconomicsSection({ mode }) {
     <SectionShell id="economics" mode={mode} titleEn="Underlying economics" titleZh="Underlying economics" kickerEn="Start here" kickerZh="先從這裡開始" refs={["Last Day", "Chapter 4", "Master Review"]}>
       <div className="space-y-5">
         <InfoCard titleEn="Why this section comes first" titleZh="為甚麼一定先看這裡" mode={mode} tone="teal"><BiText mode={mode} block en="The exam logic is explicit: before strategy language, understand how the business makes money. Underlying economics shape industry structure, which shapes competition, which shapes profit potential, which then gets modified by the focal firm's SPARK, bargaining position, leadership, and execution." zh="考試邏輯很清楚：在進入 strategy language 前，先看這個 business 怎麼賺錢。Underlying economics 先決定 industry structure，再決定 competition，再決定 profit potential，最後才由 focal firm 的 SPARK、議價位置、領導與執行能力做修正。" /></InfoCard>
+        <EconomicsCascade mode={mode} />
         <SimpleTable mode={mode} columns={[{ key: "driver", en: "Dimension", zh: "維度" }, { key: "question", en: "Core question", zh: "核心問題" }, { key: "implication", en: "Structural implication", zh: "結構含意" }]} rows={econRows} />
         <div className="grid gap-4 xl:grid-cols-2">
           <InfoCard titleEn="Three cost types and what they do" titleZh="三種成本，以及它們如何影響競爭" mode={mode} tone="gold"><BulletList mode={mode} items={[
@@ -1354,6 +1577,7 @@ function IndustrySection({ mode }) {
     <SectionShell id="industry" mode={mode} titleEn="Industry level" titleZh="產業層次" kickerEn="Micro drivers" kickerZh="微觀驅動" refs={["Chapter 4", "Lecture Notes Ch.4", "Master Review"]}>
       <div className="space-y-5">
         <InfoCard titleEn="Industry definition" titleZh="產業定義" mode={mode} tone="teal"><BiText mode={mode} block en='An industry consists of products or services with similar form and function that are in direct competition with each other, and the firms that supply them. This is a strategic definition, not a statistical one. Boundaries can merge or fragment over time.' zh='產業是指具有相似 form 與 function、彼此直接競爭的產品或服務，以及提供它們的 firms。這是策略性定義，不是統計分類。邊界會隨時間整合或分裂。' /></InfoCard>
+        <IndustryBoundaryMethod mode={mode} />
         <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
           <InfoCard titleEn="Competition type spectrum" titleZh="競爭型態光譜" mode={mode} tone="gold">
             <div className="mb-4 flex items-center gap-2 text-xs uppercase tracking-[0.18em]" style={{ color: theme.subInk }}><span>Low profitability</span><span>→</span><span>High profitability</span></div>
@@ -1394,6 +1618,7 @@ function FirmSection({ mode }) {
           <InfoCard titleEn="Performance is relative" titleZh="Performance 永遠是相對概念" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2">{[["Competitors", "Competitors"],["Benchmarks", "Benchmarks"],["History", "History"],["Expectations", "Expectations"]].map(([en, zh]) => <div key={en} className="rounded-3xl border p-4 text-sm" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.ink }}><BiText mode={mode} en={en} zh={zh} /></div>)}</div><div className="mt-4 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Any claim that a firm is performing well or poorly should identify the comparator first. Saying 'performance is weak' without naming the reference point is mechanically unsafe." zh="任何 'firm performs well / poorly' 的句子，都要先說 relative to whom。若沒先交代 comparator，作答在機械上就不安全。" /></div></InfoCard>
           <InfoCard titleEn="SPARK" titleZh="SPARK" mode={mode} tone="plum"><div className="grid gap-3 md:grid-cols-5">{[["Scope","Where we compete","Scope","在哪裡競爭"],["Positioning","How we compete","Positioning","如何競爭"],["Activities","What we do","Activities","做甚麼"],["Resources","What we use","Resources","用甚麼"],["Knowledge","What we know","Knowledge","知道甚麼"]].map(([en1, en2, zh1, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><div style={{ color: theme.subInk }}><BiText mode={mode} en={en2} zh={zh2} /></div></div>)}</div></InfoCard>
         </div>
+        <SparkArchitecture mode={mode} />
         <InfoCard titleEn="Do not stop at SPARK" titleZh="不能只停在 SPARK" mode={mode} tone="gold"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{[
           ["SPARK","SPARK","Where, how, what, with what, and with what knowledge.","在哪裡、如何、做甚麼、用甚麼、靠甚麼知識。"],["Leadership","Leadership","Direction, motivation, ethics, standards, external face.","方向、動機、倫理、標準、對外面貌。"],["Execution","Execution","Knowing what to do and getting it done despite inertia.","知道要做甚麼，並且能對抗 inertia 把事做成。"],["Organization & management","Organization & Management","Division of labor, structures, systems, HR, capabilities.","分工、結構、系統、人力、組織能力。"],["Governance","Governance","Governance standards, compliance cost, decision impact.","治理標準、合規成本、對決策的影響。"],["Firm-specific policies & institutions","Firm-Specific Policies & Institutions","Subsidies, support, dedicated training bodies, special institutions.","補貼、支持、專屬訓練體系、特殊制度安排。"],
         ].map(([en1, zh1, en2, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><div className="font-semibold mb-1" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><BiText mode={mode} en={en2} zh={zh2} /></div>)}</div></InfoCard>
@@ -1593,6 +1818,7 @@ function CasesSection({ mode }) {
   return (
     <SectionShell id="cases" mode={mode} titleEn="Case grid" titleZh="案例總表" kickerEn="Default mappings" kickerZh="預設配對" refs={["Last Day", "Practice Questions", "Case Files", "Master Review"]}>
       <div className="space-y-5">
+        <QuickCaseLevelMatrix mode={mode} />
         <SimpleTable mode={mode} columns={[{ key: "case", en: "Case", zh: "案例" }, { key: "level", en: "Default level", zh: "預設層次" }, { key: "thesis", en: "One-sentence thesis", zh: "一句話 thesis" }]} rows={[
           { case: { en: "NEC-GTE", zh: "NEC-GTE" }, level: { en: "Firm (leadership)", zh: "Firm（Leadership）" }, thesis: { en: "Kobayashi’s C&C vision built NEC and later created vulnerability against more focused competitors.", zh: "Kobayashi 的 C&C vision 建立了 NEC，但也讓 NEC 之後暴露在更聚焦對手面前。" } },
           { case: { en: "Airline industry", zh: "Airline Industry" }, level: { en: "Industry", zh: "Industry" }, thesis: { en: "High fixed and sunk cost plus low differentiation create structural low profitability.", zh: "高 fixed 與 sunk cost 加上低差異化，形成結構性低獲利。" } },
@@ -1658,7 +1884,7 @@ function AppendixSection({ mode }) {
     <SectionShell id="appendix" mode={mode} titleEn="Source fidelity appendix" titleZh="原始內容附錄" kickerEn="Nothing dropped from the pasted backbone" kickerZh="貼入骨架原文完整保留" refs={["Master Review"]}>
       <div className="space-y-4">
         <InfoCard titleEn="Why this appendix exists" titleZh="為甚麼要保留這個附錄" mode={mode} tone="teal"><BiText mode={mode} block en="The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone." zh="主介面是為了提升可讀性與考場操作性而重構。這個附錄把原始貼入總整完整放進檔案中，確保升級版 infrastructure 不會默默遺漏那份骨架內容。" /></InfoCard>
-        <button onClick={() => setShowSource((v) => !v)} className="rounded-full border px-4 py-2 text-sm font-semibold" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.plum }}>{showSource ? (mode === "zh" ? "收起原始內容" : "Hide source appendix") : (mode === "zh" ? "展開原始內容" : "Show source appendix")}</button>
+        <button onClick={() => setShowSource((v) => !v)} className="rounded-full border px-4 py-2 text-sm font-semibold" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.plum }}>{showSource ? (mode === "zh" ? "收起原始內容" : mode === "bi" ? "Hide source appendix / 收起原始內容" : "Hide source appendix") : (mode === "zh" ? "展開原始內容" : mode === "bi" ? "Show source appendix / 展開原始內容" : "Show source appendix")}</button>
         {showSource ? <div className="overflow-hidden rounded-[28px] border" style={{ borderColor: theme.line }}><div className="border-b px-4 py-3 text-xs uppercase tracking-[0.18em]" style={{ background: "#F2ECE0", borderColor: theme.line, color: theme.teal }}>Original pasted master review</div><pre className="max-h-[900px] overflow-auto whitespace-pre-wrap p-4 text-[12px] leading-6" style={{ background: "#FFFDF8", color: theme.ink }}>{SOURCE_MARKDOWN}</pre></div> : null}
       </div>
     </SectionShell>
