@@ -2682,6 +2682,117 @@ const CN_MAP = {
   "高權重組織診斷": "高权重组织诊断"
 };
 
+
+const PT_MAP = {
+  "Exam Signals": "Sinais da prova",
+  "Analytical Spine": "Espinha analítica",
+  "Underlying Economics": "Economia de base",
+  "Industry Level": "Nível da indústria",
+  "Firm Level": "Nível da empresa",
+  "Cluster / Meso Level": "Nível de cluster / meso",
+  "National / Macro Level": "Nível nacional / macro",
+  "Supranational / Meta Level": "Nível supranacional / meta",
+  "International Strategy": "Estratégia internacional",
+  "Corporate Strategy": "Estratégia corporativa",
+  "Implementation": "Implementação",
+  "Case Grid": "Mapa de casos",
+  "Exam Attack System": "Sistema de ataque da prova",
+  "Source Fidelity Appendix": "Apêndice de fidelidade ao material-base",
+  "All": "Tudo",
+  "High Weight": "Maior peso",
+  "Frameworks": "Frameworks",
+  "Cases": "Casos",
+  "Appendix": "Apêndice",
+  "STRT 6200 Final Exam Infrastructure": "Infraestrutura da prova final de STRT 6200",
+  "Strategic Decision-Making Review System": "Sistema de revisão de tomada de decisão estratégica",
+  "Search keyword, case, or tool…": "Buscar palavra-chave, caso ou ferramenta…",
+  "Reading map": "Mapa de leitura",
+  "Language": "Idioma",
+  "Language switch": "Trocar idioma",
+  "Sources": "Fontes",
+  "Show source appendix": "Mostrar apêndice da fonte",
+  "Hide source appendix": "Ocultar apêndice da fonte",
+  "Original pasted master review": "Master review original colado",
+  "No sections match the current filter.": "Nenhuma seção corresponde ao filtro atual.",
+  "Try a broader search term or switch the chip filter back to All.": "Tente um termo mais amplo ou volte o filtro para Tudo.",
+  "EN": "EN",
+  "中": "中文",
+  "BI": "Bilíngue",
+  "Tiếng Việt": "Tiếng Việt",
+  "Português": "Português",
+  "Professional standard, not student display": "Padrão profissional, não vitrine de estudante",
+  "Core exam behavior": "Comportamento central da prova",
+  "Weighted toward international, corporate, and implementation": "Peso maior em internacional, corporativo e implementação",
+  "The four literal rubric lines": "As quatro linhas literais da rubrica",
+  "What this really means in practice": "O que isso realmente significa na prática",
+  "Strategic mindset, not lecture recall": "Mentalidade estratégica, não memória de aula",
+  "The paper is closed-book, time-boxed, and several short essays. Cases, lecture notes, and videos are required inputs, not optional extras.": "A prova é sem consulta, com tempo fechado e composta por várias questões dissertativas curtas. Casos, lecture notes e vídeos são insumos obrigatórios, não extras opcionais.",
+  "This section matters because it clarifies what Enright is actually grading. The safest framing is not 'show everything you know,' but 'show disciplined strategic judgment under time pressure.'": "Esta seção importa porque esclarece o que Enright realmente avalia. O enquadramento mais seguro não é 'mostrar tudo o que você sabe', mas 'mostrar julgamento estratégico disciplinado sob pressão de tempo'.",
+  "Answer the question in front of you, not the one you hoped to get.": "Responda à pergunta que está na sua frente, não à que você gostaria que tivesse caído.",
+  "Do not display frameworks as vocabulary. Select the right analytical tool for the case trigger.": "Não use framework como vocabulário de exibição. Escolha a ferramenta analítica certa para o gatilho do caso.",
+  "Binding levels only. Unnecessary theory, extra cases, and generic filler dilute grades.": "Trabalhe apenas com os níveis realmente vinculantes. Teoria desnecessária, casos extras e enchimento genérico enfraquecem a nota.",
+  "The exam rewards disciplined triage, not maximum text volume.": "A prova recompensa triagem disciplinada, não o maior volume de texto.",
+  "Search": "Buscar",
+  "Sort": "Organizar",
+  "Analyze": "Analisar",
+  "Hypothesize": "Hipotetizar",
+  "Test": "Testar",
+  "Conclude": "Concluir",
+  "Formulate": "Formular",
+  "Implement": "Implementar",
+  "Analytical flow": "Fluxo analítico",
+  "Confidence calibration": "Calibração de confiança",
+  "Detail-to-big-picture zoom": "Zoom do detalhe para o quadro geral",
+  "Do not use BARD language unless the facts nearly eliminate reasonable alternative explanations.": "Não use linguagem de BARD a menos que os fatos quase eliminem explicações alternativas razoáveis.",
+  "Use POE when the evidence tilts in one direction but remains materially incomplete.": "Use POE quando a evidência aponta para uma direção, mas ainda permanece materialmente incompleta.",
+  "Underlying economics should appear early in the answer, not as an afterthought. Enright repeatedly teaches that industry profit patterns come from structural economics first, then competition, then firm modifiers.": "A economia de base deve aparecer cedo na resposta, não como um complemento tardio. Enright repete que os padrões de lucro da indústria vêm primeiro da estrutura econômica, depois da competição e por fim dos modificadores da firma.",
+  "Competition spectrum": "Espectro competitivo",
+  "Industry boundary method": "Método de fronteira da indústria",
+  "Industry economics board": "Quadro da economia da indústria",
+  "Firm architecture": "Arquitetura da firma",
+  "SPARK architecture": "Arquitetura SPARK",
+  "Relative performance discipline": "Disciplina de performance relativa",
+  "Cluster ecosystem": "Ecossistema de cluster",
+  "Meso ecosystem board": "Quadro do ecossistema meso",
+  "Macro scan": "Varredura macro",
+  "Macro board": "Quadro macro",
+  "Meta pressure board": "Quadro de pressão meta",
+  "International architecture": "Arquitetura internacional",
+  "Corporate architecture": "Arquitetura corporativa",
+  "Implementation diagnosis": "Diagnóstico de implementação",
+  "Fast case-to-level scan": "Leitura rápida caso-nível",
+  "Answer construction flow": "Fluxo de construção da resposta",
+  "What this build is for": "Para que serve esta versão",
+  "This build is designed as a user-facing revision system, not a progress memo. It assumes you need to read quickly, see structure immediately, and move from concept to case application without losing fidelity.": "Esta versão foi desenhada como um sistema de revisão voltado ao usuário final, não como um memorando de andamento. Ela parte da premissa de que você precisa ler rápido, enxergar a estrutura de imediato e passar do conceito para a aplicação em caso sem perder fidelidade.",
+  "Why this appendix remains": "Por que este apêndice continua aqui",
+  "The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone.": "A interface principal reorganiza o material para leitura e execução de prova. Este apêndice mantém o master review original colado dentro do arquivo para que a infraestrutura aprimorada não omita silenciosamente essa espinha dorsal.",
+  "This infrastructure is built from the pasted final-review backbone and checked against the course text, Session 1 course framing, the Last Day deck, the implementation lecture, practice questions, and key case materials. The full original pasted notes are preserved in the appendix.": "Esta infraestrutura foi construída a partir da espinha dorsal do final review colado e conferida com o texto do curso, o enquadramento da Session 1, o deck do Last Day, a aula de implementation, as practice questions e os principais materiais de caso. As notas originais completas permanecem preservadas no apêndice.",
+  "The exam logic is explicit: before strategy language, understand how the business makes money. Underlying economics shape industry structure, which shapes competition, which shapes profit potential, which then gets modified by the focal firm's SPARK, bargaining position, leadership, and execution.": "A lógica da prova é explícita: antes da linguagem de estratégia, entenda como o negócio ganha dinheiro. A economia de base molda a estrutura da indústria, que molda a competição, que molda o potencial de lucro, e isso depois é modificado pelo SPARK, pela posição de barganha, pela liderança e pela execução da firma focal.",
+  "High-scoring Nokia insight: Nokia once functioned as a standard setter because Nordic standards became European and then global. Apple later redefined the standard around the software platform, turning Apple into the frame-breaker and hollowing out Nokia's earlier advantage.": "Um insight de alto nível sobre a Nokia é que ela já funcionou como definidora de padrão porque os padrões nórdicos viraram padrões europeus e depois globais. Mais tarde, a Apple redefiniu o padrão ao redor da plataforma de software, tornou-se a quebradora do enquadramento e esvaziou a vantagem anterior da Nokia.",
+  "Do not stop with current rivals. Add related-industry entrants and unmet demand segments. Many of the biggest threats come from those two directions.": "Não pare nos rivais atuais. Inclua entrantes de indústrias relacionadas e segmentos de demanda ainda não atendidos. Muitas das maiores ameaças vêm exatamente dessas duas direções.",
+  "Coopetition means the same set of players can cooperate in one activity and compete in another. In an exam answer, split the relationship at the activity level rather than declaring the other side simply friend or foe.": "Coopetition significa que o mesmo conjunto de players pode cooperar em uma atividade e competir em outra. Na resposta de prova, separe a relação no nível da atividade em vez de declarar o outro lado simplesmente amigo ou inimigo.",
+  "Any claim that a firm is performing well or poorly should identify the comparator first. Saying 'performance is weak' without naming the reference point is mechanically unsafe.": "Qualquer afirmação de que uma firma está indo bem ou mal deve identificar primeiro o comparador. Dizer que 'o desempenho é fraco' sem nomear o ponto de referência é mecanicamente inseguro.",
+  "Externalization is not automatically good. One company’s asset-light strategy usually depends on another company carrying the asset-heavy burden. If you cannot identify where value is created, where it is appropriated, and where it is defended, you may be giving the value away.": "Externalização não é automaticamente boa. A estratégia asset-light de uma empresa normalmente depende de outra carregando o peso asset-heavy. Se você não consegue identificar onde o valor é criado, apropriado e defendido, talvez esteja entregando esse valor.",
+  "The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution.": "O mundo não é plano da forma como certos textos populares sugerem. A criação de ideias continua altamente concentrada em pessoas, empresas e lugares específicos, enquanto os recursos de execução são mais distribuídos. A pergunta estratégica central é quem vira o flattener e quem acaba achatado, competindo só em execução.",
+  "Supranational drivers do not merely change profit levels. They can rewrite who is allowed to enter, under what rules, with which technologies, and with what geopolitical constraints. That is why they matter disproportionately in international and corporate strategy questions.": "Drivers supranacionais não apenas mudam níveis de lucro. Eles podem reescrever quem pode entrar, sob quais regras, com quais tecnologias e sob quais restrições geopolíticas. É por isso que pesam tanto em perguntas de estratégia internacional e corporativa.",
+  "Is the company more than the sum of its parts? If the answer is no, investors can diversify on their own and the corporate structure may be destroying value rather than creating it.": "A empresa vale mais do que a soma das partes? Se a resposta for não, os investidores podem diversificar sozinhos e a estrutura corporativa pode estar destruindo valor em vez de criá-lo.",
+  "The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality.": "O erro gerencial está em subestimar sistematicamente o ambiente. O ponto didático é que o comportamento é explicado muito mais pela situação do que os gestores costumam supor. Se você quer mudar comportamento, redesenhe o ambiente em vez de dar sermão sobre personalidade.",
+  "Use the right tool for the job": "Use a ferramenta certa para o trabalho",
+  "Do not include extraneous material": "Não inclua material irrelevante",
+  "Use your time wisely": "Use o tempo com inteligência",
+  "Reading the question correctly is itself a grading event": "Ler a pergunta corretamente já faz parte da nota",
+  "Weighted areas": "Áreas de maior peso",
+  "EugeneYip.com": "EugeneYip.com"
+};
+
+function ptText(input) {
+  if (typeof input !== 'string') return input;
+  if (PT_MAP[input]) return PT_MAP[input];
+  const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
+  if (match) return `Há ${match[1]} seções visíveis no momento. Use os chips de filtro e a busca para focar nas áreas de maior peso, nos frameworks, nos casos ou no apêndice.`;
+  return input;
+}
+
 function zhCnText(input) {
   if (typeof input !== 'string') return input;
   if (CN_MAP[input]) return CN_MAP[input];
@@ -2698,16 +2809,18 @@ function viText(input) {
   return input;
 }
 
-function uiText(mode, en, zh, vi) {
+function uiText(mode, en, zh, vi, pt) {
   if (mode === 'en') return en;
   if (mode === 'zh') return zh;
   if (mode === 'zh-cn') return zhCnText(zh ?? en);
   if (mode === 'vi') return vi ?? viText(en) ?? en;
+  if (mode === 'pt') return pt ?? ptText(en) ?? en;
   return en;
 }
 
-function BiText({ mode, en, zh, vi, className = "", block = false, subtleZh = false }) {
+function BiText({ mode, en, zh, vi, pt, className = "", block = false, subtleZh = false }) {
   const resolvedVi = vi ?? viText(en);
+  const resolvedPt = pt ?? ptText(en);
   if (mode === "en") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{en}</div> : <span className={className}>{en}</span>;
   if (mode === "zh") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{zh}</div> : <span className={className}>{zh}</span>;
   if (mode === "zh-cn") {
@@ -2726,6 +2839,21 @@ function BiText({ mode, en, zh, vi, className = "", block = false, subtleZh = fa
     return (
       <span className={className}>
         {resolvedVi || en}
+      </span>
+    );
+  }
+  if (mode === "pt") {
+    if (block) {
+      return (
+        <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>
+          <div>{resolvedPt || en}</div>
+          {resolvedPt && resolvedPt !== en ? <div className="mt-1 text-[0.94em] text-slate-600">{en}</div> : null}
+        </div>
+      );
+    }
+    return (
+      <span className={className}>
+        {resolvedPt || en}
       </span>
     );
   }
@@ -3135,7 +3263,7 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
 
 function FloatingLanguageToggle({ mode, setMode }) {
   const [open, setOpen] = useState(false);
-  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }];
+  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }];
   return (
     <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
       {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className="rounded-2xl px-3 py-2 text-sm font-semibold text-left" style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
@@ -3936,7 +4064,7 @@ export default function STRT6200FinalExamInfrastructure() {
   const filteredSections = useMemo(() => sectionMeta.filter((section) => {
     const tagPass = activeTag === "all" ? true : section.tag === activeTag;
     const q = query.trim().toLowerCase();
-    const queryPass = !q ? true : [section.en, section.zh, viText(section.en), section.search, ...(section.refs || [])].join(" ").toLowerCase().includes(q);
+    const queryPass = !q ? true : [section.en, section.zh, viText(section.en), ptText(section.en), section.search, ...(section.refs || [])].join(" ").toLowerCase().includes(q);
     return tagPass && queryPass;
   }), [activeTag, query]);
   const renderSection = (id) => {
