@@ -3230,7 +3230,7 @@ function uiText(mode, en, zh, vi, pt, ur, es, jp) {
   return en;
 }
 
-function BiText({ mode, en, zh, vi, pt, ur, es, className = "", block = false, subtleZh = false }) {
+function BiText({ mode, en, zh, vi, pt, ur, es, jp, className = "", block = false, subtleZh = false }) {
   const resolvedVi = vi ?? viText(en);
   const resolvedPt = pt ?? ptText(en);
   const resolvedUr = ur ?? urText(en);
@@ -3726,8 +3726,8 @@ function FloatingLanguageToggle({ mode, setMode }) {
   const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }, { key: "ur", label: "اردو" }, { key: "es", label: "Español" }, { key: "jp", label: "日本語" }];
   return (
     <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
-      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ", undefined, undefined, undefined, "Idioma")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className={cn("rounded-2xl px-3 py-2 text-sm font-semibold", mode === "ur" ? "text-right" : "text-left")} style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
-      <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ", undefined, undefined, undefined, "Cambiar idioma")} title={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ", undefined, undefined, undefined, "Cambiar idioma")}>◎</button>
+      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ", undefined, undefined, undefined, "Idioma", "言語")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className={cn("rounded-2xl px-3 py-2 text-sm font-semibold", mode === "ur" ? "text-right" : "text-left")} style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
+      <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ", undefined, undefined, undefined, "Cambiar idioma", "言語切替")} title={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ", undefined, undefined, undefined, "Cambiar idioma", "言語切替")}>◎</button>
     </div>
   );
 }
