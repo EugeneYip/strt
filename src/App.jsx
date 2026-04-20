@@ -2786,6 +2786,106 @@ const PT_MAP = {
 };
 
 
+const ES_MAP = {
+  "STRT 6200 Final Exam Infrastructure": "Infraestructura del examen final STRT 6200",
+  "Strategic Decision-Making Review System": "Sistema de repaso de Strategic Decision-Making",
+  "Exam Signals": "Señales del examen",
+  "Analytical Spine": "Columna analítica",
+  "Underlying Economics": "Economía subyacente",
+  "Industry Level": "Nivel industria",
+  "Firm Level": "Nivel empresa",
+  "Cluster / Meso Level": "Nivel clúster / meso",
+  "National / Macro Level": "Nivel nacional / macro",
+  "Supranational / Meta Level": "Nivel supranacional / meta",
+  "International Strategy": "Estrategia internacional",
+  "Corporate Strategy": "Estrategia corporativa",
+  "Implementation": "Implementación",
+  "Case Grid": "Mapa de casos",
+  "Exam Attack System": "Sistema de ataque para el examen",
+  "Source Fidelity Appendix": "Apéndice de fidelidad de fuente",
+  "All": "Todo",
+  "High Weight": "Mayor peso",
+  "Frameworks": "Frameworks",
+  "Cases": "Casos",
+  "Appendix": "Apéndice",
+  "Reading map": "Mapa de lectura",
+  "No sections match the current filter.": "No hay secciones que coincidan con el filtro actual.",
+  "Try a broader search term or switch the chip filter back to All.": "Prueba con un término más amplio o regresa el filtro de chips a Todo.",
+  "What useful output does the customer actually receive?": "¿Qué resultado útil recibe realmente el cliente?",
+  "Who is directly competing to supply that same output?": "¿Quién compite directamente por ofrecer ese mismo resultado?",
+  "Draw the industry boundary from that customer-facing output, not from the technology label.": "Traza la frontera de la industria desde ese resultado visible para el cliente, no desde la etiqueta tecnológica.",
+  "Scope": "Alcance",
+  "Positioning": "Posicionamiento",
+  "Activities": "Actividades",
+  "Resources": "Recursos",
+  "Knowledge": "Conocimiento",
+  "Leadership": "Liderazgo",
+  "Execution": "Ejecución",
+  "Organization & management": "Organización y gestión",
+  "Governance": "Gobernanza",
+  "Start with the industry. Define the strategically meaningful competitive field first.": "Empieza por la industria. Primero define el campo competitivo con sentido estratégico.",
+  "Move outward to the cluster or ecosystem that shapes suppliers, customers, complements, and substitutes.": "Después abre el análisis hacia el clúster o ecosistema que moldea proveedores, clientes, complementos y sustitutos.",
+  "Then test the country context that enables or blocks the business model.": "Luego prueba el contexto país que habilita o bloquea el modelo de negocio.",
+  "Then layer in supranational pressures that rewrite the rules above the nation state.": "Después suma las presiones supranacionales que reescriben las reglas por encima del Estado nacional.",
+  "Only then judge the firm itself. Strong firms inside bad structures still struggle.": "Solo entonces juzga a la empresa. Una empresa fuerte dentro de una mala estructura igual va a sufrir.",
+  "Sources": "Fuentes",
+  "Language": "Idioma",
+  "Search keyword, case, or tool…": "Busca una palabra clave, caso o herramienta…",
+  "Show source appendix": "Mostrar apéndice de fuente",
+  "Hide source appendix": "Ocultar apéndice de fuente",
+  "Original pasted master review": "Master review original pegado",
+  "Language switch": "Cambiar idioma",
+  "EN": "EN",
+  "中": "中文",
+  "BI": "Bilingüe",
+  "Tiếng Việt": "Tiếng Việt",
+  "Português": "Português",
+  "Español": "Español",
+  "The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone.": "La interfaz principal reorganiza el material para que sea más legible y más útil al contestar el examen. Este apéndice conserva dentro del archivo el master review original pegado, para que la infraestructura mejorada no omita en silencio esa columna vertebral.",
+  "This build is designed as a user-facing revision system, not a progress memo. It assumes you need to read quickly, see structure immediately, and move from concept to case application without losing fidelity.": "Esta versión está pensada como un sistema de repaso orientado al usuario final, no como un memo de avance. Parte de que necesitas leer rápido, ver la estructura de inmediato y pasar del concepto a la aplicación en casos sin perder fidelidad.",
+  "Answer the question in front of you, not the one you hoped to get.": "Responde la pregunta que tienes enfrente, no la que te hubiera gustado que saliera.",
+  "Do not display frameworks as vocabulary. Select the right analytical tool for the case trigger.": "No muestres frameworks como si fueran vocabulario. Selecciona la herramienta analítica correcta según el disparador del caso.",
+  "Binding levels only. Unnecessary theory, extra cases, and generic filler dilute grades.": "Solo los niveles que realmente amarran. La teoría innecesaria, los casos extra y el relleno genérico te diluyen la calificación.",
+  "The exam rewards disciplined triage, not maximum text volume.": "El examen premia el triage disciplinado, no el mayor volumen de texto.",
+  "This infrastructure is built from the pasted final-review backbone and checked against the course text, Session 1 course framing, the Last Day deck, the implementation lecture, practice questions, and key case materials. The full original pasted notes are preserved in the appendix.": "Esta infraestructura se construyó a partir de la columna vertebral del final review pegado y se cotejó con el texto del curso, el encuadre de la Session 1, el deck de Last Day, la clase de implementation, las practice questions y los materiales de caso clave. Las notas originales completas siguen preservadas en el apéndice.",
+  "The exam logic is explicit: before strategy language, understand how the business makes money. Underlying economics shape industry structure, which shapes competition, which shapes profit potential, which then gets modified by the focal firm's SPARK, bargaining position, leadership, and execution.": "La lógica del examen es explícita: antes de usar lenguaje de strategy, hay que entender cómo gana dinero el negocio. La economía subyacente moldea la estructura de la industria; la estructura moldea la competencia; la competencia moldea el potencial de ganancia; y eso después se modifica por el SPARK, la posición de negociación, el liderazgo y la ejecución de la empresa focal.",
+  "High-scoring Nokia insight: Nokia once functioned as a standard setter because Nordic standards became European and then global. Apple later redefined the standard around the software platform, turning Apple into the frame-breaker and hollowing out Nokia's earlier advantage.": "Un insight de alto puntaje sobre Nokia es que llegó a funcionar como standard setter porque los estándares nórdicos se volvieron europeos y luego globales. Después Apple redefinió el estándar alrededor de la plataforma de software, convirtió a Apple en el frame-breaker y vació la ventaja previa de Nokia.",
+  "Do not stop with current rivals. Add related-industry entrants and unmet demand segments. Many of the biggest threats come from those two directions.": "No te quedes solo con los rivales actuales. Suma entrantes de industrias relacionadas y segmentos de demanda no atendida. Muchas de las amenazas más grandes vienen justo de esos dos lados.",
+  "Coopetition means the same set of players can cooperate in one activity and compete in another. In an exam answer, split the relationship at the activity level rather than declaring the other side simply friend or foe.": "Coopetition significa que el mismo grupo de jugadores puede cooperar en una actividad y competir en otra. En una respuesta de examen, separa la relación al nivel de la actividad en lugar de etiquetar al otro lado simplemente como amigo o enemigo.",
+  "Any claim that a firm is performing well or poorly should identify the comparator first. Saying 'performance is weak' without naming the reference point is mechanically unsafe.": "Cualquier afirmación de que una empresa está funcionando bien o mal debe identificar primero el comparador. Decir que 'el desempeño es débil' sin nombrar el punto de referencia es mecánicamente inseguro.",
+  "Externalization is not automatically good. One company’s asset-light strategy usually depends on another company carrying the asset-heavy burden. If you cannot identify where value is created, where it is appropriated, and where it is defended, you may be giving the value away.": "Externalizar no es automáticamente bueno. La estrategia asset-light de una empresa normalmente depende de que otra cargue con el peso asset-heavy. Si no puedes identificar dónde se crea el valor, dónde se apropia y dónde se defiende, es posible que estés regalando ese valor.",
+  "The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution.": "El mundo no es flat de la manera en que a veces lo plantea la divulgación popular. La creación de ideas sigue muy concentrada en personas, empresas y lugares específicos, mientras que los recursos de ejecución están mucho más distribuidos. La pregunta estratégica clave es quién se vuelve el flattener y quién termina aplanado, compitiendo solo en ejecución.",
+  "Supranational drivers do not merely change profit levels. They can rewrite who is allowed to enter, under what rules, with which technologies, and with what geopolitical constraints. That is why they matter disproportionately in international and corporate strategy questions.": "Los drivers supranacionales no solo cambian niveles de ganancia. Pueden reescribir quién puede entrar, bajo qué reglas, con qué tecnologías y con qué restricciones geopolíticas. Por eso pesan de manera desproporcionada en preguntas de estrategia internacional y corporativa.",
+  "Is the company more than the sum of its parts? If the answer is no, investors can diversify on their own and the corporate structure may be destroying value rather than creating it.": "¿La empresa vale más que la suma de sus partes? Si la respuesta es no, los inversionistas pueden diversificarse por su cuenta y la estructura corporativa podría estar destruyendo valor en lugar de crearlo.",
+  "The managerial mistake is systematic underestimation of the environment. The teaching point is that behavior is explained far more by the situation than managers instinctively assume. If you want behavior change, redesign the environment rather than lecturing personality.": "El error gerencial está en subestimar sistemáticamente el entorno. La enseñanza aquí es que el comportamiento se explica mucho más por la situación de lo que los gerentes suelen asumir por instinto. Si quieres cambiar conductas, rediseña el entorno en vez de sermonear sobre personalidad.",
+  "Final one-sentence guide: start with underlying economics, identify the binding levels, test SPARK plus leadership and execution, pressure-test future competition with CEA, and then ask whether organization and implementation allow the firm to realize and defend the value that should be available.": "Guía final en una sola frase: empieza por la economía subyacente, identifica los niveles que realmente amarran, prueba SPARK más liderazgo y ejecución, somete la competencia futura a presión con CEA y luego pregunta si la organización y la implementación permiten que la empresa capture y defienda el valor que debería estar disponible.",
+  "Use the right tool for the job": "Usa la herramienta correcta para el trabajo",
+  "Do not include extraneous material": "No incluyas material irrelevante",
+  "Use your time wisely": "Usa bien tu tiempo",
+  "Reading the question correctly is itself a grading event": "Leer bien la pregunta ya es parte de la calificación",
+  "Weighted areas": "Áreas de mayor peso",
+  "Competition spectrum": "Espectro de competencia",
+  "Industry boundary method": "Método para delimitar la industria",
+  "Industry economics board": "Panel de economía de la industria",
+  "Firm architecture": "Arquitectura de la empresa",
+  "SPARK architecture": "Arquitectura SPARK",
+  "Relative performance discipline": "Disciplina de desempeño relativo",
+  "Cluster ecosystem": "Ecosistema del clúster",
+  "Meso ecosystem board": "Panel del ecosistema meso",
+  "Macro scan": "Barrido macro",
+  "Macro board": "Panel macro",
+  "Meta pressure board": "Panel de presión meta",
+  "International architecture": "Arquitectura internacional",
+  "Corporate architecture": "Arquitectura corporativa",
+  "Implementation diagnosis": "Diagnóstico de implementación",
+  "Fast case-to-level scan": "Lectura rápida caso a nivel",
+  "Answer construction flow": "Flujo de construcción de respuesta",
+  "What this build is for": "Para qué sirve esta versión",
+  "Why this appendix remains": "Por qué se conserva este apéndice",
+  "EugeneYip.com": "EugeneYip.com"
+};
+
+
 const UR_MAP = {
   "STRT 6200 Final Exam Infrastructure": "STRT 6200 فائنل امتحان انفراسٹرکچر",
   "Strategic Decision-Making Review System": "اسٹریٹجک ڈسیژن میکنگ ریویو سسٹم",
@@ -2863,20 +2963,30 @@ function viText(input) {
   return input;
 }
 
-function uiText(mode, en, zh, vi, pt, ur) {
+function esText(input) {
+  if (typeof input !== 'string') return input;
+  if (ES_MAP[input]) return ES_MAP[input];
+  const match = input.match(/^(\d+) sections currently visible\. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix\.$/);
+  if (match) return `En este momento hay ${match[1]} secciones visibles. Usa los chips de filtro y el buscador para concentrarte en las áreas de mayor peso, los frameworks, los casos o el apéndice.`;
+  return input;
+}
+
+function uiText(mode, en, zh, vi, pt, ur, es) {
   if (mode === 'en') return en;
   if (mode === 'zh') return zh;
   if (mode === 'zh-cn') return zhCnText(zh ?? en);
   if (mode === 'vi') return vi ?? viText(en) ?? en;
   if (mode === 'pt') return pt ?? ptText(en) ?? en;
   if (mode === 'ur') return ur ?? urText(en) ?? en;
+  if (mode === 'es') return es ?? esText(en) ?? en;
   return en;
 }
 
-function BiText({ mode, en, zh, vi, pt, ur, className = "", block = false, subtleZh = false }) {
+function BiText({ mode, en, zh, vi, pt, ur, es, className = "", block = false, subtleZh = false }) {
   const resolvedVi = vi ?? viText(en);
   const resolvedPt = pt ?? ptText(en);
   const resolvedUr = ur ?? urText(en);
+  const resolvedEs = es ?? esText(en);
   if (mode === "en") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{en}</div> : <span className={className}>{en}</span>;
   if (mode === "zh") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{zh}</div> : <span className={className}>{zh}</span>;
   if (mode === "zh-cn") {
@@ -2911,6 +3021,21 @@ function BiText({ mode, en, zh, vi, pt, ur, className = "", block = false, subtl
     return (
       <span className={className} dir="rtl">
         {resolvedUr || en}
+      </span>
+    );
+  }
+  if (mode === "es") {
+    if (block) {
+      return (
+        <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>
+          <div>{resolvedEs || en}</div>
+          {resolvedEs && resolvedEs !== en ? <div className="mt-1 text-[0.94em] text-slate-600">{en}</div> : null}
+        </div>
+      );
+    }
+    return (
+      <span className={className}>
+        {resolvedEs || en}
       </span>
     );
   }
@@ -3322,7 +3447,7 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
               <div className="mt-1 text-xl md:text-2xl font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="Strategic Decision-Making Review System" zh="策略決策期末複習系統" /></div>
             </div>
             <div className="flex flex-col gap-2 md:flex-row md:items-center">
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={uiText(mode, "Search keyword, case, or tool…", "搜尋關鍵字、案例、工具…", "Tìm từ khóa, case hoặc công cụ…", undefined, "کلیدی لفظ، کیس یا ٹول تلاش کریں…")} dir={mode === "ur" ? "rtl" : "ltr"} className={cn("w-full md:w-[340px] max-w-full rounded-full border px-4 py-2 text-sm outline-none", mode === "ur" ? "text-right" : "text-left")} style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }} />
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={uiText(mode, "Search keyword, case, or tool…", "搜尋關鍵字、案例、工具…", "Tìm từ khóa, case hoặc công cụ…", undefined, "کلیدی لفظ، کیس یا ٹول تلاش کریں…", "Busca una palabra clave, caso o herramienta…")} dir={mode === "ur" ? "rtl" : "ltr"} className={cn("w-full md:w-[340px] max-w-full rounded-full border px-4 py-2 text-sm outline-none", mode === "ur" ? "text-right" : "text-left")} style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }} />
               <div className="flex flex-wrap gap-2">{chips.map((chip) => <button key={chip.key} onClick={() => setActiveTag(chip.key)} className="rounded-full border px-3 py-2 text-xs font-semibold tracking-[0.14em]" style={{ borderColor: activeTag === chip.key ? theme.teal : theme.line, background: activeTag === chip.key ? "#EDF4F6" : "#FBF8F0", color: activeTag === chip.key ? theme.teal : theme.subInk }}><BiText mode={mode} en={chip.en} zh={chip.zh} /></button>)}</div>
             </div>
           </div>
@@ -3335,11 +3460,11 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
 
 function FloatingLanguageToggle({ mode, setMode }) {
   const [open, setOpen] = useState(false);
-  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }, { key: "ur", label: "اردو" }];
+  const options = [{ key: "en", label: "EN" }, { key: "zh", label: "繁體" }, { key: "zh-cn", label: "简体" }, { key: "bi", label: "EN + 中文" }, { key: "vi", label: "Tiếng Việt" }, { key: "pt", label: "Português" }, { key: "ur", label: "اردو" }, { key: "es", label: "Español" }];
   return (
     <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
-      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className={cn("rounded-2xl px-3 py-2 text-sm font-semibold", mode === "ur" ? "text-right" : "text-left")} style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
-      <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ")} title={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ")}>◎</button>
+      {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>{uiText(mode, "Language", "語言", "Ngôn ngữ", undefined, undefined, undefined, "Idioma")}</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className={cn("rounded-2xl px-3 py-2 text-sm font-semibold", mode === "ur" ? "text-right" : "text-left")} style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
+      <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ", undefined, undefined, undefined, "Cambiar idioma")} title={uiText(mode, "Language switch", "切換語言", "Chuyển ngôn ngữ", undefined, undefined, undefined, "Cambiar idioma")}>◎</button>
     </div>
   );
 }
