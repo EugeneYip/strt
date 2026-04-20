@@ -1035,7 +1035,7 @@ function cn(...parts) {
 }
 
 function BiText({ mode, en, zh, className = "", block = false, subtleZh = false }) {
-  if (mode === "en") return block ? <div className={className}>{en}</div> : <span className={className}>{en}</span>;
+  if (mode === "en") return block ? <div className={cn('min-w-0 break-words [overflow-wrap:anywhere]', className)}>{en}</div> : <span className={className}>{en}</span>;
   if (mode === "zh") return block ? <div className={className}>{zh}</div> : <span className={className}>{zh}</span>;
   return (
     <div className={className}>
@@ -1047,7 +1047,7 @@ function BiText({ mode, en, zh, className = "", block = false, subtleZh = false 
 
 function SectionShell({ id, mode, titleEn, titleZh, kickerEn, kickerZh, refs = [], children }) {
   return (
-    <section id={id} className="scroll-mt-28 rounded-[28px] border p-5 md:p-7" style={{ background: theme.card, borderColor: theme.line }}>
+    <section id={id} className="min-w-0 max-w-full scroll-mt-28 overflow-hidden rounded-[28px] border p-4 md:p-6 xl:p-7" style={{ background: theme.card, borderColor: theme.line }}>
       <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <div>
           <div className="mb-2 text-[11px] uppercase tracking-[0.24em]" style={{ color: theme.teal }}>
@@ -1057,7 +1057,7 @@ function SectionShell({ id, mode, titleEn, titleZh, kickerEn, kickerZh, refs = [
             <BiText mode={mode} en={titleEn} zh={titleZh} />
           </h2>
         </div>
-        <div className="max-w-[360px] rounded-2xl border px-3 py-2 text-xs leading-relaxed" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}>
+        <div className="w-full max-w-full md:max-w-[360px] rounded-2xl border px-3 py-2 text-xs leading-relaxed break-words [overflow-wrap:anywhere]" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}>
           <div className="mb-1 font-semibold uppercase tracking-[0.16em]" style={{ color: theme.plum }}>Sources</div>
           <div className="flex flex-wrap gap-2">
             {refs.map((ref) => (
@@ -1082,7 +1082,7 @@ function InfoCard({ titleEn, titleZh, mode, children, tone = "default" }) {
   };
   const t = tones[tone] || tones.default;
   return (
-    <div className="rounded-3xl border p-4" style={{ background: t.bg, borderColor: t.border }}>
+    <div className="min-w-0 max-w-full overflow-hidden rounded-3xl border p-4" style={{ background: t.bg, borderColor: t.border }}>
       <div className="mb-2 text-sm font-semibold" style={{ color: t.ink }}>
         <BiText mode={mode} en={titleEn} zh={titleZh} />
       </div>
@@ -1095,7 +1095,7 @@ function InfoCard({ titleEn, titleZh, mode, children, tone = "default" }) {
 
 function BulletList({ mode, items, compact = false }) {
   return (
-    <ul className={cn("list-disc pl-5", compact ? "space-y-1.5 text-sm" : "space-y-2 text-sm md:text-[15px]")}>
+    <ul className={cn('list-disc pl-5 break-words [overflow-wrap:anywhere]', compact ? 'space-y-1.5 text-sm' : 'space-y-2 text-sm md:text-[15px]')}>
       {items.map((item, idx) => (
         <li key={idx} className="leading-6" style={{ color: theme.subInk }}>
           <BiText mode={mode} en={item.en} zh={item.zh} />
@@ -1115,8 +1115,8 @@ function SimpleTable({ mode, columns, rows, size = "normal" }) {
     return value;
   };
   return (
-    <div className="rounded-3xl border overflow-hidden" style={{ borderColor: theme.line }}>
-      <div className="md:hidden divide-y" style={{ background: "#FFFDF8", borderColor: theme.line }}>
+    <div className="w-full max-w-full rounded-3xl border overflow-hidden" style={{ borderColor: theme.line }}>
+      <div className="lg:hidden divide-y" style={{ background: "#FFFDF8", borderColor: theme.line }}>
         {rows.map((row, idx) => (
           <div key={idx} className="p-4" style={{ borderColor: theme.line }}>
             <div className="grid gap-3">
@@ -1132,8 +1132,8 @@ function SimpleTable({ mode, columns, rows, size = "normal" }) {
           </div>
         ))}
       </div>
-      <div className="hidden md:block overflow-x-auto" style={{ background: "#FFFDF8" }}>
-        <table className="min-w-[720px] w-full border-collapse text-left">
+      <div className="hidden lg:block w-full max-w-full overflow-x-auto overscroll-x-contain" style={{ background: '#FFFDF8' }}>
+        <table className="min-w-[640px] xl:min-w-[720px] w-full border-collapse text-left">
           <thead style={{ background: "#F2ECE0" }}>
             <tr>
               {columns.map((col) => (
@@ -1327,7 +1327,7 @@ function SparkArchitecture({ mode }) {
   ];
   return (
     <InfoCard titleEn="SPARK is the core, not the whole answer" titleZh="SPARK 是核心，但不是完整答案" mode={mode} tone="gold">
-      <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr] xl:items-center">
+      <div className="grid min-w-0 gap-4 xl:grid-cols-[0.9fr_1.1fr] xl:items-center">
         <div className="rounded-[28px] border p-4" style={{ borderColor: theme.line, background: "#FFFDF8" }}>
           <svg viewBox="0 0 280 280" className="w-full h-auto">
             <circle cx="140" cy="140" r="102" fill="#FBF8F0" stroke="#D9D0BE" />
@@ -1389,8 +1389,22 @@ function QuickCaseLevelMatrix({ mode }) {
   ];
   return (
     <InfoCard titleEn="Fast case-to-level scan" titleZh="案例對層次快速掃描" mode={mode} tone="plum">
-      <div className="overflow-x-auto">
-        <div className="min-w-[720px] grid" style={{ gridTemplateColumns: `200px repeat(${cols.length}, minmax(90px, 1fr))`, gap: "10px" }}>
+      <div className="xl:hidden grid gap-3">
+        {rows.map((row) => (
+          <div key={row.caseEn} className="rounded-[22px] border p-4" style={{ background: '#FFFDF8', borderColor: theme.line }}>
+            <div className="mb-2 text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={row.caseEn} zh={row.caseZh} /></div>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {cols.filter((col) => row.hit === col.key).map((col) => (
+                <div key={col.key} className="rounded-2xl border px-3 py-2 text-sm leading-6" style={{ borderColor: `${theme.teal}55`, background: '#EDF4F6', color: theme.teal }}>
+                  <BiText mode={mode} en={col.labelEn} zh={col.labelZh} />
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="hidden xl:block w-full max-w-full overflow-x-auto overscroll-x-contain">
+        <div className="min-w-[720px] grid" style={{ gridTemplateColumns: `200px repeat(${cols.length}, minmax(90px, 1fr))`, gap: '10px' }}>
           <div></div>
           {cols.map((col) => <div key={col.key} className="rounded-2xl border px-3 py-2 text-center text-xs font-semibold" style={{ borderColor: theme.line, background: "#F4F0E6", color: theme.ink }}><BiText mode={mode} en={col.labelEn} zh={col.labelZh} /></div>)}
           {rows.map((row) => (
@@ -1407,7 +1421,7 @@ function QuickCaseLevelMatrix({ mode }) {
 
 function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
   return (
-    <div className="sticky top-0 z-30 border-b backdrop-blur" style={{ background: "rgba(252,250,242,0.88)", borderColor: theme.line }}>
+    <div className="sticky top-0 z-30 max-w-full overflow-x-clip border-b backdrop-blur" style={{ background: "rgba(252,250,242,0.88)", borderColor: theme.line }}>
       <div className="mx-auto max-w-[1600px] px-4 py-3 md:px-6">
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
@@ -1416,11 +1430,11 @@ function AnchorNav({ mode, activeTag, setActiveTag, query, setQuery }) {
               <div className="mt-1 text-xl md:text-2xl font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="Strategic Decision-Making Review System" zh="策略決策期末複習系統" /></div>
             </div>
             <div className="flex flex-col gap-2 md:flex-row md:items-center">
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={mode === "zh" ? "搜尋關鍵字、案例、工具…" : "Search keyword, case, or tool…"} className="w-full md:w-[340px] rounded-full border px-4 py-2 text-sm outline-none" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }} />
+              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder={mode === "zh" ? "搜尋關鍵字、案例、工具…" : "Search keyword, case, or tool…"} className="w-full md:w-[340px] max-w-full rounded-full border px-4 py-2 text-sm outline-none" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.ink }} />
               <div className="flex flex-wrap gap-2">{chips.map((chip) => <button key={chip.key} onClick={() => setActiveTag(chip.key)} className="rounded-full border px-3 py-2 text-xs font-semibold tracking-[0.14em]" style={{ borderColor: activeTag === chip.key ? theme.teal : theme.line, background: activeTag === chip.key ? "#EDF4F6" : "#FBF8F0", color: activeTag === chip.key ? theme.teal : theme.subInk }}><BiText mode={mode} en={chip.en} zh={chip.zh} /></button>)}</div>
             </div>
           </div>
-          <div className="flex gap-2 overflow-x-auto pb-1">{sectionMeta.map((item) => <a key={item.id} href={`#${item.id}`} className="whitespace-nowrap rounded-full border px-3 py-2 text-xs font-medium" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><BiText mode={mode} en={item.en} zh={item.zh} /></a>)}</div>
+          <div className="flex max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-1">{sectionMeta.map((item) => <a key={item.id} href={`#${item.id}`} className="whitespace-nowrap rounded-full border px-3 py-2 text-xs font-medium" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><BiText mode={mode} en={item.en} zh={item.zh} /></a>)}</div>
         </div>
       </div>
     </div>
@@ -1431,7 +1445,7 @@ function FloatingLanguageToggle({ mode, setMode }) {
   const [open, setOpen] = useState(false);
   const options = [{ key: "en", label: "EN" }, { key: "zh", label: "中" }, { key: "bi", label: "BI" }];
   return (
-    <div className="fixed bottom-5 right-5 z-40">
+    <div className="fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5">
       {open ? <div className="mb-2 rounded-3xl border p-2 shadow-xl" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 px-2 pt-1 text-[10px] uppercase tracking-[0.2em]" style={{ color: theme.plum }}>Language</div><div className="flex flex-col gap-1">{options.map((option) => <button key={option.key} onClick={() => { setMode(option.key); setOpen(false); }} className="rounded-2xl px-3 py-2 text-sm font-semibold text-left" style={{ background: mode === option.key ? "#EDF4F6" : "transparent", color: mode === option.key ? theme.teal : theme.ink }}>{option.label}</button>)}</div></div> : null}
       <button onClick={() => setOpen((v) => !v)} className="h-14 w-14 rounded-full border text-xl shadow-lg" style={{ background: "#FFFDF8", borderColor: theme.line, color: theme.plum }} aria-label="Language switch" title="Language switch">◎</button>
     </div>
@@ -1450,7 +1464,7 @@ function VisualPanel({ mode, titleEn, titleZh, subEn, subZh, children, tone = "t
   };
   const t = tones[tone] || tones.teal;
   return (
-    <div className="rounded-[28px] border p-5" style={{ background: t.bg, borderColor: theme.line }}>
+    <div className="min-w-0 max-w-full overflow-hidden rounded-[28px] border p-4 md:p-5" style={{ background: t.bg, borderColor: theme.line }}>
       <div className="mb-3 flex items-start justify-between gap-3">
         <div>
           <div className="text-[11px] uppercase tracking-[0.2em]" style={{ color: t.sub }}><BiText mode={mode} en={titleEn} zh={titleZh} /></div>
@@ -1548,7 +1562,7 @@ function IndustryVisualizationSuite({ mode }) {
           {steps.map((step) => (
             <div key={step.n} className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
               <div className="mb-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.teal }}>{step.n}</div>
-              <div className="mb-2 text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={step.enH} zh={step.zhH} /></div>
+              <div className="mb-2 text-sm font-semibold break-words [overflow-wrap:anywhere]" style={{ color: theme.ink }}><BiText mode={mode} en={step.enH} zh={step.zhH} /></div>
               <div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={step.en} zh={step.zh} /></div>
             </div>
           ))}
@@ -1588,7 +1602,7 @@ function FirmArchitectureBoard({ mode }) {
   ];
   return (
     <VisualPanel mode={mode} tone="danger" titleEn="Firm architecture" titleZh="Firm architecture" subEn="SPARK is not the whole answer. The full firm-level diagnosis must separate strategic logic from organizational realization." subZh="SPARK 不是全部答案。完整的 firm-level diagnosis 必須把 strategic logic 與 organizational realization 分開看。">
-      <div className="grid gap-4 xl:grid-cols-[1fr_120px_1fr] xl:items-center">
+      <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_120px_1fr] xl:items-center">
         <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
           <div className="mb-3 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.plum }}><BiText mode={mode} en="Strategy side" zh="策略面" /></div>
           <div className="grid gap-2 sm:grid-cols-2">
@@ -1612,7 +1626,7 @@ function FirmArchitectureBoard({ mode }) {
 function MesoEcosystemBoard({ mode }) {
   return (
     <VisualPanel mode={mode} tone="olive" titleEn="Cluster logic map" titleZh="Cluster 邏輯圖" subEn="This section is easier to retain as an ecosystem map than as eight separate bullet clusters." subZh="這一節比起八組文字，更適合記成 ecosystem map。">
-      <div className="grid gap-4 xl:grid-cols-[1fr_180px_1fr] xl:items-stretch">
+      <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_180px_1fr] xl:items-stretch">
         <div className="grid gap-3">
           <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="text-sm font-semibold" style={{ color: theme.ok }}><BiText mode={mode} en="Inputs & suppliers" zh="Inputs 與 Suppliers" /></div><div className="mt-2 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Availability, quality, cost, concentration, bargaining power, and collaboration all shape what the focal business can do." zh="投入的可得性、品質、成本、集中度、議價力與合作可能性，會直接影響 focal business 的行動空間。" /></div></div>
           <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="text-sm font-semibold" style={{ color: theme.gold }}><BiText mode={mode} en="Shared resources & activities" zh="Shared Resources 與 Activities" /></div><div className="mt-2 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Knowledge spillovers, common channels, and scope economies can lower cost or improve the offer without changing the focal firm itself." zh="Knowledge spillovers、common channels 與 scope economies 可能在不改變 focal firm 本身的情況下，降低成本或改善 offer。" /></div></div>
@@ -1657,7 +1671,7 @@ function MetaPressureBoard({ mode }) {
   ];
   return (
     <VisualPanel mode={mode} tone="plum" titleEn="Meta pressure map" titleZh="Meta 壓力圖" subEn="Use this to convert a long descriptive paragraph into a rule-rewriting map." subZh="把長段敘述轉成『誰在改寫規則』的圖。">
-      <div className="grid gap-4 xl:grid-cols-[1fr_180px_1fr] xl:items-center">
+      <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_180px_1fr] xl:items-center">
         <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-1">
           {drivers.slice(0,3).map((d) => <div key={d.en} className="rounded-[18px] border px-3 py-3 text-sm" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={d.en} zh={d.zh} /></div>)}
         </div>
@@ -1679,7 +1693,7 @@ function InternationalArchitectureBoard({ mode }) {
   ];
   return (
     <VisualPanel mode={mode} tone="gold" titleEn="International architecture" titleZh="國際策略架構" subEn="The eight-question blueprint becomes easier to apply when grouped into select, compare, configure, and organize." subZh="八問藍圖改成 select、compare、configure、organize 之後更容易實戰。">
-      <div className="grid gap-4 xl:grid-cols-[220px_minmax(0,1fr)] xl:items-start">
+      <div className="grid min-w-0 gap-4 xl:grid-cols-[220px_minmax(0,1fr)] xl:items-start">
         <div className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}>
           <div className="mb-3 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.gold }}><BiText mode={mode} en="Four workstreams" zh="四條工作線" /></div>
           <div className="space-y-2 text-sm leading-6" style={{ color: theme.subInk }}>
@@ -1708,7 +1722,7 @@ function CorporateMechanismBoard({ mode }) {
   ];
   return (
     <VisualPanel mode={mode} tone="plum" titleEn="Corporate value creation board" titleZh="Corporate value creation board" subEn="A visual version of the 'more than the sum of its parts' test." subZh="把『是否大於 parts 總和』變成一眼可掃的機制板。">
-      <div className="grid gap-4 xl:grid-cols-[1fr_200px_1fr] xl:items-center">
+      <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_200px_1fr] xl:items-center">
         <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-1">
           {mechanisms.slice(0,3).map((m) => <div key={m.en} className="rounded-[18px] border px-3 py-3 text-sm" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={m.en} zh={m.zh} /></div>)}
         </div>
@@ -1735,7 +1749,7 @@ function ImplementationDiagnosisBoard({ mode }) {
   return (
     <VisualPanel mode={mode} tone="danger" titleEn="Implementation diagnosis flow" titleZh="Implementation diagnosis flow" subEn="This turns a long implementation narrative into a stepwise diagnostic path." subZh="把 implementation 的長篇敘述改成逐步診斷流程。">
       <div className="grid gap-3 xl:grid-cols-5">
-        {stages.map((stage, idx) => <div key={stage.en} className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 flex items-center justify-between gap-2"><div className="text-[11px] uppercase tracking-[0.18em]" style={{ color: stage.color }}>{String(idx + 1).padStart(2, "0")}</div><div className="h-px flex-1" style={{ background: `${stage.color}44` }} /></div><div className="mb-2 text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={stage.en} zh={stage.zh} /></div><div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={stage.qEn} zh={stage.qZh} /></div></div>)}
+        {stages.map((stage, idx) => <div key={stage.en} className="rounded-[22px] border p-4" style={{ background: "#FFFDF8", borderColor: theme.line }}><div className="mb-2 flex items-center justify-between gap-2"><div className="text-[11px] uppercase tracking-[0.18em]" style={{ color: stage.color }}>{String(idx + 1).padStart(2, "0")}</div><div className="h-px flex-1" style={{ background: `${stage.color}44` }} /></div><div className="mb-2 text-sm font-semibold break-words [overflow-wrap:anywhere]" style={{ color: theme.ink }}><BiText mode={mode} en={stage.en} zh={stage.zh} /></div><div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={stage.qEn} zh={stage.qZh} /></div></div>)}
       </div>
     </VisualPanel>
   );
@@ -1754,7 +1768,7 @@ function ExamFlowBoard({ mode }) {
   return (
     <VisualPanel mode={mode} tone="gold" titleEn="Answer construction flow" titleZh="答題建構流程" subEn="A flow version of the default answer shape for use under time pressure." subZh="把預設答題骨架轉成壓力下更好操作的流程版。">
       <div className="grid gap-3 xl:grid-cols-7">
-        {steps.map((step, idx) => <div key={step.en} className="rounded-[22px] border p-4" style={{ background: idx % 2 === 0 ? "#FFFDF8" : "#FBF8F0", borderColor: theme.line }}><div className="mb-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.gold }}>{String(idx + 1).padStart(2, "0")}</div><div className="mb-2 text-sm font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={step.en} zh={step.zh} /></div><div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={step.outEn} zh={step.outZh} /></div></div>)}
+        {steps.map((step, idx) => <div key={step.en} className="rounded-[22px] border p-4" style={{ background: idx % 2 === 0 ? "#FFFDF8" : "#FBF8F0", borderColor: theme.line }}><div className="mb-2 text-[11px] uppercase tracking-[0.18em]" style={{ color: theme.gold }}>{String(idx + 1).padStart(2, "0")}</div><div className="mb-2 text-sm font-semibold break-words [overflow-wrap:anywhere]" style={{ color: theme.ink }}><BiText mode={mode} en={step.en} zh={step.zh} /></div><div className="text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={step.outEn} zh={step.outZh} /></div></div>)}
       </div>
     </VisualPanel>
   );
@@ -1763,7 +1777,7 @@ function ExamFlowBoard({ mode }) {
 function OverviewSection({ mode }) {
   return (
     <SectionShell id="overview" mode={mode} titleEn="What the exam is really testing" titleZh="這份考試真正測甚麼" kickerEn="Course signals" kickerZh="課程訊號" refs={["Session 1", "Last Day", "Master Review"]}>
-      <div className="grid gap-4 xl:grid-cols-[1.25fr_0.75fr]">
+      <div className="grid min-w-0 gap-4 xl:grid-cols-[1.25fr_0.75fr]">
         <div className="space-y-4">
           <InfoCard titleEn="Reader orientation" titleZh="讀者導向" mode={mode} tone="teal"><BiText mode={mode} block en="This build is designed as a user-facing revision system, not a progress memo. It assumes you need to read quickly, see structure immediately, and move from concept to case application without losing fidelity." zh="這個版本是給讀者直接使用的複習系統，不是向任何人匯報進度。它假設你需要快速閱讀、立刻看見結構，並能在概念與案例應用之間切換，同時不犧牲內容完整性。" /></InfoCard>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -1902,7 +1916,7 @@ function IndustrySection({ mode }) {
         <InfoCard titleEn="Industry definition" titleZh="產業定義" mode={mode} tone="teal"><BiText mode={mode} block en='An industry consists of products or services with similar form and function that are in direct competition with each other, and the firms that supply them. This is a strategic definition, not a statistical one. Boundaries can merge or fragment over time.' zh='產業是指具有相似 form 與 function、彼此直接競爭的產品或服務，以及提供它們的 firms。這是策略性定義，不是統計分類。邊界會隨時間整合或分裂。' /></InfoCard>
         <IndustryBoundaryMethod mode={mode} />
         <IndustryVisualizationSuite mode={mode} />
-        <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[0.9fr_1.1fr]">
           <InfoCard titleEn="Competition type spectrum" titleZh="競爭型態光譜" mode={mode} tone="gold">
             <div className="mb-4 flex items-center gap-2 text-xs uppercase tracking-[0.18em]" style={{ color: theme.subInk }}><span>Low profitability</span><span>→</span><span>High profitability</span></div>
             <div className="flex flex-wrap items-center gap-2">{["Subsidized", "Perfect", "Hyper", "Oligopoly", "Monopoly"].map((item, idx) => <React.Fragment key={item}><span className="rounded-full border px-3 py-2 text-sm" style={{ borderColor: theme.line, background: idx >= 3 ? "#EDF4F6" : "#FBF1ED", color: idx >= 3 ? theme.teal : theme.danger }}>{item}</span>{idx < 4 ? <span style={{ color: theme.gold }}>→</span> : null}</React.Fragment>)}</div>
@@ -1916,7 +1930,7 @@ function IndustrySection({ mode }) {
           ]} /></InfoCard>
         </div>
         <InfoCard titleEn="Ferocity checklist" titleZh="競爭激烈度九宮格" mode={mode}><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{[["Low concentration", "Industry concentration 低"],["Low collusion possibility", "Collusion 可能性低"],["Low or negative growth", "Industry growth 低或負"],["High homogeneity", "Product homogeneity 高"],["Low differentiation", "Differentiation 低"],["Low capacity utilization", "Capacity utilization 低"],["High corporate stakes", "Corporate stakes 高"],["High exit barriers", "Exit barriers 高"],["Low entry barriers", "Entry barriers 低"]].map(([en, zh]) => <div key={en} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><BiText mode={mode} en={en} zh={zh} /></div>)}</div></InfoCard>
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Lead firm logic" titleZh="Lead firm 邏輯" mode={mode} tone="teal"><SimpleTable mode={mode} size="compact" columns={[{ key: "lead", en: "Lead firm type", zh: "類型" }, { key: "example", en: "Illustration", zh: "例子" }]} rows={leadRows} /><div className="mt-4 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="High-scoring Nokia insight: Nokia once functioned as a standard setter because Nordic standards became European and then global. Apple later redefined the standard around the software platform, turning Apple into the frame-breaker and hollowing out Nokia’s earlier advantage." zh="Nokia 的高分洞察：早期的 Nokia 因北歐標準進入歐洲再成為世界標準，而扮演了 standard setter。Apple 後來把標準改寫成 software platform，於是 Apple 成了 frame-breaker，Nokia 的舊優勢立刻被掏空。" /></div></InfoCard>
           <InfoCard titleEn="Competitor Envelope Analysis™" titleZh="Competitor Envelope Analysis™" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "What if competitors optimize activities?", zh: "如果 competitors 把 activities 優化到最好會怎樣？" },
@@ -1938,7 +1952,7 @@ function FirmSection({ mode }) {
   return (
     <SectionShell id="firm" mode={mode} titleEn="Firm level" titleZh="公司層次" kickerEn="SPARK and beyond" kickerZh="SPARK 與其延伸" refs={["Chapter 3", "Practice Questions", "Master Review"]}>
       <div className="space-y-5">
-        <div className="grid gap-4 xl:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[0.9fr_1.1fr]">
           <InfoCard titleEn="Performance is relative" titleZh="Performance 永遠是相對概念" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2">{[["Competitors", "Competitors"],["Benchmarks", "Benchmarks"],["History", "History"],["Expectations", "Expectations"]].map(([en, zh]) => <div key={en} className="rounded-3xl border p-4 text-sm" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.ink }}><BiText mode={mode} en={en} zh={zh} /></div>)}</div><div className="mt-4 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en="Any claim that a firm is performing well or poorly should identify the comparator first. Saying 'performance is weak' without naming the reference point is mechanically unsafe." zh="任何 'firm performs well / poorly' 的句子，都要先說 relative to whom。若沒先交代 comparator，作答在機械上就不安全。" /></div></InfoCard>
           <InfoCard titleEn="SPARK" titleZh="SPARK" mode={mode} tone="plum"><div className="grid gap-3 md:grid-cols-5">{[["Scope","Where we compete","Scope","在哪裡競爭"],["Positioning","How we compete","Positioning","如何競爭"],["Activities","What we do","Activities","做甚麼"],["Resources","What we use","Resources","用甚麼"],["Knowledge","What we know","Knowledge","知道甚麼"]].map(([en1, en2, zh1, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><div style={{ color: theme.subInk }}><BiText mode={mode} en={en2} zh={zh2} /></div></div>)}</div></InfoCard>
         </div>
@@ -1947,7 +1961,7 @@ function FirmSection({ mode }) {
         <InfoCard titleEn="Do not stop at SPARK" titleZh="不能只停在 SPARK" mode={mode} tone="gold"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{[
           ["SPARK","SPARK","Where, how, what, with what, and with what knowledge.","在哪裡、如何、做甚麼、用甚麼、靠甚麼知識。"],["Leadership","Leadership","Direction, motivation, ethics, standards, external face.","方向、動機、倫理、標準、對外面貌。"],["Execution","Execution","Knowing what to do and getting it done despite inertia.","知道要做甚麼，並且能對抗 inertia 把事做成。"],["Organization & management","Organization & Management","Division of labor, structures, systems, HR, capabilities.","分工、結構、系統、人力、組織能力。"],["Governance","Governance","Governance standards, compliance cost, decision impact.","治理標準、合規成本、對決策的影響。"],["Firm-specific policies & institutions","Firm-Specific Policies & Institutions","Subsidies, support, dedicated training bodies, special institutions.","補貼、支持、專屬訓練體系、特殊制度安排。"],
         ].map(([en1, zh1, en2, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><div className="font-semibold mb-1" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><BiText mode={mode} en={en2} zh={zh2} /></div>)}</div></InfoCard>
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Scope logic" titleZh="Scope 邏輯" mode={mode}><BulletList mode={mode} items={[
             { en: "Corporate / industry scope: how many industries the company competes in.", zh: "Corporate / industry scope：公司參與多少個產業。" },
             { en: "Within-industry scope: which segments inside the industry the company serves.", zh: "Within-industry scope：在同一產業內服務哪些 segments。" },
@@ -1961,7 +1975,7 @@ function FirmSection({ mode }) {
             { missing: { en: "Leadership is missing from analysis + action", zh: "Analysis + Action 少了 Leadership" }, result: { en: "Scattered and confused", zh: "Scattered and Confused" } },
           ]} /></InfoCard>
         </div>
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Leadership is a double-edged sword" titleZh="Leadership 是雙面刃" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "Leadership can create firms, categories, and strategic direction.", zh: "Leadership 能建立公司、品類與策略方向。" },
             { en: "But leadership can also lock in a mental model that becomes vulnerability later.", zh: "但 leadership 也可能把公司鎖進一個之後變成弱點的 mental model。" },
@@ -1993,7 +2007,7 @@ function MesoSection({ mode }) {
           ["Demand","Demand","Size, growth, segment structure, bundling, complementarities.","規模、成長、segment 結構、bundling、complementarities。"],["Customers","Customers","Identity, access, bargaining power, price sensitivity, competition potential.","身分、接觸、議價、價格敏感度、與我們競爭的可能性。"],["Inputs","Inputs","Factor, human, ecological, produced, technological, infrastructure inputs.","要素、人力、生態、製成、技術、基礎設施投入。"],["Suppliers","Suppliers","Number, identity, access, bargaining, price sensitivity, collaboration potential.","數量、身分、接觸、議價、價格敏感度、合作可能性。"],["Shared resources / activities","Shared Resources / Activities","Shared technologies, channels, customers, knowledge, scope economies.","共享技術、通路、客戶、知識與 scope economies。"],["Complementarities","Complementarities","Other industries or products that raise demand and willingness to pay.","能提升 demand 與 willingness to pay 的互補關係。"],["Substitutes","Substitutes","Indirect replacements that cap profit potential.","會壓制利潤上限的替代選項。"],["Meso policies / institutions","Meso Policies / Institutions","Cluster-specific policies and supporting institutions.","針對 cluster 的政策與支援制度。"],
         ].map(([en1, zh1, en2, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="font-semibold mb-1" style={{ color: theme.ink }}><BiText mode={mode} en={en1} zh={zh1} /></div><div style={{ color: theme.subInk }}><BiText mode={mode} en={en2} zh={zh2} /></div></div>)}</div></InfoCard>
         <MesoEcosystemBoard mode={mode} />
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Bargaining power is a three-axis diagnosis" titleZh="議價力是三軸診斷" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "Intrinsic bargaining strength: concentration, substitutes, switching costs, pull-through, vertical integration threat.", zh: "Intrinsic bargaining strength：集中度、替代品、switching costs、pull-through、垂直整合威脅。" },
             { en: "Price sensitivity: cost share, strategy, profitability, and quality impact.", zh: "Price sensitivity：成本占比、策略、獲利狀況與品質影響。" },
@@ -2037,7 +2051,7 @@ function MetaSection({ mode }) {
       <div className="space-y-5">
         <InfoCard titleEn="Eight supranational drivers" titleZh="八個超國家驅動因素" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{[["International geopolitics","International Geo-politics"],["International economic conditions","International Economic Conditions"],["Global technology trends","Global Technology Trends"],["Social and environmental issues","Social and Environmental Issues"],["Multilateral organizations","Multilateral Organizations"],["Supranational policies and trade blocs","Supranational Policies & Trade Blocs"],["Foreign governments","Foreign Governments"],["Foreign multinationals and other supranational groups","Foreign Multinationals & Other Supranational Groups"]].map(([en, zh]) => <div key={en} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><BiText mode={mode} en={en} zh={zh} /></div>)}</div></InfoCard>
         <MetaPressureBoard mode={mode} />
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn='The "Inverted T" view of the world' titleZh='「倒 T 型」世界觀' mode={mode} tone="gold"><BiText mode={mode} block en="The world is not flat in the way popular writing sometimes implies. The creation of ideas remains highly concentrated in specific people, firms, and places, while execution resources are more widely distributed. The key strategic question is who becomes the flattener and who gets flattened into competing only on execution." zh="世界並不像某些流行說法那樣 flat。創造 ideas 的能力仍高度集中在特定的人、公司與地點；但執行資源則相對分散。關鍵策略問題是：誰會成為 flattener，誰又會被壓成只能在 execution 上競爭的 flattenee。" /></InfoCard>
           <InfoCard titleEn="Why this matters so much for the final" titleZh="為甚麼它對期末特別重要" mode={mode} tone="plum"><BiText mode={mode} block en="Supranational drivers do not merely change profit levels. They can rewrite who is allowed to enter, under what rules, with which technologies, and with what geopolitical constraints. That is why they matter disproportionately in international and corporate strategy questions." zh="Supranational drivers 不只是改變 profit 高低。它們甚至會直接改寫誰能進場、以甚麼規則進場、用甚麼技術進場，以及面對甚麼 geopolitical constraints。這也是它在 international 與 corporate strategy 題目中特別重要的原因。" /></InfoCard>
         </div>
@@ -2055,7 +2069,7 @@ function InternationalSection({ mode }) {
       <div className="space-y-5">
         <InfoCard titleEn="Eight-question blueprint" titleZh="八問藍圖" mode={mode} tone="teal"><div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">{rows.map((row, idx) => <div key={idx} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0", color: theme.subInk }}><div className="mb-1 text-[11px] uppercase tracking-[0.16em]" style={{ color: theme.plum }}>{String(idx + 1).padStart(2, "0")}</div><BiText mode={mode} en={row.q.en} zh={row.q.zh} /></div>)}</div></InfoCard>
         <InternationalArchitectureBoard mode={mode} />
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Global / local split" titleZh="Global / Local 切法" mode={mode} tone="gold"><SimpleTable mode={mode} size="compact" columns={[{ key: "bucket", en: "Bucket", zh: "類別" }, { key: "global", en: "What to globalize", zh: "應 globalize 的部分" }, { key: "local", en: "What to localize", zh: "應 localize 的部分" }]} rows={[
             { bucket: { en: "Financial / compliance", zh: "Financial / Compliance" }, global: { en: "Envelope, standards, control architecture", zh: "整體框架、標準、控制結構" }, local: { en: "Local legal expertise only", zh: "只保留必要的 local legal expertise" } },
             { bucket: { en: "Market-facing", zh: "Market-facing" }, global: { en: "Only broad brand consistency", zh: "只保留品牌一致性的大框架" }, local: { en: "Account management, BD, marketing, sales", zh: "Account management、BD、marketing、sales" } },
@@ -2078,7 +2092,7 @@ function CorporateSection({ mode }) {
       <div className="space-y-5">
         <InfoCard titleEn="First test" titleZh="第一個問題" mode={mode} tone="teal"><BiText mode={mode} block en="Is the company more than the sum of its parts? If the answer is no, investors can diversify on their own and the corporate structure may be destroying value rather than creating it." zh="第一個問題是：這家公司有沒有大於 parts 的總和？如果答案是否定的，投資人可以自己分散投資，這種 corporate structure 反而可能正在毀掉價值。" /></InfoCard>
         <CorporateMechanismBoard mode={mode} />
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Eight-question blueprint" titleZh="八問藍圖" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "How many industries?", zh: "有幾個 industries？" }, { en: "Which industries?", zh: "是哪一些 industries？" }, { en: "How do the five levels differ from the firm’s existing businesses?", zh: "新舊 business 在五個層次上有何差異？" }, { en: "What SPARK is needed in each business?", zh: "每個 business 需要甚麼 SPARK？" }, { en: "How should SPARK be matched to business conditions?", zh: "如何讓 SPARK 對應 business 條件？" }, { en: "How should the multi-business company be organized?", zh: "這個 multi-business company 要如何組織？" }, { en: "Where is value created: across subsidiaries, or between HQ and subsidiaries?", zh: "價值究竟是在 subsidiaries 之間，還是在 HQ 與 subsidiaries 之間被創造？" }, { en: "Are the businesses related or unrelated?", zh: "這些 businesses 是 related 還是 unrelated？" },
           ]} /></InfoCard>
@@ -2116,7 +2130,7 @@ function ImplementationSection({ mode }) {
       <div className="space-y-5">
         <InfoCard titleEn="The five-block implementation system" titleZh="五段 implementation 系統" mode={mode} tone="teal"><StageRibbon mode={mode} items={stages} /></InfoCard>
         <ImplementationDiagnosisBoard mode={mode} />
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Knowing-Not-Knowing: seven reasons" titleZh="Knowing-Not-Knowing 的七個原因" mode={mode} tone="gold"><BulletList mode={mode} items={[
             { en: "Problems of framing", zh: "Problems of framing" }, { en: "Incorrect perceptions", zh: "Incorrect perceptions" }, { en: "Issues with reasoning", zh: "Issues with reasoning" }, { en: "Ignoring the obvious", zh: "Ignoring the obvious" }, { en: "Going along with the pack", zh: "Going along with the pack" }, { en: "Believing others have done the homework", zh: "Believing others have done the homework" }, { en: "Willful blindness", zh: "Willful blindness" },
           ]} /></InfoCard>
@@ -2176,7 +2190,7 @@ function ExamSection({ mode }) {
           ["0–5","Read all questions, not the reading","0–5","先讀完所有題目，不先讀 reading"],["5–15","Read the full reading and tag frameworks","5–15","完整讀 reading，邊讀邊 tag 框架"],["15–30","Do the most bounded question first","15–30","先做最 bounded 的題目"],["30–55","International-style question","30–55","處理 international 類題目"],["55–80","Corporate-style question","55–80","處理 corporate 類題目"],["80–140","Long implementation / Nokia-type question","80–140","處理 implementation / Nokia 類長題"],["140–170","Go back and strengthen conclusions","140–170","回頭補強 conclusions"],["170–180","Final scan for conclusions, evidence, and fit","170–180","最後檢查 conclusion、evidence 與題意貼合度"],
         ].map(([en1, en2, zh1, zh2]) => <div key={en1} className="rounded-3xl border p-4 text-sm leading-6" style={{ borderColor: theme.line, background: "#FBF8F0" }}><div className="mb-1 font-semibold" style={{ color: theme.teal }}>{en1}</div><BiText mode={mode} en={en2} zh={zh2} /></div>)}</div></InfoCard>
         <ExamFlowBoard mode={mode} />
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Question trigger → tool mapping" titleZh="題目 trigger → 工具對應" mode={mode} tone="gold"><SimpleTable mode={mode} size="compact" columns={[{ key: "trigger", en: "Trigger", zh: "觸發字樣" }, { key: "tool", en: "Default tool", zh: "預設工具" }]} rows={[
             { trigger: { en: "Profitability / structure / competition", zh: "profitability / structure / competition" }, tool: { en: "Underlying economics + competition type + variables + ferocity", zh: "Underlying economics + competition type + variables + ferocity" } },
             { trigger: { en: "Bargaining / buyer / supplier power", zh: "bargaining / buyer / supplier power" }, tool: { en: "Intrinsic strength + price sensitivity + willingness to use power", zh: "Intrinsic strength + price sensitivity + willingness to use power" } },
@@ -2196,7 +2210,7 @@ function ExamSection({ mode }) {
             { en: "If asked, connect to strategy and implementation barriers.", zh: "如果題目要求，就把 diagnosis 連回 strategy 與 implementation barriers。" },
           ]} /></InfoCard>
         </div>
-        <div className="grid gap-4 xl:grid-cols-[1fr_1fr]">
+        <div className="grid min-w-0 gap-4 xl:grid-cols-[1fr_1fr]">
           <InfoCard titleEn="Fatal errors" titleZh="致命錯誤清單" mode={mode} tone="danger"><BulletList mode={mode} items={[
             { en: "No conclusion.", zh: "沒有 conclusion。" }, { en: "Performance claim without stating the comparator.", zh: "講 performance 卻沒有說 comparator。" }, { en: "Framework display without causal application.", zh: "只展示 framework，沒有做 causal application。" }, { en: "Wrong level for the case.", zh: "案例層次判斷錯誤。" }, { en: "Using the same case twice where uniqueness matters.", zh: "在要求唯一配對時重複使用同一個 case。" }, { en: "Extraneous material.", zh: "塞入與題目無關的材料。" }, { en: "Implementation answer that retells the story but never diagnoses pathology.", zh: "Implementation 題只重述故事，沒有做 pathology diagnosis。" }, { en: "Skipping CEA when the question is about sustainability or future competition.", zh: "遇到 sustainability 或 future competition 題，卻沒用 CEA。" }, { en: "Jumping to strategy language before underlying economics is clear.", zh: "在底層經濟還沒釐清前，就直接跳到 strategy language。" }, { en: "Using Prahalad-Hamel core competence framing as the default answer to NEC.", zh: "把 Prahalad-Hamel 的 core competence 當成 NEC 的預設答法。" },
           ]} /></InfoCard>
@@ -2217,7 +2231,7 @@ function AppendixSection({ mode }) {
       <div className="space-y-4">
         <InfoCard titleEn="Why this appendix exists" titleZh="為甚麼要保留這個附錄" mode={mode} tone="teal"><BiText mode={mode} block en="The main interface restructures the material for readability and exam execution. This appendix keeps the original pasted master review inside the file so the upgraded infrastructure does not silently omit that backbone." zh="主介面是為了提升可讀性與考場操作性而重構。這個附錄把原始貼入總整完整放進檔案中，確保升級版 infrastructure 不會默默遺漏那份骨架內容。" /></InfoCard>
         <button onClick={() => setShowSource((v) => !v)} className="rounded-full border px-4 py-2 text-sm font-semibold" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.plum }}>{showSource ? (mode === "zh" ? "收起原始內容" : mode === "bi" ? "Hide source appendix / 收起原始內容" : "Hide source appendix") : (mode === "zh" ? "展開原始內容" : mode === "bi" ? "Show source appendix / 展開原始內容" : "Show source appendix")}</button>
-        {showSource ? <div className="overflow-hidden rounded-[28px] border" style={{ borderColor: theme.line }}><div className="border-b px-4 py-3 text-xs uppercase tracking-[0.18em]" style={{ background: "#F2ECE0", borderColor: theme.line, color: theme.teal }}>Original pasted master review</div><pre className="max-h-[900px] overflow-auto whitespace-pre-wrap p-4 text-[12px] leading-6" style={{ background: "#FFFDF8", color: theme.ink }}>{SOURCE_MARKDOWN}</pre></div> : null}
+        {showSource ? <div className="overflow-hidden rounded-[28px] border" style={{ borderColor: theme.line }}><div className="border-b px-4 py-3 text-xs uppercase tracking-[0.18em]" style={{ background: "#F2ECE0", borderColor: theme.line, color: theme.teal }}>Original pasted master review</div><pre className="max-h-[900px] max-w-full overflow-auto whitespace-pre-wrap break-words [overflow-wrap:anywhere] p-4 text-[12px] leading-6" style={{ background: "#FFFDF8", color: theme.ink }}>{SOURCE_MARKDOWN}</pre></div> : null}
       </div>
     </SectionShell>
   );
@@ -2254,13 +2268,16 @@ export default function STRT6200FinalExamInfrastructure() {
   };
   const visibleCount = filteredSections.length;
   return (
-    <div className="min-h-screen" style={{ background: theme.bg, color: theme.ink }}>
+    <div className="min-h-screen max-w-full overflow-x-hidden" style={{ background: theme.bg, color: theme.ink }}>
       <AnchorNav mode={mode} activeTag={activeTag} setActiveTag={setActiveTag} query={query} setQuery={setQuery} />
       <FloatingLanguageToggle mode={mode} setMode={setMode} />
-      <div className="mx-auto grid max-w-[1600px] gap-6 px-4 py-6 md:px-6 xl:grid-cols-[250px_minmax(0,1fr)]">
-        <aside className="hidden xl:block"><div className="sticky top-28 rounded-[28px] border p-4" style={{ background: "#FBF8F0", borderColor: theme.line }}><div className="mb-3 text-[11px] uppercase tracking-[0.24em]" style={{ color: theme.plum }}><BiText mode={mode} en="Reading map" zh="閱讀地圖" /></div><div className="mb-4 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={`${visibleCount} sections currently visible. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix.`} zh={`目前顯示 ${visibleCount} 個 section。可用上方 filter chips 與搜尋欄，把系統收斂到高權重、框架、案例或附錄。`} /></div><div className="space-y-2">{filteredSections.map((section) => <a key={section.id} href={`#${section.id}`} className="block rounded-2xl border px-3 py-2 text-sm leading-5" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={section.en} zh={section.zh} /></a>)}</div></div></aside>
-        <main className="space-y-6">{filteredSections.length ? filteredSections.map((section) => <React.Fragment key={section.id}>{renderSection(section.id)}</React.Fragment>) : <div className="rounded-[28px] border p-8 text-center" style={{ background: theme.card, borderColor: theme.line }}><div className="text-lg font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="No sections match the current filter." zh="目前篩選條件下沒有符合的 section。" /></div><div className="mt-2 text-sm" style={{ color: theme.subInk }}><BiText mode={mode} en="Try a broader search term or switch the chip filter back to All." zh="請改用更寬鬆的搜尋字，或把 chip filter 切回全部。" /></div></div>}</main>
+      <div className="mx-auto grid max-w-[1600px] gap-5 px-3 py-5 sm:px-4 md:px-6 xl:grid-cols-[250px_minmax(0,1fr)]">
+        <aside className="hidden xl:block min-w-0"><div className="sticky top-28 rounded-[28px] border p-4" style={{ background: "#FBF8F0", borderColor: theme.line }}><div className="mb-3 text-[11px] uppercase tracking-[0.24em]" style={{ color: theme.plum }}><BiText mode={mode} en="Reading map" zh="閱讀地圖" /></div><div className="mb-4 text-sm leading-6" style={{ color: theme.subInk }}><BiText mode={mode} en={`${visibleCount} sections currently visible. Use the filter chips and search box to narrow the system to weighted areas, frameworks, cases, or the appendix.`} zh={`目前顯示 ${visibleCount} 個 section。可用上方 filter chips 與搜尋欄，把系統收斂到高權重、框架、案例或附錄。`} /></div><div className="space-y-2">{filteredSections.map((section) => <a key={section.id} href={`#${section.id}`} className="block rounded-2xl border px-3 py-2 text-sm leading-5" style={{ borderColor: theme.line, background: "#FFFDF8", color: theme.subInk }}><BiText mode={mode} en={section.en} zh={section.zh} /></a>)}</div></div></aside>
+        <main className="min-w-0 max-w-full space-y-5 md:space-y-6">{filteredSections.length ? filteredSections.map((section) => <React.Fragment key={section.id}>{renderSection(section.id)}</React.Fragment>) : <div className="rounded-[28px] border p-8 text-center" style={{ background: theme.card, borderColor: theme.line }}><div className="text-lg font-semibold" style={{ color: theme.ink }}><BiText mode={mode} en="No sections match the current filter." zh="目前篩選條件下沒有符合的 section。" /></div><div className="mt-2 text-sm" style={{ color: theme.subInk }}><BiText mode={mode} en="Try a broader search term or switch the chip filter back to All." zh="請改用更寬鬆的搜尋字，或把 chip filter 切回全部。" /></div></div>}</main>
       </div>
+      <footer className="px-3 pb-8 pt-1 sm:px-4 md:px-6">
+        <div className="mx-auto max-w-[1600px] border-t pt-4 text-center text-sm" style={{ borderColor: theme.line, color: theme.subInk }}>EugeneYip.com</div>
+      </footer>
     </div>
   );
 }
