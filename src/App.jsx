@@ -20,6 +20,8 @@ const SOURCE_MARKDOWN = `# STRT 6200 Final Exam
 
 ---
 
+https://hackmd.io/@EugeneYip/strt
+
 ## 第 0 部｜Enright 實際打分的六個動作
 
 教授在 Last Day Slide 23 明示評分 rubric 只有四句：*"Read the questions. Use the right tools for the job. Don't include extraneous material. Use your time wisely."* 翻譯成 exam mechanics：
